@@ -175,7 +175,7 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/18/The-Starting-Point-of-Blogs/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/p2-transition.png">
+      <meta itemprop="image" content="/images/p1.png">
       <meta itemprop="name" content="Moustache">
       <meta itemprop="description" content="我是小胡子">
     </span>
@@ -195,8 +195,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-08-18 13:56:39" itemprop="dateCreated datePublished" datetime="2020-08-18T13:56:39+08:00">2020-08-18</time>
+              <time title="创建时间：2020-08-18 13:56:39 / 修改时间：15:36:52" itemprop="dateCreated datePublished" datetime="2020-08-18T13:56:39+08:00">2020-08-18</time>
             </span>
 
           
@@ -210,7 +211,99 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Moustache’s First Blog 介绍 <code>Hexo</code>+<code>Github Page</code>的步骤和遇到的问题，并在此列出参考的文章，衷心感谢。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/jiunian_2761/article/details/97388534">Hexo博客搭建记录（一）：本地搭建以及部署到Github</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/jiunian_2761/article/details/97388745Hexo">博客搭建记录（二）：基本主题设置以及美化</a></li>
+<li><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/">Hexo官方文档</a></li>
+</ul>
+<h2 id="一、环境准备"><a href="#一、环境准备" class="headerlink" title="一、环境准备"></a>一、环境准备</h2><ul>
+<li>Node.js</li>
+<li>Npm</li>
+<li>Git</li>
+</ul>
+<h2 id="二、配置本地Hexo"><a href="#二、配置本地Hexo" class="headerlink" title="二、配置本地Hexo"></a>二、配置本地Hexo</h2><h3 id="1-配置hexo全局控制命令"><a href="#1-配置hexo全局控制命令" class="headerlink" title="1.配置hexo全局控制命令"></a>1.配置hexo全局控制命令</h3><p>​    在cmd或者其他命令行工具下输入如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli </span><br></pre></td></tr></table></figure>
+
+<h3 id="2-下载Hexo-工具"><a href="#2-下载Hexo-工具" class="headerlink" title="2.下载Hexo 工具"></a>2.下载Hexo 工具</h3><h4 id="2-1初始化博客目录"><a href="#2-1初始化博客目录" class="headerlink" title="2.1初始化博客目录"></a>2.1初始化博客目录</h4><p>在准备好的一个目录下存放自己的博客网站文件，例如我的是 <strong>/e/blog</strong>，也就是在E盘根目录新建了一个<strong>blog</strong>文件夹</p>
+<p>然后我们进入该目录，点击鼠标右键，然后点击 <code>git bash</code> 出现一个命令窗口，接下来我们的大多数操作都用它来完成。</p>
+<blockquote>
+<p><code>Git Bash</code>在这里并不是唯一的选择，如您熟悉其他命令工具，也可以使用其他工具，这里使用<code>Git Bash</code>是为了减少更多不必要的麻烦</p>
+</blockquote>
+<p>在 <code>Git Bash</code>窗口下输入如下命令：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+
+<p>按下回车Enter，<code>Git bash</code> 会自动下载相关文件</p>
+<h4 id="2-2-本地生成运行"><a href="#2-2-本地生成运行" class="headerlink" title="2.2 本地生成运行"></a>2.2 本地生成运行</h4><p>在<code>Git Bash</code>窗口下，依次执行：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+
+<p>这样，Hexo会默认运行在你本机的4000端口上，然后我们在浏览器中输入<code>http://localhost:4000</code>即可显示主题为<code>landscaped</code> 的页面</p>
+<h2 id="三、部署到GitPage"><a href="#三、部署到GitPage" class="headerlink" title="三、部署到GitPage"></a>三、部署到GitPage</h2><blockquote>
+<p>这个步骤开始前，请确保你已经注册了Github账号，且已经配置好了相关信息，配置方法请向上翻阅 <strong>二、安装Git</strong> 环节下。</p>
+</blockquote>
+<h3 id="1-在Github创建仓库。"><a href="#1-在Github创建仓库。" class="headerlink" title="1.在Github创建仓库。"></a>1.在Github创建仓库。</h3><p>打开 <a target="_blank" rel="noopener" href="https://github.com/">Github官网</a> 登陆你的Github账号，点击页面右上角的 <code>+</code> 、<code>New repository</code>新建一个<code>repository</code>仓库</p>
+<blockquote>
+<p>为避免麻烦，这里仓库名必须按照<code>yourusername.github.io</code>规范填写，填写完仓库名后，我们点击<code>Create repository</code>按钮，然后等待其创建完成。复制该项目的HTTP链接<code>https://github.com/yourusername/yourusername.github.io.git</code></p>
+</blockquote>
+<blockquote>
+<p><code>yourusername</code>指的就是你的github用户名，本文中出现的该字段都表示这个意思。</p>
+</blockquote>
+<h3 id="2-Hexo-配置"><a href="#2-Hexo-配置" class="headerlink" title="2.Hexo 配置"></a>2.Hexo 配置</h3><p>打开 <code>Git Bash</code> 切换到博客的根目录，输入：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-depolyer-git --save    </span><br></pre></td></tr></table></figure>
+
+<p>然后输入：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim _config.yml</span><br></pre></td></tr></table></figure>
+
+<p>进入站点配置文件编辑模式，我们向下翻到底部，可以看到 <code>depoly</code> 字段</p>
+<p>在英文输入模式下，按键盘上的 <code>i</code>键进入编辑模式，将<code>depoly</code>字段编辑如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: </span><br><span class="line">          github: https:<span class="comment">//github.com/yourusername/yourusername.github.io.git</span></span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+
+<p>注意这里<code>:</code>后面一定要加空格，不然会出错。</p>
+<p>然后我们按<code>Esc</code> 键，输入<code>:wq</code> 保存退出</p>
+<h3 id="3-完成部署"><a href="#3-完成部署" class="headerlink" title="3.完成部署"></a>3.完成部署</h3><p>在命令行输入并执行：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+<p>其中，<code>hexo d</code> 则是将本地文件推送到远程。</p>
+<p>在第一次推送时，需要输入github  <code>userNam</code>e和<code>password</code></p>
+<h2 id="四、使用Next主题"><a href="#四、使用Next主题" class="headerlink" title="四、使用Next主题"></a>四、使用Next主题</h2><h3 id="1-更改主题"><a href="#1-更改主题" class="headerlink" title="1. 更改主题"></a>1. 更改主题</h3><p><a target="_blank" rel="noopener" href="https://hexo.io/themes/">Hexo主题库</a>可以找到更多主题，以下以Next为例</p>
+<blockquote>
+<p>在Hexo目录下有两份重要的配置文件，其名称都是<code>_config.yml</code> 。其中，一份位于站点根目录下，主要包含<code>Hexo</code>的自身配置，另一份位于主题目录下，主要用于配置主题相关的选项。<br>在接下来的描述中，我将前者称为 <strong>站点配置文件</strong>，后者称为 <strong>主题配置文件</strong> 。</p>
+</blockquote>
+<h4 id="1-1-安装Next"><a href="#1-1-安装Next" class="headerlink" title="1.1 安装Next"></a>1.1 安装Next</h4><p>安装Next主题的方式很简单，利用Git bash 在博客主目录下执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;theme-next&#x2F;hexo-theme-next themes&#x2F;next</span><br></pre></td></tr></table></figure>
+
+<p>然后我们打开站点配置文件，将theme属性从默认值landscape改为next</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: next</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>记住，所有的配置属性<code>:</code> 后面都要加一个空格,这样我们设定的值才会生效。</p>
+</blockquote>
+<h4 id="1-2-选择不同的Next主题样式"><a href="#1-2-选择不同的Next主题样式" class="headerlink" title="1.2 选择不同的Next主题样式"></a>1.2 选择不同的Next主题样式</h4><p>Next提供了四种主题风格scheme,可以在主题配置文件中配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># ---------------------------------------------------------------</span><br><span class="line"># Scheme Settings</span><br><span class="line"># ---------------------------------------------------------------</span><br><span class="line"># Schemes</span><br><span class="line">#scheme: Muse</span><br><span class="line">#scheme: Mist</span><br><span class="line">#scheme: Pisces</span><br><span class="line">scheme: Gemini</span><br></pre></td></tr></table></figure>
+
+<p>这里个人选择 <code>Gemini</code></p>
+<h3 id="2-更改站点属性（网站名，语言，作者）"><a href="#2-更改站点属性（网站名，语言，作者）" class="headerlink" title="2. 更改站点属性（网站名，语言，作者）"></a>2. 更改站点属性（网站名，语言，作者）</h3><p>打开站点配置文件，找到<code>site</code>字段，具体修改如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 设置网站属性信息</span><br><span class="line"># Site:</span><br><span class="line">title: 小白的博客 #网站标题（博客站点名字）。</span><br><span class="line">subtitle: 小小白 #网站副标题，显示在标题下方</span><br><span class="line">description: 我是小白 #个人描述，类似签名，用于搜索引擎对站点的描述，建议在里面加上你的站点的关键词</span><br><span class="line">keywords: </span><br><span class="line">author: 小白 #博客文章作者</span><br><span class="line">language: zh-CN  #设置博客站点语言为中文</span><br><span class="line">timezone:  #设置时区，默认当前电脑时区</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-菜单栏"><a href="#3-菜单栏" class="headerlink" title="3. 菜单栏"></a>3. 菜单栏</h3><h4 id="3-1-显示更多栏目"><a href="#3-1-显示更多栏目" class="headerlink" title="3.1 显示更多栏目"></a>3.1 显示更多栏目</h4><p>在主题配置文件中修改如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: &#x2F; || home # 首页</span><br><span class="line">  about: &#x2F;about&#x2F; || user # 关于</span><br><span class="line">  tags: &#x2F;tags&#x2F; || tags # 标签</span><br><span class="line">  categories: &#x2F;categories&#x2F; || th # 分类</span><br><span class="line">  archives: &#x2F;archives&#x2F; || archive  # 归档</span><br><span class="line">  # schedule: &#x2F;schedule&#x2F; || calendar # 日历</span><br><span class="line">  # sitemap: &#x2F;sitemap.xml || sitemap # 站点地图</span><br><span class="line">  # commonweal: &#x2F;404&#x2F; || heartbeat # 腾讯公益404</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-2-图标和内容量"><a href="#3-2-图标和内容量" class="headerlink" title="3.2 图标和内容量"></a>3.2 图标和内容量</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">menu_settings:</span><br><span class="line">  icons: true # 是否显示各个页面的图标</span><br><span class="line">  badges: true # 是否显示分类&#x2F;标签&#x2F;归档页的内容量</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-侧边栏"><a href="#4-侧边栏" class="headerlink" title="4. 侧边栏"></a>4. 侧边栏</h3><p>以下设置都是在 <strong>主题配置</strong> 文件中</p>
+<h4 id="4-1-显示可跳转-日志-分类-标签页-的链接"><a href="#4-1-显示可跳转-日志-分类-标签页-的链接" class="headerlink" title="4.1 显示可跳转 日志 / 分类 / 标签页 的链接"></a>4.1 显示可跳转 日志 / 分类 / 标签页 的链接</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Posts &#x2F; Categories &#x2F; Tags in sidebar.</span><br><span class="line">site_state: true</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-2-社交信息设置"><a href="#4-2-社交信息设置" class="headerlink" title="4.2 社交信息设置"></a>4.2 社交信息设置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">social:</span><br><span class="line">  GitHub: https:&#x2F;&#x2F;github.com&#x2F;yourname || github</span><br><span class="line">  #E-Mail: mailto:yourname@gmail.com || envelope</span><br><span class="line">  Weibo: https:&#x2F;&#x2F;weibo.com&#x2F;yourname || weibo</span><br><span class="line">  #Google: https:&#x2F;&#x2F;plus.google.com&#x2F;yourname || google</span><br><span class="line">  #Twitter: https:&#x2F;&#x2F;twitter.com&#x2F;yourname || twitter</span><br><span class="line">  #FB Page: https:&#x2F;&#x2F;www.facebook.com&#x2F;yourname || facebook</span><br><span class="line">  #VK Group: https:&#x2F;&#x2F;vk.com&#x2F;yourname || vk</span><br><span class="line">  #StackOverflow: https:&#x2F;&#x2F;stackoverflow.com&#x2F;yourname || stack-overflow</span><br><span class="line">  #YouTube: https:&#x2F;&#x2F;youtube.com&#x2F;yourname || youtube</span><br><span class="line">  #Instagram: https:&#x2F;&#x2F;instagram.com&#x2F;yourname || instagram</span><br><span class="line">  #Skype: skype:yourname?call|chat || skype</span><br></pre></td></tr></table></figure>
+
+<p>Next 默认给出了一些模板，我们只要将其中的链接改为自己的链接就可以了，当然你也可以自己定义，格式为</p>
+<p>名字: 链接 || 图标名，图标必须是<a target="_blank" rel="noopener" href="http://fontawesome.dashgame.com/">FontAwesome</a>网站中能找到的图标名。</p>
+<p>例如我添加我的博客地址：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">qianfanguojin: https:&#x2F;&#x2F;qianfanguojin.github.io&#x2F; || codepen </span><br></pre></td></tr></table></figure>
+
+<h4 id="4-3-圆形头像设置"><a href="#4-3-圆形头像设置" class="headerlink" title="4.3 圆形头像设置"></a>4.3 圆形头像设置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">avatar:</span><br><span class="line">  # In theme directory (source&#x2F;images): &#x2F;images&#x2F;avatar.gif</span><br><span class="line">  # In site directory (source&#x2F;uploads): &#x2F;uploads&#x2F;avatar.gif</span><br><span class="line">  # You can also use other linking images.</span><br><span class="line">  url: &#x2F;images&#x2F;avatar.jpg #头像文件目录</span><br><span class="line">  # If true, the avatar would be dispalyed in circle.</span><br><span class="line">  rounded: true #设置鼠标放在头像上面是否旋转</span><br><span class="line">  # If true, the avatar would be rotated with the cursor.</span><br><span class="line">  rotated: true #头像是否设为圆形</span><br></pre></td></tr></table></figure>
+
+<p>将自己喜欢的头像头像按照需求自己更换自己喜欢的就可以了，不过这里要注意一下头像可能会变成椭圆，如果头像是椭圆的，是因为图片不是一个正方形的图片，找到一个宽高像素一样的的图片即可。</p>
+<h4 id="4-4-其他"><a href="#4-4-其他" class="headerlink" title="4.4 其他"></a>4.4 其他</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">toc:</span><br><span class="line">  enable: true #自动生成目录</span><br><span class="line">  # Automatically add list number to toc.</span><br><span class="line">  number: true #自动产生目录编号</span><br><span class="line">  # If true, all words will placed on next lines if header width longer then sidebar width.</span><br><span class="line">  wrap: false #标题过长是否换行</span><br><span class="line">  # If true, all level of TOC in a post will be displayed, rather than the activated part of it.</span><br><span class="line">  expand_all: false # 是否显示所有等级的目录项。</span><br><span class="line">  # Maximum heading depth of generated toc. You can set it in one post through &#96;toc_max_depth&#96; in Front-matter.</span><br><span class="line">  max_depth: 6 #最大标题嵌套个数</span><br><span class="line"></span><br><span class="line">sidebar:</span><br><span class="line">  # Sidebar Position.#侧边栏的位置</span><br><span class="line">  position: left</span><br><span class="line">  #position: right</span><br><span class="line"></span><br><span class="line">  # Manual define the sidebar width. If commented, will be default for:</span><br><span class="line">  # Muse | Mist: 320</span><br><span class="line">  # Pisces | Gemini: 240</span><br><span class="line">  #width: 300</span><br><span class="line"></span><br><span class="line">  # Sidebar Display (only for Muse | Mist), available values:</span><br><span class="line">  #  - post    expand on posts automatically. Default.</span><br><span class="line">  #  - always  expand for all pages automatically.</span><br><span class="line">  #  - hide    expand only when click on the sidebar toggle icon.</span><br><span class="line">  #  - remove  totally remove sidebar including sidebar toggle.</span><br><span class="line">  display: post</span><br><span class="line"></span><br><span class="line">  # Sidebar offset from top menubar in pixels (only for Pisces | Gemini).</span><br><span class="line">  offset: 12 # 侧边栏相对主菜单的像素距离</span><br><span class="line">  # Enable sidebar on narrow view (only for Muse | Mist).</span><br><span class="line">  onmobile: false #在手机上侧边栏是否显示</span><br><span class="line"></span><br><span class="line"># 返回顶部</span><br><span class="line">back2top:</span><br><span class="line">  enable: true </span><br><span class="line">  # Back to top in sidebar.</span><br><span class="line">  sidebar: false  #侧边栏显示返回顶部信息,默认显示在页面右下方</span><br><span class="line">  # Scroll percent label in b2t button.</span><br><span class="line">  scrollpercent: #显示百分比</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -232,7 +325,7 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/17/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/p2-transition.png">
+      <meta itemprop="image" content="/images/p1.png">
       <meta itemprop="name" content="Moustache">
       <meta itemprop="description" content="我是小胡子">
     </span>
@@ -354,7 +447,7 @@
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="Moustache"
-      src="/images/p2-transition.png">
+      src="/images/p1.png">
   <p class="site-author-name" itemprop="name">Moustache</p>
   <div class="site-description" itemprop="description">我是小胡子</div>
 </div>
@@ -485,3 +578,5 @@
 </html>
 
 <!-- 页面点击小红心 -->
+     
+<script type="text/javascript" src="/js/clicklove.js"></script>
