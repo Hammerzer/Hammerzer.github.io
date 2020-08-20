@@ -6,7 +6,10 @@
     <content><![CDATA[<h1 id="Hexo后续补充"><a href="#Hexo后续补充" class="headerlink" title="Hexo后续补充"></a>Hexo后续补充</h1><blockquote>
 <p>本篇对 <a href="https://hammerzer.github.io/2020/08/18/The%20Starting%20Point%20of%20Blogs/">The-Starting-Point-of-Blogs</a> 进行一些补充</p>
 </blockquote>
-<h2 id="一、推送处理"><a href="#一、推送处理" class="headerlink" title="一、推送处理"></a>一、推送处理</h2><h3 id="1-静态资源压缩"><a href="#1-静态资源压缩" class="headerlink" title="1. 静态资源压缩"></a>1. 静态资源压缩</h3><p>在站点目录下：</p>
+<h2 id="一、推送处理"><a href="#一、推送处理" class="headerlink" title="一、推送处理"></a>一、推送处理</h2><h3 id="1-静态资源压缩"><a href="#1-静态资源压缩" class="headerlink" title="1. 静态资源压缩"></a>1. 静态资源压缩</h3><blockquote>
+<p>存在问题未解决</p>
+</blockquote>
+<p>在站点目录下：</p>
 <figure class="highlight text"><table><tr><td class="code"><pre><span class="line">$ npm install gulp -g</span><br></pre></td></tr></table></figure>
 
 <p>安装gulp插件：</p>
@@ -102,6 +105,41 @@
 </blockquote>
 <p>默认值为:</p>
 <p><img data-src="pic5.png"></p>
+<h3 id="4-给博客添加网站地图sitemap"><a href="#4-给博客添加网站地图sitemap" class="headerlink" title="4. 给博客添加网站地图sitemap"></a>4. 给博客添加网站地图<code>sitemap</code></h3><blockquote>
+<p>搜索引擎每天让蜘蛛在网站爬行来抓取页面，网站地图的作用就是给主动给蜘蛛喂数据</p>
+</blockquote>
+<p>网站地图位于网站根目录下，有<code>sitemap.html</code>和<code>sitemap.xml</code>两种格式。百度搜索引擎及多数搜索引擎使用html格式，谷歌使用xml格式。两步完成网站地图自动生成功能。</p>
+<p>**安装<code>网站地图生成插件**</code></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">npm <span class="keyword">install</span> hexo-generator-sitemap <span class="comment">--save</span></span><br></pre></td></tr></table></figure>
+
+<p>重新启动hexo，系统会在<code>public</code>根目录下生成<code>sitemap.xml</code>文件。</p>
+<h2 id="三、常见问题"><a href="#三、常见问题" class="headerlink" title="三、常见问题"></a>三、常见问题</h2><h3 id="1-hexo开发环境迁移"><a href="#1-hexo开发环境迁移" class="headerlink" title="1. hexo开发环境迁移"></a>1. hexo开发环境迁移</h3><blockquote>
+<p>参考自 <a href="https://www.cnblogs.com/study-everyday/p/8902136.html">该博主</a></p>
+</blockquote>
+<h4 id="1-1-环境准备"><a href="#1-1-环境准备" class="headerlink" title="1.1 环境准备"></a>1.1 环境准备</h4><p>安装 Git 客户端</p>
+<p>安装 node JS</p>
+<h4 id="1-2-在-github-官网添加新电脑产生的密钥"><a href="#1-2-在-github-官网添加新电脑产生的密钥" class="headerlink" title="1.2 在 github 官网添加新电脑产生的密钥"></a>1.2 在 github 官网添加新电脑产生的密钥</h4><h4 id="1-3-源文件拷贝"><a href="#1-3-源文件拷贝" class="headerlink" title="1.3 源文件拷贝"></a>1.3 源文件拷贝</h4><p>将你原来电脑上个人博客目录下必要文件拷到你的新电脑上（比如F:/Blog目录下），注意无需拷全部，只拷如下几个目录：</p>
+<figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line">_config.yml</span><br><span class="line"><span class="keyword">package</span>.json </span><br><span class="line">scaffolds/ </span><br><span class="line"><span class="keyword">source</span>/ </span><br><span class="line">themes/</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-4-安装-hexo"><a href="#1-4-安装-hexo" class="headerlink" title="1.4 安装 hexo"></a>1.4 安装 hexo</h4><p>在 cmd 下输入下面指令安装 hexo：</p>
+<figure class="highlight avrasm"><table><tr><td class="code"><pre><span class="line">npm install hexo-<span class="keyword">cli</span> -g</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-5-进入-F-Blog-目录（你拷贝到新电脑的目录），输入下面指令安装相关模块"><a href="#1-5-进入-F-Blog-目录（你拷贝到新电脑的目录），输入下面指令安装相关模块" class="headerlink" title="1.5 进入 F:/Blog 目录（你拷贝到新电脑的目录），输入下面指令安装相关模块"></a>1.5 进入 F:/Blog 目录（你拷贝到新电脑的目录），输入下面指令安装相关模块</h4><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">npm <span class="keyword">install</span></span><br><span class="line">npm <span class="keyword">install</span> hexo-deployer-git <span class="comment">--save  // 文章部署到 git 的模块</span></span><br><span class="line">（下面为选择安装）</span><br><span class="line">npm <span class="keyword">install</span> hexo-generator-feed <span class="comment">--save  // 建立 RSS 订阅</span></span><br><span class="line">npm <span class="keyword">install</span> hexo-generator-sitemap <span class="comment">--save // 建立站点地图</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="1-6-测试"><a href="#1-6-测试" class="headerlink" title="1.6 测试"></a>1.6 测试</h4><p>这时候使用 <code>hexo s</code> 基本可以看到你新添加的文章了。</p>
+<h4 id="1-7-部署发布文章"><a href="#1-7-部署发布文章" class="headerlink" title="1.7 部署发布文章"></a>1.7 部署发布文章</h4><figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">hexo clean   <span class="regexp">//</span> 清除缓存 网页正常情况下可以忽略此条命令</span><br><span class="line">hexo g       <span class="regexp">//</span> 生成静态网页</span><br><span class="line">hexo d       <span class="regexp">//</span> 开始部署</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-8-Github-添加-SSH-Keys"><a href="#1-8-Github-添加-SSH-Keys" class="headerlink" title="1.8 Github 添加 SSH Keys"></a>1.8 Github 添加 SSH Keys</h4><p> 首先在本地创建 <code>SSH Keys</code>:</p>
+<p>$ ssh-keygen -t rsa -C “e-mail@163com”</p>
+<p>后面的邮箱即为 github 注册邮箱，也是你登录 Github 的邮箱，之后会要求确认路径和输入密码，一路回车就行。</p>
+<p>成功的话会在 <code>~/</code>下生成 <code>.ssh</code>文件夹，进去，打开 <code>id_rsa.pub</code>，复制里面的<code>key</code>即可。</p>
+<p>输入 <code>eval &quot;$(ssh-agent -s)&quot;</code> ，添加密钥到ssh-agent，再输入 <code>ssh-add ~/.ssh/id_rsa</code> ，添加生成的SSH key到ssh-agent</p>
+ <figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">JaJian@DESKTOP-H2C0ES1 MINGW64 <span class="regexp">/d/</span>hexo</span><br><span class="line">$ eval <span class="string">&quot;$(ssh-agent -s)&quot;</span></span><br><span class="line">Agent pid <span class="number">5516</span></span><br><span class="line"></span><br><span class="line">JaJian@DESKTOP-H2C0ES1 MINGW64 <span class="regexp">/d/</span>hexo</span><br><span class="line"> $ ssh-add ~<span class="regexp">/.ssh/i</span>d_rsa</span><br><span class="line">Identity added: <span class="regexp">/c/</span>Users<span class="regexp">/JaJian/</span>.ssh<span class="regexp">/id_rsa (/</span>c<span class="regexp">/Users/</span>JaJian<span class="regexp">/.ssh/i</span>d_rsa)</span><br><span class="line"></span><br><span class="line">JaJian@DESKTOP-H2C0ES1 MINGW64 <span class="regexp">/d/</span>hexo</span><br><span class="line">$ clip &lt; ~<span class="regexp">/.ssh/i</span>d_rsa.pub</span><br></pre></td></tr></table></figure>
+
+<p>   然后我们再次测试下公钥有没有添加成功：<code>ssh -T git@github.com</code></p>
+<figure class="highlight vhdl"><table><tr><td class="code"><pre><span class="line">JaJian@DESKTOP-H2C0ES1 MINGW64 /d/hexo</span><br><span class="line">$ ssh -T git@github.com</span><br><span class="line">The authenticity <span class="keyword">of</span> host <span class="symbol">&#x27;github</span>.com (<span class="number">13.229</span>.<span class="number">188.59</span>)&#x27; can<span class="symbol">&#x27;t</span> be established.</span><br><span class="line">RSA key fingerprint <span class="keyword">is</span> SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.</span><br><span class="line">Are you sure you want <span class="keyword">to</span> continue connecting (yes/no)? yes</span><br><span class="line"><span class="literal">Warning</span>: Permanently added <span class="symbol">&#x27;github</span>.com,<span class="number">13.229</span>.<span class="number">188.59</span>&#x27; (RSA) <span class="keyword">to</span> the list <span class="keyword">of</span> known hosts.</span><br><span class="line">Hi noobgod! You<span class="symbol">&#x27;ve</span> successfully authenticated, but GitHub does <span class="keyword">not</span> provide shell <span class="keyword">access</span>.</span><br></pre></td></tr></table></figure>
+
+<p>迁移完毕over</p>
 ]]></content>
       <categories>
         <category>Tool &amp; Platform</category>
