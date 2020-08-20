@@ -55,7 +55,7 @@
 <li><p>查看<strong>AppID</strong>和<strong>AppKey</strong></p>
 </li>
 <li><p>打开<code>Blog/themes/next/layout/_macro/post.swig</code>，<code>command+F</code>搜索<code>leancloud-visitors-count</code>，在图片位置加入<code>&lt;span&gt;℃&lt;/span&gt;</code></p>
-<p><img data-src="E:/blog/source/_posts/pic1.png"></p>
+<p><img data-src="pic1.png"></p>
 </li>
 <li><p>编辑主题配置文件，<code>command+f</code>搜索<code>leancloud_visitors</code>，将其值设为：<code>ture</code>，将<strong>AppID</strong>和<strong>AppKey</strong>粘贴到相应位置：</p>
 </li>
