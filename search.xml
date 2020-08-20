@@ -3,7 +3,10 @@
   <entry>
     <title>Hexo-Next-Supplement</title>
     <url>/2020/08/20/Hexo-Next-Supplement/</url>
-    <content><![CDATA[<h2 id="五、Hexo后续使用"><a href="#五、Hexo后续使用" class="headerlink" title="五、Hexo后续使用"></a>五、Hexo后续使用</h2><h3 id="1-静态资源压缩"><a href="#1-静态资源压缩" class="headerlink" title="1. 静态资源压缩"></a>1. 静态资源压缩</h3><p>在站点目录下：</p>
+    <content><![CDATA[<h1 id="Hexo后续补充"><a href="#Hexo后续补充" class="headerlink" title="Hexo后续补充"></a>Hexo后续补充</h1><blockquote>
+<p>本篇对 <a href="https://hammerzer.github.io/2020/08/18/The%20Starting%20Point%20of%20Blogs/">The-Starting-Point-of-Blogs</a> 进行一些补充</p>
+</blockquote>
+<h2 id="一、推送处理"><a href="#一、推送处理" class="headerlink" title="一、推送处理"></a>一、推送处理</h2><h3 id="1-静态资源压缩"><a href="#1-静态资源压缩" class="headerlink" title="1. 静态资源压缩"></a>1. 静态资源压缩</h3><p>在站点目录下：</p>
 <figure class="highlight text"><table><tr><td class="code"><pre><span class="line">$ npm install gulp -g</span><br></pre></td></tr></table></figure>
 
 <p>安装gulp插件：</p>
@@ -33,13 +36,13 @@
 <p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
 <h4 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h4><figure class="highlight elixir"><table><tr><td class="code"><pre><span class="line"><span class="variable">$ </span>hexo deploy</span><br></pre></td></tr></table></figure>
 
-<h3 id="3-文章加密访问"><a href="#3-文章加密访问" class="headerlink" title="3. 文章加密访问"></a>3. 文章加密访问</h3><p>打开 <code>themes/next/layout/_partials/head.swig</code>文件,在 <code>&#123;% if theme.pace %&#125;` 标签下的 `&#123;% endif %&#125;</code> 之前插入代码：</p>
+<h2 id="二、站点功能"><a href="#二、站点功能" class="headerlink" title="二、站点功能"></a>二、站点功能</h2><h3 id="1-文章加密访问"><a href="#1-文章加密访问" class="headerlink" title="1. 文章加密访问"></a>1. 文章加密访问</h3><p>打开 <code>themes/next/layout/_partials/head.swig</code>文件,在 <code>&#123;% if theme.pace %&#125;` 标签下的 `&#123;% endif %&#125;</code> 之前插入代码：</p>
 <figure class="highlight text"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    (function()&#123;</span><br><span class="line">        if(&#x27;&#123;&#123; page.password &#125;&#125;&#x27;)&#123;</span><br><span class="line">            if (prompt(&#x27;请输入文章密码&#x27;) !== &#x27;&#123;&#123; page.password &#125;&#125;&#x27;)&#123;</span><br><span class="line">                alert(&#x27;密码错误&#x27;);</span><br><span class="line">                history.back();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)();</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 
 <p>在文章上应用：</p>
 <figure class="highlight text"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 2017观看影视</span><br><span class="line">date: 2017-09-25 16:10:03</span><br><span class="line">type:</span><br><span class="line">top:</span><br><span class="line">comments:</span><br><span class="line">categories: [影音, 影视]</span><br><span class="line">tags: [影音, 电影, 电视剧, 动画]</span><br><span class="line">password: 123456</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
 
-<h4 id="4-添加热度"><a href="#4-添加热度" class="headerlink" title="4. 添加热度"></a>4. 添加热度</h4><ul>
+<h3 id="2-添加热度"><a href="#2-添加热度" class="headerlink" title="2. 添加热度"></a>2. 添加热度</h3><ul>
 <li><p>进入<a href="https://links.jianshu.com/go?to=https://leancloud.cn/">LeanCloud官网</a>，进行账号注册。登录后，进入控制台，创建应用，应用名为<code>Hexo</code></p>
 </li>
 <li><p>创建应用后，点击存储，创建<strong>Class</strong>，<strong>Class</strong>命名为<strong>Counter</strong>，并限制写入</p>
