@@ -1,6 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Hexo-Next-Supplement</title>
+    <url>/2020/08/20/Hexo-Next-Supplement/</url>
+    <content><![CDATA[<h2 id="五、Hexo后续使用"><a href="#五、Hexo后续使用" class="headerlink" title="五、Hexo后续使用"></a>五、Hexo后续使用</h2><h3 id="1-静态资源压缩"><a href="#1-静态资源压缩" class="headerlink" title="1. 静态资源压缩"></a>1. 静态资源压缩</h3><p>在站点目录下：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">$ npm install gulp -g</span><br></pre></td></tr></table></figure>
+
+<p>安装gulp插件：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">npm install gulp-minify-css --save</span><br><span class="line">npm install gulp-uglify --save</span><br><span class="line">npm install gulp-htmlmin --save</span><br><span class="line">npm install gulp-htmlclean --save</span><br><span class="line">npm install gulp-imagemin --save</span><br></pre></td></tr></table></figure>
+
+<p>在 <code>Hexo</code> 站点下添加 <code>gulpfile.js</code>文件，文件内容如下：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">var gulp = require(&#x27;gulp&#x27;);</span><br><span class="line">var minifycss = require(&#x27;gulp-minify-css&#x27;);</span><br><span class="line">var uglify = require(&#x27;gulp-uglify&#x27;);</span><br><span class="line">var htmlmin = require(&#x27;gulp-htmlmin&#x27;);</span><br><span class="line">var htmlclean = require(&#x27;gulp-htmlclean&#x27;);</span><br><span class="line">var imagemin = require(&#x27;gulp-imagemin&#x27;);</span><br><span class="line">// 压缩css文件</span><br><span class="line">gulp.task(&#x27;minify-css&#x27;, function() &#123;</span><br><span class="line">  return gulp.src(&#x27;./public/**/*.css&#x27;)</span><br><span class="line">  .pipe(minifycss())</span><br><span class="line">  .pipe(gulp.dest(&#x27;./public&#x27;));</span><br><span class="line">&#125;);</span><br><span class="line">// 压缩html文件</span><br><span class="line">gulp.task(&#x27;minify-html&#x27;, function() &#123;</span><br><span class="line">  return gulp.src(&#x27;./public/**/*.html&#x27;)</span><br><span class="line">  .pipe(htmlclean())</span><br><span class="line">  .pipe(htmlmin(&#123;</span><br><span class="line">    removeComments: true,</span><br><span class="line">    minifyJS: true,</span><br><span class="line">    minifyCSS: true,</span><br><span class="line">    minifyURLs: true,</span><br><span class="line">  &#125;))</span><br><span class="line">  .pipe(gulp.dest(&#x27;./public&#x27;))</span><br><span class="line">&#125;);</span><br><span class="line">// 压缩js文件</span><br><span class="line">gulp.task(&#x27;minify-js&#x27;, function() &#123;</span><br><span class="line">    return gulp.src([&#x27;./public/**/.js&#x27;,&#x27;!./public/js/**/*min.js&#x27;])</span><br><span class="line">        .pipe(uglify())</span><br><span class="line">        .pipe(gulp.dest(&#x27;./public&#x27;));</span><br><span class="line">&#125;);</span><br><span class="line">// 压缩 public/demo 目录内图片</span><br><span class="line">gulp.task(&#x27;minify-images&#x27;, function() &#123;</span><br><span class="line">    gulp.src(&#x27;./public/demo/**/*.*&#x27;)</span><br><span class="line">        .pipe(imagemin(&#123;</span><br><span class="line">           optimizationLevel: 5, //类型：Number  默认：3  取值范围：0-7（优化等级）</span><br><span class="line">           progressive: true, //类型：Boolean 默认：false 无损压缩jpg图片</span><br><span class="line">           interlaced: false, //类型：Boolean 默认：false 隔行扫描gif进行渲染</span><br><span class="line">           multipass: false, //类型：Boolean 默认：false 多次优化svg直到完全优化</span><br><span class="line">        &#125;))</span><br><span class="line">        .pipe(gulp.dest(&#x27;./public/uploads&#x27;));</span><br><span class="line">&#125;);</span><br><span class="line">// 默认任务</span><br><span class="line">gulp.task(&#x27;default&#x27;, [</span><br><span class="line">  &#x27;minify-html&#x27;,&#x27;minify-css&#x27;,&#x27;minify-js&#x27;,&#x27;minify-images&#x27;</span><br><span class="line">]);</span><br></pre></td></tr></table></figure>
+
+<p>只需要每次在执行 <code>generate</code> 命令后执行 <code>gulp</code> 就可以实现对静态资源的压缩，压缩完成后执行 <code>deploy</code> 命令同步到服务器：</p>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">hexo</span> <span class="string">g</span></span><br><span class="line"><span class="attr">gulp</span></span><br><span class="line"><span class="attr">hexo</span> <span class="string">d</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-本地站点推送到GitHub上"><a href="#2-本地站点推送到GitHub上" class="headerlink" title="2. 本地站点推送到GitHub上"></a>2. 本地站点推送到GitHub上</h3><p>在站点更目录下：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<p>在 <code>Hexo</code> 站点的 <code>_config.yml</code> 中配置 <code>deploy</code>：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">## Docs: https://hexo.io/docs/deployment.html</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: &lt;repository url&gt; #your github.io.git</span><br><span class="line">  branch: master</span><br><span class="line">$ hexo clean</span><br><span class="line">$ hexo d --g</span><br></pre></td></tr></table></figure>
+
+<p>hexo g # 生成本地 public 静态文件, hexo d # 部署到 Github 上, 也可以缩写成：hexo g –d 。</p>
+<h4 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h4><figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line">$ hexo <span class="keyword">new</span> <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h4 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h4><figure class="highlight axapta"><table><tr><td class="code"><pre><span class="line">$ hexo <span class="keyword">server</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h4 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h4><figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line">$ hexo <span class="keyword">generate</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h4 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h4><figure class="highlight elixir"><table><tr><td class="code"><pre><span class="line"><span class="variable">$ </span>hexo deploy</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-文章加密访问"><a href="#3-文章加密访问" class="headerlink" title="3. 文章加密访问"></a>3. 文章加密访问</h3><p>打开 <code>themes/next/layout/_partials/head.swig</code>文件,在 <code>&#123;% if theme.pace %&#125;` 标签下的 `&#123;% endif %&#125;</code> 之前插入代码：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    (function()&#123;</span><br><span class="line">        if(&#x27;&#123;&#123; page.password &#125;&#125;&#x27;)&#123;</span><br><span class="line">            if (prompt(&#x27;请输入文章密码&#x27;) !== &#x27;&#123;&#123; page.password &#125;&#125;&#x27;)&#123;</span><br><span class="line">                alert(&#x27;密码错误&#x27;);</span><br><span class="line">                history.back();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)();</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在文章上应用：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 2017观看影视</span><br><span class="line">date: 2017-09-25 16:10:03</span><br><span class="line">type:</span><br><span class="line">top:</span><br><span class="line">comments:</span><br><span class="line">categories: [影音, 影视]</span><br><span class="line">tags: [影音, 电影, 电视剧, 动画]</span><br><span class="line">password: 123456</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-添加热度"><a href="#4-添加热度" class="headerlink" title="4. 添加热度"></a>4. 添加热度</h4><ul>
+<li><p>进入<a href="https://links.jianshu.com/go?to=https://leancloud.cn/">LeanCloud官网</a>，进行账号注册。登录后，进入控制台，创建应用，应用名为<code>Hexo</code></p>
+</li>
+<li><p>创建应用后，点击存储，创建<strong>Class</strong>，<strong>Class</strong>命名为<strong>Counter</strong>，并限制写入</p>
+</li>
+<li><p>查看<strong>AppID</strong>和<strong>AppKey</strong></p>
+</li>
+<li><p>打开<code>Blog/themes/next/layout/_macro/post.swig</code>，<code>command+F</code>搜索<code>leancloud-visitors-count</code>，在图片位置加入<code>&lt;span&gt;℃&lt;/span&gt;</code></p>
+<p><img data-src="E:/blog/source/_posts/pic1.png"></p>
+</li>
+<li><p>编辑主题配置文件，<code>command+f</code>搜索<code>leancloud_visitors</code>，将其值设为：<code>ture</code>，将<strong>AppID</strong>和<strong>AppKey</strong>粘贴到相应位置：</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Show number of visitors to each article.</span></span><br><span class="line"><span class="comment"># You can visit https://leancloud.cn get AppID and AppKey.</span></span><br><span class="line">leancloud_visitors:</span><br><span class="line">  <span class="built_in">enable</span>: ture</span><br><span class="line">  app_id: app_id</span><br><span class="line">  app_key: app_key</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Tool &amp; Platform</category>
+      </categories>
+  </entry>
+  <entry>
     <title>The Starting Point of Blogs</title>
     <url>/2020/08/18/The%20Starting%20Point%20of%20Blogs/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Moustache’s First Blog 介绍 <code>Hexo</code>+<code>Github Page</code>的步骤和遇到的问题，并在此列出参考的文章，衷心感谢。</p>
@@ -15,6 +74,8 @@
 <li>Npm</li>
 <li>Git</li>
 </ul>
+<a id="more"></a>
+
 <h2 id="二、配置本地Hexo"><a href="#二、配置本地Hexo" class="headerlink" title="二、配置本地Hexo"></a>二、配置本地Hexo</h2><h3 id="1-配置hexo全局控制命令"><a href="#1-配置hexo全局控制命令" class="headerlink" title="1.配置hexo全局控制命令"></a>1.配置hexo全局控制命令</h3><p>​    在cmd或者其他命令行工具下输入如下：</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli </span><br></pre></td></tr></table></figure>
 
@@ -27,8 +88,6 @@
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
 
 <p>按下回车Enter，<code>Git bash</code> 会自动下载相关文件</p>
-<a id="more"></a>
-
 <h4 id="2-2-本地生成运行"><a href="#2-2-本地生成运行" class="headerlink" title="2.2 本地生成运行"></a>2.2 本地生成运行</h4><p>在<code>Git Bash</code>窗口下，依次执行：</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
 
@@ -334,42 +393,6 @@
 
 <p>编辑文章,增加关键字<code>updated</code>（next可以根据文章改变时间自动更改）</p>
 <figure class="highlight text"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">layout: layout</span><br><span class="line">title: 关于</span><br><span class="line">date: 2017-08-18 15:41:18</span><br><span class="line">updated: 2017-09-05 20:18:54 #手动添加更新时间</span><br></pre></td></tr></table></figure>
-
-<h2 id="五、Hexo后续使用"><a href="#五、Hexo后续使用" class="headerlink" title="五、Hexo后续使用"></a>五、Hexo后续使用</h2><h3 id="1-静态资源压缩"><a href="#1-静态资源压缩" class="headerlink" title="1. 静态资源压缩"></a>1. 静态资源压缩</h3><p>在站点目录下：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">$ npm install gulp -g</span><br></pre></td></tr></table></figure>
-
-<p>安装gulp插件：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">npm install gulp-minify-css --save</span><br><span class="line">npm install gulp-uglify --save</span><br><span class="line">npm install gulp-htmlmin --save</span><br><span class="line">npm install gulp-htmlclean --save</span><br><span class="line">npm install gulp-imagemin --save</span><br></pre></td></tr></table></figure>
-
-<p>在 <code>Hexo</code> 站点下添加 <code>gulpfile.js</code>文件，文件内容如下：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">var gulp = require(&#x27;gulp&#x27;);</span><br><span class="line">var minifycss = require(&#x27;gulp-minify-css&#x27;);</span><br><span class="line">var uglify = require(&#x27;gulp-uglify&#x27;);</span><br><span class="line">var htmlmin = require(&#x27;gulp-htmlmin&#x27;);</span><br><span class="line">var htmlclean = require(&#x27;gulp-htmlclean&#x27;);</span><br><span class="line">var imagemin = require(&#x27;gulp-imagemin&#x27;);</span><br><span class="line">// 压缩css文件</span><br><span class="line">gulp.task(&#x27;minify-css&#x27;, function() &#123;</span><br><span class="line">  return gulp.src(&#x27;./public/**/*.css&#x27;)</span><br><span class="line">  .pipe(minifycss())</span><br><span class="line">  .pipe(gulp.dest(&#x27;./public&#x27;));</span><br><span class="line">&#125;);</span><br><span class="line">// 压缩html文件</span><br><span class="line">gulp.task(&#x27;minify-html&#x27;, function() &#123;</span><br><span class="line">  return gulp.src(&#x27;./public/**/*.html&#x27;)</span><br><span class="line">  .pipe(htmlclean())</span><br><span class="line">  .pipe(htmlmin(&#123;</span><br><span class="line">    removeComments: true,</span><br><span class="line">    minifyJS: true,</span><br><span class="line">    minifyCSS: true,</span><br><span class="line">    minifyURLs: true,</span><br><span class="line">  &#125;))</span><br><span class="line">  .pipe(gulp.dest(&#x27;./public&#x27;))</span><br><span class="line">&#125;);</span><br><span class="line">// 压缩js文件</span><br><span class="line">gulp.task(&#x27;minify-js&#x27;, function() &#123;</span><br><span class="line">    return gulp.src([&#x27;./public/**/.js&#x27;,&#x27;!./public/js/**/*min.js&#x27;])</span><br><span class="line">        .pipe(uglify())</span><br><span class="line">        .pipe(gulp.dest(&#x27;./public&#x27;));</span><br><span class="line">&#125;);</span><br><span class="line">// 压缩 public/demo 目录内图片</span><br><span class="line">gulp.task(&#x27;minify-images&#x27;, function() &#123;</span><br><span class="line">    gulp.src(&#x27;./public/demo/**/*.*&#x27;)</span><br><span class="line">        .pipe(imagemin(&#123;</span><br><span class="line">           optimizationLevel: 5, //类型：Number  默认：3  取值范围：0-7（优化等级）</span><br><span class="line">           progressive: true, //类型：Boolean 默认：false 无损压缩jpg图片</span><br><span class="line">           interlaced: false, //类型：Boolean 默认：false 隔行扫描gif进行渲染</span><br><span class="line">           multipass: false, //类型：Boolean 默认：false 多次优化svg直到完全优化</span><br><span class="line">        &#125;))</span><br><span class="line">        .pipe(gulp.dest(&#x27;./public/uploads&#x27;));</span><br><span class="line">&#125;);</span><br><span class="line">// 默认任务</span><br><span class="line">gulp.task(&#x27;default&#x27;, [</span><br><span class="line">  &#x27;minify-html&#x27;,&#x27;minify-css&#x27;,&#x27;minify-js&#x27;,&#x27;minify-images&#x27;</span><br><span class="line">]);</span><br></pre></td></tr></table></figure>
-
-<p>只需要每次在执行 <code>generate</code> 命令后执行 <code>gulp</code> 就可以实现对静态资源的压缩，压缩完成后执行 <code>deploy</code> 命令同步到服务器：</p>
-<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">hexo</span> <span class="string">g</span></span><br><span class="line"><span class="attr">gulp</span></span><br><span class="line"><span class="attr">hexo</span> <span class="string">d</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="2-本地站点推送到GitHub上"><a href="#2-本地站点推送到GitHub上" class="headerlink" title="2. 本地站点推送到GitHub上"></a>2. 本地站点推送到GitHub上</h3><p>在站点更目录下：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-
-<p>在 <code>Hexo</code> 站点的 <code>_config.yml</code> 中配置 <code>deploy</code>：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">## Docs: https://hexo.io/docs/deployment.html</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: &lt;repository url&gt; #your github.io.git</span><br><span class="line">  branch: master</span><br><span class="line">$ hexo clean</span><br><span class="line">$ hexo d --g</span><br></pre></td></tr></table></figure>
-
-<p>hexo g # 生成本地 public 静态文件, hexo d # 部署到 Github 上, 也可以缩写成：hexo g –d 。</p>
-<h4 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h4><figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line">$ hexo <span class="keyword">new</span> <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h4 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h4><figure class="highlight axapta"><table><tr><td class="code"><pre><span class="line">$ hexo <span class="keyword">server</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h4 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h4><figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line">$ hexo <span class="keyword">generate</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h4 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h4><figure class="highlight elixir"><table><tr><td class="code"><pre><span class="line"><span class="variable">$ </span>hexo deploy</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-文章加密访问"><a href="#3-文章加密访问" class="headerlink" title="3. 文章加密访问"></a>3. 文章加密访问</h3><p>打开 <code>themes/next/layout/_partials/head.swig</code>文件,在 <code>&#123;% if theme.pace %&#125;` 标签下的 `&#123;% endif %&#125;</code> 之前插入代码：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    (function()&#123;</span><br><span class="line">        if(&#x27;&#123;&#123; page.password &#125;&#125;&#x27;)&#123;</span><br><span class="line">            if (prompt(&#x27;请输入文章密码&#x27;) !== &#x27;&#123;&#123; page.password &#125;&#125;&#x27;)&#123;</span><br><span class="line">                alert(&#x27;密码错误&#x27;);</span><br><span class="line">                history.back();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)();</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<p>在文章上应用：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 2017观看影视</span><br><span class="line">date: 2017-09-25 16:10:03</span><br><span class="line">type:</span><br><span class="line">top:</span><br><span class="line">comments:</span><br><span class="line">categories: [影音, 影视]</span><br><span class="line">tags: [影音, 电影, 电视剧, 动画]</span><br><span class="line">password: 123456</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
