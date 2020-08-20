@@ -221,6 +221,10 @@
 
 <figure class="highlight text"><table><tr><td class="code"><pre><span class="line"># Progress bar in the top during page loading.</span><br><span class="line">pace: true</span><br><span class="line"># Themes list:</span><br><span class="line">#pace-theme-big-counter</span><br><span class="line">#pace-theme-bounce</span><br><span class="line">#pace-theme-barber-shop</span><br><span class="line">#pace-theme-center-atom</span><br><span class="line">#pace-theme-center-circle</span><br><span class="line">#pace-theme-center-radar</span><br><span class="line">#pace-theme-center-simple</span><br><span class="line">#pace-theme-corner-indicator</span><br><span class="line">#pace-theme-fill-left</span><br><span class="line">#pace-theme-flash</span><br><span class="line">#pace-theme-loading-bar</span><br><span class="line">#pace-theme-mac-osx</span><br><span class="line">#pace-theme-minimal</span><br><span class="line"># For example</span><br><span class="line"># pace_theme: pace-theme-center-simple</span><br><span class="line">pace_theme: pace-theme-flash #替换更换样式</span><br></pre></td></tr></table></figure>
 
+<h4 id="5-9-自定义鼠标样式"><a href="#5-9-自定义鼠标样式" class="headerlink" title="5.9 自定义鼠标样式"></a>5.9 自定义鼠标样式</h4><p>打开 <code>themes/next/source/css/_custom/custom.styl</code> ,在里面写下如下代码：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">// 鼠标样式</span><br><span class="line">  * &#123;</span><br><span class="line">      cursor: url(&quot;http://om8u46rmb.bkt.clouddn.com/sword2.ico&quot;),auto!important</span><br><span class="line">  &#125;</span><br><span class="line">  :active &#123;</span><br><span class="line">      cursor: url(&quot;http://om8u46rmb.bkt.clouddn.com/sword1.ico&quot;),auto!important</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中 url 里面必须是 ico 图片，ico 图片可以上传到网上（我是使用七牛云图床），然后获取外链，复制到 url 里就行了</p>
 <h3 id="6-文章内容相关"><a href="#6-文章内容相关" class="headerlink" title="6 文章内容相关"></a>6 文章内容相关</h3><h4 id="6-1-文章摘要显示（显示阅读全文按钮）"><a href="#6-1-文章摘要显示（显示阅读全文按钮）" class="headerlink" title="6.1 文章摘要显示（显示阅读全文按钮）"></a>6.1 文章摘要显示（显示阅读全文按钮）</h4><ul>
 <li><p>自动形成摘要模式</p>
 <p>打开主题配置文件，修改内容如下：</p>
@@ -349,7 +353,7 @@
 <p>编辑文章,增加关键字<code>updated</code>（next可以根据文章改变时间自动更改）</p>
 <figure class="highlight text"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">layout: layout</span><br><span class="line">title: 关于</span><br><span class="line">date: 2017-08-18 15:41:18</span><br><span class="line">updated: 2017-09-05 20:18:54 #手动添加更新时间</span><br></pre></td></tr></table></figure>
 
-<h3 id="五、Hexo后续使用"><a href="#五、Hexo后续使用" class="headerlink" title="五、Hexo后续使用"></a>五、Hexo后续使用</h3><h4 id="1-静态资源压缩"><a href="#1-静态资源压缩" class="headerlink" title="1. 静态资源压缩"></a>1. 静态资源压缩</h4><p>在站点目录下：</p>
+<h2 id="五、Hexo后续使用"><a href="#五、Hexo后续使用" class="headerlink" title="五、Hexo后续使用"></a>五、Hexo后续使用</h2><h3 id="1-静态资源压缩"><a href="#1-静态资源压缩" class="headerlink" title="1. 静态资源压缩"></a>1. 静态资源压缩</h3><p>在站点目录下：</p>
 <figure class="highlight text"><table><tr><td class="code"><pre><span class="line">$ npm install gulp -g</span><br></pre></td></tr></table></figure>
 
 <p>安装gulp插件：</p>
@@ -361,7 +365,29 @@
 <p>只需要每次在执行 <code>generate</code> 命令后执行 <code>gulp</code> 就可以实现对静态资源的压缩，压缩完成后执行 <code>deploy</code> 命令同步到服务器：</p>
 <figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">hexo</span> <span class="string">g</span></span><br><span class="line"><span class="attr">gulp</span></span><br><span class="line"><span class="attr">hexo</span> <span class="string">d</span></span><br></pre></td></tr></table></figure>
 
-]]></content>
+<h3 id="2-本地站点推送到GitHub上"><a href="#2-本地站点推送到GitHub上" class="headerlink" title="2. 本地站点推送到GitHub上"></a>2. 本地站点推送到GitHub上</h3><p>在站点更目录下：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<p>在 <code>Hexo</code> 站点的 <code>_config.yml</code> 中配置 <code>deploy</code>：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">## Docs: https://hexo.io/docs/deployment.html</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: &lt;repository url&gt; #your github.io.git</span><br><span class="line">  branch: master</span><br><span class="line">$ hexo clean</span><br><span class="line">$ hexo d --g</span><br></pre></td></tr></table></figure>
+
+<p>hexo g # 生成本地 public 静态文件, hexo d # 部署到 Github 上, 也可以缩写成：hexo g –d 。</p>
+<h4 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h4><figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line">$ hexo <span class="keyword">new</span> <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h4 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h4><figure class="highlight axapta"><table><tr><td class="code"><pre><span class="line">$ hexo <span class="keyword">server</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h4 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h4><figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line">$ hexo <span class="keyword">generate</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h4 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h4><figure class="highlight elixir"><table><tr><td class="code"><pre><span class="line"><span class="variable">$ </span>hexo deploy</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-文章加密访问"><a href="#3-文章加密访问" class="headerlink" title="3. 文章加密访问"></a>3. 文章加密访问</h3><p>打开 <code>themes/next/layout/_partials/head.swig</code>文件,在 <code>&#123;% if theme.pace %&#125;` 标签下的 `&#123;% endif %&#125;</code> 之前插入代码：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    (function()&#123;</span><br><span class="line">        if(&#x27;&#123;&#123; page.password &#125;&#125;&#x27;)&#123;</span><br><span class="line">            if (prompt(&#x27;请输入文章密码&#x27;) !== &#x27;&#123;&#123; page.password &#125;&#125;&#x27;)&#123;</span><br><span class="line">                alert(&#x27;密码错误&#x27;);</span><br><span class="line">                history.back();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)();</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在文章上应用：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 2017观看影视</span><br><span class="line">date: 2017-09-25 16:10:03</span><br><span class="line">type:</span><br><span class="line">top:</span><br><span class="line">comments:</span><br><span class="line">categories: [影音, 影视]</span><br><span class="line">tags: [影音, 电影, 电视剧, 动画]</span><br><span class="line">password: 123456</span><br><span class="line">---</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>Tool&amp;Platform</category>
       </categories>
