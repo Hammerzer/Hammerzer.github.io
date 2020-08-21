@@ -112,7 +112,10 @@
 <p>**安装<code>网站地图生成插件**</code></p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">npm <span class="keyword">install</span> hexo-generator-sitemap <span class="comment">--save</span></span><br></pre></td></tr></table></figure>
 
+<figure class="highlight mipsasm"><table><tr><td class="code"><pre><span class="line">npm <span class="keyword">install </span>hexo-generator-<span class="keyword">baidu-sitemap </span>--save</span><br></pre></td></tr></table></figure>
+
 <p>重新启动hexo，系统会在<code>public</code>根目录下生成<code>sitemap.xml</code>文件。</p>
+<p>具体收录参考<a href="https://www.cnblogs.com/brady-wang/p/8493346.html">此处</a></p>
 <h2 id="三、常见问题"><a href="#三、常见问题" class="headerlink" title="三、常见问题"></a>三、常见问题</h2><h3 id="1-hexo开发环境迁移"><a href="#1-hexo开发环境迁移" class="headerlink" title="1. hexo开发环境迁移"></a>1. hexo开发环境迁移</h3><blockquote>
 <p>参考自 <a href="https://www.cnblogs.com/study-everyday/p/8902136.html">该博主</a></p>
 </blockquote>
