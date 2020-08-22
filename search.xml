@@ -218,6 +218,7 @@
 <blockquote>
 <p>尝试未成功，待更新</p>
 </blockquote>
+<h4 id="3-3-解决-gitee-page-更新后css仍然不变"><a href="#3-3-解决-gitee-page-更新后css仍然不变" class="headerlink" title="3.3 解决 gitee page 更新后css仍然不变"></a>3.3 解决 gitee page 更新后css仍然不变</h4><p>强制刷新浏览器 <code>Shift+F5</code>，这么傻的错误我居然还犯</p>
 ]]></content>
       <categories>
         <category>Tool &amp; Platform</category>
