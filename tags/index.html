@@ -597,9 +597,11 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
 <script type="text/javascript" src="/js/clicklove.js"></script>
 
 <!--移动端点击失效 -->
+<script type="text/javascript">
 var href=document.getElementsByTagName('a');
 for(var i=0;i<href.length;i++){
 href[i].ontouchend=function(){
 window.location.href=this.getAttribute("href");
 }
 };
+</script>
