@@ -1301,7 +1301,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #b0cf3e;
+  background: #f203ff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2309,19 +2309,6 @@ ul.breadcrumb li + li:last-child {
 .tag-cloud a:hover {
   color: var(--link-hover-color) !important;
 }
-@keyframs myAnimation {
-  from {
-    color: transparent;
-  }
-  to {
-    color: #fbb929;
-  }
-}
-#Abdout-Site i {
-  animation: myAnimation 2s infinite;
-  display: inline-block;
-  margin-right: 10px;
-}
 .search-pop-overlay {
   background: rgba(0,0,0,0);
   height: 100%;
@@ -2846,4 +2833,17 @@ mjx-container + br {
   .pagination {
     margin: 8px 0 0;
   }
+}
+@keyframs myAnimation {
+  from {
+    color: transparent;
+  }
+  to {
+    color: #fbb929;
+  }
+}
+#Abdout-Site i {
+  animation: myAnimation 2s infinite;
+  display: inline-block;
+  margin-right: 10px;
 }
