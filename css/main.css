@@ -1301,7 +1301,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #f157ff;
+  background: #f3f;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2833,4 +2833,17 @@ mjx-container + br {
   .pagination {
     margin: 8px 0 0;
   }
+}
+@keyframs myAnimation {
+  from {
+    color: transparent;
+  }
+  to {
+    color: #fbb929;
+  }
+}
+.my-light {
+  animation: myAnimation 2s infinite;
+  display: inline-block;
+  margin-right: 10px;
 }
