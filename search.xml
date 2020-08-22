@@ -23,6 +23,9 @@
 <p>只需要每次在执行 <code>generate</code> 命令后执行 <code>gulp</code> 就可以实现对静态资源的压缩，压缩完成后执行 <code>deploy</code> 命令同步到服务器：</p>
 <figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">hexo</span> <span class="string">g</span></span><br><span class="line"><span class="attr">gulp</span></span><br><span class="line"><span class="attr">hexo</span> <span class="string">d</span></span><br></pre></td></tr></table></figure>
 
+<blockquote>
+<p><code>Tip</code>   可以把上面的三条命令编写进package.json的script，就可一键三连啦！</p>
+</blockquote>
 <h3 id="2-本地站点推送到GitHub上"><a href="#2-本地站点推送到GitHub上" class="headerlink" title="2. 本地站点推送到GitHub上"></a>2. 本地站点推送到GitHub上</h3><p>在站点更目录下：</p>
 <figure class="highlight text"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
 
@@ -62,7 +65,9 @@
 </ul>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Show number of visitors to each article.</span></span><br><span class="line"><span class="comment"># You can visit https://leancloud.cn get AppID and AppKey.</span></span><br><span class="line">leancloud_visitors:</span><br><span class="line">  <span class="built_in">enable</span>: ture</span><br><span class="line">  app_id: app_id</span><br><span class="line">  app_key: app_key</span><br></pre></td></tr></table></figure>
 
-<h3 id="3-添加免登陆评论系统"><a href="#3-添加免登陆评论系统" class="headerlink" title="3. 添加免登陆评论系统"></a>3. 添加免登陆评论系统</h3><p>参考自该<a href="https://blog.csdn.net/jiunian_2761/article/details/97388997">博文</a></p>
+<h3 id="3-添加免登陆评论系统"><a href="#3-添加免登陆评论系统" class="headerlink" title="3. 添加免登陆评论系统"></a>3. 添加免登陆评论系统</h3><blockquote>
+<p>参考自该<a href="https://blog.csdn.net/jiunian_2761/article/details/97388997">博文</a></p>
+</blockquote>
 <h4 id="3-1-为什么选择Valine"><a href="#3-1-为什么选择Valine" class="headerlink" title="3.1 为什么选择Valine"></a>3.1 为什么选择Valine</h4><p>在笔者进行评论系统选择时，我觉得我的需求就是方便，简洁，最重要一点是要支持<code>Markdown</code> ，对比之下，最终选定了这款Valine，当然，如果你不喜欢这样简洁的，可以参考 <a href="https://www.zhihu.com/question/267598518">Hexo（NexT 主题）评论系统哪个好？</a></p>
 <h4 id="3-2-第一步，注册LeanClound-获取APP-ID-和-APP-Key"><a href="#3-2-第一步，注册LeanClound-获取APP-ID-和-APP-Key" class="headerlink" title="3.2  第一步，注册LeanClound,获取APP ID 和 APP Key"></a>3.2  第一步，注册LeanClound,获取APP ID 和 APP Key</h4><ul>
 <li><p>Valine 是基于 <a href="https://leancloud.cn/">LeanCloud</a> 作为数据存储的，所以需要注册一个账号</p>
@@ -97,7 +102,9 @@
 <p>  我们可以在 Front-matter 中通过<code>comments</code>属性设置true或false控制该页面或者是文章的评论功能是否打开，如我设置标签页面的评论功能关闭：</p>
   <figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">title: 标签</span><br><span class="line">date: <span class="number">2019</span><span class="number">-07</span><span class="number">-18</span> <span class="number">15</span>:<span class="number">16</span>:<span class="number">50</span></span><br><span class="line">type: <span class="string">&quot;tags&quot;</span></span><br><span class="line">comments: <span class="literal">false</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="3-5-自定义头像"><a href="#3-5-自定义头像" class="headerlink" title="3.5 自定义头像"></a>3.5 自定义头像</h4><p><a href="https://valine.js.org/avatar.html">valine官方文档</a></p>
+<h4 id="3-5-自定义头像"><a href="#3-5-自定义头像" class="headerlink" title="3.5 自定义头像"></a>3.5 自定义头像</h4><blockquote>
+<p><a href="https://valine.js.org/avatar.html">valine官方文档</a></p>
+</blockquote>
 <blockquote>
 <p>Valine 目前使用的是<a href="http://cn.gravatar.com/">Gravatar</a> 作为评论列表头像。</p>
 <p>请自行登录或注册<a href="http://cn.gravatar.com/">Gravatar</a>，然后修改自己的头像。</p>
@@ -135,7 +142,9 @@
 <h4 id="1-6-测试"><a href="#1-6-测试" class="headerlink" title="1.6 测试"></a>1.6 测试</h4><p>这时候使用 <code>hexo s</code> 基本可以看到你新添加的文章了。</p>
 <h4 id="1-7-部署发布文章"><a href="#1-7-部署发布文章" class="headerlink" title="1.7 部署发布文章"></a>1.7 部署发布文章</h4><figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">hexo clean   <span class="regexp">//</span> 清除缓存 网页正常情况下可以忽略此条命令</span><br><span class="line">hexo g       <span class="regexp">//</span> 生成静态网页</span><br><span class="line">hexo d       <span class="regexp">//</span> 开始部署</span><br></pre></td></tr></table></figure>
 
-<h4 id="1-8-Github-添加-SSH-Keys"><a href="#1-8-Github-添加-SSH-Keys" class="headerlink" title="1.8 Github 添加 SSH Keys"></a><a name="mark-one">1.8 Github 添加 SSH Keys</a></h4><p>推荐该博主 <a href="https://www.himmy.cn/2019/07/06/github%E6%B7%BB%E5%8A%A0ssh-key/">GitHub添加SSH key</a></p>
+<h4 id="1-8-Github-添加-SSH-Keys"><a href="#1-8-Github-添加-SSH-Keys" class="headerlink" title="1.8 Github 添加 SSH Keys"></a><a name="mark-one">1.8 Github 添加 SSH Keys</a></h4><blockquote>
+<p>推荐该博主 <a href="https://www.himmy.cn/2019/07/06/github%E6%B7%BB%E5%8A%A0ssh-key/">GitHub添加SSH key</a></p>
+</blockquote>
 <h5 id="1-8-1-打开Git-Bash命令行窗口"><a href="#1-8-1-打开Git-Bash命令行窗口" class="headerlink" title="1.8.1 打开Git Bash命令行窗口"></a>1.8.1 打开Git Bash命令行窗口</h5><h5 id="1-8-2-检查是否已有SSH"><a href="#1-8-2-检查是否已有SSH" class="headerlink" title="1.8.2 检查是否已有SSH"></a>1.8.2 检查是否已有SSH</h5><p>如果没有，会返回如下信息，继续第三步创建SSH</p>
 <figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line">$ cd ~/.ssh</span><br><span class="line">bash: cd: <span class="regexp">/c/U</span>sers<span class="regexp">/Him/</span>.ssh: No such <span class="keyword">file</span> or directory</span><br></pre></td></tr></table></figure>
 
@@ -208,7 +217,9 @@
 </blockquote>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> href=<span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;a&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;href.length;i++)&#123;</span><br><span class="line">    href[i].ontouchend=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">window</span>.location.href=<span class="built_in">this</span>.getAttribute(<span class="string">&quot;href&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<h4 id="3-2-解决-gitee-page-无法自动更新"><a href="#3-2-解决-gitee-page-无法自动更新" class="headerlink" title="3.2 解决 gitee page 无法自动更新"></a>3.2 解决 gitee page 无法自动更新</h4><p>参考简书<a href="https://www.jianshu.com/p/6460df84a099">该博文</a></p>
+<h4 id="3-2-解决-gitee-page-无法自动更新"><a href="#3-2-解决-gitee-page-无法自动更新" class="headerlink" title="3.2 解决 gitee page 无法自动更新"></a>3.2 解决 gitee page 无法自动更新</h4><blockquote>
+<p>参考简书<a href="https://www.jianshu.com/p/6460df84a099">该博文</a></p>
+</blockquote>
 <blockquote>
 <p>gitee page 只有付费版才能自动更新，免费版只能手动点击 “设置” 中的更新按钮</p>
 </blockquote>
@@ -218,7 +229,43 @@
 <blockquote>
 <p>尝试未成功，待更新</p>
 </blockquote>
-<h4 id="3-3-解决-gitee-page-更新后css仍然不变"><a href="#3-3-解决-gitee-page-更新后css仍然不变" class="headerlink" title="3.3 解决 gitee page 更新后css仍然不变"></a>3.3 解决 gitee page 更新后css仍然不变</h4><p>强制刷新浏览器 <code>Shift+F5</code>，这么傻的错误我居然还犯</p>
+<h3 id="4-继静态压缩glup无果之后的替代"><a href="#4-继静态压缩glup无果之后的替代" class="headerlink" title="4. 继静态压缩glup无果之后的替代"></a>4. 继静态压缩glup无果之后的替代</h3><blockquote>
+<p>参考该博主  <a href="https://blog.csdn.net/lewky_liu/article/details/82432003">Hexo瞎折腾系列</a></p>
+</blockquote>
+<h4 id="4-1-静态压缩的目的和手段"><a href="#4-1-静态压缩的目的和手段" class="headerlink" title="4.1 静态压缩的目的和手段"></a>4.1 静态压缩的目的和手段</h4><p>那么怎么提高hexo这个静态博客的页面加载速度呢？可以从以下的几个方面去入手： </p>
+<ul>
+<li>将js文件尽可能放置到body的闭合标签之前，因为在加载或者引入js文件时是阻塞式的，如果我们在页面的最开始就引入这些js文件，而这些文件又比较大，会造成页面在渲染时长时间处于白屏状态。</li>
+<li>尽量避免去引用访问速度非常低下的cdn或者图片，可以改用访问速度更快的cdn，或者将难以迅速加载的图片保存到自己的站点目录下，以免在加载图片时耗费了大量的时间，最后还加载不出来。</li>
+<li>对页面的静态资源进行压缩，包括css、js和html等文件。我们自己添加的css和js文件为了可读性，往往会有很多换行和空格，这些对于浏览器来说并没什么卵用，甚至还会降低渲染页面的速度。至于html文件，由于Markdown转成html的bug，会导致页面存在大量的空白，如果你查看下页面的源代码，就会发现这些大量的空白符，十分难看。这也会造成页面渲染的性能问题。</li>
+</ul>
+<h4 id="4-2-hexo的压缩静态资源插件"><a href="#4-2-hexo的压缩静态资源插件" class="headerlink" title="4.2 hexo的压缩静态资源插件"></a>4.2 hexo的压缩静态资源插件</h4><p>网上有很多相关的博文，常规的做法是使用<code>gulp</code>来进行压缩，<code>gulp</code>是<code>Node.js</code>下的自动构建工具，通过一列的task执行步骤进行自动流程化处理。</p>
+<p>使用这种方法会比较麻烦，每次压缩时还需要输入额外的命令，比较繁琐，个人不是很喜欢，有兴趣的可以去自己了解下<a href="https://segmentfault.com/a/1190000009544924#articleHeader8">相关的东西</a>。这篇教程里很多详细的说明，里边有说到gulp的使用，绝对的精品文章。</p>
+<p>这里我选择的是由rozbo大佬开发的<code>hexo-neat</code>压缩插件，配置简单，无需额外命令，你只要使用原本的调试三连或者部署三连就可以自动帮你完成静态资源的压缩！</p>
+<h4 id="4-3-如何使用hexo-neat"><a href="#4-3-如何使用hexo-neat" class="headerlink" title="4.3 如何使用hexo-neat"></a>4.3 如何使用hexo-neat</h4><blockquote>
+<p><strong>在站点根目录下安装</strong>hexo-neat</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-neat --save1</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-4-为站点配置文件添加相关配置"><a href="#4-4-为站点配置文件添加相关配置" class="headerlink" title="4.4 为站点配置文件添加相关配置"></a>4.4 为站点配置文件添加相关配置</h4><p>下边是我自己站点的相关配置，直接添加到站点配置文件<code>_config.yml</code>的末尾就可以。可以安装自己的需求去自定义配置，不过有些注意事项，可以参考我后文的踩坑记录。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"># hexo-neat</span><br><span class="line"># 博文压缩</span><br><span class="line">neat_enable: true</span><br><span class="line"># 压缩html</span><br><span class="line">neat_html:</span><br><span class="line">  enable: true</span><br><span class="line">  exclude:</span><br><span class="line"># 压缩css  </span><br><span class="line">neat_css:</span><br><span class="line">  enable: true</span><br><span class="line">  exclude:</span><br><span class="line">    - &#x27;**/*.min.css&#x27;</span><br><span class="line"># 压缩js</span><br><span class="line">neat_js:</span><br><span class="line">  enable: true</span><br><span class="line">  mangle: true</span><br><span class="line">  output:</span><br><span class="line">  compress:</span><br><span class="line">  exclude:</span><br><span class="line">    - &#x27;**/*.min.js&#x27;</span><br><span class="line">    - &#x27;**/jquery.fancybox.pack.js&#x27;</span><br><span class="line">    - &#x27;**/index.js&#x27;  </span><br></pre></td></tr></table></figure>
+
+<h4 id="4-5-hexo-neat插件踩坑记录"><a href="#4-5-hexo-neat插件踩坑记录" class="headerlink" title="4.5 hexo-neat插件踩坑记录"></a>4.5 hexo-neat插件踩坑记录</h4><p>由于在使用hexo-neat插件时，可以在命令窗口中看到各个文件的压缩率，于是我就开始捣鼓跳过哪些文件可以让效率更高。在鼓捣了一段时间之后，记录下使用该插件的一些注意事项，避免日后重蹈覆辙，也希望能对各位看官有所帮助。</p>
+<h5 id="4-5-1-跳过压缩文件的正确配置方式"><a href="#4-5-1-跳过压缩文件的正确配置方式" class="headerlink" title="4.5.1 跳过压缩文件的正确配置方式"></a>4.5.1 跳过压缩文件的正确配置方式</h5><p>如果按照官方插件的文档说明来配置<code>exclude</code>，你会发现完全不起作用。这是因为配置的文件路径不对，压缩时找不到你配置的文件，自然也就无法跳过了。你需要给这些文件指定正确的路径，万能的配置方式如下：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">neat_css:</span><br><span class="line">  enable: true</span><br><span class="line">  exclude:</span><br><span class="line">    - &#x27;**/*.min.css&#x27;1234</span><br></pre></td></tr></table></figure>
+
+<h5 id="4-5-2-压缩html时不要跳过-md文件"><a href="#4-5-2-压缩html时不要跳过-md文件" class="headerlink" title="4.5.2 压缩html时不要跳过.md文件"></a>4.5.2 压缩html时不要跳过<code>.md</code>文件</h5><p><code>.md</code>文件就是我们写文章时的markdown文件，如果跳过压缩<code>.md</code>文件，而你又刚好在文章中使用到了NexT自带的tab标签，那么当hexo在生成静态页面时就会发生解析错误。这会导致使用到了tab标签的页面生成失败而无法访问。</p>
+<p>当初为了找到这个原因花了我两个晚上的时间，简直是夜不能寐。</p>
+<h5 id="4-5-3-压缩html时不要跳过-swig文件"><a href="#4-5-3-压缩html时不要跳过-swig文件" class="headerlink" title="4.5.3 压缩html时不要跳过.swig文件"></a>4.5.3 压缩html时不要跳过<code>.swig</code>文件</h5><p><code>.swig</code>文件是模板引擎文件，简单的说hexo可以通过这些文件来生成对应的页面。如果跳过这些文件，那么你将会发现，你的所有页面完全没有起到压缩的效果，页面源代码里依然存在着一大堆空白。</p>
+<h3 id="5-使用自定义的CSS样式"><a href="#5-使用自定义的CSS样式" class="headerlink" title="5. 使用自定义的CSS样式"></a>5. 使用自定义的CSS样式</h3><blockquote>
+<p>参考 博主 <a href="https://segmentfault.com/a/1190000003846777">该文章</a></p>
+</blockquote>
+<p>想自定义About页面，需要使用自定义的css样式因为markdown支持html标签，使用自定义的CSS样式还是不错的。</p>
+<p>下面总结一下具体的使用过程：</p>
+<h4 id="5-1-添加样式支持"><a href="#5-1-添加样式支持" class="headerlink" title="5.1 添加样式支持"></a>5.1 添加样式支持</h4><p>为规范化开发，这里需要添加子集的样式文件。<br>首先，在样式文件的<code>source</code>文件夹下找到<code>css</code>文件夹，打开<code>main.styl</code>文件，在最后添加：</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="regexp">//</span>My Layer</span><br><span class="line"><span class="regexp">//</span>--------------------------------------------------</span><br><span class="line">@import <span class="string">&quot;_my/mycss&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-2-新建自定义样式"><a href="#5-2-新建自定义样式" class="headerlink" title="5.2 新建自定义样式"></a>5.2 新建自定义样式</h4><p>找到样式文件夹<code>css</code> 新建<code>_my</code>文件夹，在其中新建<code>mycss.styl</code>文件，之后就可以按照stylus的格式自定义样式了。</p>
+<h4 id="5-3-解决-gitee-page-更新后css仍然不变"><a href="#5-3-解决-gitee-page-更新后css仍然不变" class="headerlink" title="5.3 解决 gitee page 更新后css仍然不变"></a>5.3 解决 gitee page 更新后css仍然不变</h4><p>强制刷新浏览器 <code>Shift+F5</code>，这么傻的错误我居然还犯</p>
 ]]></content>
       <categories>
         <category>Tool &amp; Platform</category>
