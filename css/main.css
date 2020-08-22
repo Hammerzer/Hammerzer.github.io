@@ -1301,7 +1301,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #f3f;
+  background: #6bbbff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2834,7 +2834,17 @@ mjx-container + br {
     margin: 8px 0 0;
   }
 }
-@keyframs myAnimation {
+.my-light {
+  animation: myAnimation 2s infinite;
+  display: inline-block;
+  margin-right: 10px;
+}
+.my-me {
+  display: inline-block;
+  margin-right: 10px;
+  animation: myturn 2s linear infinite;
+}
+@-moz-keyframes myAnimation {
   from {
     color: transparent;
   }
@@ -2842,8 +2852,115 @@ mjx-container + br {
     color: #fbb929;
   }
 }
-.my-light {
-  animation: myAnimation 2s infinite;
-  display: inline-block;
-  margin-right: 10px;
+@-webkit-keyframes myAnimation {
+  from {
+    color: transparent;
+  }
+  to {
+    color: #fbb929;
+  }
+}
+@-o-keyframes myAnimation {
+  from {
+    color: transparent;
+  }
+  to {
+    color: #fbb929;
+  }
+}
+@keyframes myAnimation {
+  from {
+    color: transparent;
+  }
+  to {
+    color: #fbb929;
+  }
+}
+@-moz-keyframes myturn {
+  0% {
+    -webkit-transform: rotate(0deg);
+    color: #ffd300;
+  }
+  25% {
+    -webkit-transform: rotate(90deg);
+    color: #fa0;
+  }
+  50% {
+    -webkit-transform: rotate(180deg);
+    color: #ff7400;
+  }
+  75% {
+    -webkit-transform: rotate(270deg);
+    color: #ffd300;
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    color: #ffde40;
+  }
+}
+@-webkit-keyframes myturn {
+  0% {
+    -webkit-transform: rotate(0deg);
+    color: #ffd300;
+  }
+  25% {
+    -webkit-transform: rotate(90deg);
+    color: #fa0;
+  }
+  50% {
+    -webkit-transform: rotate(180deg);
+    color: #ff7400;
+  }
+  75% {
+    -webkit-transform: rotate(270deg);
+    color: #ffd300;
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    color: #ffde40;
+  }
+}
+@-o-keyframes myturn {
+  0% {
+    -webkit-transform: rotate(0deg);
+    color: #ffd300;
+  }
+  25% {
+    -webkit-transform: rotate(90deg);
+    color: #fa0;
+  }
+  50% {
+    -webkit-transform: rotate(180deg);
+    color: #ff7400;
+  }
+  75% {
+    -webkit-transform: rotate(270deg);
+    color: #ffd300;
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    color: #ffde40;
+  }
+}
+@keyframes myturn {
+  0% {
+    -webkit-transform: rotate(0deg);
+    color: #ffd300;
+  }
+  25% {
+    -webkit-transform: rotate(90deg);
+    color: #fa0;
+  }
+  50% {
+    -webkit-transform: rotate(180deg);
+    color: #ff7400;
+  }
+  75% {
+    -webkit-transform: rotate(270deg);
+    color: #ffd300;
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    color: #ffde40;
+  }
 }
