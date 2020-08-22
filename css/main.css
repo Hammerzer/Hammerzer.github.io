@@ -1301,7 +1301,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #6bbbff;
+  background: #9e7130;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2835,46 +2835,10 @@ mjx-container + br {
   }
 }
 .my-light {
-  animation: myAnimation 2s infinite;
-  display: inline-block;
-  margin-right: 10px;
-}
-.my-me {
-  display: inline-block;
-  margin-right: 10px;
   animation: myturn 2s linear infinite;
 }
-@-moz-keyframes myAnimation {
-  from {
-    color: transparent;
-  }
-  to {
-    color: #fbb929;
-  }
-}
-@-webkit-keyframes myAnimation {
-  from {
-    color: transparent;
-  }
-  to {
-    color: #fbb929;
-  }
-}
-@-o-keyframes myAnimation {
-  from {
-    color: transparent;
-  }
-  to {
-    color: #fbb929;
-  }
-}
-@keyframes myAnimation {
-  from {
-    color: transparent;
-  }
-  to {
-    color: #fbb929;
-  }
+.my-me {
+  animation: myturn 2s linear infinite;
 }
 @-moz-keyframes myturn {
   0% {
