@@ -160,6 +160,8 @@
     <content><![CDATA[<h1 id="Hexo后续补充"><a href="#Hexo后续补充" class="headerlink" title="Hexo后续补充"></a>Hexo后续补充</h1><blockquote>
 <p>本篇对 <a href="https://hammerzer.github.io/2020/08/18/The%20Starting%20Point%20of%20Blogs/">The-Starting-Point-of-Blogs</a> 进行一些补充</p>
 </blockquote>
+<a id="more"></a>
+
 <h2 id="一、推送处理"><a href="#一、推送处理" class="headerlink" title="一、推送处理"></a>一、推送处理</h2><h3 id="1-静态资源压缩"><a href="#1-静态资源压缩" class="headerlink" title="1. 静态资源压缩"></a>1. 静态资源压缩</h3><blockquote>
 <p>存在问题未解决</p>
 </blockquote>
@@ -170,8 +172,6 @@
 <figure class="highlight text"><table><tr><td class="code"><pre><span class="line">npm install gulp-minify-css --save</span><br><span class="line">npm install gulp-uglify --save</span><br><span class="line">npm install gulp-htmlmin --save</span><br><span class="line">npm install gulp-htmlclean --save</span><br><span class="line">npm install gulp-imagemin --save</span><br></pre></td></tr></table></figure>
 
 <p>在 <code>Hexo</code> 站点下添加 <code>gulpfile.js</code>文件，文件内容如下：</p>
-<a id="more"></a>
-
 <figure class="highlight text"><table><tr><td class="code"><pre><span class="line">var gulp = require(&#x27;gulp&#x27;);</span><br><span class="line">var minifycss = require(&#x27;gulp-minify-css&#x27;);</span><br><span class="line">var uglify = require(&#x27;gulp-uglify&#x27;);</span><br><span class="line">var htmlmin = require(&#x27;gulp-htmlmin&#x27;);</span><br><span class="line">var htmlclean = require(&#x27;gulp-htmlclean&#x27;);</span><br><span class="line">var imagemin = require(&#x27;gulp-imagemin&#x27;);</span><br><span class="line">// 压缩css文件</span><br><span class="line">gulp.task(&#x27;minify-css&#x27;, function() &#123;</span><br><span class="line">  return gulp.src(&#x27;./public/**/*.css&#x27;)</span><br><span class="line">  .pipe(minifycss())</span><br><span class="line">  .pipe(gulp.dest(&#x27;./public&#x27;));</span><br><span class="line">&#125;);</span><br><span class="line">// 压缩html文件</span><br><span class="line">gulp.task(&#x27;minify-html&#x27;, function() &#123;</span><br><span class="line">  return gulp.src(&#x27;./public/**/*.html&#x27;)</span><br><span class="line">  .pipe(htmlclean())</span><br><span class="line">  .pipe(htmlmin(&#123;</span><br><span class="line">    removeComments: true,</span><br><span class="line">    minifyJS: true,</span><br><span class="line">    minifyCSS: true,</span><br><span class="line">    minifyURLs: true,</span><br><span class="line">  &#125;))</span><br><span class="line">  .pipe(gulp.dest(&#x27;./public&#x27;))</span><br><span class="line">&#125;);</span><br><span class="line">// 压缩js文件</span><br><span class="line">gulp.task(&#x27;minify-js&#x27;, function() &#123;</span><br><span class="line">    return gulp.src([&#x27;./public/**/.js&#x27;,&#x27;!./public/js/**/*min.js&#x27;])</span><br><span class="line">        .pipe(uglify())</span><br><span class="line">        .pipe(gulp.dest(&#x27;./public&#x27;));</span><br><span class="line">&#125;);</span><br><span class="line">// 压缩 public/demo 目录内图片</span><br><span class="line">gulp.task(&#x27;minify-images&#x27;, function() &#123;</span><br><span class="line">    gulp.src(&#x27;./public/demo/**/*.*&#x27;)</span><br><span class="line">        .pipe(imagemin(&#123;</span><br><span class="line">           optimizationLevel: 5, //类型：Number  默认：3  取值范围：0-7（优化等级）</span><br><span class="line">           progressive: true, //类型：Boolean 默认：false 无损压缩jpg图片</span><br><span class="line">           interlaced: false, //类型：Boolean 默认：false 隔行扫描gif进行渲染</span><br><span class="line">           multipass: false, //类型：Boolean 默认：false 多次优化svg直到完全优化</span><br><span class="line">        &#125;))</span><br><span class="line">        .pipe(gulp.dest(&#x27;./public/uploads&#x27;));</span><br><span class="line">&#125;);</span><br><span class="line">// 默认任务</span><br><span class="line">gulp.task(&#x27;default&#x27;, [</span><br><span class="line">  &#x27;minify-html&#x27;,&#x27;minify-css&#x27;,&#x27;minify-js&#x27;,&#x27;minify-images&#x27;</span><br><span class="line">]);</span><br></pre></td></tr></table></figure>
 
 <p>只需要每次在执行 <code>generate</code> 命令后执行 <code>gulp</code> 就可以实现对静态资源的压缩，压缩完成后执行 <code>deploy</code> 命令同步到服务器：</p>
@@ -440,13 +440,13 @@
 <li><a href="https://zhuanlan.zhihu.com/p/30836436">Hexo+Next主题优化</a></li>
 <li><a href="https://hexo.io/zh-cn/">Hexo官方文档</a></li>
 </ul>
+<a id="more"></a>
+
 <h2 id="一、环境准备"><a href="#一、环境准备" class="headerlink" title="一、环境准备"></a>一、环境准备</h2><ul>
 <li>Node.js</li>
 <li>Npm</li>
 <li>Git</li>
 </ul>
-<a id="more"></a>
-
 <h2 id="二、配置本地Hexo"><a href="#二、配置本地Hexo" class="headerlink" title="二、配置本地Hexo"></a>二、配置本地Hexo</h2><h3 id="1-配置hexo全局控制命令"><a href="#1-配置hexo全局控制命令" class="headerlink" title="1.配置hexo全局控制命令"></a>1.配置hexo全局控制命令</h3><p>​    在cmd或者其他命令行工具下输入如下：</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli </span><br></pre></td></tr></table></figure>
 

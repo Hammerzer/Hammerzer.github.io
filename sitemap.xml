@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://hammerzer.github.io/about/index.html</loc>
+    
+    <lastmod>2020-08-25</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://hammerzer.github.io/2020/08/18/The-Starting-Point-of-Blogs/</loc>
+    
+    <lastmod>2020-08-25</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://hammerzer.github.io/2020/08/20/Hexo-Next-Supplement/</loc>
+    
+    <lastmod>2020-08-25</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://hammerzer.github.io/2020/08/25/Retrieve-the-Vue-response-principle/</loc>
     
     <lastmod>2020-08-25</lastmod>
@@ -19,27 +40,6 @@
     <loc>https://hammerzer.github.io/2020/08/25/Part-of-Html/</loc>
     
     <lastmod>2020-08-25</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://hammerzer.github.io/about/index.html</loc>
-    
-    <lastmod>2020-08-24</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://hammerzer.github.io/2020/08/20/Hexo-Next-Supplement/</loc>
-    
-    <lastmod>2020-08-22</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://hammerzer.github.io/2020/08/18/The-Starting-Point-of-Blogs/</loc>
-    
-    <lastmod>2020-08-21</lastmod>
     
   </url>
   
