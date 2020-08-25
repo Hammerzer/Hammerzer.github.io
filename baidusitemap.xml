@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://hammerzer.github.io/2020/08/25/Part-of-Html/</loc>
+    <lastmod>2020-08-25</lastmod>
+  </url>
+  <url>
     <loc>https://hammerzer.github.io/2020/08/18/The-Starting-Point-of-Blogs/</loc>
     <lastmod>2020-08-25</lastmod>
   </url>
@@ -14,10 +18,6 @@
   </url>
   <url>
     <loc>https://hammerzer.github.io/2020/08/25/JavaScript-commonly-used-functions/</loc>
-    <lastmod>2020-08-25</lastmod>
-  </url>
-  <url>
-    <loc>https://hammerzer.github.io/2020/08/25/Part-of-Html/</loc>
     <lastmod>2020-08-25</lastmod>
   </url>
 </urlset> 
