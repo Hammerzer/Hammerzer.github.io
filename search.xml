@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>part of Html</title>
+    <url>/2020/08/24/part-of-Html/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Review &amp;</category>
+      </categories>
+      <tags>
+        <tag>Html</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hexo-Next-Supplement</title>
     <url>/2020/08/20/Hexo-Next-Supplement/</url>
     <content><![CDATA[<h1 id="Hexo后续补充"><a href="#Hexo后续补充" class="headerlink" title="Hexo后续补充"></a>Hexo后续补充</h1><blockquote>
@@ -229,6 +240,7 @@
 <blockquote>
 <p>尝试未成功，待更新</p>
 </blockquote>
+<h4 id="3-3-出现跨域请求失败503"><a href="#3-3-出现跨域请求失败503" class="headerlink" title="3.3 出现跨域请求失败503"></a>3.3 出现跨域请求失败503</h4><p>这种情况如果出现，修改网址为https，即可解决</p>
 <h3 id="4-继静态压缩glup无果之后的替代"><a href="#4-继静态压缩glup无果之后的替代" class="headerlink" title="4. 继静态压缩glup无果之后的替代"></a>4. 继静态压缩glup无果之后的替代</h3><blockquote>
 <p>参考该博主  <a href="https://blog.csdn.net/lewky_liu/article/details/82432003">Hexo瞎折腾系列</a></p>
 </blockquote>

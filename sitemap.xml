@@ -2,14 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://hammerzer.github.io/2020/08/20/Hexo-Next-Supplement/</loc>
+    <loc>https://hammerzer.github.io/about/index.html</loc>
     
-    <lastmod>2020-08-22</lastmod>
+    <lastmod>2020-08-24</lastmod>
     
   </url>
   
   <url>
-    <loc>https://hammerzer.github.io/about/index.html</loc>
+    <loc>https://hammerzer.github.io/2020/08/24/part-of-Html/</loc>
+    
+    <lastmod>2020-08-24</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://hammerzer.github.io/2020/08/20/Hexo-Next-Supplement/</loc>
     
     <lastmod>2020-08-22</lastmod>
     
@@ -39,22 +46,29 @@
 
   <url>
     <loc>https://hammerzer.github.io/</loc>
-    <lastmod>2020-08-22</lastmod>
+    <lastmod>2020-08-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
   <url>
+    <loc>https://hammerzer.github.io/tags/Html/</loc>
+    <lastmod>2020-08-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://hammerzer.github.io/tags/hexo%E9%83%A8%E7%BD%B2/</loc>
-    <lastmod>2020-08-22</lastmod>
+    <lastmod>2020-08-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://hammerzer.github.io/tags/next%E4%BD%BF%E7%94%A8/</loc>
-    <lastmod>2020-08-22</lastmod>
+    <lastmod>2020-08-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -62,8 +76,15 @@
 
   
   <url>
+    <loc>https://hammerzer.github.io/categories/Review/</loc>
+    <lastmod>2020-08-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://hammerzer.github.io/categories/Tool-Platform/</loc>
-    <lastmod>2020-08-22</lastmod>
+    <lastmod>2020-08-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
