@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Part of Html</title>
-    <url>/2020/08/25/Part-of-Html/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>JavaScript Function</title>
     <url>/2020/08/25/JavaScript-commonly-used-functions/</url>
     <content><![CDATA[<blockquote>
@@ -53,7 +48,7 @@
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;123&quot;</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="built_in">RegExp</span>(<span class="regexp">/3/</span>);</span><br><span class="line"><span class="keyword">if</span>(reg.exec(str))&#123;<span class="string">``</span> <span class="string">``</span><span class="comment">//包含；``&#125;</span></span><br></pre></td></tr></table></figure>
 
 <p><strong>exec() 方法</strong>用于检索字符串中的正则表达式的匹配。返回一个数组，其中存放匹配的结果。如果未找到匹配，则返回值为 null。</p>
-]]></content>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
         <category>Front End</category>
       </categories>
@@ -144,7 +139,7 @@
 <li>如果还不能实时更新，通过vue的官方$set方法可以实现手动设置</li>
 <li>一些特殊set方法，比如其他js框架的set方法，会和vue的方法冲突造成数据不能同步</li>
 </ul>
-]]></content>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
         <category>Front End</category>
       </categories>
@@ -153,6 +148,11 @@
         <tag>Vue</tag>
         <tag>Vue Problems</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Part of Html</title>
+    <url>/2020/08/25/Part-of-Html/</url>
+    <content><![CDATA[<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
   </entry>
   <entry>
     <title>Hexo-Next-Supplement</title>
@@ -421,7 +421,7 @@
 
 <h4 id="5-2-新建自定义样式"><a href="#5-2-新建自定义样式" class="headerlink" title="5.2 新建自定义样式"></a>5.2 新建自定义样式</h4><p>找到样式文件夹<code>css</code> 新建<code>_my</code>文件夹，在其中新建<code>mycss.styl</code>文件，之后就可以按照stylus的格式自定义样式了。</p>
 <h4 id="5-3-解决-gitee-page-更新后css仍然不变"><a href="#5-3-解决-gitee-page-更新后css仍然不变" class="headerlink" title="5.3 解决 gitee page 更新后css仍然不变"></a>5.3 解决 gitee page 更新后css仍然不变</h4><p>强制刷新浏览器 <code>Shift+F5</code>，这么傻的错误我居然还犯</p>
-]]></content>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
         <category>Tool &amp; Platform</category>
       </categories>
@@ -765,7 +765,7 @@
 <p>编辑文章,增加关键字<code>updated</code>（next可以根据文章改变时间自动更改）</p>
 <figure class="highlight text"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">layout: layout</span><br><span class="line">title: 关于</span><br><span class="line">date: 2017-08-18 15:41:18</span><br><span class="line">updated: 2017-09-05 20:18:54 #手动添加更新时间</span><br></pre></td></tr></table></figure>
 
-]]></content>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
         <category>Tool &amp; Platform</category>
       </categories>
