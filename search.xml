@@ -58,6 +58,11 @@
       </tags>
   </entry>
   <entry>
+    <title>Part of Html</title>
+    <url>/2020/08/25/Part-of-Html/</url>
+    <content><![CDATA[<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+  </entry>
+  <entry>
     <title>重拾Vue响应式原理</title>
     <url>/2020/08/25/Retrieve-the-Vue-response-principle/</url>
     <content><![CDATA[<h2 id="问题缘由"><a href="#问题缘由" class="headerlink" title="问题缘由"></a>问题缘由</h2><p>今天接手了一个Bug，大概描述一下：</p>
@@ -148,11 +153,6 @@
         <tag>Vue</tag>
         <tag>Vue Problems</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Part of Html</title>
-    <url>/2020/08/25/Part-of-Html/</url>
-    <content><![CDATA[<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
   </entry>
   <entry>
     <title>Hexo-Next-Supplement</title>
