@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://hammerzer.github.io/2020/08/29/HTML-render/</loc>
+    
+    <lastmod>2020-08-29</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://hammerzer.github.io/2020/08/28/HTML-Bacics/</loc>
     
     <lastmod>2020-08-29</lastmod>
@@ -74,6 +81,13 @@
 
   
   <url>
+    <loc>https://hammerzer.github.io/tags/HTML/</loc>
+    <lastmod>2020-08-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://hammerzer.github.io/tags/JavaScript/</loc>
     <lastmod>2020-08-29</lastmod>
     <changefreq>daily</changefreq>
@@ -103,13 +117,6 @@
   
   <url>
     <loc>https://hammerzer.github.io/tags/Vue-Problems/</loc>
-    <lastmod>2020-08-29</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://hammerzer.github.io/tags/HTML/</loc>
     <lastmod>2020-08-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
