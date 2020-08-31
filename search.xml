@@ -1,36 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>HTML渲染</title>
-    <url>/2020/08/29/HTML-render/</url>
-    <content><![CDATA[<h2 id="一、HTML渲染过程"><a href="#一、HTML渲染过程" class="headerlink" title="一、HTML渲染过程"></a>一、HTML渲染过程</h2><h3 id="HTML解析过程"><a href="#HTML解析过程" class="headerlink" title="HTML解析过程"></a><strong>HTML解析过程</strong></h3><ol>
-<li><p><strong>构建DOM树</strong>：将HTML构建成一个DOM树，也就是构建节点，把所有的节点都构建出来</p>
-</li>
-<li><p><strong>构建CSSOM树</strong>：解析css去构建CSSOM树</p>
-</li>
-<li><p><strong>根据DOM树和CSSOM树构建render树</strong>：DOM树和CSSOM树已经构建完毕，浏览器会根据这两个来构造render树，浏览器就知道了有哪些节点、各个节点的CSS定义以及他们的从属关系</p>
-</li>
-<li><p><strong>布局</strong>：有了render树就开始布局Layout，开始计算各个节点的位置和样式</p>
-</li>
-<li><p><strong>绘制</strong>：遍历render树，在页面上绘制每个节点</p>
-</li>
-<li><p><strong><em>重排reflow</em></strong>：当render树绘制完成之后，比如JavaScript改变样式或添加节点，这时候render树就需要重新计算</p>
-</li>
-<li><p><strong><em>重绘repaint</em></strong>：既然重排了，最后当然得重新绘制页面。</p>
-</li>
-</ol>
-<a id="more"></a>
+    <title>HTML标签</title>
+    <url>/2020/08/31/HTML-tags/</url>
+    <content><![CDATA[<h2 id="一、Html5废弃标签"><a href="#一、Html5废弃标签" class="headerlink" title="一、Html5废弃标签"></a>一、Html5废弃标签</h2><blockquote>
+<p>转自<a href="http://yanue.net/">半叶寒羽</a> » <a href="http://yanue.net/post-106.html">HTML5废弃的标签及属性</a></p>
+</blockquote>
+<h3 id="第一类：表现性元素"><a href="#第一类：表现性元素" class="headerlink" title="第一类：表现性元素"></a>第一类：表现性元素</h3><ul>
+<li>basefont</li>
+<li>big</li>
+<li>center</li>
+<li>font</li>
+<li>s</li>
+<li>strike</li>
+<li>tt</li>
+<li>u</li>
+</ul>
+<p>建议用语义正确的元素代替他们，并使用CSS来确保渲染后的效果</p>
+<h3 id="第二类：框架类元素"><a href="#第二类：框架类元素" class="headerlink" title="第二类：框架类元素"></a>第二类：框架类元素</h3><p>因框架有很多可用性及可访问性问题，HTML5规范将以下元素移除。</p>
+<ul>
+<li>frame</li>
+<li>frameset</li>
+<li>noframes</li>
+</ul>
+<p>但html5支持iframe。</p>
+<h3 id="第三类：属性类"><a href="#第三类：属性类" class="headerlink" title="第三类：属性类"></a>第三类：属性类</h3><p>很多表现性的属性也被新规范移除，如下：</p>
+<ul>
+<li>align</li>
+<li>body标签上的link、vlink、alink、text属性</li>
+<li>bgcolor</li>
+<li>height和width</li>
+<li>iframe元素上的scrolling属性</li>
+<li>valign</li>
+<li>hspace和vspace</li>
+<li>table标签上的cellpadding、cellspacing和border属性</li>
+<li>header标签上的profile属性</li>
+<li>链接标签a上的target属性</li>
+<li>img和iframe元素的longdesc属性</li>
+</ul>
+<h3 id="第四类：其他"><a href="#第四类：其他" class="headerlink" title="第四类：其他"></a>第四类：其他</h3><ul>
+<li>abbr取代acronym（用于表示缩写）</li>
+<li>object取代了applet</li>
+<li>ul取代了dir</li>
+</ul>
+<blockquote>
+<p>另附上直观的：<a href="http://demo.yanue.net/HTML5element/">html5元素周期表</a></p>
+</blockquote>
+<h2 id="二、HTML5新增的语义化标签"><a href="#二、HTML5新增的语义化标签" class="headerlink" title="二、HTML5新增的语义化标签"></a>二、HTML5新增的语义化标签</h2><p>主要有：<code> &lt;article&gt;、&lt;section&gt;、&lt;nav&gt;、&lt;aside&gt;、&lt;header&gt;、&lt;footer&gt;、&lt;time&gt;</code>等等…</p>
+<p><img data-src="pic1.png"></p>
+<h3 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h3><ul>
+<li>为了在没有CSS的情况下，页面也能呈现出很好地内容结构、代码结构</li>
+<li>比<code>&lt;div&gt;</code>标签有更加丰富的含义，方便开发与维护</li>
+<li>方便搜索引擎能识别页面结构，有利于<code>SEO</code></li>
+<li>方便其他设备解析（如移动设备、盲人阅读器等）</li>
+<li>有利于合作，遵守W3C标准</li>
+</ul>
+<h3 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h3><ul>
+<li>尽可能少的使用无语义的标签div和span</li>
+<li>在语义不明显时，既可以使用div或者p时，尽量用p，因为p在默认情况下有上下间距，对兼容特殊终端有利</li>
+<li>不要使用纯样式标签，如：b、font、u等，改用css设置</li>
+<li>需要强调的文本，可以包含在strong或者em标签中</li>
+<li>使用表格时，标题要用caption，表头用thead，主体部分用tbody包围，尾部用tfoot包围。表头和一般单元格要区分开，表头用th，单元格用td</li>
+<li>表单域要用fieldset标签包起来，并用legend标签说明表单的用途</li>
+<li>每个input标签对应的说明文本都需要使用label标签，并且通过为input设置id属性</li>
+</ul>
+<h3 id="补充："><a href="#补充：" class="headerlink" title="补充："></a>补充：</h3><h4 id="1-header与hgroup"><a href="#1-header与hgroup" class="headerlink" title="1. header与hgroup"></a>1. <code>header</code>与<code>hgroup</code></h4><p>放在页面或布局的顶部，一般放置导航栏或标题，如：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">header</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>**信息科技有限公司<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
+<p>一个文档中可以包含一对或者一对以上的<code>&lt;header&gt;</code>标签。<br> 标签的位置是次要的，不一定非要显示在页面的上方，我们可以为任何需要的区块标签添加<code>&lt;header&gt;</code>元素，例如下面将要讲解的<code>&lt;article&gt;</code>、<code>&lt;section&gt;</code>等标签。</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">hgroup</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>这是一篇介绍HTML 5语义化标签和更简洁的结构<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>HTML 5<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">hgroup</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
+<ul>
+<li>如果有连续多个h1-h6标签就用hgroup</li>
+<li>如果有连续多个标题和其他文章数据，h1-h6标签就用hgroup包住，和其他文章元数据一起放入header标签</li>
+</ul>
+<h4 id="2-nav"><a href="#2-nav" class="headerlink" title="2. nav"></a>2. nav</h4><p>表示页面的导航，也可以在<code>&lt;header&gt;</code>标签中使用，还可以显示在侧边栏中。一个页面之中可以有多个<code>&lt;nav&gt;</code>标签。<br> 为了方便搜索引擎解析，最好是将主要的链接放在nav中。</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">header</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">h1</span>&gt;</span>**信息科技有限公司<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">nav</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>首页<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;example.html&quot;</span>&gt;</span>客户案例<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;service_one.html&quot;</span>&gt;</span>技术服务<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span>          </span><br><span class="line">       <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;aboutus_one.html&quot;</span>&gt;</span>关于我们<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;connection.html&quot;</span>&gt;</span>联系我们<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">nav</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>HTML整个解析过程看起来很简单，但是我们要知道解析过程中css、Js和DOM的加载顺序。我们都知道HTML是自上往下解析的，在解析过程中：</p>
-<p>1、如果遇到link和style，那就就会去下载这些外部的css资源，但是css跟DOM的构建是并行的，就是说不会阻塞DOM树的构建。</p>
-<p>2、如果遇到script，那么页面就会把控制权交给JavaScript，直到脚本加载完毕或者是执行完毕。</p>
-<p>3、页面的渲染是依靠render树，也就是说如果css没有加载完成，页面也不会渲染显示。</p>
-<p>4、JavaScript执行过程中有可能需要改变样式，所以css加载也会阻塞JavaScript的加载。</p>
-<p>5、JavaScript执行过程中如果操作DOM，但是DOM树又是在JavaScript之后才能构建，就会报错，找不到节点。</p>
-<p>这就是HTML的渲染过程，因为DOM和css并行构建，我们会把css用外部引入，可以更快的构建DOM，因为JavaScript会阻塞DOM和css构建，且操作DOM一定要在DOM构建完成，我们选择把script放在最下面。如果我们过多的在render渲染完成后改变render，那么重排和重绘就会一直被动重发执行，这也会造成渲染速度变慢。</p>
-<h2 id="二、CSS-JS放置位置对渲染过程的影响"><a href="#二、CSS-JS放置位置对渲染过程的影响" class="headerlink" title="二、CSS/JS放置位置对渲染过程的影响"></a>二、CSS/JS放置位置对渲染过程的影响</h2><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+<h4 id="3-aside"><a href="#3-aside" class="headerlink" title="3. aside"></a>3. aside</h4><p>所包含的内容不是页面的主要内容、具有独立性，是对页面的补充。<br><code> &lt;aside&gt;</code>一般使用在页面、文章的侧边栏、广告、友情链接等区域。</p>
+<h4 id="4-footer"><a href="#4-footer" class="headerlink" title="4. footer"></a>4. footer</h4><p>一般被放置在页面或者页面中某个区块的底部，包含版权信息、联系方式等信息。一个页面也可以有多个footer</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">footer</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">small</span>&gt;</span></span><br><span class="line">        版权所有 © 2016-2017 **信息科技有限公司</span><br><span class="line">    <span class="tag">&lt;/<span class="name">small</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">footer</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="5-article"><a href="#5-article" class="headerlink" title="5. article"></a>5. article</h4><p><code>&lt;article&gt;</code>元素应该使用在相对比较独立、完整的的内容区块，所以我们可以在一篇博客、一个论坛帖子、一篇新闻报道或者一个用户评论中使用<code>&lt;article&gt;</code>元素。article可以互相嵌套。</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">article</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">h1</span>&gt;</span>HTML5学习之语义化标签<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">p</span>&gt;</span>....正文.....<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">footer</span>&gt;</span>版权所有*伪版必究<span class="tag">&lt;/<span class="name">footer</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="6-section"><a href="#6-section" class="headerlink" title="6. section"></a>6. section</h4><p>一组或者一节内容。</p>
+<p><strong><code>&lt;div&gt;</code>、<code>&lt;section&gt;</code>、<code>&lt;article&gt;</code>三者的比较：</strong></p>
+<p><code>&lt;div&gt;</code>：应用广泛，任意一个区域<br><code>&lt;section&gt;</code>：包含的内容是一个明确的主题，通常有标题区域<br><code>&lt;article&gt;</code>：如果我们的页面中需要一个单独的模块来实现一个单独的功能，就用<code>&lt;article&gt;</code>，其他的时候都用<code>&lt;section&gt;</code></p>
+<h4 id="7-time"><a href="#7-time" class="headerlink" title="7. time"></a>7. time</h4><p>可以带格式的时间标签</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">time</span> <span class="attr">datetime</span>=<span class="string">&quot;2017-07-03&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="8-mark"><a href="#8-mark" class="headerlink" title="8. mark"></a>8. mark</h4><p>高亮</p>
+<h4 id="9-address"><a href="#9-address" class="headerlink" title="9. address"></a>9. address</h4><p>address代表区块容器，必须是作为联系信息出现，邮编地址、邮件地址等等,一般出现在footer。</p>
+<h2 id="三、-lt-a-gt-标签"><a href="#三、-lt-a-gt-标签" class="headerlink" title="三、&lt;a&gt;标签"></a>三、<code>&lt;a&gt;</code>标签</h2><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
         <category>Front End</category>
       </categories>
@@ -242,6 +304,681 @@
         <tag>框架与工具</tag>
         <tag>Vue</tag>
         <tag>Vue Problems</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HTML基本问题</title>
+    <url>/2020/08/28/HTML-Bacics/</url>
+    <content><![CDATA[<h2 id="一、HTML新特性"><a href="#一、HTML新特性" class="headerlink" title="一、HTML新特性"></a>一、HTML新特性</h2><a id="more"></a>
+
+<blockquote>
+<p>参考自<a href="https://www.cnblogs.com/gaosirs/p/10756524.html">该文章</a></p>
+</blockquote>
+<h3 id="1-语义化标签"><a href="#1-语义化标签" class="headerlink" title="1. 语义化标签"></a>1. 语义化标签</h3><p>语义化标签 为页面提供了更好的<strong>页面结构</strong>。</p>
+<table>
+<thead>
+<tr>
+<th align="center">描述</th>
+<th align="center">属性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>&lt;header&gt;&lt;/header&gt;</code></td>
+<td align="center">定义文档的头部区域</td>
+</tr>
+<tr>
+<td align="center"><code>&lt;footer&gt;&lt;/footer&gt;</code></td>
+<td align="center">定义文档的尾部区域</td>
+</tr>
+<tr>
+<td align="center"><code>&lt;nav&gt;&lt;/nav&gt;</code></td>
+<td align="center">定义文档的导航区域</td>
+</tr>
+<tr>
+<td align="center"><code>&lt;section&gt;&lt;/section&gt;</code></td>
+<td align="center">定义文档的段落</td>
+</tr>
+<tr>
+<td align="center"><code>&lt;article&gt;&lt;/article&gt;</code></td>
+<td align="center">定义页面独立的内容区域</td>
+</tr>
+<tr>
+<td align="center"><code>&lt;aside&gt;&lt;/aside&gt;</code></td>
+<td align="center">定义页面侧边栏内容</td>
+</tr>
+<tr>
+<td align="center"><code>&lt;command&gt;&lt;/command&gt;</code></td>
+<td align="center">定义命令按钮</td>
+</tr>
+<tr>
+<td align="center"><code>&lt;details&gt;&lt;/details&gt;</code></td>
+<td align="center">标签包含 details 元素的标题</td>
+</tr>
+<tr>
+<td align="center"><code>&lt;dialog&gt;&lt;/dialog&gt;</code></td>
+<td align="center">定义对话框</td>
+</tr>
+</tbody></table>
+<h3 id="2-增强型表单"><a href="#2-增强型表单" class="headerlink" title="2. 增强型表单"></a>2. 增强型表单</h3><p>HTML5 提供了多个新的<strong>表单输入类型</strong>。</p>
+<table>
+<thead>
+<tr>
+<th>输入类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>color</td>
+<td>主要用于选取颜色</td>
+</tr>
+<tr>
+<td>date</td>
+<td>从一个日期选择器选择一个日期</td>
+</tr>
+<tr>
+<td>datetime</td>
+<td>选择一个日期（UTC 时间）</td>
+</tr>
+<tr>
+<td>datetime-local</td>
+<td>选择一个日期和时间 (无时区)</td>
+</tr>
+<tr>
+<td>email</td>
+<td>包含 e-mail 地址的输入域</td>
+</tr>
+<tr>
+<td>month</td>
+<td>选择一个月份</td>
+</tr>
+<tr>
+<td>number</td>
+<td>数值的输入域</td>
+</tr>
+<tr>
+<td>range</td>
+<td>一定范围内数字值的输入域</td>
+</tr>
+<tr>
+<td>search</td>
+<td>用于搜索域</td>
+</tr>
+<tr>
+<td>tel</td>
+<td>定义输入电话号码字段</td>
+</tr>
+<tr>
+<td>time</td>
+<td>选择一个时间</td>
+</tr>
+<tr>
+<td>url</td>
+<td>URL 地址的输入域</td>
+</tr>
+<tr>
+<td>week</td>
+<td>选择周和年</td>
+</tr>
+</tbody></table>
+<p> 同时，还增加了<strong>新的表单属性</strong>：</p>
+<ol>
+<li><p>placehoder 属性，简短的提示在用户输入值前会显示在输入域上。即我们常见的输入框默认提示，在用户输入后消失。</p>
+</li>
+<li><p>required  属性，是一个 boolean 属性。要求填写的输入域不能为空</p>
+</li>
+<li><p>pattern 属性，描述了一个正则表达式用于验证<code>&lt;input&gt;</code> 元素的值。</p>
+</li>
+<li><p>min 和 max 属性，设置元素最小值与最大值。</p>
+</li>
+<li><p>step 属性，为输入域规定合法的数字间隔。</p>
+</li>
+<li><p>height 和 width 属性，用于 image 类型的 <code>&lt;input&gt;</code> 标签的图像高度和宽度。</p>
+</li>
+<li><p>autofocus 属性，是一个 boolean 属性。规定在页面加载时，域自动地获得焦点。</p>
+</li>
+<li><p>multiple 属性 ，是一个 boolean 属性。规定<code>&lt;input&gt;</code> 元素中可选择多个值。　　</p>
+</li>
+</ol>
+<h3 id="3-音频和视频"><a href="#3-音频和视频" class="headerlink" title="3. 音频和视频"></a>3. 音频和视频</h3><p>HTML5 提供了 <strong>音频和视频</strong> 。</p>
+<p>音频：<code>&lt;audio&gt;</code></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">audio</span> <span class="attr">controls</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;xxx.ogg&quot;</span> <span class="attr">type</span>=<span class="string">&quot;audio/ogg&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;xxx.mp3&quot;</span> <span class="attr">type</span>=<span class="string">&quot;audio/mpeg&quot;</span>&gt;</span></span><br><span class="line">您的浏览器不支持 audio 元素。</span><br><span class="line"><span class="tag">&lt;/<span class="name">audio</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>视频：<code>&lt;video&gt;</code></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">video</span> <span class="attr">width</span>=<span class="string">&quot;500&quot;</span> <span class="attr">height</span>=<span class="string">&quot;300&quot;</span> <span class="attr">controls</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;xxx.mp4&quot;</span> <span class="attr">type</span>=<span class="string">&quot;video/mp4&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;xxx.ogg&quot;</span> <span class="attr">type</span>=<span class="string">&quot;video/ogg&quot;</span>&gt;</span></span><br><span class="line">您的浏览器不支持Video标签。</span><br><span class="line"><span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-canvas-绘图"><a href="#4-canvas-绘图" class="headerlink" title="4. canvas 绘图"></a>4. canvas 绘图</h3><blockquote>
+<p>供欣赏的<code>canvas</code><a href="https://www.html5tricks.com/tag/html5-canvas/">作品</a></p>
+<p>jQuery/HTML5/CSS3<a href="http://www.htmleaf.com/html5/html5-canvas/">资料库</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://www.jianshu.com/p/7593eb9e53c2">Canvas教程</a></p>
+<p><a href="https://www.w3school.com.cn/html5/html_5_canvas.asp">W3School教程</a></p>
+<p><a href="https://www.cnblogs.com/gengzhen/p/11915071.html">Canvas绘图基础</a></p>
+</blockquote>
+<h3 id="5-SVG-绘图"><a href="#5-SVG-绘图" class="headerlink" title="5. SVG 绘图"></a>5. SVG 绘图</h3><blockquote>
+<p>嵌入和使用SVG:</p>
+<p><a href="https://segmentfault.com/a/1190000010942431">HTML中嵌入SVG图片的N种方式</a></p>
+<p><a href="https://www.w3school.com.cn/svg/svg_inhtml.asp">HTML 页面中的 SVG</a></p>
+<p><a href="https://www.jianshu.com/p/132b58273e27">HTML5之SVG的使用</a></p>
+</blockquote>
+<h4 id="SVG-与-Canvas两者间的区别"><a href="#SVG-与-Canvas两者间的区别" class="headerlink" title="SVG 与 Canvas两者间的区别"></a>SVG 与 Canvas两者间的区别</h4><p>SVG 是一种使用 XML 描述 2D 图形的语言。</p>
+<p>Canvas 通过 JavaScript 来绘制 2D 图形。</p>
+<p>SVG 基于 XML，这意味着 SVG DOM 中的每个元素都是可用的。您可以为某个元素附加 JavaScript 事件处理器。</p>
+<p>在 SVG 中，每个被绘制的图形均被视为对象。如果 SVG 对象的属性发生变化，那么浏览器能够自动重现图形。</p>
+<p>Canvas 是逐像素进行渲染的。在 canvas 中，一旦图形被绘制完成，它就不会继续得到浏览器的关注。如果其位置发生变化，那么整个场景也需要重新绘制，包括任何或许已被图形覆盖的对象。</p>
+<h3 id="6-地理定位（Geolocation）"><a href="#6-地理定位（Geolocation）" class="headerlink" title="6. 地理定位（Geolocation）"></a>6. 地理定位（Geolocation）</h3><p>HTML5 Geolocation（地理定位）用于定位用户的位置。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">window</span><span class="selector-class">.navigator</span><span class="selector-class">.geolocation</span> &#123;</span><br><span class="line">    <span class="attribute">getCurrentPosition</span>:  fn  用于获取当前的位置数据</span><br><span class="line">    watchPosition: fn  监视用户位置的改变</span><br><span class="line">    clearWatch: fn  清除定位监视</span><br><span class="line">&#125;　　　</span><br></pre></td></tr></table></figure>
+
+<p>获取用户定位信息：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">navigator.geolocation.getCurrentPosition(</span><br><span class="line">    <span class="function"><span class="keyword">function</span>(<span class="params">pos</span>)</span>&#123;</span><br><span class="line">　　　　<span class="built_in">console</span>.log(<span class="string">&#x27;用户定位数据获取成功&#x27;</span>)</span><br><span class="line">　　　　<span class="comment">//console.log(arguments);</span></span><br><span class="line">　　　　<span class="built_in">console</span>.log(<span class="string">&#x27;定位时间：&#x27;</span>,pos.timestamp)</span><br><span class="line">　　　　<span class="built_in">console</span>.log(<span class="string">&#x27;经度：&#x27;</span>,pos.coords.longitude)</span><br><span class="line">　　　　<span class="built_in">console</span>.log(<span class="string">&#x27;纬度：&#x27;</span>,pos.coords.latitude)</span><br><span class="line">　　　　<span class="built_in">console</span>.log(<span class="string">&#x27;海拔：&#x27;</span>,pos.coords.altitude)</span><br><span class="line">　　　　<span class="built_in">console</span>.log(<span class="string">&#x27;速度：&#x27;</span>,pos.coords.speed)</span><br><span class="line"></span><br><span class="line">&#125;,    <span class="comment">//定位成功的回调</span></span><br><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123; </span><br><span class="line">　　　　<span class="built_in">console</span>.log(<span class="string">&#x27;用户定位数据获取失败&#x27;</span>)</span><br><span class="line">　　　　<span class="comment">//console.log(arguments);</span></span><br><span class="line"></span><br><span class="line">&#125;        <span class="comment">//定位失败的回调</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-拖放API"><a href="#7-拖放API" class="headerlink" title="7. 拖放API"></a>7. 拖放API</h3><p>在 HTML5 中，拖放是标准的一部分，任何元素都能够拖放。</p>
+<blockquote>
+<p>转载来自<a href="https://www.cnblogs.com/ijjyo/p/4300717.html">很不错的拖放API解释…</a></p>
+</blockquote>
+<h4 id="7-1-HTML拖放实例"><a href="#7-1-HTML拖放实例" class="headerlink" title="7.1 HTML拖放实例"></a>7.1 HTML拖放实例</h4><p>​    下面的例子是一个简单的拖放实例：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;utf-8&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>test<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">            <span class="function"><span class="keyword">function</span> <span class="title">allowDrop</span>(<span class="params">ev</span>) </span>&#123;</span></span><br><span class="line">                ev.preventDefault();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line"><span class="javascript">            <span class="function"><span class="keyword">function</span> <span class="title">drag</span>(<span class="params">ev</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                ev.dataTransfer.setData(<span class="string">&quot;Text&quot;</span>, ev.target.id);</span></span><br><span class="line">            &#125;</span><br><span class="line">    </span><br><span class="line"><span class="javascript">            <span class="function"><span class="keyword">function</span> <span class="title">drop</span>(<span class="params">ev</span>) </span>&#123;</span></span><br><span class="line">                ev.preventDefault();</span><br><span class="line"><span class="javascript">                <span class="keyword">var</span> data = ev.dataTransfer.getData(<span class="string">&quot;Text&quot;</span>);</span></span><br><span class="line"><span class="javascript">                ev.target.appendChild(<span class="built_in">document</span>.getElementById(data));</span></span><br><span class="line">            &#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;div1&quot;</span> <span class="attr">ondrop</span>=<span class="string">&quot;drop(event)&quot;</span> <span class="attr">ondragover</span>=<span class="string">&quot;allowDrop(event)&quot;</span> <span class="attr">style</span>=<span class="string">&quot;width: 500px;height: 500px;background-color: #FBB929;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">id</span>=<span class="string">&quot;drag1&quot;</span> <span class="attr">src</span>=<span class="string">&quot;http://www.baidu.com/img/baidu_jgylogo3.gif&quot;</span> <span class="attr">draggable</span>=<span class="string">&quot;true&quot;</span> <span class="attr">ondragstart</span>=<span class="string">&quot;drag(event)&quot;</span> <span class="attr">width</span>=<span class="string">&quot;336&quot;</span> <span class="attr">height</span>=<span class="string">&quot;69&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="7-1-1-设置元素为可拖放"><a href="#7-1-1-设置元素为可拖放" class="headerlink" title="7.1.1 设置元素为可拖放"></a>7.1.1 设置元素为可拖放</h5><p>首先，为了使元素可拖动，把 draggable 属性设置为 true ：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">draggable</span>=<span class="string">&quot;true&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="7-1-2-拖动什么-ondragstart-和-setData"><a href="#7-1-2-拖动什么-ondragstart-和-setData" class="headerlink" title="7.1.2 拖动什么 - ondragstart 和 setData()"></a>7.1.2 拖动什么 - ondragstart 和 setData()</h5><p>然后，规定当元素被拖动时，会发生什么。</p>
+<p>在上面的例子中，ondragstart 属性调用了一个函数，drag(<em>event</em>)，它规定了被拖动的数据。</p>
+<p>dataTransfer.setData() 方法设置被拖数据的数据类型和值：</p>
+<figure class="highlight reasonml"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> drag(ev)&#123;</span><br><span class="line">    ev.dataTransfer.set<span class="constructor">Data(<span class="string">&quot;Text&quot;</span>,<span class="params">ev</span>.<span class="params">target</span>.<span class="params">id</span>)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，数据类型是 “Text”，值是可拖动元素的 id (“drag1”)。</p>
+<h5 id="7-1-3-放到何处-ondragover"><a href="#7-1-3-放到何处-ondragover" class="headerlink" title="7.1.3 放到何处 - ondragover"></a>7.1.3 放到何处 - ondragover</h5><p>ondragover 事件规定在何处放置被拖动的数据。</p>
+<p>默认地，无法将数据/元素放置到其他元素中。如果需要设置允许放置，我们必须阻止对元素的默认处理方式。</p>
+<p>这要通过调用 ondragover 事件的 <em>event</em>.preventDefault() 方法：</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">event</span>.preventDefault()</span><br></pre></td></tr></table></figure>
+
+<h5 id="7-1-4-进行放置-ondrop"><a href="#7-1-4-进行放置-ondrop" class="headerlink" title="7.1.4 进行放置 - ondrop"></a>7.1.4 进行放置 - ondrop</h5><p>当放置被拖数据时，会发生 drop 事件。</p>
+<p>在上面的例子中，ondrop 属性调用了一个函数，drop(<em>event</em>)：</p>
+<figure class="highlight reasonml"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> drop(ev)</span><br><span class="line">&#123;</span><br><span class="line">ev.prevent<span class="constructor">Default()</span>;</span><br><span class="line">var data=ev.dataTransfer.get<span class="constructor">Data(<span class="string">&quot;Text&quot;</span>)</span>;</span><br><span class="line">ev.target.append<span class="constructor">Child(<span class="params">document</span>.<span class="params">getElementById</span>(<span class="params">data</span>)</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>调用 preventDefault() 来避免浏览器对数据的默认处理（drop 事件的默认行为是以链接形式打开）</li>
+<li>通过 dataTransfer.getData(“Text”) 方法获得被拖的数据。该方法将返回在 setData() 方法中设置为相同类型的任何数据。</li>
+<li>被拖数据是被拖元素的 id (“drag1”)</li>
+<li>把被拖元素追加到放置元素（目标元素）中</li>
+</ul>
+<h4 id="7-2-拖放-Drag-和-Drop-各属性生命周期"><a href="#7-2-拖放-Drag-和-Drop-各属性生命周期" class="headerlink" title="7.2 拖放(Drag 和 Drop)各属性生命周期"></a>7.2 拖放(Drag 和 Drop)各属性生命周期</h4><table>
+<thead>
+<tr>
+<th>拖动生命周期</th>
+<th>属性</th>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>拖动开始</td>
+<td>ondragstart</td>
+<td>script</td>
+<td>在拖动操作开始时执行脚本（对象是被拖拽元素）</td>
+</tr>
+<tr>
+<td>拖动过程中</td>
+<td>ondrag</td>
+<td>script</td>
+<td>只要脚本在被拖动就允许脚本（对象是被拖拽元素）</td>
+</tr>
+<tr>
+<td>拖动过程中</td>
+<td>ondragenter</td>
+<td>script</td>
+<td>当元素被拖动到一个合法的放置目标时，执行脚本（对象是目标元素）</td>
+</tr>
+<tr>
+<td>拖动过程中</td>
+<td>ondragover</td>
+<td>script</td>
+<td>只要元素正在合法的放置目标上拖动时，就执行脚本（对象是目标元素）</td>
+</tr>
+<tr>
+<td>拖动过程中</td>
+<td>ondragleave</td>
+<td>script</td>
+<td>当元素离开合法的放置目标时（对象是目标元素）</td>
+</tr>
+<tr>
+<td>拖动结束</td>
+<td>ondrop</td>
+<td>script</td>
+<td>将被拖拽元素放在目标元素内时运行脚本（对象是目标元素）</td>
+</tr>
+<tr>
+<td>拖动结束</td>
+<td>ondragend</td>
+<td>script</td>
+<td>在拖动操作结束时运行脚本（对象是被拖拽元素）</td>
+</tr>
+</tbody></table>
+<p><strong>写在哪呢？</strong></p>
+<p>其实参照上表“描述”中括号内的提示即可知道，不过为了能更直观的了解到，特呈上代码：</p>
+<p><strong>被拖放元素</strong></p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">&lt;span <span class="attribute">draggable</span>=<span class="string">&quot;true&quot;</span> <span class="attribute">id</span>=<span class="string">&quot;Span1&quot;</span> </span><br><span class="line">    <span class="attribute">ondragstart</span>=<span class="string">&quot;fooDragStart(this, event)&quot;</span> </span><br><span class="line">    <span class="attribute">ondrag</span>=<span class="string">&quot;fooDrag(this, event)&quot;</span> </span><br><span class="line">    <span class="attribute">ondragend</span>=<span class="string">&quot;fooDragEnd(this, event)&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>目标元素</strong></p>
+<figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line">&lt;<span class="keyword">div</span>  <span class="built_in">id</span>=<span class="string">&quot;div1&quot;</span> ondrop=<span class="string">&quot;fooDrop(this, event)&quot;</span></span><br><span class="line">                ondragenter=<span class="string">&quot;fooDragEnter(this, event)&quot;</span> </span><br><span class="line">                ondragleave=<span class="string">&quot;fooDragLeave(this, event)&quot;</span></span><br><span class="line">                ondragover=<span class="string">&quot;fooDragOver(this,event)&quot;</span>&gt;</span><br><span class="line">&lt;/<span class="keyword">div</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="7-3-执行顺序"><a href="#7-3-执行顺序" class="headerlink" title="7.3 执行顺序"></a>7.3 执行顺序</h4><p>下面，我将展示将一张图片放入div中的整个script执行过程：</p>
+<p><strong>执行元素介绍</strong></p>
+<p><img data-src="pic1.jpg"></p>
+<p><strong>执行结果</strong></p>
+<ul>
+<li>成功将图片拖入div中</li>
+</ul>
+<p><img data-src="pic2.jpg"></p>
+<figure class="highlight pf"><table><tr><td class="code"><pre><span class="line"><span class="keyword">on</span>DragStart，当元素被拖动到一个合法的放置目标时，执行脚本（对象是目标元素）</span><br><span class="line"><span class="keyword">on</span>Drag，只要脚本在被拖动就允许脚本</span><br><span class="line"><span class="keyword">on</span>Drag，只要脚本在被拖动就允许脚本</span><br><span class="line"><span class="keyword">on</span>DragEnter，在拖动操作开始时执行脚本</span><br><span class="line"><span class="keyword">on</span>DragOver，只要元素正在合法的放置目标上拖动时，就执行脚本（对象是目标元素）</span><br><span class="line"><span class="keyword">on</span>Drag，只要脚本在被拖动就允许脚本</span><br><span class="line"><span class="keyword">on</span>DragOver，只要元素正在合法的放置目标上拖动时，就执行脚本（对象是目标元素）</span><br><span class="line"><span class="keyword">on</span>Drop，在拖动操作结束时运行脚本-------------------------------------</span><br><span class="line"><span class="keyword">on</span>DragEnd，在拖动操作结束时运行脚本</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>已拖放，可最终未放入div中</li>
+</ul>
+<p><img data-src="pic3.jpg"></p>
+<figure class="highlight pf"><table><tr><td class="code"><pre><span class="line"><span class="keyword">on</span>DragStart，当元素被拖动到一个合法的放置目标时，执行脚本（对象是目标元素）</span><br><span class="line"><span class="keyword">on</span>Drag，只要脚本在被拖动就允许脚本</span><br><span class="line"><span class="keyword">on</span>Drag，只要脚本在被拖动就允许脚本</span><br><span class="line"><span class="keyword">on</span>DragEnter，在拖动操作开始时执行脚本</span><br><span class="line"><span class="keyword">on</span>DragOver，只要元素正在合法的放置目标上拖动时，就执行脚本（对象是目标元素）</span><br><span class="line"><span class="keyword">on</span>Drag，只要脚本在被拖动就允许脚本</span><br><span class="line"><span class="keyword">on</span>DragOver，只要元素正在合法的放置目标上拖动时，就执行脚本（对象是目标元素）</span><br><span class="line"><span class="keyword">on</span>Drag，只要脚本在被拖动就允许脚本</span><br><span class="line"><span class="keyword">on</span>DragLeave，当元素离开合法的放置目标时（对象是目标元素）---------------------</span><br><span class="line"><span class="keyword">on</span>Drag，只要脚本在被拖动就允许脚本</span><br><span class="line"><span class="keyword">on</span>Drag，只要脚本在被拖动就允许脚本</span><br><span class="line"><span class="keyword">on</span>DragEnd，在拖动操作结束时运行脚本</span><br></pre></td></tr></table></figure>
+
+<p>由上两个执行顺序的Log能看出：</p>
+<blockquote>
+<ol>
+<li>只有将“被拖拽元素”放入“目标元素”才会执行“onDrop”属性的方法；</li>
+<li>“onDrag”的事件只要鼠标按住并且拖动就会持续不断的执行；</li>
+<li>“onDragOver”的事件是只要鼠标按住、拖动“被拖拽元素”在“目标元素”上滑过就会持续不断的执行；</li>
+<li>“onDragEnd”的事件无论如何，只要按住的鼠标放开了，就会执行</li>
+</ol>
+</blockquote>
+<h4 id="7-4-深入"><a href="#7-4-深入" class="headerlink" title="7.4 深入"></a>7.4 深入</h4><p>一些深入的比如“<code>文件的拖放</code>”、“<code>从浏览器拖放到桌面</code>”以及“<code>从桌面拖放到浏览器</code>”等</p>
+<h4 id="7-5-扩展"><a href="#7-5-扩展" class="headerlink" title="7.5 扩展"></a>7.5 扩展</h4><h5 id="7-5-1-MIME类型"><a href="#7-5-1-MIME类型" class="headerlink" title="7.5.1 MIME类型"></a>7.5.1 MIME类型</h5><blockquote>
+<p>  ·text/plain：文本文字</p>
+<p>  ·text/html：HTML文字</p>
+<p>  ·text/xml：XML文字</p>
+<p>  ·text/uri-list：URL列表，每个URL为一行</p>
+</blockquote>
+<h5 id="7-5-2-JS的dataTransfer对象"><a href="#7-5-2-JS的dataTransfer对象" class="headerlink" title="7.5.2 JS的dataTransfer对象"></a>7.5.2 JS的dataTransfer对象</h5><p>​    提供对于预定义的剪贴板格式的访问,以便在拖拽中使用。</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>dropEffect</td>
+<td>设置或返回拖放目标上允许发生的拖放行为和要显示的光标类型</td>
+<td>copy 复制样式被显示link 链接样式被显示move 移动样式被显示none 默认,没有鼠标样式被定义</td>
+</tr>
+<tr>
+<td>effectAllowed</td>
+<td>设置或返回被拖动元素允许发生的拖动行为与该对象的源元素。</td>
+<td>copy 选项被复制link 选项被dataTransfer作为link方式保存move 当放置时,对象被移动至目标对象copylink 选项是被复制还是被作为link方式保存关键在于目标对象linkmove 选项是被作为link方式保存还是被移动关键在于目标对象all 所有效果都被支持none 不支持任何效果uninitialized 默认不能通过这个属性传递任何值</td>
+</tr>
+<tr>
+<td>types</td>
+<td>存入数据的种类，字符串的伪数组</td>
+<td></td>
+</tr>
+<tr>
+<td>clearData()</td>
+<td>清除DataTransfer对象中存放的数据，如果省略参数format，则清楚全部数据</td>
+<td></td>
+</tr>
+<tr>
+<td>setData(format,data)</td>
+<td>将指定格式的数据赋值给dataTransfer对象</td>
+<td>参数format定义数据的格式也就是数据的类型，data为待赋值的数据</td>
+</tr>
+<tr>
+<td>getData(format,data)</td>
+<td>从dataTransfer对象中获取指定格式的数据</td>
+<td>format代表数据格式，data为数据。</td>
+</tr>
+<tr>
+<td>setDragImage(Element image，long x,long y)</td>
+<td>用img元素来设置拖放图标(部分浏览器中可以用canvas等其他元素来设置)</td>
+<td>element设置自定义图标，x设置图标与鼠标在水平方向上的距离，y设置图标与鼠标在垂直方向上的距离。</td>
+</tr>
+</tbody></table>
+<p>​    effectAllowed定义了在源对象上的操作,可定义在ondragstart事件中。 </p>
+<p>​    dropEffect定义了在目标对象上的操作,可定义在ondrop,ondragenter,ondragover事件中。 </p>
+<p>​    effectAllowed可以定义all操作,但是dropEffect可以定义copy操作。</p>
+<h3 id="8-Web-Storage"><a href="#8-Web-Storage" class="headerlink" title="8 Web Storage"></a>8 Web Storage</h3><p>使用HTML5可以在本地存储用户的浏览数据。</p>
+<p>客户端存储数据的两个对象为：</p>
+<p><strong>localStorage ：</strong>没有时间限制的数据存储</p>
+<p><strong>sessionStorage ：</strong> 针对一个 session 的数据存储, 当用户关闭浏览器窗口后，数据会被删除。</p>
+<p>不管是 <strong>localStorage</strong>，还是 <strong>sessionStorage</strong>，可使用的API都相同，常用的有如下几个（以localStorage为例）：</p>
+<p>　　1、保存数据：localStorage.setItem(key,value);</p>
+<p>　　2、读取数据：localStorage.getItem(key);</p>
+<p>　　3、删除单个数据：localStorage.removeItem(key);</p>
+<p>　　4、删除所有数据：localStorage.clear();</p>
+<p>　　5、得到某个索引的key：localStorage.key(index);</p>
+<h3 id="9-WebSocket"><a href="#9-WebSocket" class="headerlink" title="9. WebSocket"></a>9. WebSocket</h3><blockquote>
+<p>可参考 <a href="http://www.ruanyifeng.com/blog/2017/05/websocket.html">阮一峰日志</a> 深入学习</p>
+<p>其中用到的<a href="https://jsbin.com/muqamiqimu/edit?js,console">演示平台</a> <code>jsbin.com</code></p>
+<p>以及其使用<a href="https://www.cnblogs.com/rammstein/p/4042842.html">教程</a></p>
+</blockquote>
+<p><strong>WebSocket</strong> 是HTML5开始提供的一种在单个 TCP 连接上进行全双工通讯的协议。</p>
+<blockquote>
+<p><a href="https://baike.baidu.com/item/RS-422">RS-422</a>标准就是<a href="https://baike.baidu.com/item/%E5%85%A8%E5%8F%8C%E5%B7%A5/310007">全双工</a>通信标准。全双工（Full Duplex）是 在微处理器与外围设备之间采用发送线和接受线各自独立的方法，可以使数据在两个方向上同时进行传送操作。指在发送数据的同时也能够接收数据，两者同步进行，这好像我们平时打电话一样，说话的同时也能够听到对方的声音。网卡一般都支持全双工。</p>
+<p><a href="https://baike.baidu.com/item/%E5%85%A8%E5%8F%8C%E5%B7%A5%E4%BB%A5%E5%A4%AA%E7%BD%91">全双工以太网</a>使用两条电缆线，而不是像<a href="https://baike.baidu.com/item/%E5%8D%8A%E5%8F%8C%E5%B7%A5/309852">半双工</a>方式那样使用一对电缆线。全双工方式在发送设备的发送方和接收设备的接收方之间采取点到点的连接，这意味着在全双工的传送方式下，可以得到更高的<a href="https://baike.baidu.com/item/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E9%80%9F%E5%BA%A6">数据传输速度</a>。</p>
+</blockquote>
+<p>在WebSocket22通过 <strong>send()</strong> 方法来向服务器发送数据，并通过 <strong>onmessage</strong> 事件来接收服务器返回的数据。</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">HTML</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;utf-8&quot;</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">title</span>&gt;</span>W3Cschool教程(w3cschool.cn)<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">      <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">         <span class="function"><span class="keyword">function</span> <span class="title">WebSocketTest</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">if</span> (<span class="string">&quot;WebSocket&quot;</span> <span class="keyword">in</span> <span class="built_in">window</span>) &#123;</span></span><br><span class="line"><span class="javascript">               alert(<span class="string">&quot;您的浏览器支持 WebSocket!&quot;</span>);</span></span><br><span class="line">               </span><br><span class="line"><span class="javascript">               <span class="comment">// 打开一个 web socket</span></span></span><br><span class="line"><span class="javascript">               <span class="keyword">var</span> ws = <span class="keyword">new</span> WebSocket(<span class="string">&quot;ws://localhost:9998/echo&quot;</span>);</span></span><br><span class="line">                </span><br><span class="line"><span class="javascript">               ws.onopen = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">                  <span class="comment">// Web Socket 已连接上，使用 send() 方法发送数据</span></span></span><br><span class="line"><span class="javascript">                  ws.send(<span class="string">&quot;发送数据&quot;</span>);</span></span><br><span class="line"><span class="javascript">                  alert(<span class="string">&quot;数据发送中...&quot;</span>);</span></span><br><span class="line">               &#125;;</span><br><span class="line">                </span><br><span class="line"><span class="javascript">               ws.onmessage = <span class="function"><span class="keyword">function</span> (<span class="params">evt</span>) </span>&#123; </span></span><br><span class="line"><span class="javascript">                  <span class="keyword">var</span> received_msg = evt.data;</span></span><br><span class="line"><span class="javascript">                  alert(<span class="string">&quot;数据已接收...&quot;</span>);</span></span><br><span class="line">               &#125;;</span><br><span class="line">                </span><br><span class="line"><span class="javascript">               ws.onclose = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; </span></span><br><span class="line"><span class="javascript">                  <span class="comment">// 关闭 websocket</span></span></span><br><span class="line"><span class="javascript">                  alert(<span class="string">&quot;连接已关闭...&quot;</span>); </span></span><br><span class="line">               &#125;;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line"><span class="javascript">            <span class="keyword">else</span>&#123;</span></span><br><span class="line"><span class="javascript">               <span class="comment">// 浏览器不支持 WebSocket</span></span></span><br><span class="line"><span class="javascript">               alert(<span class="string">&quot;您的浏览器不支持 WebSocket!&quot;</span>);</span></span><br><span class="line">            &#125;</span><br><span class="line">         &#125;</span><br><span class="line">      <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">        </span><br><span class="line">   <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">   </span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;sse&quot;</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;javascript:WebSocketTest()&quot;</span>&gt;</span>运行 WebSocket<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      </span><br><span class="line">   <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="二、浏览器标准模式和怪异模式"><a href="#二、浏览器标准模式和怪异模式" class="headerlink" title="二、浏览器标准模式和怪异模式"></a>二、浏览器标准模式和怪异模式</h2><blockquote>
+<p>转自<a href="https://www.jianshu.com/p/dcab7cde8c04">简书</a></p>
+</blockquote>
+<h3 id="标准模式和怪异模式的来由"><a href="#标准模式和怪异模式的来由" class="headerlink" title="标准模式和怪异模式的来由"></a>标准模式和怪异模式的来由</h3><p>在HTML与CSS的标准化未完成之前，各个浏览器对于HTML和CSS的解析有各自不同的实现，而有很多旧的网页都是按照这些非标准的实现去设计的。在HTML与CSS标准确定之后，浏览器一方面要按照标准去实现对HTML与CSS的支持，另一方面又要保证对非标准的旧网页设计的后向兼容性。因此，现代的浏览器一般都有两种渲染模式：<strong>标准模式</strong>和<strong>怪异模式</strong>。在<strong>标准模式</strong>下，浏览器按照HTML与CSS标准对文档进行解析和渲染；而在<strong>怪异模式</strong>下，浏览器则按照旧有的非标准的实现方式对文档进行解析和渲染。这样的话，对于旧有的网页，浏览器启动怪异模式，就能够使得旧网页正常显示；对于新的网页，则可以启动标准模式，使得新网页能够使用HTML与CSS的标准特性。</p>
+<h3 id="浏览器如何确定使用哪种渲染模式"><a href="#浏览器如何确定使用哪种渲染模式" class="headerlink" title="浏览器如何确定使用哪种渲染模式"></a>浏览器如何确定使用哪种渲染模式</h3><p>知道了这两种渲染模式的来由，那剩下的问题就是浏览器如何能够确定应该使用哪种模式了。其实归根结底就是，浏览器如何能将旧网页与新网页区分开来。<br> 平常编写网页的时候，一般都会见到HTML文档的头部会有文档类型声明：<code>DOCTYPE</code>。当浏览器遇到正确的文档声明时，浏览器就会启动标准模式，按照制定的文档类型标准解析和渲染文档。而对于旧有的网页，由于网页编写的当时标准还没有确定，所以一般是不会有文档类型声明的。所以，对于没有文档类型声明或者文档类型声明不正确的文档，浏览器就会认为它是一个旧的HTML文档，就会使用怪异模式解析和渲染该文档。关于<code>DOCTYPE</code>的更详细说明，请戳这里 <a href="https://www.jb51.net/web/34217.html">DOCTYPE声明作用及用法详解</a>。</p>
+<h3 id="标准模式与怪异模式的两个常见区别"><a href="#标准模式与怪异模式的两个常见区别" class="headerlink" title="标准模式与怪异模式的两个常见区别"></a>标准模式与怪异模式的两个常见区别</h3><ul>
+<li><strong>盒模型的处理差异：</strong>标准CSS盒模型的宽度和高度等于内容区的高度和宽度，不包含内边距和边框，而IE6之前的浏览器实现的盒模型的宽高计算方式是包含内边距和边框的。因此，对于IE，怪异模式和标准模式下的盒模型宽高计算方式是不一样的；</li>
+<li><strong>行内元素的垂直对齐：</strong>很多早期的浏览器对齐图片至包含它们的盒子的下边框，虽然CSS的规范要求它们被对齐至盒内文本的基线。标准模式下，基于Gecko的浏览器将会对齐至基线，而在quirks模式下它们会对齐至底部。最直接的例子就是图片的显示。在标准模式下，图片并不是与父元素的下边框对齐的，如果仔细观察，你会发现图片与父元素下边框之间存在一点小空隙。那是因为标准模式下，图片是基线对齐的。而怪异模式下，则不存在这个问题。具体请看这篇文章 <a href="https://www.zhangxinxu.com/wordpress/2015/08/css-deep-understand-vertical-align-and-line-height/?shrink=1">CSS深入理解vertical-align和line-height的基友关系</a>。</li>
+</ul>
+<h2 id="三、HTML与XHTML的区别"><a href="#三、HTML与XHTML的区别" class="headerlink" title="三、HTML与XHTML的区别"></a>三、HTML与XHTML的区别</h2><blockquote>
+<p><code>HTML</code>(文本标记语言)是英文HyperText Markup Language的简称，用于创建网页的标准标记语言，html并不是编程语言，HTML 运行在浏览器上由浏览器来解析翻译给网站访客，它是建设网站的基础。Html5代表了下一代html的发展，html5功能已经很强大。</p>
+<p><code>XHTML</code>(可扩展标识语言)是The Extensible Markup Language的简写,XHTML 1.0在2000年1月26日成为W3C的推荐标准。XHTML1.0是源自W3C的最新的HTML标准，是Web的语言，是M站软件幵发必不可少的Web构件之一，每一个Web开发者都需要对它熟练掌握。</p>
+</blockquote>
+<p><strong>功能区别：</strong></p>
+<ul>
+<li>HTML对于各大浏览器兼容性较差(pc端浏览器、手机端浏览器、PAD)，对于网页页面编写技巧要求比较高，现在web前端开发的静态网页，一般都是html4.0，HTML5就另当别论了。</li>
+<li>XHTML可以很好处理各大浏览器的兼容(pc端浏览器、手机端浏览器、PAD)，看起来与HTML有些相象但是和HTML有不少的区别，XHTML的语法较为严谨，习惯松散结构的HTML编写者刚开始接触XHTML有些不习惯。XHTML结合了部分XML的强大功能及大多数HTML的简单特性。</li>
+</ul>
+<p><strong>书写习惯区别</strong></p>
+<ul>
+<li>HTML标签不区分大小写XHTML所有标签都必须小写。</li>
+<li>XHTML标签必须成双成对.</li>
+<li>html对标签顺序要求不严格，XHTML标签顺序必须正确</li>
+</ul>
+<h2 id="四、使用data"><a href="#四、使用data" class="headerlink" title="四、使用data-*"></a>四、使用data-*</h2><ul>
+<li>data-* 属性用于存储页面或应用程序的私有自定义数据。</li>
+<li>data-* 属性赋予我们在所有 HTML 元素上嵌入自定义 data 属性的能力。</li>
+<li>存储的（自定义）数据能够被页面的 JavaScript 中利用，以创建更好的用户体验（不进行 Ajax 调用或服务器端数据库查询）。</li>
+</ul>
+<p>data-* 属性包括两部分：</p>
+<p>   <strong>语法  &lt;*element* data-*=”*somevalue*”&gt;</strong></p>
+<ul>
+<li>属性名不应该包含任何大写字母，并且在前缀 “data-“ 之后必须有至少一个字符</li>
+<li>属性值可以是任意字符串</li>
+</ul>
+<blockquote>
+<p>注释：用户代理会完全忽略前缀为 “data-“ 的自定义属性。</p>
+</blockquote>
+<p><strong>Example</strong>:</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">showDetails</span>(<span class="params">animal</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript"><span class="keyword">var</span> animalType = animal.getAttribute(<span class="string">&quot;data-animal-type&quot;</span>);</span></span><br><span class="line"><span class="javascript">alert(animal.innerHTML + <span class="string">&quot;是一种&quot;</span> + animalType + <span class="string">&quot;。&quot;</span>);</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>物种<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>点击某个物种来查看其类别：<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span> <span class="attr">onclick</span>=<span class="string">&quot;showDetails(this)&quot;</span> <span class="attr">id</span>=<span class="string">&quot;owl&quot;</span> <span class="attr">data-animal-type</span>=<span class="string">&quot;鸟类&quot;</span>&gt;</span>喜鹊<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span> <span class="attr">onclick</span>=<span class="string">&quot;showDetails(this)&quot;</span> <span class="attr">id</span>=<span class="string">&quot;salmon&quot;</span> <span class="attr">data-animal-type</span>=<span class="string">&quot;鱼类&quot;</span>&gt;</span>金枪鱼<span class="tag">&lt;/<span class="name">li</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">li</span> <span class="attr">onclick</span>=<span class="string">&quot;showDetails(this)&quot;</span> <span class="attr">id</span>=<span class="string">&quot;tarantula&quot;</span> <span class="attr">data-animal-type</span>=<span class="string">&quot;蜘蛛&quot;</span>&gt;</span>蝇虎<span class="tag">&lt;/<span class="name">li</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>优势</strong></p>
+<ul>
+<li>自定义属性，可以被js很好的操作</li>
+<li>H5的新属性</li>
+<li>通过js的element.dataset.<em>或jQuery的data(‘</em>‘)拿到，*可以为url等字符</li>
+<li>框架的数据绑定，例如<code>data-ng-if=&quot;cs==1&quot;</code></li>
+</ul>
+<p><strong>使用</strong></p>
+<p> data-toggle 这种以 <strong>data-</strong> 开头的格式放在元素上表示元素携带的数据，如：</p>
+<figure class="highlight autohotkey"><table><tr><td class="code"><pre><span class="line">&lt;``img` `id``=``<span class="string">&quot;img&quot;</span>` `src``=``<span class="string">&quot;small.jpg&quot;</span>` `data-bigimg``=``<span class="string">&quot;big.jpg&quot;</span>` `/&gt;</span><br></pre></td></tr></table></figure>
+
+<p>JQuery的 <strong>data()</strong> 方法可以直接操作，如：</p>
+<figure class="highlight julia"><table><tr><td class="code"><pre><span class="line">//获取：<span class="string">``</span>var<span class="string">` `</span>bigImage = $(<span class="string">``</span><span class="string">&quot;#img&quot;</span><span class="string">``</span>).data(<span class="string">``</span><span class="string">&quot;bigimg&quot;</span><span class="string">``</span>);<span class="string">``</span>//注意，这里不用加 data-</span><br><span class="line">//设置：<span class="string">``</span>$(<span class="string">``</span><span class="string">&quot;#img&quot;</span><span class="string">``</span>).data(<span class="string">``</span><span class="string">&quot;bigimg&quot;</span><span class="string">``</span>,<span class="string">``</span><span class="string">&quot;newBig.jpg&quot;</span><span class="string">``</span>);<span class="string">``</span>//注意，这里也不用加 data-</span><br></pre></td></tr></table></figure>
+
+<p>用这种 <code>$(&quot;[data-bigimg]&quot;)</code> 的方式可以选择所有具有 <code>data-bigimg</code> 这个属性的元素。</p>
+<p>也可以直接通过<code>$(&quot;#img&quot;).attr(&quot;data-bigimg&quot;);</code> 来获取和设置</p>
+<h2 id="五、HTML模板引擎"><a href="#五、HTML模板引擎" class="headerlink" title="五、HTML模板引擎"></a>五、HTML模板引擎</h2><blockquote>
+<p>模板引擎（这里特指用于Web开发的模板引擎）是为了使用户界面与业务数据（内容）分离而产生的，它可以生成特定格式的文档，用于网站的模板引擎就会生成一个标准的<a href="https://baike.baidu.com/item/HTML/97049">HTML</a>文档。</p>
+</blockquote>
+<blockquote>
+<p>其他待补充</p>
+</blockquote>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>Front End</category>
+      </categories>
+      <tags>
+        <tag>HTML</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HTML渲染</title>
+    <url>/2020/08/29/HTML-render/</url>
+    <content><![CDATA[<h2 id="一、HTML渲染过程"><a href="#一、HTML渲染过程" class="headerlink" title="一、HTML渲染过程"></a>一、HTML渲染过程</h2><h3 id="1-HTML解析过程"><a href="#1-HTML解析过程" class="headerlink" title="1. HTML解析过程"></a>1. HTML解析过程</h3><ol>
+<li><p><strong>构建DOM树</strong>：将HTML构建成一个DOM树，也就是构建节点，把所有的节点都构建出来</p>
+</li>
+<li><p><strong>构建CSSOM树</strong>：解析css去构建CSSOM树</p>
+</li>
+<li><p><strong>根据DOM树和CSSOM树构建render树</strong>：DOM树和CSSOM树已经构建完毕，浏览器会根据这两个来构造render树，浏览器就知道了有哪些节点、各个节点的CSS定义以及他们的从属关系</p>
+</li>
+<li><p><strong>布局</strong>：有了render树就开始布局Layout，开始计算各个节点的位置和样式</p>
+</li>
+<li><p><strong>绘制</strong>：遍历render树，在页面上绘制每个节点</p>
+</li>
+<li><p><strong><em>重排reflow</em></strong>：当render树绘制完成之后，比如JavaScript改变样式或添加节点，这时候render树就需要重新计算</p>
+</li>
+<li><p><strong><em>重绘repaint</em></strong>：既然重排了，最后当然得重新绘制页面。</p>
+</li>
+</ol>
+<a id="more"></a>
+
+<h3 id="2-浏览器渲染页面详解"><a href="#2-浏览器渲染页面详解" class="headerlink" title="2. 浏览器渲染页面详解"></a>2. 浏览器渲染页面详解</h3><blockquote>
+<p>找了一篇已经很全的文章，所以不继续造轮子了，接下来分享一下<a href="https://segmentfault.com/a/1190000010298038">这篇文章</a>，同时感谢原作者</p>
+</blockquote>
+<p>由一道面试题引发的思考：</p>
+<p><strong>从用户输入浏览器输入url到页面最后呈现 有哪些过程？</strong><br><em>一道很常规的题目，考的是基本网络原理，和浏览器加载css，js过程。</em></p>
+<p><strong><em>答案大致如下：</em></strong></p>
+<blockquote>
+<ol>
+<li><p>用户输入URL地址</p>
+</li>
+<li><p>浏览器解析URL解析出主机名</p>
+</li>
+<li><p>浏览器将主机名转换成服务器ip地址（浏览器先查找本地DNS缓存列表 没有的话 再向浏览器默认的DNS服务器发送查询请求 同时缓存）</p>
+</li>
+<li><p>浏览器将端口号从URL中解析出来</p>
+</li>
+<li><p>浏览器建立一条与目标Web服务器的TCP连接（三次握手）</p>
+</li>
+<li><p>浏览器向服务器发送一条HTTP请求报文</p>
+</li>
+<li><p>服务器向浏览器返回一条HTTP响应报文</p>
+</li>
+<li><p>关闭连接 浏览器解析文档</p>
+</li>
+<li><p>如果文档中有资源 重复6 7 8 动作 直至资源全部加载完毕</p>
+</li>
+</ol>
+</blockquote>
+<p><strong>通过研究，了解一些基本常识的原理：</strong></p>
+<ol>
+<li>为什么要将js放到页脚部分</li>
+<li>引入样式的几种方式的权重</li>
+<li>css属性书写顺序建议</li>
+<li>何种类型的DOM操作是耗费性能的</li>
+</ol>
+<h4 id="2-1-浏览器渲染主要流程"><a href="#2-1-浏览器渲染主要流程" class="headerlink" title="2.1 浏览器渲染主要流程"></a>2.1 浏览器渲染主要流程</h4><p>不同的浏览器内核不同，所以渲染过程不太一样。</p>
+<p><code>WebKit 主流程</code></p>
+<p><img data-src="pic1.png"></p>
+<p><code>Mozilla</code> 的 <code>Gecko</code> 呈现引擎主流程</p>
+<p><img data-src="pic2.png"></p>
+<p>由上面两张图可以看出，虽然主流浏览器渲染过程叫法有区别，但是主要流程还是相同的。</p>
+<p><code>Gecko</code> 将视觉格式化元素组成的树称为“框架树”。每个元素都是一个框架。<br>WebKit 使用的术语是“呈现树”，它由“呈现对象”组成。</p>
+<p>对于元素的放置，<code>WebKit</code> 使用的术语是“布局”，而 <code>Gecko</code> 称之为“重排”。</p>
+<p>对于连接 DOM 节点和可视化信息从而创    建呈现树的过程，<code>WebKit</code> 使用的术语是“附加”。</p>
+<p><strong>所以可以分析出基本过程：</strong></p>
+<ol>
+<li>HTML解析出DOM Tree</li>
+<li>CSS解析出Style Rules</li>
+<li>将二者关联生成Render Tree</li>
+<li>Layout 根据Render Tree计算每个节点的信息</li>
+<li>Painting 根据计算好的信息绘制整个页面</li>
+</ol>
+<h4 id="2-2-HTML-解析"><a href="#2-2-HTML-解析" class="headerlink" title="2.2 HTML 解析"></a>2.2 HTML 解析</h4><p><code>HTML Parser</code>的任务是将HTML标记解析成<code>DOM Tree</code><br>这个解析可以参考React解析DOM的过程，但是这里面有很多别的规则和操作，比如容错机制，识别<code>&lt;/br&gt;</code>和<code>&lt;br&gt;</code>等等。<br>感兴趣的可以参考 <a href="https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/">《How Browser Work》</a>，<a href="https://www.html5rocks.com/zh/tutorials/internals/howbrowserswork/">中文翻译</a><br>举个例子：一段HTML</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Web page parsing<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Web page parsing<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>This is an example Web page.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>经过解析之后的DOM Tree差不多就是</p>
+<p><img data-src="pic3.png"></p>
+<p>将文本的HTML文档，提炼出关键信息，嵌套层级的树形结构，便于计算拓展。这就是HTML Parser的作用。</p>
+<h4 id="2-3-CSS解析"><a href="#2-3-CSS解析" class="headerlink" title="2.3 CSS解析"></a>2.3 CSS解析</h4><p><code>CSS Parser</code>将CSS解析成<code>Style Rules</code>，<code>Style Rules</code>也叫<code>CSSOM（CSS Object Model）</code>。<br><code>StyleRules</code>也是一个树形结构，根据CSS文件整理出来的类似<code>DOM Tree</code>的树形结构：</p>
+<p><img data-src="pic4.png"></p>
+<p>与<code>HTML Parser</code>相似，<code>CSS Parser</code>作用就是将很多个CSS文件中的样式合并解析出具有树形结构Style Rules。</p>
+<h4 id="2-4-脚本处理"><a href="#2-4-脚本处理" class="headerlink" title="2.4 脚本处理"></a>2.4 脚本处理</h4><p>浏览器解析文档，当遇到<code>&lt;script&gt;</code>标签的时候，会立即解析脚本，停止解析文档（因为JS可能会改动DOM和CSS，所以继续解析会造成浪费）。<br>如果脚本是外部的，会等待脚本下载完毕，再继续解析文档。现在可以在script标签上增加属性 <code>defer</code>或者<code>async</code>。<br>脚本解析会将脚本中改变DOM和CSS的地方分别解析出来，追加到<code>DOM Tree</code>和<code>Style Rules</code>上。</p>
+<h4 id="2-5-呈现树（Render-Tree）"><a href="#2-5-呈现树（Render-Tree）" class="headerlink" title="2.5 呈现树（Render Tree）"></a>2.5 呈现树（Render Tree）</h4><p><code>Render Tree</code>的构建其实就是<code>DOM Tree</code>和<code>CSSOM</code> <strong>Attach</strong>的过程。</p>
+<p>呈现树是和 DOM 元素相对应的，但并非一一对应。Render Tree实际上就是一个计算好样式，与HTML对应的（包括哪些显示，那些不显示）的Tree。</p>
+<blockquote>
+<p>在 WebKit 中，解析样式和创建呈现树的过程称为“附加”。每个 DOM 节点都有一个<code>“attach”</code>方法。附加是同步进行的，将节点插入 DOM 树需要调用新的节点<code>“attach”</code>方法。</p>
+</blockquote>
+<p><img data-src="pic5.png"></p>
+<h4 id="2-6-样式计算"><a href="#2-6-样式计算" class="headerlink" title="2.6 样式计算"></a>2.6 样式计算</h4><p>样式计算是个很复杂的问题。DOM中的一个元素可以对应样式表中的多个元素。样式表包括了所有样式：浏览器默认样式表，自定义样式表，inline样式元素，<strong>HTML可视化属性如：width=100。后者将转化以匹配CSS样式。</strong></p>
+<blockquote>
+<p>WebKit 节点会引用样式对象 (RenderStyle)。这些对象在某些情况下可以由不同节点共享。这些节点是同级关系，并且：</p>
+<ol>
+<li>这些元素必须处于相同的鼠标状态（例如，不允许其中一个是“:hover”状态，而另一个不是）</li>
+<li>任何元素都没有 ID</li>
+<li>标记名称应匹配</li>
+<li>类属性应匹配</li>
+<li>映射属性的集合必须是完全相同的</li>
+<li>链接状态必须匹配</li>
+<li>焦点状态必须匹配</li>
+<li>任何元素都不应受属性选择器的影响，这里所说的“影响”是指在选择器中的任何位置有任何使用了属性选择器的选择器匹配</li>
+<li>元素中不能有任何 inline 样式属性</li>
+<li>不能使用任何同级选择器。WebCore 在遇到任何同级选择器时，只会引发一个全局开关，并停用整个文档的样式共享（如果存在）。这包括 + 选择器以及 :first-child 和 :last-child 等选择器。</li>
+</ol>
+</blockquote>
+<p>为了简化样式计算，Firefox 还采用了另外两种树：规则树和样式上下文树。WebKit 也有样式对象，但它们不是保存在类似样式上下文树这样的树结构中，只是由 DOM 节点指向此类对象的相关样式。</p>
+<p><img data-src="pic6.png"></p>
+<p>样式上下文包含端值。要计算出这些值，应按照正确顺序应用所有的匹配规则，并将其从逻辑值转化为具体的值。<br>例如，<strong>如果逻辑值是屏幕大小的百分比，则需要换算成绝对的单位</strong>。规则树的点子真的很巧妙，它使得节点之间可以共享这些值，以避免重复计算，还可以节约空间。<br>所有匹配的规则都存储在树中。路径中的底层节点拥有较高的优先级。规则树包含了所有已知规则匹配的路径。规则的存储是延迟进行的。规则树不会在开始的时候就为所有的节点进行计算，而是只有当某个节点样式需要进行计算时，才会向规则树添加计算的路径。</p>
+<p>*<strong>举个例子</strong> 一段HTML代码：*</p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;div <span class="keyword">class</span>=&quot;<span class="symbol">err</span>&quot; <span class="symbol">id</span>=&quot;<span class="symbol">div1</span>&quot;&gt;</span><br><span class="line">      &lt;<span class="symbol">p</span>&gt;</span><br><span class="line">        <span class="symbol">this</span> <span class="symbol">is</span> <span class="symbol">a</span> &lt;<span class="symbol">span</span> <span class="symbol">class</span>=&quot;<span class="symbol">big</span>&quot;&gt; <span class="symbol">big</span> <span class="symbol">error</span> &lt;/<span class="symbol">span</span>&gt;</span><br><span class="line">        <span class="symbol">this</span> <span class="symbol">is</span> <span class="symbol">also</span> <span class="symbol">a</span></span><br><span class="line">        &lt;<span class="symbol">span</span> <span class="symbol">class</span>=&quot;<span class="symbol">big</span>&quot;&gt; <span class="symbol">very</span>  <span class="symbol">big</span>  <span class="symbol">error</span>&lt;/<span class="symbol">span</span>&gt; <span class="symbol">error</span></span><br><span class="line">      &lt;/<span class="symbol">p</span>&gt;</span><br><span class="line">    &lt;/<span class="symbol">div</span>&gt;</span><br><span class="line">    &lt;<span class="symbol">div</span> <span class="symbol">class</span>=&quot;<span class="symbol">err</span>&quot; <span class="symbol">id</span>=&quot;<span class="symbol">div2</span>&quot;&gt;<span class="symbol">another</span> <span class="symbol">error</span>&lt;/<span class="symbol">div</span>&gt;</span><br><span class="line">  &lt;/<span class="symbol">body</span>&gt;</span><br><span class="line">&lt;/<span class="symbol">html</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p>对应CSS规则如下：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">1. <span class="selector-tag">div</span> &#123;<span class="attribute">margin</span>:<span class="number">5px</span>;<span class="attribute">color</span>:black&#125;</span><br><span class="line">2. <span class="selector-class">.err</span> &#123;<span class="attribute">color</span>:red&#125;</span><br><span class="line">3. <span class="selector-class">.big</span> &#123;<span class="attribute">margin-top</span>:<span class="number">3px</span>&#125;</span><br><span class="line">4. <span class="selector-tag">div</span> <span class="selector-tag">span</span> &#123;<span class="attribute">margin-bottom</span>:<span class="number">4px</span>&#125;</span><br><span class="line">5. <span class="selector-id">#div1</span> &#123;<span class="attribute">color</span>:blue&#125;</span><br><span class="line">6. <span class="selector-id">#div2</span> &#123;<span class="attribute">color</span>:green&#125;</span><br></pre></td></tr></table></figure>
+
+<p>则CSS形成的规则树如下图所示（节点的标记方式为“节点名 : 指向的规则序号”）</p>
+<p><img data-src="pic7.png"></p>
+<blockquote>
+<p>下面的内容有点绕，但是很有逻辑</p>
+</blockquote>
+<p>假设我们解析 HTML 时遇到了第二个 <code>&lt;div&gt;</code> 标记，我们需要为此节点创建样式上下文，并填充其样式结构。<br>经过规则匹配，我们发现该 <code>&lt;div&gt;</code>的匹配规则是第 1、2 和 6 条。这意味着规则树中已有一条路径可供我们的元素使用，我们只需要再为其添加一个节点以匹配第 6 条规则（规则树中的 F 节点）。<br>我们将创建样式上下文并将其放入上下文树中。新的样式上下文将指向规则树中的 F 节点。</p>
+<p>现在我们需要填充样式结构。首先要填充的是 margin 结构。由于最后的规则节点 (F) 并没有添加到 margin 结构，我们需要上溯规则树，直至找到在先前节点插入中计算过的缓存结构，然后使用该结构。我们会在指定 margin 规则的最上层节点（即 B 节点）上找到该结构。</p>
+<p>我们已经有了 color 结构的定义，因此不能使用缓存的结构。由于 color 有一个属性，我们无需上溯规则树以填充其他属性。我们将计算端值（将字符串转化为 <code>RGB</code> 等）并在此节点上缓存经过计算的结构。</p>
+<p>第二个<code>&lt;span&gt;</code>元素处理起来更加简单。我们将匹配规则，最终发现它和之前的 span 一样指向规则 G。由于我们找到了指向同一节点的同级，就可以共享整个样式上下文了，只需指向之前 span 的上下文即可。</p>
+<p>对于包含了继承自父代的规则的结构，缓存是在上下文树中进行的（事实上 color 属性是继承的，但是 Firefox 将其视为 reset 属性，并缓存到规则树上）<br>所以生成的上下文树如下：</p>
+<p><img data-src="pic8.png"></p>
+<h4 id="2-7-以正确的层叠顺序应用规则"><a href="#2-7-以正确的层叠顺序应用规则" class="headerlink" title="2.7 以正确的层叠顺序应用规则"></a>2.7 以正确的层叠顺序应用规则</h4><p>样式对象具有与每个可视化属性一一对应的属性（均为 CSS 属性但更为通用）。如果某个属性未由任何匹配规则所定义，那么部分属性就可由父代元素样式对象继承。其他属性具有默认值。<br>如果定义不止一个，就会出现问题，需要通过层叠顺序来解决。</p>
+<p>一些例子：</p>
+<figure class="highlight stata"><table><tr><td class="code"><pre><span class="line"><span class="comment">*             &#123;&#125;  /* a=0 b=0 c=0 d=0 -&gt; specificity = 0,0,0,0 */</span></span><br><span class="line"><span class="keyword">li</span>            &#123;&#125;  <span class="comment">/* a=0 b=0 c=0 d=1 -&gt; specificity = 0,0,0,1 */</span></span><br><span class="line"><span class="keyword">li</span>:first-<span class="keyword">line</span> &#123;&#125;  <span class="comment">/* a=0 b=0 c=0 d=2 -&gt; specificity = 0,0,0,2 */</span></span><br><span class="line">ul <span class="keyword">li</span>         &#123;&#125;  <span class="comment">/* a=0 b=0 c=0 d=2 -&gt; specificity = 0,0,0,2 */</span></span><br><span class="line">ul ol+<span class="keyword">li</span>      &#123;&#125;  <span class="comment">/* a=0 b=0 c=0 d=3 -&gt; specificity = 0,0,0,3 */</span></span><br><span class="line">h1 + *[rel=up]&#123;&#125;  <span class="comment">/* a=0 b=0 c=1 d=1 -&gt; specificity = 0,0,1,1 */</span></span><br><span class="line">ul ol <span class="keyword">li</span>.red  &#123;&#125;  <span class="comment">/* a=0 b=0 c=1 d=3 -&gt; specificity = 0,0,1,3 */</span></span><br><span class="line"><span class="keyword">li</span>.red.level  &#123;&#125;  <span class="comment">/* a=0 b=0 c=2 d=1 -&gt; specificity = 0,0,2,1 */</span></span><br><span class="line">#x34y         &#123;&#125;  <span class="comment">/* a=0 b=1 c=0 d=0 -&gt; specificity = 0,1,0,0 */</span></span><br><span class="line">style=<span class="string">&quot;&quot;</span>          <span class="comment">/* a=1 b=0 c=0 d=0 -&gt; specificity = 1,0,0,0 */</span></span><br></pre></td></tr></table></figure>
+
+<p>利用上面的方法，基本可以快速确定不同选择器的优先级。</p>
+<h4 id="2-8-布局Layout"><a href="#2-8-布局Layout" class="headerlink" title="2.8 布局Layout"></a>2.8 布局Layout</h4><p>创建渲染树后，下一步就是<code>布局（Layout）</code>,或者叫<code>回流（reflow,relayout）</code>，这个过程就是通过渲染树中渲染对象的信息，计算出每一个渲染对象的位置和尺寸，将其安置在浏览器窗口的正确位置，而有些时候我们会在文档布局完成后对DOM进行修改，这时候可能需要重新进行布局，也可称其为<code>回流</code>，本质上还是一个布局的过程，每一个渲染对象都有一个布局或者回流方法，实现其布局或回流。</p>
+<p><strong>对渲染树的布局可以分为全局和局部的</strong></p>
+<ul>
+<li>全局即对整个渲染树进行重新布局，如<u>当我们改变了窗口尺寸或方向</u>或者是<u>修改了根元素的尺寸或者字体大小</u>等；</li>
+<li>而局部布局可以是对渲染树的某部分或某一个渲染对象进行重新布局。</li>
+</ul>
+<p>大多数web应用对DOM的操作都是比较频繁，这意味着经常需要对DOM进行布局和回流，而如果仅仅是一些小改变，就触发整个渲染树的回流，这显然是不好的，为了避免这种情况，浏览器使用了<code>脏位系统</code>，只有一个渲染对象改变了或者某渲染对象及其子渲染对象脏位值为”dirty”时，说明需要回流。</p>
+<blockquote>
+<p>表示需要布局的脏位值有两种：</p>
+<ul>
+<li>“dirty”–自身改变，需要回流</li>
+<li>“children are dirty”–子节点改变，需要回流</li>
+</ul>
+</blockquote>
+<p>布局是一个从上到下，从外到内进行的递归过程，从根渲染对象，即对应着HTML文档根元素，然后下一级渲染对象，如对应着元素，如此层层递归，依次计算每一个渲染对象的几何信息（位置和尺寸）。</p>
+<p><strong>每一个渲染对象的布局流程基本如：</strong></p>
+<ol>
+<li><p>计算渲染对象的宽度（width）；</p>
+</li>
+<li><p>遍历此渲染对象的所有子级，依次：</p>
+<p>2.1设置子级渲染对象的坐标</p>
+<p>2.2判断是否需要触发子渲染对象的布局或回流方法，计算子渲染对象的高度（height）</p>
+</li>
+<li><p>设置此渲染对象的高度：根据子渲染对象的累积高，margin和padding的高度设置其高度；</p>
+</li>
+<li><p>设置此渲染对象脏位值为false。</p>
+</li>
+</ol>
+<h4 id="2-9-绘制（Painting）"><a href="#2-9-绘制（Painting）" class="headerlink" title="2.9 绘制（Painting）"></a>2.9 绘制（Painting）</h4><p>在绘制阶段，系统会遍历呈现树，并调用呈现器的<code>“paint”</code>方法，将呈现器的内容显示在屏幕上。绘制工作是使用用户界面基础组件完成的。</p>
+<p>CSS2 规范定义了绘制流程的顺序。绘制的顺序其实就是元素进入堆栈样式上下文的顺序。这些堆栈会从后往前绘制，因此这样的顺序会影响绘制。块呈现器的堆栈顺序如下：</p>
+<ol>
+<li>背景颜色</li>
+<li>背景图片</li>
+<li>边框</li>
+<li>子代</li>
+<li>轮廓</li>
+</ol>
+<p>这里还要说两个概念，一个是<code>Reflow</code>，另一个是<code>Repaint</code>。这两个不是一回事。<br><strong>Repaint</strong> ——屏幕的一部分要重画，比如某个CSS的背景色变了。但是元素的几何尺寸没有变。<br><strong>Reflow</strong> 元件的几何尺寸变了，我们需要重新验证并计算Render Tree。是Render Tree的一部分或全部发生了变化。这就是Reflow，或是Layout。（HTML使用的是flow based layout，也就是流式布局，所以，如果某元件的几何尺寸发生了变化，需要重新布局，也就叫reflow）reflow 会从<code>&lt;html&gt;</code>这个root frame开始递归往下，依次计算所有的结点几何尺寸和位置，在reflow过程中，可能会增加一些frame，比如一个文本字符串必需被包装起来。</p>
+<blockquote>
+<p>Reflow的成本比Repaint的成本高得多的多。DOM Tree里的每个结点都会有reflow方法，一个结点的reflow很有可能导致子结点，甚至父点以及同级结点的reflow。在一些高性能的电脑上也许还没什么，但是如果reflow发生在手机上，那么这个过程是非常痛苦和耗电的。</p>
+</blockquote>
+<p> 所以，下面这些动作有很大可能会是成本比较高的。</p>
+<ul>
+<li>当你增加、删除、修改DOM结点时，会导致Reflow或Repaint</li>
+<li>当你移动DOM的位置，或是搞个动画的时候。</li>
+<li>当你修改CSS样式的时候。</li>
+<li>当你Resize窗口的时候（移动端没有这个问题），或是滚动的时候。</li>
+<li>当你修改网页的默认字体时。</li>
+<li>注：display:none会触发reflow，而visibility:hidden只会触发repaint，因为没有发现位置变化。</li>
+</ul>
+<p>基本上来说，reflow有如下的几个原因：</p>
+<ul>
+<li>Initial。网页初始化的时候。</li>
+<li>Incremental。一些Javascript在操作DOM Tree时。</li>
+<li>Resize。其些元件的尺寸变了。</li>
+<li>StyleChange。如果CSS的属性发生变化了。</li>
+<li>Dirty。几个Incremental的reflow发生在同一个frame的子树上。</li>
+</ul>
+<p>看几个例子：</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&#x27;body&#x27;</span>).css(<span class="string">&#x27;color&#x27;</span>, <span class="string">&#x27;red&#x27;</span>); <span class="regexp">//</span> repaint</span><br><span class="line">$(<span class="string">&#x27;body&#x27;</span>).css(<span class="string">&#x27;margin&#x27;</span>, <span class="string">&#x27;2px&#x27;</span>); <span class="regexp">//</span> reflow, repaint</span><br><span class="line"></span><br><span class="line">var bstyle = document.body.style; <span class="regexp">//</span> cache</span><br><span class="line"></span><br><span class="line">bstyle.padding = <span class="string">&quot;20px&quot;</span>; <span class="regexp">//</span> reflow, repaint</span><br><span class="line">bstyle.border = <span class="string">&quot;10px solid red&quot;</span>; <span class="regexp">//</span>  再一次的 reflow 和 repaint</span><br><span class="line"></span><br><span class="line">bstyle.color = <span class="string">&quot;blue&quot;</span>; <span class="regexp">//</span> repaint</span><br><span class="line">bstyle.backgroundColor = <span class="string">&quot;#fad&quot;</span>; <span class="regexp">//</span> repaint</span><br><span class="line"></span><br><span class="line">bstyle.fontSize = <span class="string">&quot;2em&quot;</span>; <span class="regexp">//</span> reflow, repaint</span><br><span class="line"></span><br><span class="line"><span class="regexp">//</span> new DOM element - reflow, repaint</span><br><span class="line">document.body.appendChild(document.createTextNode(<span class="string">&#x27;dude!&#x27;</span>));</span><br></pre></td></tr></table></figure>
+
+<p>当然，我们的浏览器是聪明的，它不会像上面那样，你每改一次样式，它就reflow或repaint一次。一般来说，浏览器会把这样的操作积攒一批，然后做一次reflow，这又叫异步reflow或增量异步reflow。但是有些情况浏览器是不会这么做的，比如：resize窗口，改变了页面默认的字体，等。对于这些操作，浏览器会马上进行reflow。</p>
+<p>但是有些时候，我们的脚本会阻止浏览器这么干，比如：如果我们请求下面的一些DOM值：</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">offsetTop, offsetLeft, offsetWidth, offsetHeight</span><br><span class="line">scrollTop<span class="regexp">/Left/</span>Width/Height</span><br><span class="line">clientTop<span class="regexp">/Left/</span>Width/Height</span><br><span class="line">IE中的 getComputedStyle(), 或 currentStyle</span><br></pre></td></tr></table></figure>
+
+<p>因为，如果我们的程序需要这些值，那么浏览器需要返回最新的值，而这样一样会flush出去一些样式的改变，从而造成频繁的reflow/repaint。</p>
+<h4 id="2-10-Chrome调试工具查看页面渲染顺序"><a href="#2-10-Chrome调试工具查看页面渲染顺序" class="headerlink" title="2.10 Chrome调试工具查看页面渲染顺序"></a>2.10 Chrome调试工具查看页面渲染顺序</h4><p>页面的渲染详细过程可以通过chrome开发者工具中的timeline查看</p>
+<p><img data-src="pic9.png"></p>
+<ol>
+<li>发起请求；</li>
+<li>解析HTML；</li>
+<li>解析样式；</li>
+<li>执行JavaScript；</li>
+<li>布局；</li>
+<li>绘制</li>
+</ol>
+<h2 id="二、页面渲染优化"><a href="#二、页面渲染优化" class="headerlink" title="二、页面渲染优化"></a>二、页面渲染优化</h2><p>浏览器对上文介绍的关键渲染路径进行了很多优化，针对每一次变化产生尽量少的操作，还有优化判断重新绘制或布局的方式等等。<br>在改变文档根元素的字体颜色等视觉性信息时，会触发整个文档的重绘，而改变某元素的字体颜色则只触发特定元素的重绘；改变元素的位置信息会同时触发此元素（可能还包括其兄弟元素或子级元素）的布局和重绘。某些重大改变，如更改文档根元素的字体尺寸，则会触发整个文档的重新布局和重绘，据此及上文所述，推荐以下优化和实践：</p>
+<ol>
+<li>HTML文档结构层次尽量少，最好不深于六层；</li>
+<li>脚本尽量后放，放最后即可；</li>
+<li>少量首屏样式内联放在标签内；</li>
+<li>样式结构层次尽量简单；</li>
+<li>在脚本中尽量减少DOM操作，尽量缓存访问DOM的样式信息，避免过度触发<code>回流</code>；</li>
+<li>减少通过JavaScript代码修改元素样式，尽量使用修改class名方式操作样式或动画；</li>
+<li>动画尽量使用在绝对定位或固定定位的元素上；</li>
+<li>隐藏在屏幕外，或在页面滚动时，尽量停止动画；</li>
+<li>尽量缓存DOM查找，查找器尽量简洁；</li>
+<li>涉及多域名的网站，可以开启域名预解析</li>
+</ol>
+<p><strong>补充</strong></p>
+<p>HTML整个解析过程看起来很简单，但是我们要知道解析过程中css、Js和DOM的加载顺序。我们都知道HTML是自上往下解析的，在解析过程中：</p>
+<p>1、如果遇到link和style，那就就会去下载这些外部的css资源，但是css跟DOM的构建是并行的，就是说不会阻塞DOM树的构建。</p>
+<p>2、如果遇到script，那么页面就会把控制权交给JavaScript，直到脚本加载完毕或者是执行完毕。</p>
+<p>3、页面的渲染是依靠render树，也就是说如果css没有加载完成，页面也不会渲染显示。</p>
+<p>4、JavaScript执行过程中有可能需要改变样式，所以css加载也会阻塞JavaScript的加载。</p>
+<p>5、JavaScript执行过程中如果操作DOM，但是DOM树又是在JavaScript之后才能构建，就会报错，找不到节点。</p>
+<p>这就是HTML的渲染过程，因为DOM和css并行构建，我们会把css用外部引入，可以更快的构建DOM，因为JavaScript会阻塞DOM和css构建，且操作DOM一定要在DOM构建完成，我们选择把script放在最下面。如果我们过多的在render渲染完成后改变render，那么重排和重绘就会一直被动重发执行，这也会造成渲染速度变慢。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>浏览器渲染问题每一步都涉及到很多底层知识，每一步都有对应的算法。<br>文章中间很多语句都是直接复制的原文，自己的语言概况还是不及原文精彩。</p>
+<p><strong>可参考原文链接</strong></p>
+<p><a href="https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/">《How Browser Work》</a></p>
+<p><a href="https://www.html5rocks.com/zh/tutorials/internals/howbrowserswork/">浏览器的工作原理：新式网络浏览器幕后揭秘</a></p>
+<p><a href="http://imweb.io/topic/56841c864c44bcc56092e3fa">浏览器渲染原理</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/25279069">浏览器 渲染,绘制流程及性能优化</a></p>
+<p><a href="http://caibaojian.com/css-reflow-repaint.html">优化CSS重排重绘与浏览器性能</a></p>
+<p><a href="http://web.jobbole.com/90961/">浅析前端页面渲染机制</a></p>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>Front End</category>
+      </categories>
+      <tags>
+        <tag>HTML</tag>
       </tags>
   </entry>
   <entry>
@@ -1056,438 +1793,6 @@ D-->>A: Dashed open arrow</textarea><textarea id="sequence-2-options" style="dis
       <tags>
         <tag>开发与调试</tag>
         <tag>开发工具</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>HTML基本问题</title>
-    <url>/2020/08/28/HTML-Bacics/</url>
-    <content><![CDATA[<h2 id="一、HTML新特性"><a href="#一、HTML新特性" class="headerlink" title="一、HTML新特性"></a>一、HTML新特性</h2><a id="more"></a>
-
-<blockquote>
-<p>参考自<a href="https://www.cnblogs.com/gaosirs/p/10756524.html">该文章</a></p>
-</blockquote>
-<h3 id="1-语义化标签"><a href="#1-语义化标签" class="headerlink" title="1. 语义化标签"></a>1. 语义化标签</h3><p>语义化标签 为页面提供了更好的<strong>页面结构</strong>。</p>
-<table>
-<thead>
-<tr>
-<th align="center">描述</th>
-<th align="center">属性</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center"><code>&lt;header&gt;&lt;/header&gt;</code></td>
-<td align="center">定义文档的头部区域</td>
-</tr>
-<tr>
-<td align="center"><code>&lt;footer&gt;&lt;/footer&gt;</code></td>
-<td align="center">定义文档的尾部区域</td>
-</tr>
-<tr>
-<td align="center"><code>&lt;nav&gt;&lt;/nav&gt;</code></td>
-<td align="center">定义文档的导航区域</td>
-</tr>
-<tr>
-<td align="center"><code>&lt;section&gt;&lt;/section&gt;</code></td>
-<td align="center">定义文档的段落</td>
-</tr>
-<tr>
-<td align="center"><code>&lt;article&gt;&lt;/article&gt;</code></td>
-<td align="center">定义页面独立的内容区域</td>
-</tr>
-<tr>
-<td align="center"><code>&lt;aside&gt;&lt;/aside&gt;</code></td>
-<td align="center">定义页面侧边栏内容</td>
-</tr>
-<tr>
-<td align="center"><code>&lt;command&gt;&lt;/command&gt;</code></td>
-<td align="center">定义命令按钮</td>
-</tr>
-<tr>
-<td align="center"><code>&lt;details&gt;&lt;/details&gt;</code></td>
-<td align="center">标签包含 details 元素的标题</td>
-</tr>
-<tr>
-<td align="center"><code>&lt;dialog&gt;&lt;/dialog&gt;</code></td>
-<td align="center">定义对话框</td>
-</tr>
-</tbody></table>
-<h3 id="2-增强型表单"><a href="#2-增强型表单" class="headerlink" title="2. 增强型表单"></a>2. 增强型表单</h3><p>HTML5 提供了多个新的<strong>表单输入类型</strong>。</p>
-<table>
-<thead>
-<tr>
-<th>输入类型</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>color</td>
-<td>主要用于选取颜色</td>
-</tr>
-<tr>
-<td>date</td>
-<td>从一个日期选择器选择一个日期</td>
-</tr>
-<tr>
-<td>datetime</td>
-<td>选择一个日期（UTC 时间）</td>
-</tr>
-<tr>
-<td>datetime-local</td>
-<td>选择一个日期和时间 (无时区)</td>
-</tr>
-<tr>
-<td>email</td>
-<td>包含 e-mail 地址的输入域</td>
-</tr>
-<tr>
-<td>month</td>
-<td>选择一个月份</td>
-</tr>
-<tr>
-<td>number</td>
-<td>数值的输入域</td>
-</tr>
-<tr>
-<td>range</td>
-<td>一定范围内数字值的输入域</td>
-</tr>
-<tr>
-<td>search</td>
-<td>用于搜索域</td>
-</tr>
-<tr>
-<td>tel</td>
-<td>定义输入电话号码字段</td>
-</tr>
-<tr>
-<td>time</td>
-<td>选择一个时间</td>
-</tr>
-<tr>
-<td>url</td>
-<td>URL 地址的输入域</td>
-</tr>
-<tr>
-<td>week</td>
-<td>选择周和年</td>
-</tr>
-</tbody></table>
-<p> 同时，还增加了<strong>新的表单属性</strong>：</p>
-<ol>
-<li><p>placehoder 属性，简短的提示在用户输入值前会显示在输入域上。即我们常见的输入框默认提示，在用户输入后消失。</p>
-</li>
-<li><p>required  属性，是一个 boolean 属性。要求填写的输入域不能为空</p>
-</li>
-<li><p>pattern 属性，描述了一个正则表达式用于验证<code>&lt;input&gt;</code> 元素的值。</p>
-</li>
-<li><p>min 和 max 属性，设置元素最小值与最大值。</p>
-</li>
-<li><p>step 属性，为输入域规定合法的数字间隔。</p>
-</li>
-<li><p>height 和 width 属性，用于 image 类型的 <code>&lt;input&gt;</code> 标签的图像高度和宽度。</p>
-</li>
-<li><p>autofocus 属性，是一个 boolean 属性。规定在页面加载时，域自动地获得焦点。</p>
-</li>
-<li><p>multiple 属性 ，是一个 boolean 属性。规定<code>&lt;input&gt;</code> 元素中可选择多个值。　　</p>
-</li>
-</ol>
-<h3 id="3-音频和视频"><a href="#3-音频和视频" class="headerlink" title="3. 音频和视频"></a>3. 音频和视频</h3><p>HTML5 提供了 <strong>音频和视频</strong> 。</p>
-<p>音频：<code>&lt;audio&gt;</code></p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">audio</span> <span class="attr">controls</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;xxx.ogg&quot;</span> <span class="attr">type</span>=<span class="string">&quot;audio/ogg&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;xxx.mp3&quot;</span> <span class="attr">type</span>=<span class="string">&quot;audio/mpeg&quot;</span>&gt;</span></span><br><span class="line">您的浏览器不支持 audio 元素。</span><br><span class="line"><span class="tag">&lt;/<span class="name">audio</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>视频：<code>&lt;video&gt;</code></p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">video</span> <span class="attr">width</span>=<span class="string">&quot;500&quot;</span> <span class="attr">height</span>=<span class="string">&quot;300&quot;</span> <span class="attr">controls</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;xxx.mp4&quot;</span> <span class="attr">type</span>=<span class="string">&quot;video/mp4&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;xxx.ogg&quot;</span> <span class="attr">type</span>=<span class="string">&quot;video/ogg&quot;</span>&gt;</span></span><br><span class="line">您的浏览器不支持Video标签。</span><br><span class="line"><span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="4-canvas-绘图"><a href="#4-canvas-绘图" class="headerlink" title="4. canvas 绘图"></a>4. canvas 绘图</h3><blockquote>
-<p>供欣赏的<code>canvas</code><a href="https://www.html5tricks.com/tag/html5-canvas/">作品</a></p>
-<p>jQuery/HTML5/CSS3<a href="http://www.htmleaf.com/html5/html5-canvas/">资料库</a></p>
-</blockquote>
-<blockquote>
-<p><a href="https://www.jianshu.com/p/7593eb9e53c2">Canvas教程</a></p>
-<p><a href="https://www.w3school.com.cn/html5/html_5_canvas.asp">W3School教程</a></p>
-<p><a href="https://www.cnblogs.com/gengzhen/p/11915071.html">Canvas绘图基础</a></p>
-</blockquote>
-<h3 id="5-SVG-绘图"><a href="#5-SVG-绘图" class="headerlink" title="5. SVG 绘图"></a>5. SVG 绘图</h3><blockquote>
-<p>嵌入和使用SVG:</p>
-<p><a href="https://segmentfault.com/a/1190000010942431">HTML中嵌入SVG图片的N种方式</a></p>
-<p><a href="https://www.w3school.com.cn/svg/svg_inhtml.asp">HTML 页面中的 SVG</a></p>
-<p><a href="https://www.jianshu.com/p/132b58273e27">HTML5之SVG的使用</a></p>
-</blockquote>
-<h4 id="SVG-与-Canvas两者间的区别"><a href="#SVG-与-Canvas两者间的区别" class="headerlink" title="SVG 与 Canvas两者间的区别"></a>SVG 与 Canvas两者间的区别</h4><p>SVG 是一种使用 XML 描述 2D 图形的语言。</p>
-<p>Canvas 通过 JavaScript 来绘制 2D 图形。</p>
-<p>SVG 基于 XML，这意味着 SVG DOM 中的每个元素都是可用的。您可以为某个元素附加 JavaScript 事件处理器。</p>
-<p>在 SVG 中，每个被绘制的图形均被视为对象。如果 SVG 对象的属性发生变化，那么浏览器能够自动重现图形。</p>
-<p>Canvas 是逐像素进行渲染的。在 canvas 中，一旦图形被绘制完成，它就不会继续得到浏览器的关注。如果其位置发生变化，那么整个场景也需要重新绘制，包括任何或许已被图形覆盖的对象。</p>
-<h3 id="6-地理定位（Geolocation）"><a href="#6-地理定位（Geolocation）" class="headerlink" title="6. 地理定位（Geolocation）"></a>6. 地理定位（Geolocation）</h3><p>HTML5 Geolocation（地理定位）用于定位用户的位置。</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">window</span><span class="selector-class">.navigator</span><span class="selector-class">.geolocation</span> &#123;</span><br><span class="line">    <span class="attribute">getCurrentPosition</span>:  fn  用于获取当前的位置数据</span><br><span class="line">    watchPosition: fn  监视用户位置的改变</span><br><span class="line">    clearWatch: fn  清除定位监视</span><br><span class="line">&#125;　　　</span><br></pre></td></tr></table></figure>
-
-<p>获取用户定位信息：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">navigator.geolocation.getCurrentPosition(</span><br><span class="line">    <span class="function"><span class="keyword">function</span>(<span class="params">pos</span>)</span>&#123;</span><br><span class="line">　　　　<span class="built_in">console</span>.log(<span class="string">&#x27;用户定位数据获取成功&#x27;</span>)</span><br><span class="line">　　　　<span class="comment">//console.log(arguments);</span></span><br><span class="line">　　　　<span class="built_in">console</span>.log(<span class="string">&#x27;定位时间：&#x27;</span>,pos.timestamp)</span><br><span class="line">　　　　<span class="built_in">console</span>.log(<span class="string">&#x27;经度：&#x27;</span>,pos.coords.longitude)</span><br><span class="line">　　　　<span class="built_in">console</span>.log(<span class="string">&#x27;纬度：&#x27;</span>,pos.coords.latitude)</span><br><span class="line">　　　　<span class="built_in">console</span>.log(<span class="string">&#x27;海拔：&#x27;</span>,pos.coords.altitude)</span><br><span class="line">　　　　<span class="built_in">console</span>.log(<span class="string">&#x27;速度：&#x27;</span>,pos.coords.speed)</span><br><span class="line"></span><br><span class="line">&#125;,    <span class="comment">//定位成功的回调</span></span><br><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123; </span><br><span class="line">　　　　<span class="built_in">console</span>.log(<span class="string">&#x27;用户定位数据获取失败&#x27;</span>)</span><br><span class="line">　　　　<span class="comment">//console.log(arguments);</span></span><br><span class="line"></span><br><span class="line">&#125;        <span class="comment">//定位失败的回调</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<h3 id="7-拖放API"><a href="#7-拖放API" class="headerlink" title="7. 拖放API"></a>7. 拖放API</h3><p>在 HTML5 中，拖放是标准的一部分，任何元素都能够拖放。</p>
-<blockquote>
-<p>转载来自<a href="https://www.cnblogs.com/ijjyo/p/4300717.html">很不错的拖放API解释…</a></p>
-</blockquote>
-<h4 id="7-1-HTML拖放实例"><a href="#7-1-HTML拖放实例" class="headerlink" title="7.1 HTML拖放实例"></a>7.1 HTML拖放实例</h4><p>​    下面的例子是一个简单的拖放实例：</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;utf-8&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>test<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">            <span class="function"><span class="keyword">function</span> <span class="title">allowDrop</span>(<span class="params">ev</span>) </span>&#123;</span></span><br><span class="line">                ev.preventDefault();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line"><span class="javascript">            <span class="function"><span class="keyword">function</span> <span class="title">drag</span>(<span class="params">ev</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                ev.dataTransfer.setData(<span class="string">&quot;Text&quot;</span>, ev.target.id);</span></span><br><span class="line">            &#125;</span><br><span class="line">    </span><br><span class="line"><span class="javascript">            <span class="function"><span class="keyword">function</span> <span class="title">drop</span>(<span class="params">ev</span>) </span>&#123;</span></span><br><span class="line">                ev.preventDefault();</span><br><span class="line"><span class="javascript">                <span class="keyword">var</span> data = ev.dataTransfer.getData(<span class="string">&quot;Text&quot;</span>);</span></span><br><span class="line"><span class="javascript">                ev.target.appendChild(<span class="built_in">document</span>.getElementById(data));</span></span><br><span class="line">            &#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;div1&quot;</span> <span class="attr">ondrop</span>=<span class="string">&quot;drop(event)&quot;</span> <span class="attr">ondragover</span>=<span class="string">&quot;allowDrop(event)&quot;</span> <span class="attr">style</span>=<span class="string">&quot;width: 500px;height: 500px;background-color: #FBB929;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">id</span>=<span class="string">&quot;drag1&quot;</span> <span class="attr">src</span>=<span class="string">&quot;http://www.baidu.com/img/baidu_jgylogo3.gif&quot;</span> <span class="attr">draggable</span>=<span class="string">&quot;true&quot;</span> <span class="attr">ondragstart</span>=<span class="string">&quot;drag(event)&quot;</span> <span class="attr">width</span>=<span class="string">&quot;336&quot;</span> <span class="attr">height</span>=<span class="string">&quot;69&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h5 id="7-1-1-设置元素为可拖放"><a href="#7-1-1-设置元素为可拖放" class="headerlink" title="7.1.1 设置元素为可拖放"></a>7.1.1 设置元素为可拖放</h5><p>首先，为了使元素可拖动，把 draggable 属性设置为 true ：</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">draggable</span>=<span class="string">&quot;true&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h5 id="7-1-2-拖动什么-ondragstart-和-setData"><a href="#7-1-2-拖动什么-ondragstart-和-setData" class="headerlink" title="7.1.2 拖动什么 - ondragstart 和 setData()"></a>7.1.2 拖动什么 - ondragstart 和 setData()</h5><p>然后，规定当元素被拖动时，会发生什么。</p>
-<p>在上面的例子中，ondragstart 属性调用了一个函数，drag(<em>event</em>)，它规定了被拖动的数据。</p>
-<p>dataTransfer.setData() 方法设置被拖数据的数据类型和值：</p>
-<figure class="highlight reasonml"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> drag(ev)&#123;</span><br><span class="line">    ev.dataTransfer.set<span class="constructor">Data(<span class="string">&quot;Text&quot;</span>,<span class="params">ev</span>.<span class="params">target</span>.<span class="params">id</span>)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在这个例子中，数据类型是 “Text”，值是可拖动元素的 id (“drag1”)。</p>
-<h5 id="7-1-3-放到何处-ondragover"><a href="#7-1-3-放到何处-ondragover" class="headerlink" title="7.1.3 放到何处 - ondragover"></a>7.1.3 放到何处 - ondragover</h5><p>ondragover 事件规定在何处放置被拖动的数据。</p>
-<p>默认地，无法将数据/元素放置到其他元素中。如果需要设置允许放置，我们必须阻止对元素的默认处理方式。</p>
-<p>这要通过调用 ondragover 事件的 <em>event</em>.preventDefault() 方法：</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">event</span>.preventDefault()</span><br></pre></td></tr></table></figure>
-
-<h5 id="7-1-4-进行放置-ondrop"><a href="#7-1-4-进行放置-ondrop" class="headerlink" title="7.1.4 进行放置 - ondrop"></a>7.1.4 进行放置 - ondrop</h5><p>当放置被拖数据时，会发生 drop 事件。</p>
-<p>在上面的例子中，ondrop 属性调用了一个函数，drop(<em>event</em>)：</p>
-<figure class="highlight reasonml"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> drop(ev)</span><br><span class="line">&#123;</span><br><span class="line">ev.prevent<span class="constructor">Default()</span>;</span><br><span class="line">var data=ev.dataTransfer.get<span class="constructor">Data(<span class="string">&quot;Text&quot;</span>)</span>;</span><br><span class="line">ev.target.append<span class="constructor">Child(<span class="params">document</span>.<span class="params">getElementById</span>(<span class="params">data</span>)</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>调用 preventDefault() 来避免浏览器对数据的默认处理（drop 事件的默认行为是以链接形式打开）</li>
-<li>通过 dataTransfer.getData(“Text”) 方法获得被拖的数据。该方法将返回在 setData() 方法中设置为相同类型的任何数据。</li>
-<li>被拖数据是被拖元素的 id (“drag1”)</li>
-<li>把被拖元素追加到放置元素（目标元素）中</li>
-</ul>
-<h4 id="7-2-拖放-Drag-和-Drop-各属性生命周期"><a href="#7-2-拖放-Drag-和-Drop-各属性生命周期" class="headerlink" title="7.2 拖放(Drag 和 Drop)各属性生命周期"></a>7.2 拖放(Drag 和 Drop)各属性生命周期</h4><table>
-<thead>
-<tr>
-<th>拖动生命周期</th>
-<th>属性</th>
-<th>值</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>拖动开始</td>
-<td>ondragstart</td>
-<td>script</td>
-<td>在拖动操作开始时执行脚本（对象是被拖拽元素）</td>
-</tr>
-<tr>
-<td>拖动过程中</td>
-<td>ondrag</td>
-<td>script</td>
-<td>只要脚本在被拖动就允许脚本（对象是被拖拽元素）</td>
-</tr>
-<tr>
-<td>拖动过程中</td>
-<td>ondragenter</td>
-<td>script</td>
-<td>当元素被拖动到一个合法的放置目标时，执行脚本（对象是目标元素）</td>
-</tr>
-<tr>
-<td>拖动过程中</td>
-<td>ondragover</td>
-<td>script</td>
-<td>只要元素正在合法的放置目标上拖动时，就执行脚本（对象是目标元素）</td>
-</tr>
-<tr>
-<td>拖动过程中</td>
-<td>ondragleave</td>
-<td>script</td>
-<td>当元素离开合法的放置目标时（对象是目标元素）</td>
-</tr>
-<tr>
-<td>拖动结束</td>
-<td>ondrop</td>
-<td>script</td>
-<td>将被拖拽元素放在目标元素内时运行脚本（对象是目标元素）</td>
-</tr>
-<tr>
-<td>拖动结束</td>
-<td>ondragend</td>
-<td>script</td>
-<td>在拖动操作结束时运行脚本（对象是被拖拽元素）</td>
-</tr>
-</tbody></table>
-<p><strong>写在哪呢？</strong></p>
-<p>其实参照上表“描述”中括号内的提示即可知道，不过为了能更直观的了解到，特呈上代码：</p>
-<p><strong>被拖放元素</strong></p>
-<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">&lt;span <span class="attribute">draggable</span>=<span class="string">&quot;true&quot;</span> <span class="attribute">id</span>=<span class="string">&quot;Span1&quot;</span> </span><br><span class="line">    <span class="attribute">ondragstart</span>=<span class="string">&quot;fooDragStart(this, event)&quot;</span> </span><br><span class="line">    <span class="attribute">ondrag</span>=<span class="string">&quot;fooDrag(this, event)&quot;</span> </span><br><span class="line">    <span class="attribute">ondragend</span>=<span class="string">&quot;fooDragEnd(this, event)&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
-
-<p><strong>目标元素</strong></p>
-<figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line">&lt;<span class="keyword">div</span>  <span class="built_in">id</span>=<span class="string">&quot;div1&quot;</span> ondrop=<span class="string">&quot;fooDrop(this, event)&quot;</span></span><br><span class="line">                ondragenter=<span class="string">&quot;fooDragEnter(this, event)&quot;</span> </span><br><span class="line">                ondragleave=<span class="string">&quot;fooDragLeave(this, event)&quot;</span></span><br><span class="line">                ondragover=<span class="string">&quot;fooDragOver(this,event)&quot;</span>&gt;</span><br><span class="line">&lt;/<span class="keyword">div</span>&gt;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h4 id="7-3-执行顺序"><a href="#7-3-执行顺序" class="headerlink" title="7.3 执行顺序"></a>7.3 执行顺序</h4><p>下面，我将展示将一张图片放入div中的整个script执行过程：</p>
-<p><strong>执行元素介绍</strong></p>
-<p><img data-src="pic1.jpg"></p>
-<p><strong>执行结果</strong></p>
-<ul>
-<li>成功将图片拖入div中</li>
-</ul>
-<p><img data-src="pic2.jpg"></p>
-<figure class="highlight pf"><table><tr><td class="code"><pre><span class="line"><span class="keyword">on</span>DragStart，当元素被拖动到一个合法的放置目标时，执行脚本（对象是目标元素）</span><br><span class="line"><span class="keyword">on</span>Drag，只要脚本在被拖动就允许脚本</span><br><span class="line"><span class="keyword">on</span>Drag，只要脚本在被拖动就允许脚本</span><br><span class="line"><span class="keyword">on</span>DragEnter，在拖动操作开始时执行脚本</span><br><span class="line"><span class="keyword">on</span>DragOver，只要元素正在合法的放置目标上拖动时，就执行脚本（对象是目标元素）</span><br><span class="line"><span class="keyword">on</span>Drag，只要脚本在被拖动就允许脚本</span><br><span class="line"><span class="keyword">on</span>DragOver，只要元素正在合法的放置目标上拖动时，就执行脚本（对象是目标元素）</span><br><span class="line"><span class="keyword">on</span>Drop，在拖动操作结束时运行脚本-------------------------------------</span><br><span class="line"><span class="keyword">on</span>DragEnd，在拖动操作结束时运行脚本</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>已拖放，可最终未放入div中</li>
-</ul>
-<p><img data-src="pic3.jpg"></p>
-<figure class="highlight pf"><table><tr><td class="code"><pre><span class="line"><span class="keyword">on</span>DragStart，当元素被拖动到一个合法的放置目标时，执行脚本（对象是目标元素）</span><br><span class="line"><span class="keyword">on</span>Drag，只要脚本在被拖动就允许脚本</span><br><span class="line"><span class="keyword">on</span>Drag，只要脚本在被拖动就允许脚本</span><br><span class="line"><span class="keyword">on</span>DragEnter，在拖动操作开始时执行脚本</span><br><span class="line"><span class="keyword">on</span>DragOver，只要元素正在合法的放置目标上拖动时，就执行脚本（对象是目标元素）</span><br><span class="line"><span class="keyword">on</span>Drag，只要脚本在被拖动就允许脚本</span><br><span class="line"><span class="keyword">on</span>DragOver，只要元素正在合法的放置目标上拖动时，就执行脚本（对象是目标元素）</span><br><span class="line"><span class="keyword">on</span>Drag，只要脚本在被拖动就允许脚本</span><br><span class="line"><span class="keyword">on</span>DragLeave，当元素离开合法的放置目标时（对象是目标元素）---------------------</span><br><span class="line"><span class="keyword">on</span>Drag，只要脚本在被拖动就允许脚本</span><br><span class="line"><span class="keyword">on</span>Drag，只要脚本在被拖动就允许脚本</span><br><span class="line"><span class="keyword">on</span>DragEnd，在拖动操作结束时运行脚本</span><br></pre></td></tr></table></figure>
-
-<p>由上两个执行顺序的Log能看出：</p>
-<blockquote>
-<ol>
-<li>只有将“被拖拽元素”放入“目标元素”才会执行“onDrop”属性的方法；</li>
-<li>“onDrag”的事件只要鼠标按住并且拖动就会持续不断的执行；</li>
-<li>“onDragOver”的事件是只要鼠标按住、拖动“被拖拽元素”在“目标元素”上滑过就会持续不断的执行；</li>
-<li>“onDragEnd”的事件无论如何，只要按住的鼠标放开了，就会执行</li>
-</ol>
-</blockquote>
-<h4 id="7-4-深入"><a href="#7-4-深入" class="headerlink" title="7.4 深入"></a>7.4 深入</h4><p>一些深入的比如“<code>文件的拖放</code>”、“<code>从浏览器拖放到桌面</code>”以及“<code>从桌面拖放到浏览器</code>”等</p>
-<h4 id="7-5-扩展"><a href="#7-5-扩展" class="headerlink" title="7.5 扩展"></a>7.5 扩展</h4><h5 id="7-5-1-MIME类型"><a href="#7-5-1-MIME类型" class="headerlink" title="7.5.1 MIME类型"></a>7.5.1 MIME类型</h5><blockquote>
-<p>  ·text/plain：文本文字</p>
-<p>  ·text/html：HTML文字</p>
-<p>  ·text/xml：XML文字</p>
-<p>  ·text/uri-list：URL列表，每个URL为一行</p>
-</blockquote>
-<h5 id="7-5-2-JS的dataTransfer对象"><a href="#7-5-2-JS的dataTransfer对象" class="headerlink" title="7.5.2 JS的dataTransfer对象"></a>7.5.2 JS的dataTransfer对象</h5><p>​    提供对于预定义的剪贴板格式的访问,以便在拖拽中使用。</p>
-<table>
-<thead>
-<tr>
-<th>属性</th>
-<th>描述</th>
-<th>参数</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>dropEffect</td>
-<td>设置或返回拖放目标上允许发生的拖放行为和要显示的光标类型</td>
-<td>copy 复制样式被显示link 链接样式被显示move 移动样式被显示none 默认,没有鼠标样式被定义</td>
-</tr>
-<tr>
-<td>effectAllowed</td>
-<td>设置或返回被拖动元素允许发生的拖动行为与该对象的源元素。</td>
-<td>copy 选项被复制link 选项被dataTransfer作为link方式保存move 当放置时,对象被移动至目标对象copylink 选项是被复制还是被作为link方式保存关键在于目标对象linkmove 选项是被作为link方式保存还是被移动关键在于目标对象all 所有效果都被支持none 不支持任何效果uninitialized 默认不能通过这个属性传递任何值</td>
-</tr>
-<tr>
-<td>types</td>
-<td>存入数据的种类，字符串的伪数组</td>
-<td></td>
-</tr>
-<tr>
-<td>clearData()</td>
-<td>清除DataTransfer对象中存放的数据，如果省略参数format，则清楚全部数据</td>
-<td></td>
-</tr>
-<tr>
-<td>setData(format,data)</td>
-<td>将指定格式的数据赋值给dataTransfer对象</td>
-<td>参数format定义数据的格式也就是数据的类型，data为待赋值的数据</td>
-</tr>
-<tr>
-<td>getData(format,data)</td>
-<td>从dataTransfer对象中获取指定格式的数据</td>
-<td>format代表数据格式，data为数据。</td>
-</tr>
-<tr>
-<td>setDragImage(Element image，long x,long y)</td>
-<td>用img元素来设置拖放图标(部分浏览器中可以用canvas等其他元素来设置)</td>
-<td>element设置自定义图标，x设置图标与鼠标在水平方向上的距离，y设置图标与鼠标在垂直方向上的距离。</td>
-</tr>
-</tbody></table>
-<p>​    effectAllowed定义了在源对象上的操作,可定义在ondragstart事件中。 </p>
-<p>​    dropEffect定义了在目标对象上的操作,可定义在ondrop,ondragenter,ondragover事件中。 </p>
-<p>​    effectAllowed可以定义all操作,但是dropEffect可以定义copy操作。</p>
-<h3 id="8-Web-Storage"><a href="#8-Web-Storage" class="headerlink" title="8 Web Storage"></a>8 Web Storage</h3><p>使用HTML5可以在本地存储用户的浏览数据。</p>
-<p>客户端存储数据的两个对象为：</p>
-<p><strong>localStorage ：</strong>没有时间限制的数据存储</p>
-<p><strong>sessionStorage ：</strong> 针对一个 session 的数据存储, 当用户关闭浏览器窗口后，数据会被删除。</p>
-<p>不管是 <strong>localStorage</strong>，还是 <strong>sessionStorage</strong>，可使用的API都相同，常用的有如下几个（以localStorage为例）：</p>
-<p>　　1、保存数据：localStorage.setItem(key,value);</p>
-<p>　　2、读取数据：localStorage.getItem(key);</p>
-<p>　　3、删除单个数据：localStorage.removeItem(key);</p>
-<p>　　4、删除所有数据：localStorage.clear();</p>
-<p>　　5、得到某个索引的key：localStorage.key(index);</p>
-<h3 id="9-WebSocket"><a href="#9-WebSocket" class="headerlink" title="9. WebSocket"></a>9. WebSocket</h3><blockquote>
-<p>可参考 <a href="http://www.ruanyifeng.com/blog/2017/05/websocket.html">阮一峰日志</a> 深入学习</p>
-<p>其中用到的<a href="https://jsbin.com/muqamiqimu/edit?js,console">演示平台</a> <code>jsbin.com</code></p>
-<p>以及其使用<a href="https://www.cnblogs.com/rammstein/p/4042842.html">教程</a></p>
-</blockquote>
-<p><strong>WebSocket</strong> 是HTML5开始提供的一种在单个 TCP 连接上进行全双工通讯的协议。</p>
-<blockquote>
-<p><a href="https://baike.baidu.com/item/RS-422">RS-422</a>标准就是<a href="https://baike.baidu.com/item/%E5%85%A8%E5%8F%8C%E5%B7%A5/310007">全双工</a>通信标准。全双工（Full Duplex）是 在微处理器与外围设备之间采用发送线和接受线各自独立的方法，可以使数据在两个方向上同时进行传送操作。指在发送数据的同时也能够接收数据，两者同步进行，这好像我们平时打电话一样，说话的同时也能够听到对方的声音。网卡一般都支持全双工。</p>
-<p><a href="https://baike.baidu.com/item/%E5%85%A8%E5%8F%8C%E5%B7%A5%E4%BB%A5%E5%A4%AA%E7%BD%91">全双工以太网</a>使用两条电缆线，而不是像<a href="https://baike.baidu.com/item/%E5%8D%8A%E5%8F%8C%E5%B7%A5/309852">半双工</a>方式那样使用一对电缆线。全双工方式在发送设备的发送方和接收设备的接收方之间采取点到点的连接，这意味着在全双工的传送方式下，可以得到更高的<a href="https://baike.baidu.com/item/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E9%80%9F%E5%BA%A6">数据传输速度</a>。</p>
-</blockquote>
-<p>在WebSocket22通过 <strong>send()</strong> 方法来向服务器发送数据，并通过 <strong>onmessage</strong> 事件来接收服务器返回的数据。</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">HTML</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;utf-8&quot;</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">title</span>&gt;</span>W3Cschool教程(w3cschool.cn)<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">      <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">         <span class="function"><span class="keyword">function</span> <span class="title">WebSocketTest</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">if</span> (<span class="string">&quot;WebSocket&quot;</span> <span class="keyword">in</span> <span class="built_in">window</span>) &#123;</span></span><br><span class="line"><span class="javascript">               alert(<span class="string">&quot;您的浏览器支持 WebSocket!&quot;</span>);</span></span><br><span class="line">               </span><br><span class="line"><span class="javascript">               <span class="comment">// 打开一个 web socket</span></span></span><br><span class="line"><span class="javascript">               <span class="keyword">var</span> ws = <span class="keyword">new</span> WebSocket(<span class="string">&quot;ws://localhost:9998/echo&quot;</span>);</span></span><br><span class="line">                </span><br><span class="line"><span class="javascript">               ws.onopen = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">                  <span class="comment">// Web Socket 已连接上，使用 send() 方法发送数据</span></span></span><br><span class="line"><span class="javascript">                  ws.send(<span class="string">&quot;发送数据&quot;</span>);</span></span><br><span class="line"><span class="javascript">                  alert(<span class="string">&quot;数据发送中...&quot;</span>);</span></span><br><span class="line">               &#125;;</span><br><span class="line">                </span><br><span class="line"><span class="javascript">               ws.onmessage = <span class="function"><span class="keyword">function</span> (<span class="params">evt</span>) </span>&#123; </span></span><br><span class="line"><span class="javascript">                  <span class="keyword">var</span> received_msg = evt.data;</span></span><br><span class="line"><span class="javascript">                  alert(<span class="string">&quot;数据已接收...&quot;</span>);</span></span><br><span class="line">               &#125;;</span><br><span class="line">                </span><br><span class="line"><span class="javascript">               ws.onclose = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; </span></span><br><span class="line"><span class="javascript">                  <span class="comment">// 关闭 websocket</span></span></span><br><span class="line"><span class="javascript">                  alert(<span class="string">&quot;连接已关闭...&quot;</span>); </span></span><br><span class="line">               &#125;;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line"><span class="javascript">            <span class="keyword">else</span>&#123;</span></span><br><span class="line"><span class="javascript">               <span class="comment">// 浏览器不支持 WebSocket</span></span></span><br><span class="line"><span class="javascript">               alert(<span class="string">&quot;您的浏览器不支持 WebSocket!&quot;</span>);</span></span><br><span class="line">            &#125;</span><br><span class="line">         &#125;</span><br><span class="line">      <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">        </span><br><span class="line">   <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">   </span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;sse&quot;</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;javascript:WebSocketTest()&quot;</span>&gt;</span>运行 WebSocket<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      </span><br><span class="line">   <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="二、浏览器标准模式和怪异模式"><a href="#二、浏览器标准模式和怪异模式" class="headerlink" title="二、浏览器标准模式和怪异模式"></a>二、浏览器标准模式和怪异模式</h2><blockquote>
-<p>转自<a href="https://www.jianshu.com/p/dcab7cde8c04">简书</a></p>
-</blockquote>
-<h3 id="标准模式和怪异模式的来由"><a href="#标准模式和怪异模式的来由" class="headerlink" title="标准模式和怪异模式的来由"></a>标准模式和怪异模式的来由</h3><p>在HTML与CSS的标准化未完成之前，各个浏览器对于HTML和CSS的解析有各自不同的实现，而有很多旧的网页都是按照这些非标准的实现去设计的。在HTML与CSS标准确定之后，浏览器一方面要按照标准去实现对HTML与CSS的支持，另一方面又要保证对非标准的旧网页设计的后向兼容性。因此，现代的浏览器一般都有两种渲染模式：<strong>标准模式</strong>和<strong>怪异模式</strong>。在<strong>标准模式</strong>下，浏览器按照HTML与CSS标准对文档进行解析和渲染；而在<strong>怪异模式</strong>下，浏览器则按照旧有的非标准的实现方式对文档进行解析和渲染。这样的话，对于旧有的网页，浏览器启动怪异模式，就能够使得旧网页正常显示；对于新的网页，则可以启动标准模式，使得新网页能够使用HTML与CSS的标准特性。</p>
-<h3 id="浏览器如何确定使用哪种渲染模式"><a href="#浏览器如何确定使用哪种渲染模式" class="headerlink" title="浏览器如何确定使用哪种渲染模式"></a>浏览器如何确定使用哪种渲染模式</h3><p>知道了这两种渲染模式的来由，那剩下的问题就是浏览器如何能够确定应该使用哪种模式了。其实归根结底就是，浏览器如何能将旧网页与新网页区分开来。<br> 平常编写网页的时候，一般都会见到HTML文档的头部会有文档类型声明：<code>DOCTYPE</code>。当浏览器遇到正确的文档声明时，浏览器就会启动标准模式，按照制定的文档类型标准解析和渲染文档。而对于旧有的网页，由于网页编写的当时标准还没有确定，所以一般是不会有文档类型声明的。所以，对于没有文档类型声明或者文档类型声明不正确的文档，浏览器就会认为它是一个旧的HTML文档，就会使用怪异模式解析和渲染该文档。关于<code>DOCTYPE</code>的更详细说明，请戳这里 <a href="https://www.jb51.net/web/34217.html">DOCTYPE声明作用及用法详解</a>。</p>
-<h3 id="标准模式与怪异模式的两个常见区别"><a href="#标准模式与怪异模式的两个常见区别" class="headerlink" title="标准模式与怪异模式的两个常见区别"></a>标准模式与怪异模式的两个常见区别</h3><ul>
-<li><strong>盒模型的处理差异：</strong>标准CSS盒模型的宽度和高度等于内容区的高度和宽度，不包含内边距和边框，而IE6之前的浏览器实现的盒模型的宽高计算方式是包含内边距和边框的。因此，对于IE，怪异模式和标准模式下的盒模型宽高计算方式是不一样的；</li>
-<li><strong>行内元素的垂直对齐：</strong>很多早期的浏览器对齐图片至包含它们的盒子的下边框，虽然CSS的规范要求它们被对齐至盒内文本的基线。标准模式下，基于Gecko的浏览器将会对齐至基线，而在quirks模式下它们会对齐至底部。最直接的例子就是图片的显示。在标准模式下，图片并不是与父元素的下边框对齐的，如果仔细观察，你会发现图片与父元素下边框之间存在一点小空隙。那是因为标准模式下，图片是基线对齐的。而怪异模式下，则不存在这个问题。具体请看这篇文章 <a href="https://www.zhangxinxu.com/wordpress/2015/08/css-deep-understand-vertical-align-and-line-height/?shrink=1">CSS深入理解vertical-align和line-height的基友关系</a>。</li>
-</ul>
-<h2 id="三、HTML与XHTML的区别"><a href="#三、HTML与XHTML的区别" class="headerlink" title="三、HTML与XHTML的区别"></a>三、HTML与XHTML的区别</h2><blockquote>
-<p><code>HTML</code>(文本标记语言)是英文HyperText Markup Language的简称，用于创建网页的标准标记语言，html并不是编程语言，HTML 运行在浏览器上由浏览器来解析翻译给网站访客，它是建设网站的基础。Html5代表了下一代html的发展，html5功能已经很强大。</p>
-<p><code>XHTML</code>(可扩展标识语言)是The Extensible Markup Language的简写,XHTML 1.0在2000年1月26日成为W3C的推荐标准。XHTML1.0是源自W3C的最新的HTML标准，是Web的语言，是M站软件幵发必不可少的Web构件之一，每一个Web开发者都需要对它熟练掌握。</p>
-</blockquote>
-<p><strong>功能区别：</strong></p>
-<ul>
-<li>HTML对于各大浏览器兼容性较差(pc端浏览器、手机端浏览器、PAD)，对于网页页面编写技巧要求比较高，现在web前端开发的静态网页，一般都是html4.0，HTML5就另当别论了。</li>
-<li>XHTML可以很好处理各大浏览器的兼容(pc端浏览器、手机端浏览器、PAD)，看起来与HTML有些相象但是和HTML有不少的区别，XHTML的语法较为严谨，习惯松散结构的HTML编写者刚开始接触XHTML有些不习惯。XHTML结合了部分XML的强大功能及大多数HTML的简单特性。</li>
-</ul>
-<p><strong>书写习惯区别</strong></p>
-<ul>
-<li>HTML标签不区分大小写XHTML所有标签都必须小写。</li>
-<li>XHTML标签必须成双成对.</li>
-<li>html对标签顺序要求不严格，XHTML标签顺序必须正确</li>
-</ul>
-<h2 id="四、使用data"><a href="#四、使用data" class="headerlink" title="四、使用data-*"></a>四、使用data-*</h2><ul>
-<li>data-* 属性用于存储页面或应用程序的私有自定义数据。</li>
-<li>data-* 属性赋予我们在所有 HTML 元素上嵌入自定义 data 属性的能力。</li>
-<li>存储的（自定义）数据能够被页面的 JavaScript 中利用，以创建更好的用户体验（不进行 Ajax 调用或服务器端数据库查询）。</li>
-</ul>
-<p>data-* 属性包括两部分：</p>
-<p>   <strong>语法  &lt;*element* data-*=”*somevalue*”&gt;</strong></p>
-<ul>
-<li>属性名不应该包含任何大写字母，并且在前缀 “data-“ 之后必须有至少一个字符</li>
-<li>属性值可以是任意字符串</li>
-</ul>
-<blockquote>
-<p>注释：用户代理会完全忽略前缀为 “data-“ 的自定义属性。</p>
-</blockquote>
-<p><strong>Example</strong>:</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">showDetails</span>(<span class="params">animal</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript"><span class="keyword">var</span> animalType = animal.getAttribute(<span class="string">&quot;data-animal-type&quot;</span>);</span></span><br><span class="line"><span class="javascript">alert(animal.innerHTML + <span class="string">&quot;是一种&quot;</span> + animalType + <span class="string">&quot;。&quot;</span>);</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>物种<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>点击某个物种来查看其类别：<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span> <span class="attr">onclick</span>=<span class="string">&quot;showDetails(this)&quot;</span> <span class="attr">id</span>=<span class="string">&quot;owl&quot;</span> <span class="attr">data-animal-type</span>=<span class="string">&quot;鸟类&quot;</span>&gt;</span>喜鹊<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span> <span class="attr">onclick</span>=<span class="string">&quot;showDetails(this)&quot;</span> <span class="attr">id</span>=<span class="string">&quot;salmon&quot;</span> <span class="attr">data-animal-type</span>=<span class="string">&quot;鱼类&quot;</span>&gt;</span>金枪鱼<span class="tag">&lt;/<span class="name">li</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">li</span> <span class="attr">onclick</span>=<span class="string">&quot;showDetails(this)&quot;</span> <span class="attr">id</span>=<span class="string">&quot;tarantula&quot;</span> <span class="attr">data-animal-type</span>=<span class="string">&quot;蜘蛛&quot;</span>&gt;</span>蝇虎<span class="tag">&lt;/<span class="name">li</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>优势</strong></p>
-<ul>
-<li>自定义属性，可以被js很好的操作</li>
-<li>H5的新属性</li>
-<li>通过js的element.dataset.<em>或jQuery的data(‘</em>‘)拿到，*可以为url等字符</li>
-<li>框架的数据绑定，例如<code>data-ng-if=&quot;cs==1&quot;</code></li>
-</ul>
-<p><strong>使用</strong></p>
-<p> data-toggle 这种以 <strong>data-</strong> 开头的格式放在元素上表示元素携带的数据，如：</p>
-<figure class="highlight autohotkey"><table><tr><td class="code"><pre><span class="line">&lt;``img` `id``=``<span class="string">&quot;img&quot;</span>` `src``=``<span class="string">&quot;small.jpg&quot;</span>` `data-bigimg``=``<span class="string">&quot;big.jpg&quot;</span>` `/&gt;</span><br></pre></td></tr></table></figure>
-
-<p>JQuery的 <strong>data()</strong> 方法可以直接操作，如：</p>
-<figure class="highlight julia"><table><tr><td class="code"><pre><span class="line">//获取：<span class="string">``</span>var<span class="string">` `</span>bigImage = $(<span class="string">``</span><span class="string">&quot;#img&quot;</span><span class="string">``</span>).data(<span class="string">``</span><span class="string">&quot;bigimg&quot;</span><span class="string">``</span>);<span class="string">``</span>//注意，这里不用加 data-</span><br><span class="line">//设置：<span class="string">``</span>$(<span class="string">``</span><span class="string">&quot;#img&quot;</span><span class="string">``</span>).data(<span class="string">``</span><span class="string">&quot;bigimg&quot;</span><span class="string">``</span>,<span class="string">``</span><span class="string">&quot;newBig.jpg&quot;</span><span class="string">``</span>);<span class="string">``</span>//注意，这里也不用加 data-</span><br></pre></td></tr></table></figure>
-
-<p>用这种 <code>$(&quot;[data-bigimg]&quot;)</code> 的方式可以选择所有具有 <code>data-bigimg</code> 这个属性的元素。</p>
-<p>也可以直接通过<code>$(&quot;#img&quot;).attr(&quot;data-bigimg&quot;);</code> 来获取和设置</p>
-<h2 id="五、HTML模板引擎"><a href="#五、HTML模板引擎" class="headerlink" title="五、HTML模板引擎"></a>五、HTML模板引擎</h2><blockquote>
-<p>模板引擎（这里特指用于Web开发的模板引擎）是为了使用户界面与业务数据（内容）分离而产生的，它可以生成特定格式的文档，用于网站的模板引擎就会生成一个标准的<a href="https://baike.baidu.com/item/HTML/97049">HTML</a>文档。</p>
-</blockquote>
-<blockquote>
-<p>其他待补充</p>
-</blockquote>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
-      <categories>
-        <category>Front End</category>
-      </categories>
-      <tags>
-        <tag>HTML</tag>
       </tags>
   </entry>
   <entry>
