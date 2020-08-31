@@ -2,7 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://hammerzer.github.io/2020/08/25/JavaScript-commonly-used-functions/</loc>
+    <loc>https://hammerzer.github.io/2020/08/29/HTML-render/</loc>
+    
+    <lastmod>2020-08-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://hammerzer.github.io/2020/08/28/HTML-Bacics/</loc>
     
     <lastmod>2020-08-31</lastmod>
     
@@ -23,16 +30,9 @@
   </url>
   
   <url>
-    <loc>https://hammerzer.github.io/2020/08/29/HTML-render/</loc>
+    <loc>https://hammerzer.github.io/2020/08/25/JavaScript-commonly-used-functions/</loc>
     
-    <lastmod>2020-08-30</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://hammerzer.github.io/2020/08/28/HTML-Bacics/</loc>
-    
-    <lastmod>2020-08-29</lastmod>
+    <lastmod>2020-08-31</lastmod>
     
   </url>
   
