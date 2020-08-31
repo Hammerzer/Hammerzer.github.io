@@ -92,7 +92,147 @@
 
 <h4 id="8-mark"><a href="#8-mark" class="headerlink" title="8. mark"></a>8. mark</h4><p>高亮</p>
 <h4 id="9-address"><a href="#9-address" class="headerlink" title="9. address"></a>9. address</h4><p>address代表区块容器，必须是作为联系信息出现，邮编地址、邮件地址等等,一般出现在footer。</p>
-<h2 id="三、-lt-a-gt-标签"><a href="#三、-lt-a-gt-标签" class="headerlink" title="三、&lt;a&gt;标签"></a>三、<code>&lt;a&gt;</code>标签</h2><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+<h2 id="三、-lt-a-gt-标签"><a href="#三、-lt-a-gt-标签" class="headerlink" title="三、&lt;a&gt;标签"></a>三、<code>&lt;a&gt;</code>标签</h2><figure class="highlight dust"><table><tr><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;javascript:void(0)&quot;</span> <span class="attr">click</span>=<span class="string">&quot;function()</span></span></span><span class="template-variable">&#123;&#125;</span><span class="xml"><span class="tag"><span class="string">&quot;</span> /&gt;</span>=</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="1-a-标签样式"><a href="#1-a-标签样式" class="headerlink" title="1. a 标签样式"></a>1. a 标签样式</h3><p> 一组专门的预定义的类称为伪类用于处理超链接的状态，超链接的文字的状态可以通过伪类选择器+样式类进行控制  <code>&lt;a class=&quot;mycls&quot; &gt;&lt;/a&gt;</code></p>
+<ul>
+<li><p>所有状态下的链接 <code>.mycls&#123;color:red&#125;</code></p>
+</li>
+<li><p><code>a:link</code> 未访问的连接<code> .mycls a:link&#123;color:blue&#125;</code></p>
+</li>
+<li><p><code>a:visited</code> 已访问的链接<code>.mycls a:visited&#123;color: visited&#125;</code></p>
+</li>
+<li><p><code>a:active</code>  激活时（链接获取焦点）链接的颜色<code> .mycls a:active&#123;color:blue&#125;</code></p>
+</li>
+</ul>
+<p>一般情况下 a:hiver和a:visited的颜色是一种的，这4个状态的过程是： <code>a:link -&gt;a:hover-&gt;a:active-&gt;a:visited</code><br>另外，a：active不能设置有无下划线（总是有的）</p>
+<pre><code> &lt;style&gt;
+    a &#123;font-size:16px&#125; 
+    a:link &#123;color: blue; text-decoration:none;&#125; //未访问：蓝色、无下划线 
+    a:active:&#123;color: red; &#125; //激活：红色 
+    a:visited &#123;color:purple;text-decoration:none;&#125; //已访问：purple、无下划线 
+    a:hover &#123;color: red; text-decoration:underline;&#125; //鼠标移近：红色、下划线 
+  &lt;/style&gt;</code></pre>
+<h3 id="2-target的属性"><a href="#2-target的属性" class="headerlink" title="2. target的属性"></a>2. target的属性</h3><p><code>&lt;a&gt;</code>标签的target属性规定在何处打开链接文档<br>如下面这行表示在新的窗口中打开文档<br><code> &lt;a href=&quot;http://www.baidu.com&quot; target=&quot;_blank&quot;&gt; visit w3school &lt;/a&gt;</code></p>
+<p>可选值：<code>_blank</code>、<code>_parent</code>、<code>_self</code>、<code>_top</code>、<code>*framename*</code></p>
+<p><strong>_blank</strong>        浏览器总在一个新打开，未命名的窗口中载入目标文档 </p>
+<p><strong>_self</strong>        这个目标的值对所有没有指定目标的<code>&lt;a&gt;</code>标签是默认目标。它使得目标文档载入并显示在相同的框架或者窗口中作为源文档。这个目标是多余的且不必要的，除非和文档标题<code>&lt;base&gt;</code>标签中的target属性一起使用    </p>
+<p><strong>_parent</strong>        在父框架集中打开被链接的文档</p>
+<p><strong>_top</strong>              在整个窗口打开被链接文档</p>
+<p><strong>framename</strong>   在指定的框架中打开被链接文档</p>
+<h3 id="3-name属性"><a href="#3-name属性" class="headerlink" title="3. name属性"></a>3. name属性</h3><p><code>name</code>属性规定锚(anchor)的名称，可以使用<code>name</code>属性创建html页面中的书签，书签不会以任何独特方式显示，它对读者可以是不可见的。<br>当使用<code>命名锚</code>(named anchors)时，我们可以创建直接跳转至该命名锚(比如页面中某个小节)的链接,这样使用者就无需不停滚动页面来寻找需要的信息了。<br><strong>命名语法</strong><br><code>&lt;a name=&quot;label&quot;&gt;锚(显示在页面上的文本)&lt;/a&gt;</code></p>
+<ul>
+<li>锚名称可以是任何名字</li>
+<li>可以使用id属性来代替name属性，命名锚同样有效</li>
+</ul>
+<p><strong>例子</strong><br>  1)我们在html文档中对锚进行命名(创建一个书签)<br>  <code>&lt;a name=&quot;tips&quot;&gt;基本的注意事项 - 有用的提示&lt;/a&gt;</code><br>  2）在同一个文档中创建指向该锚的链接<br>  <code>&lt;a href=&quot;tips&quot;&gt;有用的提示&lt;/a&gt;</code><br>  3)也可以在其他页面中创建指向，该锚的链接<br>  <code>&lt;a href=&quot;http://mypro#trip&quot;&gt;有用的提示&lt;a&gt;</code></p>
+<h3 id="4-标签事件"><a href="#4-标签事件" class="headerlink" title="4. 标签事件"></a>4. 标签事件</h3><p>将<code>&lt;a&gt;</code>标签的<code>href</code>属性值设置为”#”，并设置<code>onclick</code>属性。<br>在这种处理方式下，用户可以很明显地看出哪些文字是超链接。<br>在单击该超链接时，也可以执行onclick属性值中的JavaScript语句，并且不会跳转网页。</p>
+<blockquote>
+<p>但是，由于href的属性值为”#”，浏览器会自动跳 转到当前网页的顶部。<br>如果当前网页内容比较多，浏览器窗口出现下拉滚动条时，可以很明显地看到跳转，而这种跳转往往不是网页设计者的本意。</p>
+</blockquote>
+<p>在没有为<code>&lt;a&gt;</code>标签设置onclick属性时，如果单击了该超链接，浏览器会加载href属性中的URL。<br>如果href属性值并不是一 个URL，而是一个JavaScript语句的话，那么浏览器就会执行该语句。<br>因此，可以直接将JavaScript语句写在<code>&lt;a&gt;</code>标签的 href属性值中，让href属性代替onclick属性。</p>
+<p><strong>在这种处理方式下，既可以响应click事件，又可以不让网页跳转。</strong></p>
+<p><strong>注意</strong>：在 a 标签的属性值中添加JavaScript语句之前，必须要先使用”javascript:”语句来声明href属性值中的语句为<code>javaScript</code>语句，否则浏览器就会将href属性值中的JavaScript语句当成URL进行加载。<br><code>&lt;a  href=&quot;javascript:showFlag()&quot;&gt;ssgao&lt;/a&gt;  </code>   执行showFlag()方法<br><code>&lt;a  href=&quot;&quot; onclick=&quot;showFlag();&quot;&gt;ssgao&lt;/a&gt;</code>    执行showFlag()方法，并会跳转到href指向的页面—-&gt;当<code>href=&quot;&quot;</code>刷新当前页面<br><code>&lt;a  href=&quot;&quot;&gt;ssgao&lt;/a&gt;</code>  刷新当前页面<br><code>&lt;a  href=&quot;#&quot; onclick=&quot;showFlag();&quot;&gt;ssgao&lt;/a&gt;</code>   执行showFlag()方法，并会跳转到页面顶部<br><code>&lt;a href=&quot;#&quot; onclick=&quot;javascript:方法;return false;&quot;&gt;提交&lt;/a&gt;</code><br><code>&lt;a href=&quot;javascript:void(0)&quot; onclick=&quot;javascript:方法;return false;&quot;&gt;提交&lt;/a&gt;</code><br>javascript:void(0)就不会向上跳了<br>还有一个方法是 #this<br><code>a href=&quot;#this&quot; onclick=&quot;javascript:方法&quot;</code></p>
+<h3 id="5-回到顶部或底部"><a href="#5-回到顶部或底部" class="headerlink" title="5. 回到顶部或底部"></a>5. 回到顶部或底部</h3><h4 id="使用JS"><a href="#使用JS" class="headerlink" title="使用JS"></a>使用JS</h4><figure class="highlight arcade"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&quot;#带有滚动条的元素&quot;</span>).animate(&#123;<span class="attr">scrollTop</span>:<span class="number">0</span>&#125;,<span class="string">&#x27;fase&#x27;</span>); <span class="comment">//带有动画</span></span><br><span class="line">$(<span class="string">&quot;#带有滚动条的元素&quot;</span>).scrollTop(<span class="number">0</span>)；<span class="comment">//不带动画</span></span><br><span class="line">scrollTop 距离滚动元素顶部的位置</span><br></pre></td></tr></table></figure>
+
+<h4 id="使用a标签的name属性-锚记"><a href="#使用a标签的name属性-锚记" class="headerlink" title="使用a标签的name属性(锚记)"></a>使用a标签的name属性(锚记)</h4><figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">&lt;a <span class="attribute">name</span>=<span class="string">&quot;top&quot;</span>&gt;top&lt;/a&gt;</span><br><span class="line">&lt;a <span class="attribute">href</span>=<span class="string">&quot;#top&quot;</span>&gt; 点击此处跳转到<span class="attribute">name</span>=top的a标签的位置    </span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">值</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a href="https://www.w3school.com.cn/tags/att_a_charset.asp">charset</a></td>
+<td align="left"><em>char_encoding</em></td>
+<td align="left"><span style="color:red;">HTML5 中不支持。</span>规定被链接文档的字符集。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/tags/att_a_coords.asp">coords</a></td>
+<td align="left"><em>coordinates</em></td>
+<td align="left"><span style="color:red;">HTML5 中不支持。</span>规定链接的坐标。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/tags/att_a_download.asp">download</a></td>
+<td align="left"><em>filename</em></td>
+<td align="left">规定被下载的超链接目标。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/tags/att_a_href.asp">href</a></td>
+<td align="left"><em>URL</em></td>
+<td align="left">规定链接指向的页面的 URL。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/tags/att_a_hreflang.asp">hreflang</a></td>
+<td align="left"><em>language_code</em></td>
+<td align="left">规定被链接文档的语言。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/tags/att_a_media.asp">media</a></td>
+<td align="left"><em>media_query</em></td>
+<td align="left">规定被链接文档是为何种媒介/设备优化的。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/tags/att_a_name.asp">name</a></td>
+<td align="left"><em>section_name</em></td>
+<td align="left"><span style="color:red;">HTML5 中不支持。</span>规定锚的名称。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/tags/att_a_rel.asp">rel</a></td>
+<td align="left"><em>text</em></td>
+<td align="left">规定当前文档与被链接文档之间的关系。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/tags/att_a_rev.asp">rev</a></td>
+<td align="left"><em>text</em></td>
+<td align="left"><span style="color:red;">HTML5 中不支持。</span>规定被链接文档与当前文档之间的关系。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/tags/att_a_shape.asp">shape</a></td>
+<td align="left">defaultrectcirclepoly</td>
+<td align="left"><span style="color:red;">HTML5 中不支持。</span>规定链接的形状。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/tags/att_a_target.asp">target</a></td>
+<td align="left">_blank_parent_self_top<em>framename</em></td>
+<td align="left">规定在何处打开链接文档。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/tags/att_a_type.asp">type</a></td>
+<td align="left"><em>MIME type</em></td>
+<td align="left">规定被链接文档的的 MIME 类型。</td>
+</tr>
+</tbody></table>
+<h2 id="四、HTML-lt-table-gt-标签功能"><a href="#四、HTML-lt-table-gt-标签功能" class="headerlink" title="四、HTML&lt;table&gt;标签功能"></a>四、HTML<code>&lt;table&gt;</code>标签功能</h2><p>绘制表格使用；如果是做后台管理的用户列表等类似 Excel 功能，这个标签是最佳的选择</p>
+<ul>
+<li><code>&lt;table&gt;</code> 标签定义 HTML 表格</li>
+<li>一个 HTML 表格包括 <code>&lt;table&gt;</code> 元素，一个或多个 <code>&lt;tr&gt;</code>、<code>&lt;th&gt;</code> 以及 <code>&lt;td&gt;</code> 元素。</li>
+<li><code>&lt;tr&gt;</code> 元素定义表格行</li>
+<li><code>&lt;th&gt;</code> 元素定义表头</li>
+<li><code>&lt;td&gt;</code> 元素定义表格单元</li>
+</ul>
+<p><strong>更复杂的 HTML 表格也可能包括</strong></p>
+<ul>
+<li><code>&lt;caption&gt;</code></li>
+<li><code>&lt;col&gt;</code></li>
+<li><code>&lt;colgroup&gt;</code></li>
+<li><code>&lt;thead&gt;</code></li>
+<li><code>&lt;tfoot&gt;</code></li>
+<li><code>&lt;tbody&gt;</code></li>
+</ul>
+<h3 id="HTML-lt-table-gt-标签用法"><a href="#HTML-lt-table-gt-标签用法" class="headerlink" title="HTML &lt;table&gt; 标签用法"></a>HTML <code>&lt;table&gt; </code>标签用法</h3><p>一个简单的 HTML 表格，包含两列两行：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">&quot;1&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span>&gt;</span>网站名<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span>&gt;</span>网址<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>abc<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>abc<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="浏览器支持"><a href="#浏览器支持" class="headerlink" title="浏览器支持"></a>浏览器支持</h3><p>所有主流浏览器都支持 <table> 标签。</table></p>
+<hr>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>虽然现在 DIV+CSS 布局非常流行，是取代 table 布局的好选择；</p>
+<p>但是遇到 table 相关的东西，还是使用<code>table</code>标签更佳，请根据实际场景进行选择</p>
+<hr>
+<h3 id="HTML4-与-HTML5-之间的差异"><a href="#HTML4-与-HTML5-之间的差异" class="headerlink" title="HTML4 与 HTML5 之间的差异"></a>HTML4 与 HTML5 之间的差异</h3><p>在 HTML5 中，仅支持 “border” 属性，并且只允许使用值 “1” 或 “”。</p>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
         <category>Front End</category>
       </categories>
@@ -2137,6 +2277,191 @@ D-->>A: Dashed open arrow</textarea><textarea id="sequence-2-options" style="dis
       <tags>
         <tag>hexo部署</tag>
         <tag>next使用</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HTML Meta</title>
+    <url>/2020/08/31/HTML-meta/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><code>&lt;meta&gt;</code> 标签是 HTML 语言头部的一个辅助性标签，我们可以定义页面编码语言、搜索引擎优化、自动刷新并指向新的页面、控制页面缓冲、响应式视窗等</p>
+<blockquote>
+<p> 转载自<a href="https://blog.csdn.net/zhangank/article/details/94014629">HTML meta 标签</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">值</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">charset( H5 New)</td>
+<td align="left">character_set</td>
+<td align="left">定义文档的字符编码。</td>
+</tr>
+<tr>
+<td align="left">content</td>
+<td align="left">text</td>
+<td align="left">定义与 http-equiv 或 name 属性相关的元信息。</td>
+</tr>
+<tr>
+<td align="left">http-equiv</td>
+<td align="left">content-type default-style refresh</td>
+<td align="left">把 content 属性关联到 HTTP 头部。</td>
+</tr>
+<tr>
+<td align="left">name</td>
+<td align="left">application-name author description generator keywords</td>
+<td align="left">把 content 属性关联到一个名称。</td>
+</tr>
+<tr>
+<td align="left">scheme(H5 删除)</td>
+<td align="left">format/URI</td>
+<td align="left">HTML5不支持。 定义用于翻译 content 属性值的格式。</td>
+</tr>
+</tbody></table>
+<p>整体来看，HTML5之前，<code>meta</code>标签只有两个主要属性，分别是 <code>name</code> 属性和 <code>http-equiv</code> 属性。 HTML5新添加”<code>charset</code>“.</p>
+<h2 id="一、name"><a href="#一、name" class="headerlink" title="一、name"></a>一、name</h2><p><code>name</code>属性主要用于描述网页，对应属性是 <code>content</code> ，<strong>以便于搜索引擎机器人查找、分类</strong>（目前几乎所有的搜索引擎都使用网上机器人自动查找meta值来给网页分类）。</p>
+<p><strong>语法</strong>：<code>&lt;meta name=&quot;参数&quot; content=&quot;参数值&quot; /&gt;</code></p>
+<h3 id="1-Keywords（关键字）"><a href="#1-Keywords（关键字）" class="headerlink" title="1. Keywords（关键字）"></a>1. Keywords（关键字）</h3><p><strong>说明</strong>：为搜索引擎提供的关键字列表</p>
+<p><strong>语法</strong>：<code>&lt;meta name=&quot;keywords&quot; content=&quot;程序员,程序猿,攻城狮&quot;/&gt;</code></p>
+<h3 id="2-Description（简介）"><a href="#2-Description（简介）" class="headerlink" title="2. Description（简介）"></a>2. Description（简介）</h3><p><strong>说明</strong>：Description用来告诉搜索引擎你的网站主要内容。</p>
+<p><strong>语法</strong>：<code>&lt;meta name=&quot;description&quot; content=&quot;meta标签是HTML中的一个重要标签，它位于HTML文档头部的&lt;HEAD&gt;标签和&lt;TITL&gt;标签之间。&quot;/&gt;</code></p>
+<h3 id="3-robots（机器人向导）"><a href="#3-robots（机器人向导）" class="headerlink" title="3. robots（机器人向导）"></a>3. robots（机器人向导）</h3><p><strong>说明</strong>：robots用来告诉搜索机器人哪些页面需要索引，哪些页面不需要索引。</p>
+<p><strong>语法</strong>：<code>&lt;meta name=&quot;robots&quot; content=&quot;&quot;/&gt;</code></p>
+<p><code>content</code>的参数值有<code>all</code>,<code>none</code>,<code>index</code>,<code>noindex</code>,<code>follow</code>,<code>nofollow</code>，默认值是<u>all</u>。</p>
+<p><strong>参数说明</strong>：</p>
+<ul>
+<li>参数为 all ：文件将被检索，且页面上的链接可以被查询； </li>
+<li>参数为 none ：文件将不被检索，且页面上的链接不可以被查询； </li>
+<li>参数为 index ：文件将被检索；</li>
+<li>参数为 follow ：页面上的链接可以被查询； </li>
+<li>参数为 noindex ：文件将不被检索，但页面上的链接可以被查询； </li>
+<li>参数为 nofollow ：文件将被检索，但页面上的链接不可以被查询；</li>
+</ul>
+<h3 id="4-author（作者）"><a href="#4-author（作者）" class="headerlink" title="4. author（作者）"></a>4. author（作者）</h3><p><strong>说明</strong>：标注网页的作者</p>
+<p><strong>语法</strong>：<code>&lt;meta name=&quot;author&quot; content=&quot;TG,TG@qq.com&quot;/&gt;</code></p>
+<h3 id="5-copyright（版权）"><a href="#5-copyright（版权）" class="headerlink" title="5. copyright（版权）"></a>5. copyright（版权）</h3><p><strong>说明</strong>：标注版权</p>
+<p><strong>语法</strong>：<code>&lt;meta name=&quot;copyright&quot; content=&quot;本网站版权归TG所有&quot;/&gt;</code></p>
+<h3 id="6-generator"><a href="#6-generator" class="headerlink" title="6. generator"></a>6. generator</h3><p><strong>说明</strong>：说明网站采用什么编辑器制作。</p>
+<p><strong>语法</strong>：<code>&lt;meta name=&quot;generator&quot; content=&quot;你所用的编辑器&quot;/&gt;</code></p>
+<h3 id="7-revisit-after（重访）"><a href="#7-revisit-after（重访）" class="headerlink" title="7. revisit-after（重访）"></a>7. revisit-after（重访）</h3><p><strong>说明</strong>：网站重访</p>
+<p><strong>语法</strong>：<code>&lt;meta name=&quot;revisit-after&quot; content=&quot;7days&quot;/&gt;</code></p>
+<h2 id="二、http-equiv"><a href="#二、http-equiv" class="headerlink" title="二、http-equiv"></a>二、http-equiv</h2><p><code>http-equiv</code>类似于HTTP的头部协议，它回应给浏览器一些有用的信息，以帮助正确和精确地显示网页内容。与之对应的属性值为<code>content</code>，content中的内容其实就是各个参数的变量值。</p>
+<p><strong>语法</strong>：<code>&lt;meta http-equiv=&quot;参数&quot;  content=&quot;参数值&quot;/&gt;</code></p>
+<p><strong>参数说明</strong>如下</p>
+<h3 id="1-Expires（期限）"><a href="#1-Expires（期限）" class="headerlink" title="1. Expires（期限）"></a>1. Expires（期限）</h3><p><strong>说明</strong>：指定网页在缓存中的过期时间，一旦网页过期，必须到服务器上重新传输。</p>
+<p><strong>语法</strong>：<code>&lt;meta http-equiv=&quot;expires&quot; content=&quot;Wed, 26 Feb 1997 08:21:57 GMT&quot;/&gt;</code></p>
+<p><strong>注意</strong>：必须使用GMT的时间格式，或者直接设为0（数字表示多久后过期）</p>
+<h3 id="2-Pragma（cache模式）"><a href="#2-Pragma（cache模式）" class="headerlink" title="2. Pragma（cache模式）"></a>2. Pragma（cache模式）</h3><p><strong>说明</strong>：禁止浏览器从本地计算机的缓存中访问页面内容。</p>
+<p><strong>语法</strong>：<code>&lt;meta http-equiv=&quot;Pragma&quot; content=&quot;no-cache&quot;/&gt;</code></p>
+<p><strong>注意</strong>：网页不保存在缓存中，每次访问都刷新页面。这样设定，访问者将无法脱机浏览。</p>
+<h3 id="3-Refresh（刷新）"><a href="#3-Refresh（刷新）" class="headerlink" title="3. Refresh（刷新）"></a>3. Refresh（刷新）</h3><p><strong>说明</strong>：自动刷新并指向新页面。</p>
+<p><strong>语法</strong>：<code>&lt;meta http-equiv=&quot;refresh&quot;content=&quot;5; url=http://www.baidu.com/&quot;/&gt;</code></p>
+<p>其中的5表示5秒后自动刷新并调整到URL新页面。</p>
+<h3 id="4-Set-Cookie（cookie设定）"><a href="#4-Set-Cookie（cookie设定）" class="headerlink" title="4. Set-Cookie（cookie设定）"></a>4. Set-Cookie（cookie设定）</h3><p><strong>说明</strong>：浏览器访问某个页面时会将它存在缓存中，下次再次访问时就可从缓存中读取，以提高速度。当你希望访问者每次都刷新你广告的图标，或每次都刷新你的计数器，就要禁用缓存了。</p>
+<p>如果网页过期，那么存盘的cookie将被删除。</p>
+<p><strong>语法</strong>：<code>&lt;meta http-equiv=&quot;Set-Cookie&quot;  content=&quot;cookievalue=xxx; expires=Wednesday,21-Oct-98 16:14:21 GMT; path=/&quot;&gt;</code></p>
+<p><strong>注意</strong>：必须使用GMT的时间格式</p>
+<h3 id="5-Window-target（显示窗口的设定）"><a href="#5-Window-target（显示窗口的设定）" class="headerlink" title="5. Window-target（显示窗口的设定）"></a>5. Window-target（显示窗口的设定）</h3><p><strong>说明</strong>：强制页面在当前窗口以独立页面显示</p>
+<p><strong>语法</strong>：</p>
+<p><code>&lt;meta http-equiv=&quot;Window-target&quot; content=&quot;_top&quot;/&gt;</code></p>
+<p>可以用来防止别人在框架里调用你的页面。</p>
+<h3 id="6-content-Type（显示字符集的设定）"><a href="#6-content-Type（显示字符集的设定）" class="headerlink" title="6.  content-Type（显示字符集的设定）"></a>6.  content-Type（显示字符集的设定）</h3><p><strong>说明</strong>：设定页面使用的字符集</p>
+<p><code>&lt;meta http-equiv=&quot;content-Type&quot; content=&quot;text/html;charset=utf-8&quot;/&gt;</code></p>
+<p><strong>其他参数值</strong>：</p>
+<ul>
+<li>meta标签的charset的信息参数如GB2312时，代表说明网站是采用的编码是简体中文；</li>
+<li>meta标签的charset的信息参数如BIG5时，代表说明网站是采用的编码是繁体中文； </li>
+<li>meta标签的charset的信息参数如iso-2022-jp时，代表说明网站是采用的编码是日文；  </li>
+<li>meta标签的charset的信息参数如ks_c_5601时，代表说明网站是采用的编码是韩文；  </li>
+<li>meta标签的charset的信息参数如ISO-8859-1时，代表说明网站是采用的编码是英文；  </li>
+<li>meta标签的charset的信息参数如UTF-8时，代表世界通用的语言编码；</li>
+</ul>
+<blockquote>
+<p>在HTML5中，我们一般都是：<code>&lt;meta charset=&quot;utf-8&quot;/&gt;</code></p>
+</blockquote>
+<h3 id="7-content-Language（显示语言的设定）"><a href="#7-content-Language（显示语言的设定）" class="headerlink" title="7. content-Language（显示语言的设定）"></a>7. content-Language（显示语言的设定）</h3><p><strong>说明</strong>：显示语言</p>
+<p><strong>语法</strong>：</p>
+<p><code>&lt;meta http-equiv=&quot;Content-Language&quot; content=&quot;zh-cn&quot;/&gt;</code></p>
+<h3 id="8-http-equiv-”imagetoolbar”"><a href="#8-http-equiv-”imagetoolbar”" class="headerlink" title="8. http-equiv=”imagetoolbar”"></a>8. http-equiv=”imagetoolbar”</h3><p><code>&lt;meta http-equiv=&quot;imagetoolbar&quot; content=&quot;false&quot;/&gt;</code></p>
+<p>指定是否显示图片工具栏，当<code>为false</code>代表不显示，当为<code>true</code>代表显示。</p>
+<h2 id="三、HTML-5新增"><a href="#三、HTML-5新增" class="headerlink" title="三、HTML 5新增"></a>三、HTML 5新增</h2><h3 id="1-name"><a href="#1-name" class="headerlink" title="1. name"></a>1. name</h3><h4 id="1-1-viewport"><a href="#1-1-viewport" class="headerlink" title="1.1 viewport"></a>1.1 viewport</h4><p><strong>说明</strong>：能优化移动浏览器的显示（屏幕的缩放）</p>
+<p><strong>语法</strong>：</p>
+<p><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no&quot;/&gt;</code></p>
+<p><strong>参数值</strong>：</p>
+<p><code>width</code> viewport的宽度[device-width | pixel_value]width如果直接设置pixel_value数值，大部分的安卓手机不支持，但是ios支持；  </p>
+<p><code>height</code> – viewport 的高度 （范围从 223 到 10,000 ）  </p>
+<p><code>user-scalable</code> [yes | no]是否允许缩放  </p>
+<p><code>initial-scale</code> [数值] 初始化比例（范围从 &gt; 0 到 10）  </p>
+<p><code>minimum-scale</code> [数值] 允许缩放的最小比例  </p>
+<p><code>maximum-scale</code> [数值] 允许缩放的最大比例  </p>
+<h4 id="1-2-format-detection（忽略电话号码和邮箱）"><a href="#1-2-format-detection（忽略电话号码和邮箱）" class="headerlink" title="1.2 format-detection（忽略电话号码和邮箱）"></a>1.2 format-detection（忽略电话号码和邮箱）</h4><p><strong>说明</strong>：忽略电话号码和邮箱</p>
+<p><strong>语法</strong>：</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="regexp">//</span>忽略页面中的数字识别为电话号码</span><br><span class="line">&lt;meta name=<span class="string">&quot;format-detection&quot;</span>content=<span class="string">&quot;telephone=no&quot;</span>&gt;</span><br><span class="line"><span class="regexp">//</span>忽略页面中的邮箱格式识别为邮箱</span><br><span class="line">&lt;meta name=<span class="string">&quot;format-detection&quot;</span> content=<span class="string">&quot;email=no&quot;</span>/&gt;</span><br><span class="line"><span class="regexp">//</span> 也可以写成：</span><br><span class="line">&lt;meta name=<span class="string">&quot;format-detection&quot;</span> content=<span class="string">&quot;telphone=no, email=no&quot;</span>/&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-3-浏览器内核控制"><a href="#1-3-浏览器内核控制" class="headerlink" title="1.3 浏览器内核控制"></a>1.3 浏览器内核控制</h4><p>国内浏览器很多都是双内核（<code>webkit</code>和<code>Trident</code>），webkit内核高速浏览，IE内核兼容网页和旧版网站。而添加meta标签的网站可以控制浏览器选择何种内核渲染。（仅限360浏览器）</p>
+<p><code>&lt;meta name=&quot;renderer&quot; content=&quot;webkit|ie-comp|ie-stand&quot;&gt;</code></p>
+<p>若页面需默认用极速核，增加标签：<code>&lt;meta name=&quot;renderer&quot; content=&quot;webkit&quot;&gt;</code><br>若页面需默认用ie兼容内核，增加标签：<code>&lt;meta name=&quot;renderer&quot; content=&quot;ie-comp&quot;&gt;</code><br>若页面需默认用ie标准内核，增加标签：<code>&lt;meta name=&quot;renderer&quot; content=&quot;ie-stand&quot;&gt;</code></p>
+<p>  <strong>各渲染内核的技术细节</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">内核</th>
+<th>Webkit</th>
+<th>IE兼容</th>
+<th>IE标准</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">内核版本</td>
+<td>Chrome 45</td>
+<td>IE6/7</td>
+<td>IE9/IE10/IE11(取决于用户的IE)</td>
+</tr>
+<tr>
+<td align="left">HTML5支持</td>
+<td>YES</td>
+<td>NO</td>
+<td>YES</td>
+</tr>
+<tr>
+<td align="left">ActiveX控件支持</td>
+<td>NO</td>
+<td>YES</td>
+<td>YES</td>
+</tr>
+</tbody></table>
+<h4 id="1-4-WebApp全屏模式"><a href="#1-4-WebApp全屏模式" class="headerlink" title="1.4 WebApp全屏模式"></a>1.4 WebApp全屏模式</h4><p><code>&lt;meta name=&quot;apple-mobile-web-app-capable&quot; content=&quot;yes&quot; /&gt; &lt;!-- 启用 WebApp 全屏模式 --&gt;</code></p>
+<h4 id="1-5-隐藏状态栏-设置状态栏颜色"><a href="#1-5-隐藏状态栏-设置状态栏颜色" class="headerlink" title="1.5 隐藏状态栏/设置状态栏颜色"></a>1.5 隐藏状态栏/设置状态栏颜色</h4><p>只有在开启WebApp全屏模式时才生效。content的值为<code>default</code> | <code>black</code> | <code>black-translucent</code> 。</p>
+<p><code>&lt;meta name=&quot;apple-mobile-web-app-status-bar-style&quot; content=&quot;black-translucent&quot; /&gt;</code></p>
+<h4 id="1-6-不同浏览器"><a href="#1-6-不同浏览器" class="headerlink" title="1.6 不同浏览器"></a>1.6 不同浏览器</h4><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">`<span class="comment">&lt;!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 --&gt;</span> `</span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;HandheldFriendly&quot;</span> <span class="attr">content</span>=<span class="string">&quot;true&quot;</span>&gt;</span>  `</span><br><span class="line"></span><br><span class="line">`<span class="comment">&lt;!-- 微软的老式浏览器 --&gt;</span>  `</span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;MobileOptimized&quot;</span> <span class="attr">content</span>=<span class="string">&quot;320&quot;</span>&gt;</span>  </span><br><span class="line"></span><br><span class="line">`<span class="comment">&lt;!-- uc强制竖屏 --&gt;</span>  `</span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;screen-orientation&quot;</span> <span class="attr">content</span>=<span class="string">&quot;portrait&quot;</span>&gt;</span>  </span><br><span class="line"></span><br><span class="line">`<span class="comment">&lt;!-- QQ强制竖屏 --&gt;</span>  `</span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;x5-orientation&quot;</span> <span class="attr">content</span>=<span class="string">&quot;portrait&quot;</span>&gt;</span>  </span><br><span class="line"></span><br><span class="line">`<span class="comment">&lt;!-- UC强制全屏 --&gt;</span> `</span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;full-screen&quot;</span> <span class="attr">content</span>=<span class="string">&quot;yes&quot;</span>&gt;</span>  </span><br><span class="line"></span><br><span class="line">`<span class="comment">&lt;!-- QQ强制全屏 --&gt;</span>  `</span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;x5-fullscreen&quot;</span> <span class="attr">content</span>=<span class="string">&quot;true&quot;</span>&gt;</span>  </span><br><span class="line"></span><br><span class="line">`<span class="comment">&lt;!-- UC应用模式 --&gt;</span> `</span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;browsermode&quot;</span> <span class="attr">content</span>=<span class="string">&quot;application&quot;</span>&gt;</span>  </span><br><span class="line"></span><br><span class="line">`<span class="comment">&lt;!-- QQ应用模式 --&gt;</span> `</span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;x5-page-mode&quot;</span> <span class="attr">content</span>=<span class="string">&quot;app&quot;</span>&gt;</span>  </span><br><span class="line"></span><br><span class="line">`<span class="comment">&lt;!-- windows phone 点击无高光 --&gt;</span> `</span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;msapplication-tap-highlight&quot;</span> <span class="attr">content</span>=<span class="string">&quot;no&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-http-equiv"><a href="#2-http-equiv" class="headerlink" title="2. http-equiv"></a>2. http-equiv</h3><h4 id="2-1-优先使用-IE-最新版本和-Chrome"><a href="#2-1-优先使用-IE-最新版本和-Chrome" class="headerlink" title="2.1 优先使用 IE 最新版本和 Chrome"></a>2.1 优先使用 IE 最新版本和 Chrome</h4><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge,chrome=1&quot;</span> /&gt;</span>  </span><br><span class="line"></span><br><span class="line">`<span class="comment">&lt;!-- 关于X-UA-Compatible --&gt;</span>  `</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=6&quot;</span> &gt;</span><span class="comment">&lt;!-- 使用IE6 --&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=7&quot;</span> &gt;</span><span class="comment">&lt;!-- 用于在IE8版本浏览器中使用IE7渲染来避免出错 --&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=8&quot;</span> &gt;</span><span class="comment">&lt;!-- 使用IE8 --&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-2-转码申明"><a href="#2-2-转码申明" class="headerlink" title="2.2 转码申明"></a>2.2 转码申明</h4><p>用百度打开网页可能会对其进行转码（比如贴广告），避免转码可添加如下<code>meta</code></p>
+<p><code>&lt;meta http-equiv=&quot;Cache-Control&quot; content=&quot;no-siteapp&quot; /&gt;</code></p>
+<h3 id="3-charset"><a href="#3-charset" class="headerlink" title="3. charset"></a>3. charset</h3><p><code>&lt;meta charset=&quot;UTF-8&quot;&gt;</code></p>
+<ul>
+<li><p>meta标签的charset的信息参数如<code>GB2312</code>时，代表说明网站是采用的编码是简体中文；</p>
+</li>
+<li><p>meta标签的charset的信息参数如<code>BIG5</code>时，代表说明网站是采用的编码是繁体中文； </p>
+</li>
+<li><p>meta标签的charset的信息参数如<code>iso-2022-jp</code>时，代表说明网站是采用的编码是日文；  </p>
+</li>
+<li><p>meta标签的charset的信息参数如<code>ks_c_5601</code>时，代表说明网站是采用的编码是韩文；  </p>
+</li>
+<li><p>meta标签的charset的信息参数如<code>ISO-8859-1</code>时，代表说明网站是采用的编码是英文；  </p>
+</li>
+<li><p>meta标签的charset的信息参数如<code>UTF-8</code>时，代表世界通用的语言编码</p>
+</li>
+</ul>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>Front End</category>
+      </categories>
+      <tags>
+        <tag>HTML</tag>
       </tags>
   </entry>
 </search>
