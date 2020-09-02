@@ -187,246 +187,6 @@
       </tags>
   </entry>
   <entry>
-    <title>HTML标签</title>
-    <url>/2020/08/31/HTML-tags/</url>
-    <content><![CDATA[<h2 id="一、Html5废弃标签"><a href="#一、Html5废弃标签" class="headerlink" title="一、Html5废弃标签"></a>一、Html5废弃标签</h2><blockquote>
-<p>转自<a href="http://yanue.net/">半叶寒羽</a> » <a href="http://yanue.net/post-106.html">HTML5废弃的标签及属性</a></p>
-</blockquote>
-<h3 id="第一类：表现性元素"><a href="#第一类：表现性元素" class="headerlink" title="第一类：表现性元素"></a>第一类：表现性元素</h3><ul>
-<li>basefont</li>
-<li>big</li>
-<li>center</li>
-<li>font</li>
-<li>s</li>
-<li>strike</li>
-<li>tt</li>
-<li>u</li>
-</ul>
-<p>建议用语义正确的元素代替他们，并使用CSS来确保渲染后的效果</p>
-<h3 id="第二类：框架类元素"><a href="#第二类：框架类元素" class="headerlink" title="第二类：框架类元素"></a>第二类：框架类元素</h3><p>因框架有很多可用性及可访问性问题，HTML5规范将以下元素移除。</p>
-<ul>
-<li>frame</li>
-<li>frameset</li>
-<li>noframes</li>
-</ul>
-<p>但html5支持iframe。</p>
-<h3 id="第三类：属性类"><a href="#第三类：属性类" class="headerlink" title="第三类：属性类"></a>第三类：属性类</h3><p>很多表现性的属性也被新规范移除，如下：</p>
-<ul>
-<li>align</li>
-<li>body标签上的link、vlink、alink、text属性</li>
-<li>bgcolor</li>
-<li>height和width</li>
-<li>iframe元素上的scrolling属性</li>
-<li>valign</li>
-<li>hspace和vspace</li>
-<li>table标签上的cellpadding、cellspacing和border属性</li>
-<li>header标签上的profile属性</li>
-<li>链接标签a上的target属性</li>
-<li>img和iframe元素的longdesc属性</li>
-</ul>
-<h3 id="第四类：其他"><a href="#第四类：其他" class="headerlink" title="第四类：其他"></a>第四类：其他</h3><ul>
-<li>abbr取代acronym（用于表示缩写）</li>
-<li>object取代了applet</li>
-<li>ul取代了dir</li>
-</ul>
-<blockquote>
-<p>另附上直观的：<a href="http://demo.yanue.net/HTML5element/">html5元素周期表</a></p>
-</blockquote>
-<h2 id="二、HTML5新增的语义化标签"><a href="#二、HTML5新增的语义化标签" class="headerlink" title="二、HTML5新增的语义化标签"></a>二、HTML5新增的语义化标签</h2><p>主要有：<code> &lt;article&gt;、&lt;section&gt;、&lt;nav&gt;、&lt;aside&gt;、&lt;header&gt;、&lt;footer&gt;、&lt;time&gt;</code>等等…</p>
-<p><img data-src="pic1.png"></p>
-<h3 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h3><ul>
-<li>为了在没有CSS的情况下，页面也能呈现出很好地内容结构、代码结构</li>
-<li>比<code>&lt;div&gt;</code>标签有更加丰富的含义，方便开发与维护</li>
-<li>方便搜索引擎能识别页面结构，有利于<code>SEO</code></li>
-<li>方便其他设备解析（如移动设备、盲人阅读器等）</li>
-<li>有利于合作，遵守W3C标准</li>
-</ul>
-<h3 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h3><ul>
-<li>尽可能少的使用无语义的标签div和span</li>
-<li>在语义不明显时，既可以使用div或者p时，尽量用p，因为p在默认情况下有上下间距，对兼容特殊终端有利</li>
-<li>不要使用纯样式标签，如：b、font、u等，改用css设置</li>
-<li>需要强调的文本，可以包含在strong或者em标签中</li>
-<li>使用表格时，标题要用caption，表头用thead，主体部分用tbody包围，尾部用tfoot包围。表头和一般单元格要区分开，表头用th，单元格用td</li>
-<li>表单域要用fieldset标签包起来，并用legend标签说明表单的用途</li>
-<li>每个input标签对应的说明文本都需要使用label标签，并且通过为input设置id属性</li>
-</ul>
-<h3 id="补充："><a href="#补充：" class="headerlink" title="补充："></a>补充：</h3><h4 id="1-header与hgroup"><a href="#1-header与hgroup" class="headerlink" title="1. header与hgroup"></a>1. <code>header</code>与<code>hgroup</code></h4><p>放在页面或布局的顶部，一般放置导航栏或标题，如：</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">header</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>**信息科技有限公司<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>一个文档中可以包含一对或者一对以上的<code>&lt;header&gt;</code>标签。<br> 标签的位置是次要的，不一定非要显示在页面的上方，我们可以为任何需要的区块标签添加<code>&lt;header&gt;</code>元素，例如下面将要讲解的<code>&lt;article&gt;</code>、<code>&lt;section&gt;</code>等标签。</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">hgroup</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>这是一篇介绍HTML 5语义化标签和更简洁的结构<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>HTML 5<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">hgroup</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>如果有连续多个h1-h6标签就用hgroup</li>
-<li>如果有连续多个标题和其他文章数据，h1-h6标签就用hgroup包住，和其他文章元数据一起放入header标签</li>
-</ul>
-<h4 id="2-nav"><a href="#2-nav" class="headerlink" title="2. nav"></a>2. nav</h4><p>表示页面的导航，也可以在<code>&lt;header&gt;</code>标签中使用，还可以显示在侧边栏中。一个页面之中可以有多个<code>&lt;nav&gt;</code>标签。<br> 为了方便搜索引擎解析，最好是将主要的链接放在nav中。</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">header</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">h1</span>&gt;</span>**信息科技有限公司<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">nav</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>首页<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;example.html&quot;</span>&gt;</span>客户案例<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;service_one.html&quot;</span>&gt;</span>技术服务<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span>          </span><br><span class="line">       <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;aboutus_one.html&quot;</span>&gt;</span>关于我们<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;connection.html&quot;</span>&gt;</span>联系我们<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">nav</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="3-aside"><a href="#3-aside" class="headerlink" title="3. aside"></a>3. aside</h4><p>所包含的内容不是页面的主要内容、具有独立性，是对页面的补充。<br><code> &lt;aside&gt;</code>一般使用在页面、文章的侧边栏、广告、友情链接等区域。</p>
-<h4 id="4-footer"><a href="#4-footer" class="headerlink" title="4. footer"></a>4. footer</h4><p>一般被放置在页面或者页面中某个区块的底部，包含版权信息、联系方式等信息。一个页面也可以有多个footer</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">footer</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">small</span>&gt;</span></span><br><span class="line">        版权所有 © 2016-2017 **信息科技有限公司</span><br><span class="line">    <span class="tag">&lt;/<span class="name">small</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">footer</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="5-article"><a href="#5-article" class="headerlink" title="5. article"></a>5. article</h4><p><code>&lt;article&gt;</code>元素应该使用在相对比较独立、完整的的内容区块，所以我们可以在一篇博客、一个论坛帖子、一篇新闻报道或者一个用户评论中使用<code>&lt;article&gt;</code>元素。article可以互相嵌套。</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">article</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">h1</span>&gt;</span>HTML5学习之语义化标签<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">p</span>&gt;</span>....正文.....<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">footer</span>&gt;</span>版权所有*伪版必究<span class="tag">&lt;/<span class="name">footer</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="6-section"><a href="#6-section" class="headerlink" title="6. section"></a>6. section</h4><p>一组或者一节内容。</p>
-<p><strong><code>&lt;div&gt;</code>、<code>&lt;section&gt;</code>、<code>&lt;article&gt;</code>三者的比较：</strong></p>
-<p><code>&lt;div&gt;</code>：应用广泛，任意一个区域<br><code>&lt;section&gt;</code>：包含的内容是一个明确的主题，通常有标题区域<br><code>&lt;article&gt;</code>：如果我们的页面中需要一个单独的模块来实现一个单独的功能，就用<code>&lt;article&gt;</code>，其他的时候都用<code>&lt;section&gt;</code></p>
-<h4 id="7-time"><a href="#7-time" class="headerlink" title="7. time"></a>7. time</h4><p>可以带格式的时间标签</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">time</span> <span class="attr">datetime</span>=<span class="string">&quot;2017-07-03&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="8-mark"><a href="#8-mark" class="headerlink" title="8. mark"></a>8. mark</h4><p>高亮</p>
-<h4 id="9-address"><a href="#9-address" class="headerlink" title="9. address"></a>9. address</h4><p>address代表区块容器，必须是作为联系信息出现，邮编地址、邮件地址等等,一般出现在footer。</p>
-<h2 id="三、-lt-a-gt-标签"><a href="#三、-lt-a-gt-标签" class="headerlink" title="三、&lt;a&gt;标签"></a>三、<code>&lt;a&gt;</code>标签</h2><figure class="highlight dust"><table><tr><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;javascript:void(0)&quot;</span> <span class="attr">click</span>=<span class="string">&quot;function()</span></span></span><span class="template-variable">&#123;&#125;</span><span class="xml"><span class="tag"><span class="string">&quot;</span> /&gt;</span>=</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="1-a-标签样式"><a href="#1-a-标签样式" class="headerlink" title="1. a 标签样式"></a>1. a 标签样式</h3><p> 一组专门的预定义的类称为伪类用于处理超链接的状态，超链接的文字的状态可以通过伪类选择器+样式类进行控制  <code>&lt;a class=&quot;mycls&quot; &gt;&lt;/a&gt;</code></p>
-<ul>
-<li><p>所有状态下的链接 <code>.mycls&#123;color:red&#125;</code></p>
-</li>
-<li><p><code>a:link</code> 未访问的连接<code> .mycls a:link&#123;color:blue&#125;</code></p>
-</li>
-<li><p><code>a:visited</code> 已访问的链接<code>.mycls a:visited&#123;color: visited&#125;</code></p>
-</li>
-<li><p><code>a:active</code>  激活时（链接获取焦点）链接的颜色<code> .mycls a:active&#123;color:blue&#125;</code></p>
-</li>
-</ul>
-<p>一般情况下 a:hiver和a:visited的颜色是一种的，这4个状态的过程是： <code>a:link -&gt;a:hover-&gt;a:active-&gt;a:visited</code><br>另外，a：active不能设置有无下划线（总是有的）</p>
-<pre><code> &lt;style&gt;
-    a &#123;font-size:16px&#125; 
-    a:link &#123;color: blue; text-decoration:none;&#125; //未访问：蓝色、无下划线 
-    a:active:&#123;color: red; &#125; //激活：红色 
-    a:visited &#123;color:purple;text-decoration:none;&#125; //已访问：purple、无下划线 
-    a:hover &#123;color: red; text-decoration:underline;&#125; //鼠标移近：红色、下划线 
-  &lt;/style&gt;</code></pre>
-<h3 id="2-target的属性"><a href="#2-target的属性" class="headerlink" title="2. target的属性"></a>2. target的属性</h3><p><code>&lt;a&gt;</code>标签的target属性规定在何处打开链接文档<br>如下面这行表示在新的窗口中打开文档<br><code> &lt;a href=&quot;http://www.baidu.com&quot; target=&quot;_blank&quot;&gt; visit w3school &lt;/a&gt;</code></p>
-<p>可选值：<code>_blank</code>、<code>_parent</code>、<code>_self</code>、<code>_top</code>、<code>*framename*</code></p>
-<p><strong>_blank</strong>        浏览器总在一个新打开，未命名的窗口中载入目标文档 </p>
-<p><strong>_self</strong>        这个目标的值对所有没有指定目标的<code>&lt;a&gt;</code>标签是默认目标。它使得目标文档载入并显示在相同的框架或者窗口中作为源文档。这个目标是多余的且不必要的，除非和文档标题<code>&lt;base&gt;</code>标签中的target属性一起使用    </p>
-<p><strong>_parent</strong>        在父框架集中打开被链接的文档</p>
-<p><strong>_top</strong>              在整个窗口打开被链接文档</p>
-<p><strong>framename</strong>   在指定的框架中打开被链接文档</p>
-<h3 id="3-name属性"><a href="#3-name属性" class="headerlink" title="3. name属性"></a>3. name属性</h3><p><code>name</code>属性规定锚(anchor)的名称，可以使用<code>name</code>属性创建html页面中的书签，书签不会以任何独特方式显示，它对读者可以是不可见的。<br>当使用<code>命名锚</code>(named anchors)时，我们可以创建直接跳转至该命名锚(比如页面中某个小节)的链接,这样使用者就无需不停滚动页面来寻找需要的信息了。<br><strong>命名语法</strong><br><code>&lt;a name=&quot;label&quot;&gt;锚(显示在页面上的文本)&lt;/a&gt;</code></p>
-<ul>
-<li>锚名称可以是任何名字</li>
-<li>可以使用id属性来代替name属性，命名锚同样有效</li>
-</ul>
-<p><strong>例子</strong><br>  1)我们在html文档中对锚进行命名(创建一个书签)<br>  <code>&lt;a name=&quot;tips&quot;&gt;基本的注意事项 - 有用的提示&lt;/a&gt;</code><br>  2）在同一个文档中创建指向该锚的链接<br>  <code>&lt;a href=&quot;tips&quot;&gt;有用的提示&lt;/a&gt;</code><br>  3)也可以在其他页面中创建指向，该锚的链接<br>  <code>&lt;a href=&quot;http://mypro#trip&quot;&gt;有用的提示&lt;a&gt;</code></p>
-<h3 id="4-标签事件"><a href="#4-标签事件" class="headerlink" title="4. 标签事件"></a>4. 标签事件</h3><p>将<code>&lt;a&gt;</code>标签的<code>href</code>属性值设置为”#”，并设置<code>onclick</code>属性。<br>在这种处理方式下，用户可以很明显地看出哪些文字是超链接。<br>在单击该超链接时，也可以执行onclick属性值中的JavaScript语句，并且不会跳转网页。</p>
-<blockquote>
-<p>但是，由于href的属性值为”#”，浏览器会自动跳 转到当前网页的顶部。<br>如果当前网页内容比较多，浏览器窗口出现下拉滚动条时，可以很明显地看到跳转，而这种跳转往往不是网页设计者的本意。</p>
-</blockquote>
-<p>在没有为<code>&lt;a&gt;</code>标签设置onclick属性时，如果单击了该超链接，浏览器会加载href属性中的URL。<br>如果href属性值并不是一 个URL，而是一个JavaScript语句的话，那么浏览器就会执行该语句。<br>因此，可以直接将JavaScript语句写在<code>&lt;a&gt;</code>标签的 href属性值中，让href属性代替onclick属性。</p>
-<p><strong>在这种处理方式下，既可以响应click事件，又可以不让网页跳转。</strong></p>
-<p><strong>注意</strong>：在 a 标签的属性值中添加JavaScript语句之前，必须要先使用”javascript:”语句来声明href属性值中的语句为<code>javaScript</code>语句，否则浏览器就会将href属性值中的JavaScript语句当成URL进行加载。<br><code>&lt;a  href=&quot;javascript:showFlag()&quot;&gt;ssgao&lt;/a&gt;  </code>   执行showFlag()方法<br><code>&lt;a  href=&quot;&quot; onclick=&quot;showFlag();&quot;&gt;ssgao&lt;/a&gt;</code>    执行showFlag()方法，并会跳转到href指向的页面—-&gt;当<code>href=&quot;&quot;</code>刷新当前页面<br><code>&lt;a  href=&quot;&quot;&gt;ssgao&lt;/a&gt;</code>  刷新当前页面<br><code>&lt;a  href=&quot;#&quot; onclick=&quot;showFlag();&quot;&gt;ssgao&lt;/a&gt;</code>   执行showFlag()方法，并会跳转到页面顶部<br><code>&lt;a href=&quot;#&quot; onclick=&quot;javascript:方法;return false;&quot;&gt;提交&lt;/a&gt;</code><br><code>&lt;a href=&quot;javascript:void(0)&quot; onclick=&quot;javascript:方法;return false;&quot;&gt;提交&lt;/a&gt;</code><br>javascript:void(0)就不会向上跳了<br>还有一个方法是 #this<br><code>a href=&quot;#this&quot; onclick=&quot;javascript:方法&quot;</code></p>
-<h3 id="5-回到顶部或底部"><a href="#5-回到顶部或底部" class="headerlink" title="5. 回到顶部或底部"></a>5. 回到顶部或底部</h3><h4 id="使用JS"><a href="#使用JS" class="headerlink" title="使用JS"></a>使用JS</h4><figure class="highlight arcade"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&quot;#带有滚动条的元素&quot;</span>).animate(&#123;<span class="attr">scrollTop</span>:<span class="number">0</span>&#125;,<span class="string">&#x27;fase&#x27;</span>); <span class="comment">//带有动画</span></span><br><span class="line">$(<span class="string">&quot;#带有滚动条的元素&quot;</span>).scrollTop(<span class="number">0</span>)；<span class="comment">//不带动画</span></span><br><span class="line">scrollTop 距离滚动元素顶部的位置</span><br></pre></td></tr></table></figure>
-
-<h4 id="使用a标签的name属性-锚记"><a href="#使用a标签的name属性-锚记" class="headerlink" title="使用a标签的name属性(锚记)"></a>使用a标签的name属性(锚记)</h4><figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">&lt;a <span class="attribute">name</span>=<span class="string">&quot;top&quot;</span>&gt;top&lt;/a&gt;</span><br><span class="line">&lt;a <span class="attribute">href</span>=<span class="string">&quot;#top&quot;</span>&gt; 点击此处跳转到<span class="attribute">name</span>=top的a标签的位置    </span><br></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th align="left">属性</th>
-<th align="left">值</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><a href="https://www.w3school.com.cn/tags/att_a_charset.asp">charset</a></td>
-<td align="left"><em>char_encoding</em></td>
-<td align="left"><span style="color:red;">HTML5 中不支持。</span>规定被链接文档的字符集。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/tags/att_a_coords.asp">coords</a></td>
-<td align="left"><em>coordinates</em></td>
-<td align="left"><span style="color:red;">HTML5 中不支持。</span>规定链接的坐标。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/tags/att_a_download.asp">download</a></td>
-<td align="left"><em>filename</em></td>
-<td align="left">规定被下载的超链接目标。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/tags/att_a_href.asp">href</a></td>
-<td align="left"><em>URL</em></td>
-<td align="left">规定链接指向的页面的 URL。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/tags/att_a_hreflang.asp">hreflang</a></td>
-<td align="left"><em>language_code</em></td>
-<td align="left">规定被链接文档的语言。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/tags/att_a_media.asp">media</a></td>
-<td align="left"><em>media_query</em></td>
-<td align="left">规定被链接文档是为何种媒介/设备优化的。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/tags/att_a_name.asp">name</a></td>
-<td align="left"><em>section_name</em></td>
-<td align="left"><span style="color:red;">HTML5 中不支持。</span>规定锚的名称。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/tags/att_a_rel.asp">rel</a></td>
-<td align="left"><em>text</em></td>
-<td align="left">规定当前文档与被链接文档之间的关系。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/tags/att_a_rev.asp">rev</a></td>
-<td align="left"><em>text</em></td>
-<td align="left"><span style="color:red;">HTML5 中不支持。</span>规定被链接文档与当前文档之间的关系。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/tags/att_a_shape.asp">shape</a></td>
-<td align="left">defaultrectcirclepoly</td>
-<td align="left"><span style="color:red;">HTML5 中不支持。</span>规定链接的形状。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/tags/att_a_target.asp">target</a></td>
-<td align="left">_blank_parent_self_top<em>framename</em></td>
-<td align="left">规定在何处打开链接文档。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/tags/att_a_type.asp">type</a></td>
-<td align="left"><em>MIME type</em></td>
-<td align="left">规定被链接文档的的 MIME 类型。</td>
-</tr>
-</tbody></table>
-<h2 id="四、HTML-lt-table-gt-标签功能"><a href="#四、HTML-lt-table-gt-标签功能" class="headerlink" title="四、HTML&lt;table&gt;标签功能"></a>四、HTML<code>&lt;table&gt;</code>标签功能</h2><p>绘制表格使用；如果是做后台管理的用户列表等类似 Excel 功能，这个标签是最佳的选择</p>
-<ul>
-<li><code>&lt;table&gt;</code> 标签定义 HTML 表格</li>
-<li>一个 HTML 表格包括 <code>&lt;table&gt;</code> 元素，一个或多个 <code>&lt;tr&gt;</code>、<code>&lt;th&gt;</code> 以及 <code>&lt;td&gt;</code> 元素。</li>
-<li><code>&lt;tr&gt;</code> 元素定义表格行</li>
-<li><code>&lt;th&gt;</code> 元素定义表头</li>
-<li><code>&lt;td&gt;</code> 元素定义表格单元</li>
-</ul>
-<p><strong>更复杂的 HTML 表格也可能包括</strong></p>
-<ul>
-<li><code>&lt;caption&gt;</code></li>
-<li><code>&lt;col&gt;</code></li>
-<li><code>&lt;colgroup&gt;</code></li>
-<li><code>&lt;thead&gt;</code></li>
-<li><code>&lt;tfoot&gt;</code></li>
-<li><code>&lt;tbody&gt;</code></li>
-</ul>
-<h3 id="HTML-lt-table-gt-标签用法"><a href="#HTML-lt-table-gt-标签用法" class="headerlink" title="HTML &lt;table&gt; 标签用法"></a>HTML <code>&lt;table&gt; </code>标签用法</h3><p>一个简单的 HTML 表格，包含两列两行：</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">&quot;1&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span>&gt;</span>网站名<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span>&gt;</span>网址<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>abc<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>abc<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="浏览器支持"><a href="#浏览器支持" class="headerlink" title="浏览器支持"></a>浏览器支持</h3><p>所有主流浏览器都支持 <code>&lt;table&gt;</code> 标签。</p>
-<hr>
-<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>虽然现在 DIV+CSS 布局非常流行，是取代 table 布局的好选择；</p>
-<p>但是遇到 table 相关的东西，还是使用<code>table</code>标签更佳，请根据实际场景进行选择</p>
-<hr>
-<h3 id="HTML4-与-HTML5-之间的差异"><a href="#HTML4-与-HTML5-之间的差异" class="headerlink" title="HTML4 与 HTML5 之间的差异"></a>HTML4 与 HTML5 之间的差异</h3><p>在 HTML5 中，仅支持 “border” 属性，并且只允许使用值 “1” 或 “”。</p>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
-      <categories>
-        <category>Front End</category>
-      </categories>
-      <tags>
-        <tag>Html</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JavaScript Function</title>
     <url>/2020/08/25/JavaScript-commonly-used-functions/</url>
     <content><![CDATA[<blockquote>
@@ -630,6 +390,39 @@
         <tag>框架与工具</tag>
         <tag>Vue</tag>
         <tag>Vue Problems</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CSS 动画</title>
+    <url>/2020/08/31/css-animation/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>下面总结和汇总了有关与CSS动画的知识点，确实很有用</p>
+</blockquote>
+<h2 id="一、CSS-Transform"><a href="#一、CSS-Transform" class="headerlink" title="一、CSS Transform"></a>一、CSS Transform</h2><p><code>Transform</code>字面上就是<code>变形，改变</code>的意思。在CSS3中<code>transform</code>主要包括以下几种：<strong>旋转rotate</strong>、<strong>扭曲skew</strong>、<strong>缩放scale</strong>和<strong>移动translate</strong>以及<strong>矩阵变形matrix</strong>。</p>
+<p><strong>语法：</strong></p>
+<p><code>transform ： none | [ rotate | scale | skew | translate |matrix]</code></p>
+<p><code>none</code>:表示不进么变换；后者表示一个或多个变换函数，**<u>以空格分开</u>**</p>
+<h3 id="1-旋转rotate"><a href="#1-旋转rotate" class="headerlink" title="1. 旋转rotate"></a>1. 旋转<code>rotate</code></h3><p><strong>rotate()</strong> ：通过指定的角度参数对原元素指定一个2D 旋转，需先有<code>transform-origin</code>属性的定义。<code>transform-origin</code>定义的是旋转的基点，其中<code>angle</code>是指旋转角度，如果设置的值为正数表示顺时针旋转，如果设置的值为负数，则表示逆时针旋转。</p>
+<p>如：<code>transform:rotate(30deg)</code></p>
+<p><img data-src="rotate.png"></p>
+<h3 id="2-移动translate"><a href="#2-移动translate" class="headerlink" title="2. 移动translate"></a>2. 移动<code>translate</code></h3><p>移动<code>translate</code>我们分为三种情况：</p>
+<ul>
+<li><code>translate(x,y)</code>水平方向和垂直方向同时移动（也就是X轴和Y轴同时移动）</li>
+<li><code>translateX(x)</code>仅水平方向移动（X轴移动）</li>
+<li><code>translateY(Y)</code>仅垂直方向移动（Y轴移动）</li>
+</ul>
+<h4 id="2-1-translate"><a href="#2-1-translate" class="headerlink" title="2.1 translate()"></a>2.1 translate()</h4><p>通过矢量[tx, ty]指定一个2D变换，tx 是第一个过渡值参数，ty 是第二个过渡值参数选项默认值为0。</p>
+<p>它表示对象进行平移，按照设定的x,y参数值,当值为负数时，反方向移动物体，其基点默认为元素 中心点，也可以根据<code>transform-origin</code>进行改变基点。</p>
+<p>如<code>transform:translate(100px,20px)</code></p>
+<p><img data-src="translate.png"></p>
+<h4 id="2-2-translateX"><a href="#2-2-translateX" class="headerlink" title="2.2 translateX()"></a>2.2 translateX()</h4><p> 通过给定一个X方向上的数目指定一个移动</p>
+<h4 id="2-3-translateY"><a href="#2-3-translateY" class="headerlink" title="2.3 translateY()"></a>2.3 translateY()</h4><p>通过给定Y方向的数目指定一个移动</p>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>Front End</category>
+      </categories>
+      <tags>
+        <tag>CSS</tag>
       </tags>
   </entry>
   <entry>
@@ -1057,6 +850,292 @@
 <p>其他待补充</p>
 </blockquote>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>Front End</category>
+      </categories>
+      <tags>
+        <tag>Html</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HTML标签</title>
+    <url>/2020/08/31/HTML-tags/</url>
+    <content><![CDATA[<p>[TOC]</p>
+<h2 id="一、Html5废弃标签"><a href="#一、Html5废弃标签" class="headerlink" title="一、Html5废弃标签"></a>一、Html5废弃标签</h2><h3 id="第一类：表现性元素"><a href="#第一类：表现性元素" class="headerlink" title="第一类：表现性元素"></a>第一类：表现性元素</h3><a id="more"></a>
+
+<ul>
+<li>basefont</li>
+<li>big</li>
+<li>center</li>
+<li>font</li>
+<li>s</li>
+<li>strike</li>
+<li>tt</li>
+<li>u</li>
+</ul>
+<p>建议用语义正确的元素代替他们，并使用CSS来确保渲染后的效果</p>
+<h3 id="第二类：框架类元素"><a href="#第二类：框架类元素" class="headerlink" title="第二类：框架类元素"></a>第二类：框架类元素</h3><p>因框架有很多可用性及可访问性问题，HTML5规范将以下元素移除。</p>
+<ul>
+<li>frame</li>
+<li>frameset</li>
+<li>noframes</li>
+</ul>
+<p>但html5支持iframe。</p>
+<h3 id="第三类：属性类"><a href="#第三类：属性类" class="headerlink" title="第三类：属性类"></a>第三类：属性类</h3><p>很多表现性的属性也被新规范移除，如下：</p>
+<ul>
+<li>align</li>
+<li>body标签上的link、vlink、alink、text属性</li>
+<li>bgcolor</li>
+<li>height和width</li>
+<li>iframe元素上的scrolling属性</li>
+<li>valign</li>
+<li>hspace和vspace</li>
+<li>table标签上的cellpadding、cellspacing和border属性</li>
+<li>header标签上的profile属性</li>
+<li>链接标签a上的target属性</li>
+<li>img和iframe元素的longdesc属性</li>
+</ul>
+<h3 id="第四类：其他"><a href="#第四类：其他" class="headerlink" title="第四类：其他"></a>第四类：其他</h3><ul>
+<li>abbr取代acronym（用于表示缩写）</li>
+<li>object取代了applet</li>
+<li>ul取代了dir</li>
+</ul>
+<blockquote>
+<p>另附上直观的：<a href="http://demo.yanue.net/HTML5element/">html5元素周期表</a></p>
+</blockquote>
+<h2 id="二、HTML5新增的语义化标签"><a href="#二、HTML5新增的语义化标签" class="headerlink" title="二、HTML5新增的语义化标签"></a>二、HTML5新增的语义化标签</h2><p>主要有：<code> &lt;article&gt;、&lt;section&gt;、&lt;nav&gt;、&lt;aside&gt;、&lt;header&gt;、&lt;footer&gt;、&lt;time&gt;</code>等等…</p>
+<p><img data-src="pic1.png"></p>
+<h3 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h3><ul>
+<li>为了在没有CSS的情况下，页面也能呈现出很好地内容结构、代码结构</li>
+<li>比<code>&lt;div&gt;</code>标签有更加丰富的含义，方便开发与维护</li>
+<li>方便搜索引擎能识别页面结构，有利于<code>SEO</code></li>
+<li>方便其他设备解析（如移动设备、盲人阅读器等）</li>
+<li>有利于合作，遵守W3C标准</li>
+</ul>
+<h3 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h3><ul>
+<li>尽可能少的使用无语义的标签div和span</li>
+<li>在语义不明显时，既可以使用div或者p时，尽量用p，因为p在默认情况下有上下间距，对兼容特殊终端有利</li>
+<li>不要使用纯样式标签，如：b、font、u等，改用css设置</li>
+<li>需要强调的文本，可以包含在strong或者em标签中</li>
+<li>使用表格时，标题要用caption，表头用thead，主体部分用tbody包围，尾部用tfoot包围。表头和一般单元格要区分开，表头用th，单元格用td</li>
+<li>表单域要用fieldset标签包起来，并用legend标签说明表单的用途</li>
+<li>每个input标签对应的说明文本都需要使用label标签，并且通过为input设置id属性</li>
+</ul>
+<h3 id="补充："><a href="#补充：" class="headerlink" title="补充："></a>补充：</h3><h4 id="1-header与hgroup"><a href="#1-header与hgroup" class="headerlink" title="1. header与hgroup"></a>1. <code>header</code>与<code>hgroup</code></h4><p>放在页面或布局的顶部，一般放置导航栏或标题，如：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">header</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>**信息科技有限公司<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>一个文档中可以包含一对或者一对以上的<code>&lt;header&gt;</code>标签。<br> 标签的位置是次要的，不一定非要显示在页面的上方，我们可以为任何需要的区块标签添加<code>&lt;header&gt;</code>元素，例如下面将要讲解的<code>&lt;article&gt;</code>、<code>&lt;section&gt;</code>等标签。</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">hgroup</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>这是一篇介绍HTML 5语义化标签和更简洁的结构<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>HTML 5<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">hgroup</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>如果有连续多个h1-h6标签就用hgroup</li>
+<li>如果有连续多个标题和其他文章数据，h1-h6标签就用hgroup包住，和其他文章元数据一起放入header标签</li>
+</ul>
+<h4 id="2-nav"><a href="#2-nav" class="headerlink" title="2. nav"></a>2. nav</h4><p>表示页面的导航，也可以在<code>&lt;header&gt;</code>标签中使用，还可以显示在侧边栏中。一个页面之中可以有多个<code>&lt;nav&gt;</code>标签。<br> 为了方便搜索引擎解析，最好是将主要的链接放在nav中。</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">header</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">h1</span>&gt;</span>**信息科技有限公司<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">nav</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>首页<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;example.html&quot;</span>&gt;</span>客户案例<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;service_one.html&quot;</span>&gt;</span>技术服务<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span>          </span><br><span class="line">       <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;aboutus_one.html&quot;</span>&gt;</span>关于我们<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;connection.html&quot;</span>&gt;</span>联系我们<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">nav</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-aside"><a href="#3-aside" class="headerlink" title="3. aside"></a>3. aside</h4><p>所包含的内容不是页面的主要内容、具有独立性，是对页面的补充。<br><code> &lt;aside&gt;</code>一般使用在页面、文章的侧边栏、广告、友情链接等区域。</p>
+<h4 id="4-footer"><a href="#4-footer" class="headerlink" title="4. footer"></a>4. footer</h4><p>一般被放置在页面或者页面中某个区块的底部，包含版权信息、联系方式等信息。一个页面也可以有多个footer</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">footer</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">small</span>&gt;</span></span><br><span class="line">        版权所有 © 2016-2017 **信息科技有限公司</span><br><span class="line">    <span class="tag">&lt;/<span class="name">small</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">footer</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="5-article"><a href="#5-article" class="headerlink" title="5. article"></a>5. article</h4><p><code>&lt;article&gt;</code>元素应该使用在相对比较独立、完整的的内容区块，所以我们可以在一篇博客、一个论坛帖子、一篇新闻报道或者一个用户评论中使用<code>&lt;article&gt;</code>元素。article可以互相嵌套。</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">article</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">h1</span>&gt;</span>HTML5学习之语义化标签<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">p</span>&gt;</span>....正文.....<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">footer</span>&gt;</span>版权所有*伪版必究<span class="tag">&lt;/<span class="name">footer</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="6-section"><a href="#6-section" class="headerlink" title="6. section"></a>6. section</h4><p>一组或者一节内容。</p>
+<p><strong><code>&lt;div&gt;</code>、<code>&lt;section&gt;</code>、<code>&lt;article&gt;</code>三者的比较：</strong></p>
+<p><code>&lt;div&gt;</code>：应用广泛，任意一个区域<br><code>&lt;section&gt;</code>：包含的内容是一个明确的主题，通常有标题区域<br><code>&lt;article&gt;</code>：如果我们的页面中需要一个单独的模块来实现一个单独的功能，就用<code>&lt;article&gt;</code>，其他的时候都用<code>&lt;section&gt;</code></p>
+<h4 id="7-time"><a href="#7-time" class="headerlink" title="7. time"></a>7. time</h4><p>可以带格式的时间标签</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">time</span> <span class="attr">datetime</span>=<span class="string">&quot;2017-07-03&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="8-mark"><a href="#8-mark" class="headerlink" title="8. mark"></a>8. mark</h4><p>高亮</p>
+<h4 id="9-address"><a href="#9-address" class="headerlink" title="9. address"></a>9. address</h4><p>address代表区块容器，必须是作为联系信息出现，邮编地址、邮件地址等等,一般出现在footer。</p>
+<h2 id="三、-lt-a-gt-标签"><a href="#三、-lt-a-gt-标签" class="headerlink" title="三、&lt;a&gt;标签"></a>三、<code>&lt;a&gt;</code>标签</h2><figure class="highlight dust"><table><tr><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;javascript:void(0)&quot;</span> <span class="attr">click</span>=<span class="string">&quot;function()</span></span></span><span class="template-variable">&#123;&#125;</span><span class="xml"><span class="tag"><span class="string">&quot;</span> /&gt;</span>=</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="1-a-标签样式"><a href="#1-a-标签样式" class="headerlink" title="1. a 标签样式"></a>1. a 标签样式</h3><p> 一组专门的预定义的类称为伪类用于处理超链接的状态，超链接的文字的状态可以通过伪类选择器+样式类进行控制  <code>&lt;a class=&quot;mycls&quot; &gt;&lt;/a&gt;</code></p>
+<ul>
+<li><p>所有状态下的链接 <code>.mycls&#123;color:red&#125;</code></p>
+</li>
+<li><p><code>a:link</code> 未访问的连接<code> .mycls a:link&#123;color:blue&#125;</code></p>
+</li>
+<li><p><code>a:visited</code> 已访问的链接<code>.mycls a:visited&#123;color: visited&#125;</code></p>
+</li>
+<li><p><code>a:active</code>  激活时（链接获取焦点）链接的颜色<code> .mycls a:active&#123;color:blue&#125;</code></p>
+</li>
+</ul>
+<p>一般情况下 a:hiver和a:visited的颜色是一种的，这4个状态的过程是： <code>a:link -&gt;a:hover-&gt;a:active-&gt;a:visited</code><br>另外，a：active不能设置有无下划线（总是有的）</p>
+<pre><code> &lt;style&gt;
+    a &#123;font-size:16px&#125; 
+    a:link &#123;color: blue; text-decoration:none;&#125; //未访问：蓝色、无下划线 
+    a:active:&#123;color: red; &#125; //激活：红色 
+    a:visited &#123;color:purple;text-decoration:none;&#125; //已访问：purple、无下划线 
+    a:hover &#123;color: red; text-decoration:underline;&#125; //鼠标移近：红色、下划线 
+  &lt;/style&gt;</code></pre>
+<h3 id="2-target的属性"><a href="#2-target的属性" class="headerlink" title="2. target的属性"></a>2. target的属性</h3><p><code>&lt;a&gt;</code>标签的target属性规定在何处打开链接文档<br>如下面这行表示在新的窗口中打开文档<br><code> &lt;a href=&quot;http://www.baidu.com&quot; target=&quot;_blank&quot;&gt; visit w3school &lt;/a&gt;</code></p>
+<p>可选值：<code>_blank</code>、<code>_parent</code>、<code>_self</code>、<code>_top</code>、<code>*framename*</code></p>
+<p><strong>_blank</strong>        浏览器总在一个新打开，未命名的窗口中载入目标文档 </p>
+<p><strong>_self</strong>        这个目标的值对所有没有指定目标的<code>&lt;a&gt;</code>标签是默认目标。它使得目标文档载入并显示在相同的框架或者窗口中作为源文档。这个目标是多余的且不必要的，除非和文档标题<code>&lt;base&gt;</code>标签中的target属性一起使用    </p>
+<p><strong>_parent</strong>        在父框架集中打开被链接的文档</p>
+<p><strong>_top</strong>              在整个窗口打开被链接文档</p>
+<p><strong>framename</strong>   在指定的框架中打开被链接文档</p>
+<h3 id="3-name属性"><a href="#3-name属性" class="headerlink" title="3. name属性"></a>3. name属性</h3><p><code>name</code>属性规定锚(anchor)的名称，可以使用<code>name</code>属性创建html页面中的书签，书签不会以任何独特方式显示，它对读者可以是不可见的。<br>当使用<code>命名锚</code>(named anchors)时，我们可以创建直接跳转至该命名锚(比如页面中某个小节)的链接,这样使用者就无需不停滚动页面来寻找需要的信息了。<br><strong>命名语法</strong><br><code>&lt;a name=&quot;label&quot;&gt;锚(显示在页面上的文本)&lt;/a&gt;</code></p>
+<ul>
+<li>锚名称可以是任何名字</li>
+<li>可以使用id属性来代替name属性，命名锚同样有效</li>
+</ul>
+<p><strong>例子</strong><br>  1)我们在html文档中对锚进行命名(创建一个书签)<br>  <code>&lt;a name=&quot;tips&quot;&gt;基本的注意事项 - 有用的提示&lt;/a&gt;</code><br>  2）在同一个文档中创建指向该锚的链接<br>  <code>&lt;a href=&quot;tips&quot;&gt;有用的提示&lt;/a&gt;</code><br>  3)也可以在其他页面中创建指向，该锚的链接<br>  <code>&lt;a href=&quot;http://mypro#trip&quot;&gt;有用的提示&lt;a&gt;</code></p>
+<h3 id="4-标签事件"><a href="#4-标签事件" class="headerlink" title="4. 标签事件"></a>4. 标签事件</h3><p>将<code>&lt;a&gt;</code>标签的<code>href</code>属性值设置为”#”，并设置<code>onclick</code>属性。<br>在这种处理方式下，用户可以很明显地看出哪些文字是超链接。<br>在单击该超链接时，也可以执行onclick属性值中的JavaScript语句，并且不会跳转网页。</p>
+<blockquote>
+<p>但是，由于href的属性值为”#”，浏览器会自动跳 转到当前网页的顶部。<br>如果当前网页内容比较多，浏览器窗口出现下拉滚动条时，可以很明显地看到跳转，而这种跳转往往不是网页设计者的本意。</p>
+</blockquote>
+<p>在没有为<code>&lt;a&gt;</code>标签设置onclick属性时，如果单击了该超链接，浏览器会加载href属性中的URL。<br>如果href属性值并不是一 个URL，而是一个JavaScript语句的话，那么浏览器就会执行该语句。<br>因此，可以直接将JavaScript语句写在<code>&lt;a&gt;</code>标签的 href属性值中，让href属性代替onclick属性。</p>
+<p><strong>在这种处理方式下，既可以响应click事件，又可以不让网页跳转。</strong></p>
+<p><strong>注意</strong>：在 a 标签的属性值中添加JavaScript语句之前，必须要先使用”javascript:”语句来声明href属性值中的语句为<code>javaScript</code>语句，否则浏览器就会将href属性值中的JavaScript语句当成URL进行加载。<br><code>&lt;a  href=&quot;javascript:showFlag()&quot;&gt;ssgao&lt;/a&gt;  </code>   执行showFlag()方法<br><code>&lt;a  href=&quot;&quot; onclick=&quot;showFlag();&quot;&gt;ssgao&lt;/a&gt;</code>    执行showFlag()方法，并会跳转到href指向的页面—-&gt;当<code>href=&quot;&quot;</code>刷新当前页面<br><code>&lt;a  href=&quot;&quot;&gt;ssgao&lt;/a&gt;</code>  刷新当前页面<br><code>&lt;a  href=&quot;#&quot; onclick=&quot;showFlag();&quot;&gt;ssgao&lt;/a&gt;</code>   执行showFlag()方法，并会跳转到页面顶部<br><code>&lt;a href=&quot;#&quot; onclick=&quot;javascript:方法;return false;&quot;&gt;提交&lt;/a&gt;</code><br><code>&lt;a href=&quot;javascript:void(0)&quot; onclick=&quot;javascript:方法;return false;&quot;&gt;提交&lt;/a&gt;</code><br>javascript:void(0)就不会向上跳了<br>还有一个方法是 #this<br><code>a href=&quot;#this&quot; onclick=&quot;javascript:方法&quot;</code></p>
+<h3 id="5-回到顶部或底部"><a href="#5-回到顶部或底部" class="headerlink" title="5. 回到顶部或底部"></a>5. 回到顶部或底部</h3><h4 id="使用JS"><a href="#使用JS" class="headerlink" title="使用JS"></a>使用JS</h4><figure class="highlight arcade"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&quot;#带有滚动条的元素&quot;</span>).animate(&#123;<span class="attr">scrollTop</span>:<span class="number">0</span>&#125;,<span class="string">&#x27;fase&#x27;</span>); <span class="comment">//带有动画</span></span><br><span class="line">$(<span class="string">&quot;#带有滚动条的元素&quot;</span>).scrollTop(<span class="number">0</span>)；<span class="comment">//不带动画</span></span><br><span class="line">scrollTop 距离滚动元素顶部的位置</span><br></pre></td></tr></table></figure>
+
+<h4 id="使用a标签的name属性-锚记"><a href="#使用a标签的name属性-锚记" class="headerlink" title="使用a标签的name属性(锚记)"></a>使用a标签的name属性(锚记)</h4><figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">&lt;a <span class="attribute">name</span>=<span class="string">&quot;top&quot;</span>&gt;top&lt;/a&gt;</span><br><span class="line">&lt;a <span class="attribute">href</span>=<span class="string">&quot;#top&quot;</span>&gt; 点击此处跳转到<span class="attribute">name</span>=top的a标签的位置    </span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">值</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a href="https://www.w3school.com.cn/tags/att_a_charset.asp">charset</a></td>
+<td align="left"><em>char_encoding</em></td>
+<td align="left"><span style="color:red;">HTML5 中不支持。</span>规定被链接文档的字符集。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/tags/att_a_coords.asp">coords</a></td>
+<td align="left"><em>coordinates</em></td>
+<td align="left"><span style="color:red;">HTML5 中不支持。</span>规定链接的坐标。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/tags/att_a_download.asp">download</a></td>
+<td align="left"><em>filename</em></td>
+<td align="left">规定被下载的超链接目标。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/tags/att_a_href.asp">href</a></td>
+<td align="left"><em>URL</em></td>
+<td align="left">规定链接指向的页面的 URL。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/tags/att_a_hreflang.asp">hreflang</a></td>
+<td align="left"><em>language_code</em></td>
+<td align="left">规定被链接文档的语言。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/tags/att_a_media.asp">media</a></td>
+<td align="left"><em>media_query</em></td>
+<td align="left">规定被链接文档是为何种媒介/设备优化的。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/tags/att_a_name.asp">name</a></td>
+<td align="left"><em>section_name</em></td>
+<td align="left"><span style="color:red;">HTML5 中不支持。</span>规定锚的名称。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/tags/att_a_rel.asp">rel</a></td>
+<td align="left"><em>text</em></td>
+<td align="left">规定当前文档与被链接文档之间的关系。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/tags/att_a_rev.asp">rev</a></td>
+<td align="left"><em>text</em></td>
+<td align="left"><span style="color:red;">HTML5 中不支持。</span>规定被链接文档与当前文档之间的关系。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/tags/att_a_shape.asp">shape</a></td>
+<td align="left">defaultrectcirclepoly</td>
+<td align="left"><span style="color:red;">HTML5 中不支持。</span>规定链接的形状。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/tags/att_a_target.asp">target</a></td>
+<td align="left">_blank_parent_self_top<em>framename</em></td>
+<td align="left">规定在何处打开链接文档。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/tags/att_a_type.asp">type</a></td>
+<td align="left"><em>MIME type</em></td>
+<td align="left">规定被链接文档的的 MIME 类型。</td>
+</tr>
+</tbody></table>
+<h2 id="四、HTML-lt-table-gt-标签功能"><a href="#四、HTML-lt-table-gt-标签功能" class="headerlink" title="四、HTML&lt;table&gt;标签功能"></a>四、HTML<code>&lt;table&gt;</code>标签功能</h2><p>绘制表格使用；如果是做后台管理的用户列表等类似 Excel 功能，这个标签是最佳的选择</p>
+<ul>
+<li><code>&lt;table&gt;</code> 标签定义 HTML 表格</li>
+<li>一个 HTML 表格包括 <code>&lt;table&gt;</code> 元素，一个或多个 <code>&lt;tr&gt;</code>、<code>&lt;th&gt;</code> 以及 <code>&lt;td&gt;</code> 元素。</li>
+<li><code>&lt;tr&gt;</code> 元素定义表格行</li>
+<li><code>&lt;th&gt;</code> 元素定义表头</li>
+<li><code>&lt;td&gt;</code> 元素定义表格单元</li>
+</ul>
+<p><strong>更复杂的 HTML 表格也可能包括</strong></p>
+<ul>
+<li><code>&lt;caption&gt;</code></li>
+<li><code>&lt;col&gt;</code></li>
+<li><code>&lt;colgroup&gt;</code></li>
+<li><code>&lt;thead&gt;</code></li>
+<li><code>&lt;tfoot&gt;</code></li>
+<li><code>&lt;tbody&gt;</code></li>
+</ul>
+<h3 id="HTML-lt-table-gt-标签用法"><a href="#HTML-lt-table-gt-标签用法" class="headerlink" title="HTML &lt;table&gt; 标签用法"></a>HTML <code>&lt;table&gt; </code>标签用法</h3><p>一个简单的 HTML 表格，包含两列两行：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">&quot;1&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span>&gt;</span>网站名<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span>&gt;</span>网址<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>abc<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>abc<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="浏览器支持"><a href="#浏览器支持" class="headerlink" title="浏览器支持"></a>浏览器支持</h3><p>所有主流浏览器都支持 <code>&lt;table&gt;</code> 标签。</p>
+<hr>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>虽然现在 DIV+CSS 布局非常流行，是取代 table 布局的好选择；</p>
+<p>但是遇到 table 相关的东西，还是使用<code>table</code>标签更佳，请根据实际场景进行选择</p>
+<hr>
+<h3 id="HTML4-与-HTML5-之间的差异"><a href="#HTML4-与-HTML5-之间的差异" class="headerlink" title="HTML4 与 HTML5 之间的差异"></a>HTML4 与 HTML5 之间的差异</h3><p>在 HTML5 中，仅支持 “border” 属性，并且只允许使用值 “1” 或 “”。</p>
+<h2 id="五、HTML-语义化"><a href="#五、HTML-语义化" class="headerlink" title="五、HTML 语义化"></a>五、HTML 语义化</h2><h3 id="1-什么是HTML语义化标签"><a href="#1-什么是HTML语义化标签" class="headerlink" title="1. 什么是HTML语义化标签"></a>1. 什么是HTML语义化标签</h3><p>语义化的标签，说明让标签有自己的含义。</p>
+<p><code>&lt;p&gt;一行文字&lt;/p&gt;</code></p>
+<p><code>&lt;span&gt;一行文字&lt;/span&gt;</code></p>
+<p>如上代码，p 标签与 span 标签都区别之一就是，p 标签的含义是：段落。而 span 标签责没有独特的含义。</p>
+<h3 id="2-语义化标签的特点"><a href="#2-语义化标签的特点" class="headerlink" title="2. 语义化标签的特点"></a>2. 语义化标签的特点</h3><ul>
+<li><p>代码结构清晰，方便阅读，有利于团队合作开发。</p>
+</li>
+<li><p>方便其他设备解析（如屏幕阅读器、盲人阅读器、移动设备）以语义的方式来渲染网页。</p>
+</li>
+<li><p>有利于搜索引擎优化（SEO）。</p>
+</li>
+<li><p>便于团队开发和维护，语义化更具可读性，遵循W3C标准的团队都遵循这个标准，可以减少差异化。</p>
+</li>
+</ul>
+<h3 id="3-常见的语义化标签"><a href="#3-常见的语义化标签" class="headerlink" title="3. 常见的语义化标签"></a>3. 常见的语义化标签</h3><p>因此我们在写页面结构时，应尽量使用有 语义的HTML 标签</p>
+<p><code>&lt;title&gt;</code>：页面主体内容。</p>
+<p><code>&lt;hn&gt;</code>：h1~h6，分级标题，</p><h1> 与 <title> 协调有利于搜索引擎优化。<p></p>
+<p><code>&lt;ul&gt;</code>：无序列表。</p>
+<p><code>&lt;ol&gt;</code>：有序列表。</p>
+<p><code>&lt;header&gt;</code>：页眉通常包括网站标志、主导航、全站链接以及搜索框。</p>
+<p><code>&lt;nav&gt;</code>：标记导航，仅对文档中重要的链接群使用。</p>
+<p><code>&lt;main&gt;</code>：页面主要内容，一个页面只能使用一次。如果是web应用，则包围其主要功能。</p>
+<p><code>&lt;article&gt;</code>：定义外部的内容，其中的内容独立于文档的其余部分。</p>
+<p><code>&lt;section&gt;</code>：定义文档中的节（section、区段）。比如章节、页眉、页脚或文档中的其他部分。</p>
+<p><code>&lt;aside&gt;</code>：定义其所处内容之外的内容。如侧栏、文章的一组链接、广告、友情链接、相关产品列表等。</p>
+<p><code>&lt;footer&gt;</code>：页脚，只有当父级是body时，才是整个页面的页脚。</p>
+<p><code>&lt;small&gt;</code>：呈现小号字体效果，指定细则，输入免责声明、注解、署名、版权。</p>
+<p><code>&lt;strong&gt;</code>：和 em 标签一样，用于强调文本，但它强调的程度更强一些。</p>
+<p><code>&lt;em&gt;</code>：将其中的文本表示为强调的内容，表现为斜体。</p>
+<p><code>&lt;mark&gt;</code>：使用黄色突出显示部分文本。</p>
+<p><code>&lt;figure&gt;</code>：规定独立的流内容（图像、图表、照片、代码等等）（默认有40px左右margin）。</p>
+<p><code>&lt;figcaption&gt;</code>：定义 figure 元素的标题，应该被置于 figure 元素的第一个或最后一个子元素的位置。</p>
+<p><code>&lt;cite&gt;</code>：表示所包含的文本对某个参考文献的引用，比如书籍或者杂志的标题。</p>
+<p><code>&lt;blockquoto&gt;</code>：定义块引用，块引用拥有它们自己的空间。</p>
+<p><code>&lt;q&gt;</code>：短的引述（跨浏览器问题，尽量避免使用）。</p>
+<p><code>&lt;time&gt;</code>：datetime属性遵循特定格式，如果忽略此属性，文本内容必须是合法的日期或者时间格式。</p>
+<p><code>&lt;abbr&gt;</code>：简称或缩写。</p>
+<p><code>&lt;dfn&gt;</code>：定义术语元素，与定义必须紧挨着，可以在描述列表dl元素中使用。</p>
+<p><code>&lt;del&gt;</code>：移除的内容。</p>
+<p><code>&lt;ins&gt;</code>：添加的内容。</p>
+<p><code>&lt;code&gt;</code>：标记代码。</p>
+<p><code>&lt;meter&gt;</code>：定义已知范围或分数值内的标量测量。（Internet Explorer 不支持 meter 标签）</p>
+<p><code>&lt;progress&gt;</code>：定义运行中的进度（进程）。</p>
+<blockquote>
+<p>参考<a href="http://yanue.net/">半叶寒羽</a> » <a href="http://yanue.net/post-106.html">HTML5废弃的标签及属性</a></p>
+</blockquote>
+</title></h1><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
         <category>Front End</category>
       </categories>
