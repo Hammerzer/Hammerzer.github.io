@@ -6,6 +6,8 @@
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
 <p>下面总结和汇总了有关与CSS动画的知识点，确实很有用</p>
 </blockquote>
+<a id="more"></a>
+
 <h2 id="一、CSS-Transform"><a href="#一、CSS-Transform" class="headerlink" title="一、CSS Transform"></a>一、CSS Transform</h2><p><code>Transform</code>字面上就是<code>变形，改变</code>的意思。在CSS3中<code>transform</code>主要包括以下几种：<strong>旋转rotate</strong>、<strong>扭曲skew</strong>、<strong>缩放scale</strong>和<strong>移动translate</strong>以及<strong>矩阵变形matrix</strong>。</p>
 <p><strong>语法：</strong></p>
 <p><code>transform ： none | [ rotate | scale | skew | translate |matrix]</code></p>
@@ -220,6 +222,120 @@
       </tags>
   </entry>
   <entry>
+    <title>JavaScript Function</title>
+    <url>/2020/08/25/JavaScript-commonly-used-functions/</url>
+    <content><![CDATA[<blockquote>
+<h5 id="以下记录经常忘记又常用的JS内置函数"><a href="#以下记录经常忘记又常用的JS内置函数" class="headerlink" title="以下记录经常忘记又常用的JS内置函数"></a>以下记录经常忘记又常用的<code>JS</code>内置函数</h5><p>推荐查阅相关 <code>资料</code>  ：</p>
+<p><a href="https://es6.ruanyifeng.com/">ECMAScript 6 入门</a></p>
+<p><a href="https://www.liaoxuefeng.com/wiki/1022910821149312">廖雪峰的JavaScript教程</a></p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><h3 id="Array-forEach"><a href="#Array-forEach" class="headerlink" title="Array.forEach()"></a>Array.forEach()</h3><blockquote>
+<p>参考自<a href="https://www.jianshu.com/p/eed671b66f9f">简书</a></p>
+</blockquote>
+<h4 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h4><p>forEach()方法用于调用数组的每一个元素，并将元素传递给回调函数。</p>
+<figure class="highlight reasonml"><table><tr><td class="code"><pre><span class="line"><span class="built_in">array</span>.<span class="keyword">for</span><span class="constructor">Each(<span class="params">function</span>(<span class="params">currentValue</span>, <span class="params">index</span>, <span class="params">arr</span>)</span>, thisValue)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>currentValue：必填，当前元素。</p>
+<p>index：可选，当前元素的索引。</p>
+<p>arr：可选，当前元素所属的数组对象。</p>
+<p>thisValue：可选，传递给函数的值一般用this值，如果这个参数为空，”undefined”会传递给”this”值。（这个参数一般很少填）</p>
+</blockquote>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* JS代码 */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> colors = [<span class="string">&#x27;red&#x27;</span>, <span class="string">&#x27;blue&#x27;</span>, <span class="string">&#x27;green&#x27;</span>];</span><br><span class="line"></span><br><span class="line">colors.forEach(<span class="function">(<span class="params">item, $index, arr</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;item&#125;</span> =&gt; <span class="subst">$&#123;$index&#125;</span> =&gt; <span class="subst">$&#123;arr&#125;</span>`</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="pic1.png"></p>
+<p>上面的代码用了ES6语法，几乎等同于下面的代码</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* JS代码 */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> colors = [<span class="string">&#x27;red&#x27;</span>, <span class="string">&#x27;blue&#x27;</span>, <span class="string">&#x27;green&#x27;</span>];</span><br><span class="line"></span><br><span class="line">colors.<span class="keyword">forEach</span>(<span class="function"><span class="keyword">function</span>(<span class="params">item, $index, arr</span>) </span>&#123;</span><br><span class="line">  console.log(item + <span class="string">&#x27; =&gt; &#x27;</span> + $index + <span class="string">&#x27; =&gt; &#x27;</span> + arr);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h4><p>其实，用 forEach() 主要是为了更方便的代替 for 对数组进行遍历。</p>
+<p>用 for 遍历数组的方法</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* JS代码 */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> colors = [<span class="string">&#x27;red&#x27;</span>, <span class="string">&#x27;blue&#x27;</span>, <span class="string">&#x27;green&#x27;</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>( <span class="keyword">var</span> i=<span class="number">0</span>; i &lt; colors.length; i++)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log( colors[i] + <span class="string">&#x27; =&gt; &#x27;</span> + i + <span class="string">&#x27; =&gt; &#x27;</span> + colors);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>forEach() 对于空数组是不会执行回调函数的。</li>
+<li>for可以用continue跳过循环中的一个迭代，forEach用continue会报错。</li>
+<li>forEach() 需要用 return 跳过循环中的一个迭代，跳过之后会执行下一个迭代。</li>
+</ul>
+<h4 id="如何跳过一次迭代"><a href="#如何跳过一次迭代" class="headerlink" title="如何跳过一次迭代"></a>如何跳过一次迭代</h4><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* JS代码 */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> colors = [<span class="string">&#x27;red&#x27;</span>, <span class="string">&#x27;blue&#x27;</span>, <span class="string">&#x27;green&#x27;</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>( <span class="keyword">var</span> i=<span class="number">0</span>; i &lt; colors.length; i++)&#123;</span><br><span class="line">  <span class="keyword">if</span>( colors[i] == <span class="string">&#x27;blue&#x27;</span>) &#123;</span><br><span class="line">    <span class="keyword">continue</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log( colors[i] );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">colors.forEach( <span class="function"><span class="keyword">function</span>(<span class="params"> item </span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(item == <span class="string">&#x27;blue&#x27;</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="built_in">console</span>.log( item );</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：</strong></p>
+<blockquote>
+<p>没有办法终止或跳出forEach循环，除非抛出一个异常。</p>
+<p>如果需要终止或者跳出循环，建议用some()或者every()。</p>
+</blockquote>
+<h3 id="Array-shift"><a href="#Array-shift" class="headerlink" title="Array.shift()"></a>Array.shift()</h3><p>shift() 方法用于把数组的第一个元素从其中删除，并返回第一个元素的值。</p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">array</span>Object.shift()</span><br></pre></td></tr></table></figure>
+
+<h4 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h4><p>数组原来的第一个元素的值。</p>
+<h4 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h4><ul>
+<li>如果数组是空的，那么 shift() 方法将不进行任何操作，返回 undefined 值。</li>
+<li>请注意，该方法不创建新数组，而是直接修改原有的 arrayObject。</li>
+<li>该方法会改变数组的长度。</li>
+</ul>
+<h3 id="Array-every-Array-some"><a href="#Array-every-Array-some" class="headerlink" title="Array.every()   Array.some()"></a>Array.every()   Array.some()</h3><blockquote>
+<p>every()是对数组中每一项运行给定函数，如果该函数对每一项返回true,则返回true。</p>
+<p>some()是对数组中每一项运行给定函数，如果该函数对任一项返回true，则返回true。</p>
+<p>some一直在找符合条件的值，一旦找到，则不会继续迭代下去。<br>every从迭代开始，一旦有一个不符合条件，则不会继续迭代下去。</p>
+</blockquote>
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">var arr = [ <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span> ];  </span><br><span class="line">console.log( arr.<span class="keyword">some</span>( <span class="keyword">function</span>( item, <span class="keyword">index</span>, <span class="keyword">array</span> )&#123;     </span><br><span class="line">    console.log( <span class="string">&#x27;item=&#x27;</span> + item + <span class="string">&#x27;,index=&#x27;</span>+<span class="keyword">index</span>+<span class="string">&#x27;,array=&#x27;</span>+<span class="keyword">array</span> );     </span><br><span class="line">    <span class="keyword">return</span> item &gt; <span class="number">3</span>;  </span><br><span class="line">&#125;));  </span><br><span class="line">console.log( arr.every( <span class="keyword">function</span>( item, <span class="keyword">index</span>, <span class="keyword">array</span> )&#123;     </span><br><span class="line">    console.log( <span class="string">&#x27;item=&#x27;</span> + item + <span class="string">&#x27;,index=&#x27;</span>+<span class="keyword">index</span>+<span class="string">&#x27;,array=&#x27;</span>+<span class="keyword">array</span> );     </span><br><span class="line">    <span class="keyword">return</span> item &gt; <span class="number">3</span>;  </span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
+
+<h3 id="Array-slice"><a href="#Array-slice" class="headerlink" title="Array.slice()"></a>Array.slice()</h3><h4 id="描述-1"><a href="#描述-1" class="headerlink" title="描述"></a>描述</h4><p>slice() 方法可从已有的数组中返回选定的元素。</p>
+<p>返回一个新的数组，包含从 start 到 end （不包括该元素）的 arrayObject 中的元素。</p>
+<p>该方法并不会修改数组，而是返回一个子数组。</p>
+<blockquote>
+<p><strong>注释：</strong>您可使用负值从数组的尾部选取元素。</p>
+<p><strong>注释：</strong>如果 end 未被规定，那么 slice() 方法会选取从 start 到数组结尾的所有元素。</p>
+</blockquote>
+<h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">arrayObject.<span class="keyword">slice</span>(<span class="keyword">start</span>,<span class="keyword">end</span>)</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">start</td>
+<td align="left">必需。规定从何处开始选取。如果是负数，那么它规定从数组尾部开始算起的位置。也就是说，-1 指最后一个元素，-2 指倒数第二个元素，以此类推。</td>
+</tr>
+<tr>
+<td align="left">end</td>
+<td align="left">可选。规定从何处结束选取。该参数是数组片断结束处的数组下标。如果没有指定该参数，那么切分的数组包含从 start 到数组结束的所有元素。如果这个参数是负数，那么它规定的是从数组尾部开始算起的元素。</td>
+</tr>
+</tbody></table>
+<h2 id="Problems"><a href="#Problems" class="headerlink" title="Problems"></a>Problems</h2><h3 id="1-JS中判断某个字符串是否包含另一个字符串的五种方法"><a href="#1-JS中判断某个字符串是否包含另一个字符串的五种方法" class="headerlink" title="1. JS中判断某个字符串是否包含另一个字符串的五种方法"></a>1. JS中判断某个字符串是否包含另一个字符串的五种方法</h3><h4 id="String对象的方法"><a href="#String对象的方法" class="headerlink" title="String对象的方法"></a>String对象的方法</h4><p><strong>方法一: indexOf()  (推荐)</strong></p>
+<figure class="highlight openscad"><table><tr><td class="code"><pre><span class="line">var <span class="built_in">str</span> = <span class="string">&quot;123&quot;</span></span><br><span class="line">console.<span class="built_in">log</span>(<span class="built_in">str</span>.indexOf(<span class="string">&quot;2&quot;</span>) != -<span class="number">1</span>);      <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>indexOf() 方法可返回某个指定的字符串值在字符串中首次出现的位置。如果要检索的字符串值没有出现，则该方法返回 -1。</p>
+<p><strong>方法二:match()</strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;123&quot;</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="built_in">RegExp</span>(<span class="regexp">/3/</span>);</span><br><span class="line"><span class="keyword">if</span> (str.match(reg))&#123;<span class="string">``</span> <span class="string">``</span><span class="comment">//包含；``&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>match() 方法可在字符串内检索指定的值，或找到一个或多个正则表达式的匹配。</p>
+<p><strong>方法三: search()</strong></p>
+<figure class="highlight openscad"><table><tr><td class="code"><pre><span class="line">var <span class="built_in">str</span> = <span class="string">&quot;123&quot;</span></span><br><span class="line">console.<span class="built_in">log</span>(<span class="built_in">str</span>.<span class="built_in">search</span>( <span class="string">&quot;2&quot;</span> ) != -<span class="number">1</span>);  <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>search() 方法用于检索字符串中指定的子字符串，或检索与正则表达式相匹配的子字符串。如果没有找到任何匹配的子串，则返回 -1。</p>
+<h4 id="RegExp对象的方法"><a href="#RegExp对象的方法" class="headerlink" title="RegExp对象的方法"></a>RegExp对象的方法</h4><p><strong>方法四: test()</strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span>  str = <span class="string">&quot;123&quot;</span> </span><br><span class="line"><span class="keyword">var</span> reg = <span class="built_in">RegExp</span>(<span class="regexp">/3/</span>);</span><br><span class="line"><span class="built_in">console</span>.log(reg.test(str) != <span class="number">-1</span>);  <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>test() 方法用于检索字符串中指定的值。返回 true 或 false。</p>
+<p><strong>方法五:exec()</strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;123&quot;</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="built_in">RegExp</span>(<span class="regexp">/3/</span>);</span><br><span class="line"><span class="keyword">if</span>(reg.exec(str))&#123;<span class="string">``</span> <span class="string">``</span><span class="comment">//包含；``&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>exec() 方法</strong>用于检索字符串中的正则表达式的匹配。返回一个数组，其中存放匹配的结果。如果未找到匹配，则返回值为 null。</p>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>Front End</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>ES3-ES5</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Vue-socket-io API说明及使用</title>
     <url>/2020/09/05/Vue-socket-io-API-description-and-usage/</url>
     <content><![CDATA[<h3 id="问题缘起"><a href="#问题缘起" class="headerlink" title="问题缘起"></a>问题缘起</h3><blockquote>
@@ -351,9 +467,6 @@
 <p>disconnect:检测socket断开连接 </p>
 <p>reconnect:重新连接socket事件</p>
 </blockquote>
-<p>汇总</p>
-<p><a href="http://www.ruanyifeng.com/blog/2017/05/websocket.html">阮一峰的WebSocket 教程</a></p>
-<p><a href="https://socket.io/">Socket.io官网</a></p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
         <category>Front End</category>
@@ -361,6 +474,92 @@
       <tags>
         <tag>框架与工具</tag>
         <tag>Vue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>在Vue-Swiper里踩过的坑</title>
+    <url>/2020/09/05/about-Swiper/</url>
+    <content><![CDATA[<h3 id="问题缘起"><a href="#问题缘起" class="headerlink" title="问题缘起"></a>问题缘起</h3><blockquote>
+<p>在<code>vue</code>中使用<code>vue-awesome-swiper</code>的时候，踩坑无数，快爬不起来要哭了</p>
+<p>算是小问题却搞一下午，心态都崩了呀！</p>
+</blockquote>
+<h2 id="一、关于Swiper"><a href="#一、关于Swiper" class="headerlink" title="一、关于Swiper"></a>一、关于Swiper</h2><blockquote>
+<p><a href="https://www.swiper.com.cn/">Swiper官网</a></p>
+</blockquote>
+<blockquote>
+<p><strong>Swiper常用于移动端网站的内容触摸滑动</strong></p>
+<p><strong>Swiper</strong>是纯javascript打造的滑动特效插件，面向手机、平板电脑等移动终端。</p>
+<p><strong>Swiper</strong>能实现触屏焦点图、触屏Tab切换、触屏多图切换等常用效果。</p>
+<p><strong>Swiper</strong>开源、免费、稳定、使用简单、功能强大，是架构移动终端网站的重要选择！</p>
+</blockquote>
+<h2 id="二、Vue-awesome-swiper"><a href="#二、Vue-awesome-swiper" class="headerlink" title="二、Vue-awesome-swiper"></a>二、Vue-awesome-swiper</h2><blockquote>
+<p><a href="https://github.com/surmon-china/vue-awesome-swiper">github传送门/走好</a></p>
+</blockquote>
+<h3 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h3><figure class="highlight mipsasm"><table><tr><td class="code"><pre><span class="line">npm <span class="keyword">install </span><span class="keyword">swiper </span>vue-awesome-<span class="keyword">swiper </span>--save</span><br><span class="line"><span class="comment"># or</span></span><br><span class="line">yarn <span class="keyword">add </span><span class="keyword">swiper </span>vue-awesome-<span class="keyword">swiper</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Global-Registration"><a href="#Global-Registration" class="headerlink" title="Global Registration"></a>Global Registration</h3><figure class="highlight clean"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> VueAwesomeSwiper <span class="keyword">from</span> <span class="string">&#x27;vue-awesome-swiper&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// import style</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;swiper/css/swiper.css&#x27;</span></span><br><span class="line"><span class="comment">// If you use Swiper 6.0.0 or higher</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;swiper/swiper-bundle.css&#x27;</span></span><br><span class="line"></span><br><span class="line">Vue.use(VueAwesomeSwiper, <span class="comment">/* &#123; default options with global component &#125; */</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Local-Registration"><a href="#Local-Registration" class="headerlink" title="Local Registration"></a>Local Registration</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Swiper, SwiperSlide, directive &#125; <span class="keyword">from</span> <span class="string">&#x27;vue-awesome-swiper&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;swiper/css/swiper.css&#x27;</span></span><br><span class="line"><span class="comment">// If you use Swiper 6.0.0 or higher</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;swiper/swiper-bundle.css&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  components: &#123;</span><br><span class="line">    Swiper,</span><br><span class="line">    SwiperSlide</span><br><span class="line">  &#125;,</span><br><span class="line">  directives: &#123;</span><br><span class="line">    swiper: directive</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="CDN"><a href="#CDN" class="headerlink" title="CDN"></a>CDN</h3><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;path/to/swiper.css&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;path/to/swiper.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;path/to/vue.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;path/to/dist/vue-awesome-swiper.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">  Vue.use(<span class="built_in">window</span>.VueAwesomeSwiper)</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="Difference-with-usage"><a href="#Difference-with-usage" class="headerlink" title="Difference with usage"></a>Difference with usage</h3><p><strong>Directive and the only difference in the use of the Component:</strong></p>
+<ul>
+<li><code>component</code> find Swiper instance by <a href="https://vuejs.org/v2/guide/components-edge-cases.html#Accessing-Child-Component-Instances-amp-Child-Elements"><code>ref attribute</code></a>.</li>
+<li><code>directive</code> find Swiper instance by <a href="https://vuejs.org/v2/guide/custom-directive.html#Dynamic-Directive-Arguments"><code>directive arg</code></a>.</li>
+</ul>
+<p>Other configurations, events are the same.</p>
+<p>The effect of the two ways and the difference in the applicable environment <a href="https://github.com/surmon-china/surmon-china.github.io/blob/source/projects/vue-awesome-swiper/nuxt/">is here</a>.</p>
+<h3 id="Component"><a href="#Component" class="headerlink" title="Component"></a>Component</h3><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">swiper</span> <span class="attr">ref</span>=<span class="string">&quot;mySwiper&quot;</span> <span class="attr">:options</span>=<span class="string">&quot;swiperOptions&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">swiper-slide</span>&gt;</span>Slide 1<span class="tag">&lt;/<span class="name">swiper-slide</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">swiper-slide</span>&gt;</span>Slide 2<span class="tag">&lt;/<span class="name">swiper-slide</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">swiper-slide</span>&gt;</span>Slide 3<span class="tag">&lt;/<span class="name">swiper-slide</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">swiper-slide</span>&gt;</span>Slide 4<span class="tag">&lt;/<span class="name">swiper-slide</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">swiper-slide</span>&gt;</span>Slide 5<span class="tag">&lt;/<span class="name">swiper-slide</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;swiper-pagination&quot;</span> <span class="attr">slot</span>=<span class="string">&quot;pagination&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">swiper</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="javascript">    name: <span class="string">&#x27;carrousel&#x27;</span>,</span></span><br><span class="line">    data() &#123;</span><br><span class="line"><span class="javascript">      <span class="keyword">return</span> &#123;</span></span><br><span class="line">        swiperOptions: &#123;</span><br><span class="line">          pagination: &#123;</span><br><span class="line"><span class="javascript">            el: <span class="string">&#x27;.swiper-pagination&#x27;</span></span></span><br><span class="line">          &#125;,</span><br><span class="line"><span class="javascript">          <span class="comment">// Some Swiper option/callback...</span></span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    computed: &#123;</span><br><span class="line">      swiper() &#123;</span><br><span class="line"><span class="javascript">        <span class="keyword">return</span> <span class="built_in">this</span>.$refs.mySwiper.$swiper</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    mounted() &#123;</span><br><span class="line"><span class="javascript">      <span class="built_in">console</span>.log(<span class="string">&#x27;Current Swiper instance object&#x27;</span>, <span class="built_in">this</span>.swiper)</span></span><br><span class="line"><span class="javascript">      <span class="built_in">this</span>.swiper.slideTo(<span class="number">3</span>, <span class="number">1000</span>, <span class="literal">false</span>)</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Directive"><a href="#Directive" class="headerlink" title="Directive"></a>Directive</h3><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">v-swiper:mySwiper</span>=<span class="string">&quot;swiperOption&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;swiper-wrapper&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;swiper-slide&quot;</span> <span class="attr">:key</span>=<span class="string">&quot;banner&quot;</span> <span class="attr">v-for</span>=<span class="string">&quot;banner in banners&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">:src</span>=<span class="string">&quot;banner&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;swiper-pagination&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line">    data () &#123;</span><br><span class="line"><span class="javascript">      <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="javascript">        banners: [ <span class="string">&#x27;/1.jpg&#x27;</span>, <span class="string">&#x27;/2.jpg&#x27;</span>, <span class="string">&#x27;/3.jpg&#x27;</span> ],</span></span><br><span class="line">        swiperOption: &#123;</span><br><span class="line">          pagination: &#123;</span><br><span class="line"><span class="javascript">            el: <span class="string">&#x27;.swiper-pagination&#x27;</span></span></span><br><span class="line">          &#125;,</span><br><span class="line"><span class="javascript">          <span class="comment">// ...</span></span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    mounted() &#123;</span><br><span class="line"><span class="javascript">      <span class="built_in">console</span>.log(<span class="string">&#x27;Current Swiper instance object&#x27;</span>, <span class="built_in">this</span>.mySwiper)</span></span><br><span class="line"><span class="javascript">      <span class="built_in">this</span>.mySwiper.slideTo(<span class="number">3</span>, <span class="number">1000</span>, <span class="literal">false</span>)</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="Swiper-component-API"><a href="#Swiper-component-API" class="headerlink" title="Swiper component API"></a>Swiper component API</h3><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">&lt;!-- All events/props support camelCase or kebab-<span class="keyword">case</span>. --&gt;</span><br><span class="line">&lt;swiper</span><br><span class="line">  :options=<span class="string">&quot;swiperOptionsObject&quot;</span></span><br><span class="line">  :auto-update=<span class="string">&quot;true&quot;</span></span><br><span class="line">  :auto-destroy=<span class="string">&quot;true&quot;</span></span><br><span class="line">  :<span class="keyword">delete</span>-instance-on-destroy=<span class="string">&quot;true&quot;</span></span><br><span class="line">  :cleanup-styles-on-destroy=<span class="string">&quot;true&quot;</span></span><br><span class="line">  <span class="meta">@ready</span>=<span class="string">&quot;handleSwiperReadied&quot;</span></span><br><span class="line">  <span class="meta">@click</span>-slide=<span class="string">&quot;handleClickSlide&quot;</span></span><br><span class="line">/&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- vue-awesome-swiper converts all Swiper events into component/directive events, e.g.: --&gt;</span><br><span class="line">&lt;swiper</span><br><span class="line">  <span class="meta">@slide</span>-change-transition-start=<span class="string">&quot;onSwiperSlideChangeTransitionStart&quot;</span></span><br><span class="line">  <span class="meta">@slideChangeTransitionStart</span>=<span class="string">&quot;onSwiperSlideChangeTransitionStart&quot;</span></span><br><span class="line">  <span class="meta">@slideChangeTransitionEnd</span>=<span class="string">&quot;...&quot;</span></span><br><span class="line">  <span class="meta">@transitionStart</span>=<span class="string">&quot;...&quot;</span></span><br><span class="line">  ...</span><br><span class="line">/&gt;</span><br><span class="line"><span class="keyword">interface</span> IProps &#123;</span><br><span class="line">  <span class="comment">// Auto update swiper when vue component `updated`</span></span><br><span class="line">  autoUpdate?: <span class="built_in">boolean</span> <span class="comment">// default: true</span></span><br><span class="line">  <span class="comment">// Auto destroy swiper when vue component &#x27;beforeDestroy&#x27;</span></span><br><span class="line">  autoDestroy?: <span class="built_in">boolean</span> <span class="comment">// default: true</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// swiper.destroy&#x27;s params</span></span><br><span class="line">  <span class="comment">// swiper.destroy(deleteInstanceOnDestroy, cleanupStylesOnDestroy)</span></span><br><span class="line">  deleteInstanceOnDestroy?: <span class="built_in">boolean</span> <span class="comment">// default: true</span></span><br><span class="line">  cleanupStylesOnDestroy?: <span class="built_in">boolean</span> <span class="comment">// default: true</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// `@ready` event will emit when the Swiper instance mounted</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleSwiperReadied</span>(<span class="params">swiper: Swiper</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;Swiper was munted!&#x27;</span>, swiper)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// `@click-slide` event has special treatment for Swiper&#x27;s loop mode, which is still available in loop mode</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleClickSlide</span>(<span class="params">index: <span class="built_in">number</span>, reallyIndex: <span class="built_in">number</span> | <span class="literal">null</span></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;Click slide!&#x27;</span>, index, reallyIndex)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Swiper-directive-API"><a href="#Swiper-directive-API" class="headerlink" title="Swiper directive API"></a>Swiper directive API</h3><p>Based on the exact same as the component API.</p>
+<p>In the <code>directive</code> mode, the Swiper instance will be mounted in the parent’s component context use the default name<code>$swiper</code>. In order to implement multiple swipers in a context, the <code>directive</code> has an additional name called <code>instanceName</code> API, through this API, you can easily control the name of each swiper mount context.</p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line">&lt;div v-swiper=<span class="string">&quot;swiperOptionsObject&quot;</span> /&gt;</span><br><span class="line">&lt;div v-swiper:secondSwiper=<span class="string">&quot;swiperOptionsObject&quot;</span> /&gt;</span><br><span class="line">&lt;div v-swiper:[dynamicSwiperName]=<span class="string">&quot;swiperOptionsObject&quot;</span> /&gt;</span><br><span class="line">&lt;div v-swiper=<span class="string">&quot;swiperOptionsObject&quot;</span> instance-name=<span class="string">&quot;fourthSwiper&quot;</span> /&gt;</span><br><span class="line">export dafault &#123;</span><br><span class="line">  <span class="keyword">data</span>() &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      dynamicSwiperName: <span class="string">&#x27;thirdSwiper&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  mounted() &#123;</span><br><span class="line">    console.log(<span class="string">&#x27;Swiper instances:&#x27;</span>, <span class="keyword">this</span>.$swiper, <span class="keyword">this</span>.secondSwiper, <span class="keyword">this</span>.thirdSwiper, <span class="keyword">this</span>.fourthSwiper)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Swiper-API"><a href="#Swiper-API" class="headerlink" title="Swiper API"></a>Swiper API</h3><p>Swiper’s API and configuration can be used.</p>
+<ul>
+<li><a href="https://swiperjs.com/api/#events">EN Swiper events</a></li>
+<li><a href="https://swiperjs.com/api/">EN Swiper documentation</a></li>
+<li><a href="https://www.swiper.com.cn/api/index.html">ZH Swiper documentation</a></li>
+</ul>
+<h3 id="三、巨坑盘点（让我想报复SOCIAL）"><a href="#三、巨坑盘点（让我想报复SOCIAL）" class="headerlink" title="三、巨坑盘点（让我想报复SOCIAL）"></a>三、巨坑盘点（让我想报复<code>SOCIAL</code>）</h3><h4 id="1-Swiper滚动失效"><a href="#1-Swiper滚动失效" class="headerlink" title="1. Swiper滚动失效"></a>1. Swiper滚动失效</h4><p>对于这个问题，我的理解是：<code>swiper</code>使用版本为 <code>swiper@6.2.0</code>，应该是<code>vue-awesome-swiper</code>和高版本<code>swiper</code>兼容性很差很差</p>
+<p><strong>解决方案：</strong></p>
+<p>① 卸载已安装的<code>swiper</code>：<code>npm uninstall swiper  --save</code></p>
+<p>② 安装低版本<code>swiper</code>，版本号可以去<a href="https://www.npmjs.com/package/swiper/v/6.2.0">npmjs</a>搜</p>
+<p>③注意到<code>swiper6</code>的样式文件不同，需要按需引入，引入方式同上面的官方引入</p>
+<h4 id="2-vue-awesome-swiper使用自动轮播和循环轮播不生效（loop和autoplay）"><a href="#2-vue-awesome-swiper使用自动轮播和循环轮播不生效（loop和autoplay）" class="headerlink" title="2. vue-awesome-swiper使用自动轮播和循环轮播不生效（loop和autoplay）"></a>2. vue-awesome-swiper使用自动轮播和循环轮播不生效（loop和autoplay）</h4><p><strong>方法一：</strong></p>
+<p>在项目中使用vue-awesome-swiper如果loop和autoplay总是出现各种问题,第一次加载的时候,轮播是不动的,需要重新加载一下swiper才会轮播</p>
+<p>解决方案:</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"><span class="comment">//轮播设置</span></span><br><span class="line"><span class="attr">swiperOption:</span> &#123;</span><br><span class="line">　　<span class="attr">direction:</span> <span class="string">&#x27;vertical&#x27;</span>,</span><br><span class="line">　　<span class="attr">observer:</span><span class="literal">true</span>,<span class="comment">//修改swiper自己或子元素时，自动初始化swiper </span></span><br><span class="line">　　<span class="attr">observeParents:</span><span class="literal">true</span>,<span class="comment">//修改swiper的父元素时，自动初始化swiper </span></span><br><span class="line">　　<span class="attr">loop:</span><span class="literal">true</span>,</span><br><span class="line">　　<span class="attr">autoplay:</span> &#123;</span><br><span class="line">　　　　<span class="attr">delay:</span> <span class="number">2000</span>,</span><br><span class="line">　　<span class="attr">disableOnInteraction:</span> <span class="literal">false</span></span><br><span class="line">　　&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>需要添加上两个属性,这样达到一个初始化swiper的目的</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"><span class="attr">observer:</span><span class="literal">true</span>,<span class="comment">//修改swiper自己或子元素时，自动初始化swiper </span></span><br><span class="line"><span class="attr">observeParents:</span><span class="literal">true</span>,<span class="comment">//修改swiper的父元素时，自动初始化swiper </span></span><br></pre></td></tr></table></figure>
+
+<p><strong>方法二</strong>：</p>
+<p>如果说轮播数据来自于异步请求，再循环展示，有可能出现轮播失效的问题。</p>
+<p><strong>原因是</strong>循环还没有完的时候swiper组件运行冲突出错导致的，在swiper组件上对数据价格v-if就可以解决。代码如下： </p>
+<p><img data-src="bg202009055.png"></p>
+<p><img data-src="bg202009056.png"></p>
+<h4 id="3-swiper手动滑动之后自动轮播失效的解决方法"><a href="#3-swiper手动滑动之后自动轮播失效的解决方法" class="headerlink" title="3. swiper手动滑动之后自动轮播失效的解决方法"></a>3. swiper手动滑动之后自动轮播失效的解决方法</h4><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span> </span><br><span class="line"><span class="javascript"><span class="keyword">var</span> mySwiper = <span class="keyword">new</span> Swiper(<span class="string">&#x27;.swiper-container&#x27;</span>,&#123;</span></span><br><span class="line">  autoplay: &#123;</span><br><span class="line"><span class="javascript">    disableOnInteraction: <span class="literal">false</span>,</span></span><br><span class="line">    delay:2000,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>用户操作swiper之后，是否禁止autoplay。默认为true：停止。</p>
+<p>如果设置为false，用户操作swiper之后自动切换不会停止，每次都会重新启动autoplay。</p>
+<p>操作包括触碰，拖动，点击pagination等。</p>
+<p><strong>若不生效</strong>，问题应该依然和<code>swiper版本</code>有关。</p>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>Front End</category>
+      </categories>
+      <tags>
+        <tag>框架与工具</tag>
+        <tag>Vue</tag>
+        <tag>Vue Problems</tag>
       </tags>
   </entry>
   <entry>
@@ -453,120 +652,6 @@
         <tag>框架与工具</tag>
         <tag>Vue</tag>
         <tag>Vue Problems</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JavaScript Function</title>
-    <url>/2020/08/25/JavaScript-commonly-used-functions/</url>
-    <content><![CDATA[<blockquote>
-<h5 id="以下记录经常忘记又常用的JS内置函数"><a href="#以下记录经常忘记又常用的JS内置函数" class="headerlink" title="以下记录经常忘记又常用的JS内置函数"></a>以下记录经常忘记又常用的<code>JS</code>内置函数</h5><p>推荐查阅相关 <code>资料</code>  ：</p>
-<p><a href="https://es6.ruanyifeng.com/">ECMAScript 6 入门</a></p>
-<p><a href="https://www.liaoxuefeng.com/wiki/1022910821149312">廖雪峰的JavaScript教程</a></p>
-</blockquote>
-<a id="more"></a>
-
-<h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><h3 id="Array-forEach"><a href="#Array-forEach" class="headerlink" title="Array.forEach()"></a>Array.forEach()</h3><blockquote>
-<p>参考自<a href="https://www.jianshu.com/p/eed671b66f9f">简书</a></p>
-</blockquote>
-<h4 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h4><p>forEach()方法用于调用数组的每一个元素，并将元素传递给回调函数。</p>
-<figure class="highlight reasonml"><table><tr><td class="code"><pre><span class="line"><span class="built_in">array</span>.<span class="keyword">for</span><span class="constructor">Each(<span class="params">function</span>(<span class="params">currentValue</span>, <span class="params">index</span>, <span class="params">arr</span>)</span>, thisValue)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>currentValue：必填，当前元素。</p>
-<p>index：可选，当前元素的索引。</p>
-<p>arr：可选，当前元素所属的数组对象。</p>
-<p>thisValue：可选，传递给函数的值一般用this值，如果这个参数为空，”undefined”会传递给”this”值。（这个参数一般很少填）</p>
-</blockquote>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* JS代码 */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> colors = [<span class="string">&#x27;red&#x27;</span>, <span class="string">&#x27;blue&#x27;</span>, <span class="string">&#x27;green&#x27;</span>];</span><br><span class="line"></span><br><span class="line">colors.forEach(<span class="function">(<span class="params">item, $index, arr</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;item&#125;</span> =&gt; <span class="subst">$&#123;$index&#125;</span> =&gt; <span class="subst">$&#123;arr&#125;</span>`</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<p><img data-src="pic1.png"></p>
-<p>上面的代码用了ES6语法，几乎等同于下面的代码</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* JS代码 */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> colors = [<span class="string">&#x27;red&#x27;</span>, <span class="string">&#x27;blue&#x27;</span>, <span class="string">&#x27;green&#x27;</span>];</span><br><span class="line"></span><br><span class="line">colors.<span class="keyword">forEach</span>(<span class="function"><span class="keyword">function</span>(<span class="params">item, $index, arr</span>) </span>&#123;</span><br><span class="line">  console.log(item + <span class="string">&#x27; =&gt; &#x27;</span> + $index + <span class="string">&#x27; =&gt; &#x27;</span> + arr);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<h4 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h4><p>其实，用 forEach() 主要是为了更方便的代替 for 对数组进行遍历。</p>
-<p>用 for 遍历数组的方法</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* JS代码 */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> colors = [<span class="string">&#x27;red&#x27;</span>, <span class="string">&#x27;blue&#x27;</span>, <span class="string">&#x27;green&#x27;</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>( <span class="keyword">var</span> i=<span class="number">0</span>; i &lt; colors.length; i++)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log( colors[i] + <span class="string">&#x27; =&gt; &#x27;</span> + i + <span class="string">&#x27; =&gt; &#x27;</span> + colors);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>forEach() 对于空数组是不会执行回调函数的。</li>
-<li>for可以用continue跳过循环中的一个迭代，forEach用continue会报错。</li>
-<li>forEach() 需要用 return 跳过循环中的一个迭代，跳过之后会执行下一个迭代。</li>
-</ul>
-<h4 id="如何跳过一次迭代"><a href="#如何跳过一次迭代" class="headerlink" title="如何跳过一次迭代"></a>如何跳过一次迭代</h4><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* JS代码 */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> colors = [<span class="string">&#x27;red&#x27;</span>, <span class="string">&#x27;blue&#x27;</span>, <span class="string">&#x27;green&#x27;</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>( <span class="keyword">var</span> i=<span class="number">0</span>; i &lt; colors.length; i++)&#123;</span><br><span class="line">  <span class="keyword">if</span>( colors[i] == <span class="string">&#x27;blue&#x27;</span>) &#123;</span><br><span class="line">    <span class="keyword">continue</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log( colors[i] );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">colors.forEach( <span class="function"><span class="keyword">function</span>(<span class="params"> item </span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(item == <span class="string">&#x27;blue&#x27;</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="built_in">console</span>.log( item );</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<p><strong>注意：</strong></p>
-<blockquote>
-<p>没有办法终止或跳出forEach循环，除非抛出一个异常。</p>
-<p>如果需要终止或者跳出循环，建议用some()或者every()。</p>
-</blockquote>
-<h3 id="Array-shift"><a href="#Array-shift" class="headerlink" title="Array.shift()"></a>Array.shift()</h3><p>shift() 方法用于把数组的第一个元素从其中删除，并返回第一个元素的值。</p>
-<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">array</span>Object.shift()</span><br></pre></td></tr></table></figure>
-
-<h4 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h4><p>数组原来的第一个元素的值。</p>
-<h4 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h4><ul>
-<li>如果数组是空的，那么 shift() 方法将不进行任何操作，返回 undefined 值。</li>
-<li>请注意，该方法不创建新数组，而是直接修改原有的 arrayObject。</li>
-<li>该方法会改变数组的长度。</li>
-</ul>
-<h3 id="Array-every-Array-some"><a href="#Array-every-Array-some" class="headerlink" title="Array.every()   Array.some()"></a>Array.every()   Array.some()</h3><blockquote>
-<p>every()是对数组中每一项运行给定函数，如果该函数对每一项返回true,则返回true。</p>
-<p>some()是对数组中每一项运行给定函数，如果该函数对任一项返回true，则返回true。</p>
-<p>some一直在找符合条件的值，一旦找到，则不会继续迭代下去。<br>every从迭代开始，一旦有一个不符合条件，则不会继续迭代下去。</p>
-</blockquote>
-<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">var arr = [ <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span> ];  </span><br><span class="line">console.log( arr.<span class="keyword">some</span>( <span class="keyword">function</span>( item, <span class="keyword">index</span>, <span class="keyword">array</span> )&#123;     </span><br><span class="line">    console.log( <span class="string">&#x27;item=&#x27;</span> + item + <span class="string">&#x27;,index=&#x27;</span>+<span class="keyword">index</span>+<span class="string">&#x27;,array=&#x27;</span>+<span class="keyword">array</span> );     </span><br><span class="line">    <span class="keyword">return</span> item &gt; <span class="number">3</span>;  </span><br><span class="line">&#125;));  </span><br><span class="line">console.log( arr.every( <span class="keyword">function</span>( item, <span class="keyword">index</span>, <span class="keyword">array</span> )&#123;     </span><br><span class="line">    console.log( <span class="string">&#x27;item=&#x27;</span> + item + <span class="string">&#x27;,index=&#x27;</span>+<span class="keyword">index</span>+<span class="string">&#x27;,array=&#x27;</span>+<span class="keyword">array</span> );     </span><br><span class="line">    <span class="keyword">return</span> item &gt; <span class="number">3</span>;  </span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
-
-<h3 id="Array-slice"><a href="#Array-slice" class="headerlink" title="Array.slice()"></a>Array.slice()</h3><h4 id="描述-1"><a href="#描述-1" class="headerlink" title="描述"></a>描述</h4><p>slice() 方法可从已有的数组中返回选定的元素。</p>
-<p>返回一个新的数组，包含从 start 到 end （不包括该元素）的 arrayObject 中的元素。</p>
-<p>该方法并不会修改数组，而是返回一个子数组。</p>
-<blockquote>
-<p><strong>注释：</strong>您可使用负值从数组的尾部选取元素。</p>
-<p><strong>注释：</strong>如果 end 未被规定，那么 slice() 方法会选取从 start 到数组结尾的所有元素。</p>
-</blockquote>
-<h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">arrayObject.<span class="keyword">slice</span>(<span class="keyword">start</span>,<span class="keyword">end</span>)</span><br></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th align="left">参数</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">start</td>
-<td align="left">必需。规定从何处开始选取。如果是负数，那么它规定从数组尾部开始算起的位置。也就是说，-1 指最后一个元素，-2 指倒数第二个元素，以此类推。</td>
-</tr>
-<tr>
-<td align="left">end</td>
-<td align="left">可选。规定从何处结束选取。该参数是数组片断结束处的数组下标。如果没有指定该参数，那么切分的数组包含从 start 到数组结束的所有元素。如果这个参数是负数，那么它规定的是从数组尾部开始算起的元素。</td>
-</tr>
-</tbody></table>
-<h2 id="Problems"><a href="#Problems" class="headerlink" title="Problems"></a>Problems</h2><h3 id="1-JS中判断某个字符串是否包含另一个字符串的五种方法"><a href="#1-JS中判断某个字符串是否包含另一个字符串的五种方法" class="headerlink" title="1. JS中判断某个字符串是否包含另一个字符串的五种方法"></a>1. JS中判断某个字符串是否包含另一个字符串的五种方法</h3><h4 id="String对象的方法"><a href="#String对象的方法" class="headerlink" title="String对象的方法"></a>String对象的方法</h4><p><strong>方法一: indexOf()  (推荐)</strong></p>
-<figure class="highlight openscad"><table><tr><td class="code"><pre><span class="line">var <span class="built_in">str</span> = <span class="string">&quot;123&quot;</span></span><br><span class="line">console.<span class="built_in">log</span>(<span class="built_in">str</span>.indexOf(<span class="string">&quot;2&quot;</span>) != -<span class="number">1</span>);      <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
-
-<p>indexOf() 方法可返回某个指定的字符串值在字符串中首次出现的位置。如果要检索的字符串值没有出现，则该方法返回 -1。</p>
-<p><strong>方法二:match()</strong></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;123&quot;</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="built_in">RegExp</span>(<span class="regexp">/3/</span>);</span><br><span class="line"><span class="keyword">if</span> (str.match(reg))&#123;<span class="string">``</span> <span class="string">``</span><span class="comment">//包含；``&#125;</span></span><br></pre></td></tr></table></figure>
-
-<p>match() 方法可在字符串内检索指定的值，或找到一个或多个正则表达式的匹配。</p>
-<p><strong>方法三: search()</strong></p>
-<figure class="highlight openscad"><table><tr><td class="code"><pre><span class="line">var <span class="built_in">str</span> = <span class="string">&quot;123&quot;</span></span><br><span class="line">console.<span class="built_in">log</span>(<span class="built_in">str</span>.<span class="built_in">search</span>( <span class="string">&quot;2&quot;</span> ) != -<span class="number">1</span>);  <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
-
-<p>search() 方法用于检索字符串中指定的子字符串，或检索与正则表达式相匹配的子字符串。如果没有找到任何匹配的子串，则返回 -1。</p>
-<h4 id="RegExp对象的方法"><a href="#RegExp对象的方法" class="headerlink" title="RegExp对象的方法"></a>RegExp对象的方法</h4><p><strong>方法四: test()</strong></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span>  str = <span class="string">&quot;123&quot;</span> </span><br><span class="line"><span class="keyword">var</span> reg = <span class="built_in">RegExp</span>(<span class="regexp">/3/</span>);</span><br><span class="line"><span class="built_in">console</span>.log(reg.test(str) != <span class="number">-1</span>);  <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
-
-<p>test() 方法用于检索字符串中指定的值。返回 true 或 false。</p>
-<p><strong>方法五:exec()</strong></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;123&quot;</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="built_in">RegExp</span>(<span class="regexp">/3/</span>);</span><br><span class="line"><span class="keyword">if</span>(reg.exec(str))&#123;<span class="string">``</span> <span class="string">``</span><span class="comment">//包含；``&#125;</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>exec() 方法</strong>用于检索字符串中的正则表达式的匹配。返回一个数组，其中存放匹配的结果。如果未找到匹配，则返回值为 null。</p>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
-      <categories>
-        <category>Front End</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-        <tag>ES3-ES5</tag>
       </tags>
   </entry>
   <entry>
@@ -1279,6 +1364,249 @@
 <p>参考<a href="http://yanue.net/">半叶寒羽</a> » <a href="http://yanue.net/post-106.html">HTML5废弃的标签及属性</a></p>
 </blockquote>
 </title></h1><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>Front End</category>
+      </categories>
+      <tags>
+        <tag>Html</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HTML渲染</title>
+    <url>/2020/08/29/HTML-render/</url>
+    <content><![CDATA[<h2 id="一、HTML渲染过程"><a href="#一、HTML渲染过程" class="headerlink" title="一、HTML渲染过程"></a>一、HTML渲染过程</h2><h3 id="1-HTML解析过程"><a href="#1-HTML解析过程" class="headerlink" title="1. HTML解析过程"></a>1. HTML解析过程</h3><ol>
+<li><p><strong>构建DOM树</strong>：将HTML构建成一个DOM树，也就是构建节点，把所有的节点都构建出来</p>
+</li>
+<li><p><strong>构建CSSOM树</strong>：解析css去构建CSSOM树</p>
+</li>
+<li><p><strong>根据DOM树和CSSOM树构建render树</strong>：DOM树和CSSOM树已经构建完毕，浏览器会根据这两个来构造render树，浏览器就知道了有哪些节点、各个节点的CSS定义以及他们的从属关系</p>
+</li>
+<li><p><strong>布局</strong>：有了render树就开始布局Layout，开始计算各个节点的位置和样式</p>
+</li>
+<li><p><strong>绘制</strong>：遍历render树，在页面上绘制每个节点</p>
+</li>
+<li><p><strong><em>重排reflow</em></strong>：当render树绘制完成之后，比如JavaScript改变样式或添加节点，这时候render树就需要重新计算</p>
+</li>
+<li><p><strong><em>重绘repaint</em></strong>：既然重排了，最后当然得重新绘制页面。</p>
+</li>
+</ol>
+<a id="more"></a>
+
+<h3 id="2-浏览器渲染页面详解"><a href="#2-浏览器渲染页面详解" class="headerlink" title="2. 浏览器渲染页面详解"></a>2. 浏览器渲染页面详解</h3><blockquote>
+<p>找了一篇已经很全的文章，所以不继续造轮子了，接下来分享一下<a href="https://segmentfault.com/a/1190000010298038">这篇文章</a>，同时感谢原作者</p>
+</blockquote>
+<p>由一道面试题引发的思考：</p>
+<p><strong>从用户输入浏览器输入url到页面最后呈现 有哪些过程？</strong><br><em>一道很常规的题目，考的是基本网络原理，和浏览器加载css，js过程。</em></p>
+<p><strong><em>答案大致如下：</em></strong></p>
+<blockquote>
+<ol>
+<li><p>用户输入URL地址</p>
+</li>
+<li><p>浏览器解析URL解析出主机名</p>
+</li>
+<li><p>浏览器将主机名转换成服务器ip地址（浏览器先查找本地DNS缓存列表 没有的话 再向浏览器默认的DNS服务器发送查询请求 同时缓存）</p>
+</li>
+<li><p>浏览器将端口号从URL中解析出来</p>
+</li>
+<li><p>浏览器建立一条与目标Web服务器的TCP连接（三次握手）</p>
+</li>
+<li><p>浏览器向服务器发送一条HTTP请求报文</p>
+</li>
+<li><p>服务器向浏览器返回一条HTTP响应报文</p>
+</li>
+<li><p>关闭连接 浏览器解析文档</p>
+</li>
+<li><p>如果文档中有资源 重复6 7 8 动作 直至资源全部加载完毕</p>
+</li>
+</ol>
+</blockquote>
+<p><strong>通过研究，了解一些基本常识的原理：</strong></p>
+<ol>
+<li>为什么要将js放到页脚部分</li>
+<li>引入样式的几种方式的权重</li>
+<li>css属性书写顺序建议</li>
+<li>何种类型的DOM操作是耗费性能的</li>
+</ol>
+<h4 id="2-1-浏览器渲染主要流程"><a href="#2-1-浏览器渲染主要流程" class="headerlink" title="2.1 浏览器渲染主要流程"></a>2.1 浏览器渲染主要流程</h4><p>不同的浏览器内核不同，所以渲染过程不太一样。</p>
+<p><code>WebKit 主流程</code></p>
+<p><img data-src="pic1.png"></p>
+<p><code>Mozilla</code> 的 <code>Gecko</code> 呈现引擎主流程</p>
+<p><img data-src="pic2.png"></p>
+<p>由上面两张图可以看出，虽然主流浏览器渲染过程叫法有区别，但是主要流程还是相同的。</p>
+<p><code>Gecko</code> 将视觉格式化元素组成的树称为“框架树”。每个元素都是一个框架。<br>WebKit 使用的术语是“呈现树”，它由“呈现对象”组成。</p>
+<p>对于元素的放置，<code>WebKit</code> 使用的术语是“布局”，而 <code>Gecko</code> 称之为“重排”。</p>
+<p>对于连接 DOM 节点和可视化信息从而创    建呈现树的过程，<code>WebKit</code> 使用的术语是“附加”。</p>
+<p><strong>所以可以分析出基本过程：</strong></p>
+<ol>
+<li>HTML解析出DOM Tree</li>
+<li>CSS解析出Style Rules</li>
+<li>将二者关联生成Render Tree</li>
+<li>Layout 根据Render Tree计算每个节点的信息</li>
+<li>Painting 根据计算好的信息绘制整个页面</li>
+</ol>
+<h4 id="2-2-HTML-解析"><a href="#2-2-HTML-解析" class="headerlink" title="2.2 HTML 解析"></a>2.2 HTML 解析</h4><p><code>HTML Parser</code>的任务是将HTML标记解析成<code>DOM Tree</code><br>这个解析可以参考React解析DOM的过程，但是这里面有很多别的规则和操作，比如容错机制，识别<code>&lt;/br&gt;</code>和<code>&lt;br&gt;</code>等等。<br>感兴趣的可以参考 <a href="https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/">《How Browser Work》</a>，<a href="https://www.html5rocks.com/zh/tutorials/internals/howbrowserswork/">中文翻译</a><br>举个例子：一段HTML</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Web page parsing<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Web page parsing<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>This is an example Web page.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>经过解析之后的DOM Tree差不多就是</p>
+<p><img data-src="pic3.png"></p>
+<p>将文本的HTML文档，提炼出关键信息，嵌套层级的树形结构，便于计算拓展。这就是HTML Parser的作用。</p>
+<h4 id="2-3-CSS解析"><a href="#2-3-CSS解析" class="headerlink" title="2.3 CSS解析"></a>2.3 CSS解析</h4><p><code>CSS Parser</code>将CSS解析成<code>Style Rules</code>，<code>Style Rules</code>也叫<code>CSSOM（CSS Object Model）</code>。<br><code>StyleRules</code>也是一个树形结构，根据CSS文件整理出来的类似<code>DOM Tree</code>的树形结构：</p>
+<p><img data-src="pic4.png"></p>
+<p>与<code>HTML Parser</code>相似，<code>CSS Parser</code>作用就是将很多个CSS文件中的样式合并解析出具有树形结构Style Rules。</p>
+<h4 id="2-4-脚本处理"><a href="#2-4-脚本处理" class="headerlink" title="2.4 脚本处理"></a>2.4 脚本处理</h4><p>浏览器解析文档，当遇到<code>&lt;script&gt;</code>标签的时候，会立即解析脚本，停止解析文档（因为JS可能会改动DOM和CSS，所以继续解析会造成浪费）。<br>如果脚本是外部的，会等待脚本下载完毕，再继续解析文档。现在可以在script标签上增加属性 <code>defer</code>或者<code>async</code>。<br>脚本解析会将脚本中改变DOM和CSS的地方分别解析出来，追加到<code>DOM Tree</code>和<code>Style Rules</code>上。</p>
+<h4 id="2-5-呈现树（Render-Tree）"><a href="#2-5-呈现树（Render-Tree）" class="headerlink" title="2.5 呈现树（Render Tree）"></a>2.5 呈现树（Render Tree）</h4><p><code>Render Tree</code>的构建其实就是<code>DOM Tree</code>和<code>CSSOM</code> <strong>Attach</strong>的过程。</p>
+<p>呈现树是和 DOM 元素相对应的，但并非一一对应。Render Tree实际上就是一个计算好样式，与HTML对应的（包括哪些显示，那些不显示）的Tree。</p>
+<blockquote>
+<p>在 WebKit 中，解析样式和创建呈现树的过程称为“附加”。每个 DOM 节点都有一个<code>“attach”</code>方法。附加是同步进行的，将节点插入 DOM 树需要调用新的节点<code>“attach”</code>方法。</p>
+</blockquote>
+<p><img data-src="pic5.png"></p>
+<h4 id="2-6-样式计算"><a href="#2-6-样式计算" class="headerlink" title="2.6 样式计算"></a>2.6 样式计算</h4><p>样式计算是个很复杂的问题。DOM中的一个元素可以对应样式表中的多个元素。样式表包括了所有样式：浏览器默认样式表，自定义样式表，inline样式元素，<strong>HTML可视化属性如：width=100。后者将转化以匹配CSS样式。</strong></p>
+<blockquote>
+<p>WebKit 节点会引用样式对象 (RenderStyle)。这些对象在某些情况下可以由不同节点共享。这些节点是同级关系，并且：</p>
+<ol>
+<li>这些元素必须处于相同的鼠标状态（例如，不允许其中一个是“:hover”状态，而另一个不是）</li>
+<li>任何元素都没有 ID</li>
+<li>标记名称应匹配</li>
+<li>类属性应匹配</li>
+<li>映射属性的集合必须是完全相同的</li>
+<li>链接状态必须匹配</li>
+<li>焦点状态必须匹配</li>
+<li>任何元素都不应受属性选择器的影响，这里所说的“影响”是指在选择器中的任何位置有任何使用了属性选择器的选择器匹配</li>
+<li>元素中不能有任何 inline 样式属性</li>
+<li>不能使用任何同级选择器。WebCore 在遇到任何同级选择器时，只会引发一个全局开关，并停用整个文档的样式共享（如果存在）。这包括 + 选择器以及 :first-child 和 :last-child 等选择器。</li>
+</ol>
+</blockquote>
+<p>为了简化样式计算，Firefox 还采用了另外两种树：规则树和样式上下文树。WebKit 也有样式对象，但它们不是保存在类似样式上下文树这样的树结构中，只是由 DOM 节点指向此类对象的相关样式。</p>
+<p><img data-src="pic6.png"></p>
+<p>样式上下文包含端值。要计算出这些值，应按照正确顺序应用所有的匹配规则，并将其从逻辑值转化为具体的值。<br>例如，<strong>如果逻辑值是屏幕大小的百分比，则需要换算成绝对的单位</strong>。规则树的点子真的很巧妙，它使得节点之间可以共享这些值，以避免重复计算，还可以节约空间。<br>所有匹配的规则都存储在树中。路径中的底层节点拥有较高的优先级。规则树包含了所有已知规则匹配的路径。规则的存储是延迟进行的。规则树不会在开始的时候就为所有的节点进行计算，而是只有当某个节点样式需要进行计算时，才会向规则树添加计算的路径。</p>
+<p>*<strong>举个例子</strong> 一段HTML代码：*</p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;div <span class="keyword">class</span>=&quot;<span class="symbol">err</span>&quot; <span class="symbol">id</span>=&quot;<span class="symbol">div1</span>&quot;&gt;</span><br><span class="line">      &lt;<span class="symbol">p</span>&gt;</span><br><span class="line">        <span class="symbol">this</span> <span class="symbol">is</span> <span class="symbol">a</span> &lt;<span class="symbol">span</span> <span class="symbol">class</span>=&quot;<span class="symbol">big</span>&quot;&gt; <span class="symbol">big</span> <span class="symbol">error</span> &lt;/<span class="symbol">span</span>&gt;</span><br><span class="line">        <span class="symbol">this</span> <span class="symbol">is</span> <span class="symbol">also</span> <span class="symbol">a</span></span><br><span class="line">        &lt;<span class="symbol">span</span> <span class="symbol">class</span>=&quot;<span class="symbol">big</span>&quot;&gt; <span class="symbol">very</span>  <span class="symbol">big</span>  <span class="symbol">error</span>&lt;/<span class="symbol">span</span>&gt; <span class="symbol">error</span></span><br><span class="line">      &lt;/<span class="symbol">p</span>&gt;</span><br><span class="line">    &lt;/<span class="symbol">div</span>&gt;</span><br><span class="line">    &lt;<span class="symbol">div</span> <span class="symbol">class</span>=&quot;<span class="symbol">err</span>&quot; <span class="symbol">id</span>=&quot;<span class="symbol">div2</span>&quot;&gt;<span class="symbol">another</span> <span class="symbol">error</span>&lt;/<span class="symbol">div</span>&gt;</span><br><span class="line">  &lt;/<span class="symbol">body</span>&gt;</span><br><span class="line">&lt;/<span class="symbol">html</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p>对应CSS规则如下：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">1. <span class="selector-tag">div</span> &#123;<span class="attribute">margin</span>:<span class="number">5px</span>;<span class="attribute">color</span>:black&#125;</span><br><span class="line">2. <span class="selector-class">.err</span> &#123;<span class="attribute">color</span>:red&#125;</span><br><span class="line">3. <span class="selector-class">.big</span> &#123;<span class="attribute">margin-top</span>:<span class="number">3px</span>&#125;</span><br><span class="line">4. <span class="selector-tag">div</span> <span class="selector-tag">span</span> &#123;<span class="attribute">margin-bottom</span>:<span class="number">4px</span>&#125;</span><br><span class="line">5. <span class="selector-id">#div1</span> &#123;<span class="attribute">color</span>:blue&#125;</span><br><span class="line">6. <span class="selector-id">#div2</span> &#123;<span class="attribute">color</span>:green&#125;</span><br></pre></td></tr></table></figure>
+
+<p>则CSS形成的规则树如下图所示（节点的标记方式为“节点名 : 指向的规则序号”）</p>
+<p><img data-src="pic7.png"></p>
+<blockquote>
+<p>下面的内容有点绕，但是很有逻辑</p>
+</blockquote>
+<p>假设我们解析 HTML 时遇到了第二个 <code>&lt;div&gt;</code> 标记，我们需要为此节点创建样式上下文，并填充其样式结构。<br>经过规则匹配，我们发现该 <code>&lt;div&gt;</code>的匹配规则是第 1、2 和 6 条。这意味着规则树中已有一条路径可供我们的元素使用，我们只需要再为其添加一个节点以匹配第 6 条规则（规则树中的 F 节点）。<br>我们将创建样式上下文并将其放入上下文树中。新的样式上下文将指向规则树中的 F 节点。</p>
+<p>现在我们需要填充样式结构。首先要填充的是 margin 结构。由于最后的规则节点 (F) 并没有添加到 margin 结构，我们需要上溯规则树，直至找到在先前节点插入中计算过的缓存结构，然后使用该结构。我们会在指定 margin 规则的最上层节点（即 B 节点）上找到该结构。</p>
+<p>我们已经有了 color 结构的定义，因此不能使用缓存的结构。由于 color 有一个属性，我们无需上溯规则树以填充其他属性。我们将计算端值（将字符串转化为 <code>RGB</code> 等）并在此节点上缓存经过计算的结构。</p>
+<p>第二个<code>&lt;span&gt;</code>元素处理起来更加简单。我们将匹配规则，最终发现它和之前的 span 一样指向规则 G。由于我们找到了指向同一节点的同级，就可以共享整个样式上下文了，只需指向之前 span 的上下文即可。</p>
+<p>对于包含了继承自父代的规则的结构，缓存是在上下文树中进行的（事实上 color 属性是继承的，但是 Firefox 将其视为 reset 属性，并缓存到规则树上）<br>所以生成的上下文树如下：</p>
+<p><img data-src="pic8.png"></p>
+<h4 id="2-7-以正确的层叠顺序应用规则"><a href="#2-7-以正确的层叠顺序应用规则" class="headerlink" title="2.7 以正确的层叠顺序应用规则"></a>2.7 以正确的层叠顺序应用规则</h4><p>样式对象具有与每个可视化属性一一对应的属性（均为 CSS 属性但更为通用）。如果某个属性未由任何匹配规则所定义，那么部分属性就可由父代元素样式对象继承。其他属性具有默认值。<br>如果定义不止一个，就会出现问题，需要通过层叠顺序来解决。</p>
+<p>一些例子：</p>
+<figure class="highlight stata"><table><tr><td class="code"><pre><span class="line"><span class="comment">*             &#123;&#125;  /* a=0 b=0 c=0 d=0 -&gt; specificity = 0,0,0,0 */</span></span><br><span class="line"><span class="keyword">li</span>            &#123;&#125;  <span class="comment">/* a=0 b=0 c=0 d=1 -&gt; specificity = 0,0,0,1 */</span></span><br><span class="line"><span class="keyword">li</span>:first-<span class="keyword">line</span> &#123;&#125;  <span class="comment">/* a=0 b=0 c=0 d=2 -&gt; specificity = 0,0,0,2 */</span></span><br><span class="line">ul <span class="keyword">li</span>         &#123;&#125;  <span class="comment">/* a=0 b=0 c=0 d=2 -&gt; specificity = 0,0,0,2 */</span></span><br><span class="line">ul ol+<span class="keyword">li</span>      &#123;&#125;  <span class="comment">/* a=0 b=0 c=0 d=3 -&gt; specificity = 0,0,0,3 */</span></span><br><span class="line">h1 + *[rel=up]&#123;&#125;  <span class="comment">/* a=0 b=0 c=1 d=1 -&gt; specificity = 0,0,1,1 */</span></span><br><span class="line">ul ol <span class="keyword">li</span>.red  &#123;&#125;  <span class="comment">/* a=0 b=0 c=1 d=3 -&gt; specificity = 0,0,1,3 */</span></span><br><span class="line"><span class="keyword">li</span>.red.level  &#123;&#125;  <span class="comment">/* a=0 b=0 c=2 d=1 -&gt; specificity = 0,0,2,1 */</span></span><br><span class="line">#x34y         &#123;&#125;  <span class="comment">/* a=0 b=1 c=0 d=0 -&gt; specificity = 0,1,0,0 */</span></span><br><span class="line">style=<span class="string">&quot;&quot;</span>          <span class="comment">/* a=1 b=0 c=0 d=0 -&gt; specificity = 1,0,0,0 */</span></span><br></pre></td></tr></table></figure>
+
+<p>利用上面的方法，基本可以快速确定不同选择器的优先级。</p>
+<h4 id="2-8-布局Layout"><a href="#2-8-布局Layout" class="headerlink" title="2.8 布局Layout"></a>2.8 布局Layout</h4><p>创建渲染树后，下一步就是<code>布局（Layout）</code>,或者叫<code>回流（reflow,relayout）</code>，这个过程就是通过渲染树中渲染对象的信息，计算出每一个渲染对象的位置和尺寸，将其安置在浏览器窗口的正确位置，而有些时候我们会在文档布局完成后对DOM进行修改，这时候可能需要重新进行布局，也可称其为<code>回流</code>，本质上还是一个布局的过程，每一个渲染对象都有一个布局或者回流方法，实现其布局或回流。</p>
+<p><strong>对渲染树的布局可以分为全局和局部的</strong></p>
+<ul>
+<li>全局即对整个渲染树进行重新布局，如<u>当我们改变了窗口尺寸或方向</u>或者是<u>修改了根元素的尺寸或者字体大小</u>等；</li>
+<li>而局部布局可以是对渲染树的某部分或某一个渲染对象进行重新布局。</li>
+</ul>
+<p>大多数web应用对DOM的操作都是比较频繁，这意味着经常需要对DOM进行布局和回流，而如果仅仅是一些小改变，就触发整个渲染树的回流，这显然是不好的，为了避免这种情况，浏览器使用了<code>脏位系统</code>，只有一个渲染对象改变了或者某渲染对象及其子渲染对象脏位值为”dirty”时，说明需要回流。</p>
+<blockquote>
+<p>表示需要布局的脏位值有两种：</p>
+<ul>
+<li>“dirty”–自身改变，需要回流</li>
+<li>“children are dirty”–子节点改变，需要回流</li>
+</ul>
+</blockquote>
+<p>布局是一个从上到下，从外到内进行的递归过程，从根渲染对象，即对应着HTML文档根元素，然后下一级渲染对象，如对应着元素，如此层层递归，依次计算每一个渲染对象的几何信息（位置和尺寸）。</p>
+<p><strong>每一个渲染对象的布局流程基本如：</strong></p>
+<ol>
+<li><p>计算渲染对象的宽度（width）；</p>
+</li>
+<li><p>遍历此渲染对象的所有子级，依次：</p>
+<p>2.1设置子级渲染对象的坐标</p>
+<p>2.2判断是否需要触发子渲染对象的布局或回流方法，计算子渲染对象的高度（height）</p>
+</li>
+<li><p>设置此渲染对象的高度：根据子渲染对象的累积高，margin和padding的高度设置其高度；</p>
+</li>
+<li><p>设置此渲染对象脏位值为false。</p>
+</li>
+</ol>
+<h4 id="2-9-绘制（Painting）"><a href="#2-9-绘制（Painting）" class="headerlink" title="2.9 绘制（Painting）"></a>2.9 绘制（Painting）</h4><p>在绘制阶段，系统会遍历呈现树，并调用呈现器的<code>“paint”</code>方法，将呈现器的内容显示在屏幕上。绘制工作是使用用户界面基础组件完成的。</p>
+<p>CSS2 规范定义了绘制流程的顺序。绘制的顺序其实就是元素进入堆栈样式上下文的顺序。这些堆栈会从后往前绘制，因此这样的顺序会影响绘制。块呈现器的堆栈顺序如下：</p>
+<ol>
+<li>背景颜色</li>
+<li>背景图片</li>
+<li>边框</li>
+<li>子代</li>
+<li>轮廓</li>
+</ol>
+<p>这里还要说两个概念，一个是<code>Reflow</code>，另一个是<code>Repaint</code>。这两个不是一回事。<br><strong>Repaint</strong> ——屏幕的一部分要重画，比如某个CSS的背景色变了。但是元素的几何尺寸没有变。<br><strong>Reflow</strong> 元件的几何尺寸变了，我们需要重新验证并计算Render Tree。是Render Tree的一部分或全部发生了变化。这就是Reflow，或是Layout。（HTML使用的是flow based layout，也就是流式布局，所以，如果某元件的几何尺寸发生了变化，需要重新布局，也就叫reflow）reflow 会从<code>&lt;html&gt;</code>这个root frame开始递归往下，依次计算所有的结点几何尺寸和位置，在reflow过程中，可能会增加一些frame，比如一个文本字符串必需被包装起来。</p>
+<blockquote>
+<p>Reflow的成本比Repaint的成本高得多的多。DOM Tree里的每个结点都会有reflow方法，一个结点的reflow很有可能导致子结点，甚至父点以及同级结点的reflow。在一些高性能的电脑上也许还没什么，但是如果reflow发生在手机上，那么这个过程是非常痛苦和耗电的。</p>
+</blockquote>
+<p> 所以，下面这些动作有很大可能会是成本比较高的。</p>
+<ul>
+<li>当你增加、删除、修改DOM结点时，会导致Reflow或Repaint</li>
+<li>当你移动DOM的位置，或是搞个动画的时候。</li>
+<li>当你修改CSS样式的时候。</li>
+<li>当你Resize窗口的时候（移动端没有这个问题），或是滚动的时候。</li>
+<li>当你修改网页的默认字体时。</li>
+<li>注：display:none会触发reflow，而visibility:hidden只会触发repaint，因为没有发现位置变化。</li>
+</ul>
+<p>基本上来说，reflow有如下的几个原因：</p>
+<ul>
+<li>Initial。网页初始化的时候。</li>
+<li>Incremental。一些Javascript在操作DOM Tree时。</li>
+<li>Resize。其些元件的尺寸变了。</li>
+<li>StyleChange。如果CSS的属性发生变化了。</li>
+<li>Dirty。几个Incremental的reflow发生在同一个frame的子树上。</li>
+</ul>
+<p>看几个例子：</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&#x27;body&#x27;</span>).css(<span class="string">&#x27;color&#x27;</span>, <span class="string">&#x27;red&#x27;</span>); <span class="regexp">//</span> repaint</span><br><span class="line">$(<span class="string">&#x27;body&#x27;</span>).css(<span class="string">&#x27;margin&#x27;</span>, <span class="string">&#x27;2px&#x27;</span>); <span class="regexp">//</span> reflow, repaint</span><br><span class="line"></span><br><span class="line">var bstyle = document.body.style; <span class="regexp">//</span> cache</span><br><span class="line"></span><br><span class="line">bstyle.padding = <span class="string">&quot;20px&quot;</span>; <span class="regexp">//</span> reflow, repaint</span><br><span class="line">bstyle.border = <span class="string">&quot;10px solid red&quot;</span>; <span class="regexp">//</span>  再一次的 reflow 和 repaint</span><br><span class="line"></span><br><span class="line">bstyle.color = <span class="string">&quot;blue&quot;</span>; <span class="regexp">//</span> repaint</span><br><span class="line">bstyle.backgroundColor = <span class="string">&quot;#fad&quot;</span>; <span class="regexp">//</span> repaint</span><br><span class="line"></span><br><span class="line">bstyle.fontSize = <span class="string">&quot;2em&quot;</span>; <span class="regexp">//</span> reflow, repaint</span><br><span class="line"></span><br><span class="line"><span class="regexp">//</span> new DOM element - reflow, repaint</span><br><span class="line">document.body.appendChild(document.createTextNode(<span class="string">&#x27;dude!&#x27;</span>));</span><br></pre></td></tr></table></figure>
+
+<p>当然，我们的浏览器是聪明的，它不会像上面那样，你每改一次样式，它就reflow或repaint一次。一般来说，浏览器会把这样的操作积攒一批，然后做一次reflow，这又叫异步reflow或增量异步reflow。但是有些情况浏览器是不会这么做的，比如：resize窗口，改变了页面默认的字体，等。对于这些操作，浏览器会马上进行reflow。</p>
+<p>但是有些时候，我们的脚本会阻止浏览器这么干，比如：如果我们请求下面的一些DOM值：</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">offsetTop, offsetLeft, offsetWidth, offsetHeight</span><br><span class="line">scrollTop<span class="regexp">/Left/</span>Width/Height</span><br><span class="line">clientTop<span class="regexp">/Left/</span>Width/Height</span><br><span class="line">IE中的 getComputedStyle(), 或 currentStyle</span><br></pre></td></tr></table></figure>
+
+<p>因为，如果我们的程序需要这些值，那么浏览器需要返回最新的值，而这样一样会flush出去一些样式的改变，从而造成频繁的reflow/repaint。</p>
+<h4 id="2-10-Chrome调试工具查看页面渲染顺序"><a href="#2-10-Chrome调试工具查看页面渲染顺序" class="headerlink" title="2.10 Chrome调试工具查看页面渲染顺序"></a>2.10 Chrome调试工具查看页面渲染顺序</h4><p>页面的渲染详细过程可以通过chrome开发者工具中的timeline查看</p>
+<p><img data-src="pic9.png"></p>
+<ol>
+<li>发起请求；</li>
+<li>解析HTML；</li>
+<li>解析样式；</li>
+<li>执行JavaScript；</li>
+<li>布局；</li>
+<li>绘制</li>
+</ol>
+<h2 id="二、页面渲染优化"><a href="#二、页面渲染优化" class="headerlink" title="二、页面渲染优化"></a>二、页面渲染优化</h2><p>浏览器对上文介绍的关键渲染路径进行了很多优化，针对每一次变化产生尽量少的操作，还有优化判断重新绘制或布局的方式等等。<br>在改变文档根元素的字体颜色等视觉性信息时，会触发整个文档的重绘，而改变某元素的字体颜色则只触发特定元素的重绘；改变元素的位置信息会同时触发此元素（可能还包括其兄弟元素或子级元素）的布局和重绘。某些重大改变，如更改文档根元素的字体尺寸，则会触发整个文档的重新布局和重绘，据此及上文所述，推荐以下优化和实践：</p>
+<ol>
+<li>HTML文档结构层次尽量少，最好不深于六层；</li>
+<li>脚本尽量后放，放最后即可；</li>
+<li>少量首屏样式内联放在标签内；</li>
+<li>样式结构层次尽量简单；</li>
+<li>在脚本中尽量减少DOM操作，尽量缓存访问DOM的样式信息，避免过度触发<code>回流</code>；</li>
+<li>减少通过JavaScript代码修改元素样式，尽量使用修改class名方式操作样式或动画；</li>
+<li>动画尽量使用在绝对定位或固定定位的元素上；</li>
+<li>隐藏在屏幕外，或在页面滚动时，尽量停止动画；</li>
+<li>尽量缓存DOM查找，查找器尽量简洁；</li>
+<li>涉及多域名的网站，可以开启域名预解析</li>
+</ol>
+<p><strong>补充</strong></p>
+<p>HTML整个解析过程看起来很简单，但是我们要知道解析过程中css、Js和DOM的加载顺序。我们都知道HTML是自上往下解析的，在解析过程中：</p>
+<p>1、如果遇到link和style，那就就会去下载这些外部的css资源，但是css跟DOM的构建是并行的，就是说不会阻塞DOM树的构建。</p>
+<p>2、如果遇到script，那么页面就会把控制权交给JavaScript，直到脚本加载完毕或者是执行完毕。</p>
+<p>3、页面的渲染是依靠render树，也就是说如果css没有加载完成，页面也不会渲染显示。</p>
+<p>4、JavaScript执行过程中有可能需要改变样式，所以css加载也会阻塞JavaScript的加载。</p>
+<p>5、JavaScript执行过程中如果操作DOM，但是DOM树又是在JavaScript之后才能构建，就会报错，找不到节点。</p>
+<p>这就是HTML的渲染过程，因为DOM和css并行构建，我们会把css用外部引入，可以更快的构建DOM，因为JavaScript会阻塞DOM和css构建，且操作DOM一定要在DOM构建完成，我们选择把script放在最下面。如果我们过多的在render渲染完成后改变render，那么重排和重绘就会一直被动重发执行，这也会造成渲染速度变慢。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>浏览器渲染问题每一步都涉及到很多底层知识，每一步都有对应的算法。<br>文章中间很多语句都是直接复制的原文，自己的语言概况还是不及原文精彩。</p>
+<p><strong>可参考原文链接</strong></p>
+<p><a href="https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/">《How Browser Work》</a></p>
+<p><a href="https://www.html5rocks.com/zh/tutorials/internals/howbrowserswork/">浏览器的工作原理：新式网络浏览器幕后揭秘</a></p>
+<p><a href="http://imweb.io/topic/56841c864c44bcc56092e3fa">浏览器渲染原理</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/25279069">浏览器 渲染,绘制流程及性能优化</a></p>
+<p><a href="http://caibaojian.com/css-reflow-repaint.html">优化CSS重排重绘与浏览器性能</a></p>
+<p><a href="http://web.jobbole.com/90961/">浅析前端页面渲染机制</a></p>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
         <category>Front End</category>
       </categories>
@@ -2098,249 +2426,6 @@ D-->>A: Dashed open arrow</textarea><textarea id="sequence-2-options" style="dis
       <tags>
         <tag>开发与调试</tag>
         <tag>开发工具</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>HTML渲染</title>
-    <url>/2020/08/29/HTML-render/</url>
-    <content><![CDATA[<h2 id="一、HTML渲染过程"><a href="#一、HTML渲染过程" class="headerlink" title="一、HTML渲染过程"></a>一、HTML渲染过程</h2><h3 id="1-HTML解析过程"><a href="#1-HTML解析过程" class="headerlink" title="1. HTML解析过程"></a>1. HTML解析过程</h3><ol>
-<li><p><strong>构建DOM树</strong>：将HTML构建成一个DOM树，也就是构建节点，把所有的节点都构建出来</p>
-</li>
-<li><p><strong>构建CSSOM树</strong>：解析css去构建CSSOM树</p>
-</li>
-<li><p><strong>根据DOM树和CSSOM树构建render树</strong>：DOM树和CSSOM树已经构建完毕，浏览器会根据这两个来构造render树，浏览器就知道了有哪些节点、各个节点的CSS定义以及他们的从属关系</p>
-</li>
-<li><p><strong>布局</strong>：有了render树就开始布局Layout，开始计算各个节点的位置和样式</p>
-</li>
-<li><p><strong>绘制</strong>：遍历render树，在页面上绘制每个节点</p>
-</li>
-<li><p><strong><em>重排reflow</em></strong>：当render树绘制完成之后，比如JavaScript改变样式或添加节点，这时候render树就需要重新计算</p>
-</li>
-<li><p><strong><em>重绘repaint</em></strong>：既然重排了，最后当然得重新绘制页面。</p>
-</li>
-</ol>
-<a id="more"></a>
-
-<h3 id="2-浏览器渲染页面详解"><a href="#2-浏览器渲染页面详解" class="headerlink" title="2. 浏览器渲染页面详解"></a>2. 浏览器渲染页面详解</h3><blockquote>
-<p>找了一篇已经很全的文章，所以不继续造轮子了，接下来分享一下<a href="https://segmentfault.com/a/1190000010298038">这篇文章</a>，同时感谢原作者</p>
-</blockquote>
-<p>由一道面试题引发的思考：</p>
-<p><strong>从用户输入浏览器输入url到页面最后呈现 有哪些过程？</strong><br><em>一道很常规的题目，考的是基本网络原理，和浏览器加载css，js过程。</em></p>
-<p><strong><em>答案大致如下：</em></strong></p>
-<blockquote>
-<ol>
-<li><p>用户输入URL地址</p>
-</li>
-<li><p>浏览器解析URL解析出主机名</p>
-</li>
-<li><p>浏览器将主机名转换成服务器ip地址（浏览器先查找本地DNS缓存列表 没有的话 再向浏览器默认的DNS服务器发送查询请求 同时缓存）</p>
-</li>
-<li><p>浏览器将端口号从URL中解析出来</p>
-</li>
-<li><p>浏览器建立一条与目标Web服务器的TCP连接（三次握手）</p>
-</li>
-<li><p>浏览器向服务器发送一条HTTP请求报文</p>
-</li>
-<li><p>服务器向浏览器返回一条HTTP响应报文</p>
-</li>
-<li><p>关闭连接 浏览器解析文档</p>
-</li>
-<li><p>如果文档中有资源 重复6 7 8 动作 直至资源全部加载完毕</p>
-</li>
-</ol>
-</blockquote>
-<p><strong>通过研究，了解一些基本常识的原理：</strong></p>
-<ol>
-<li>为什么要将js放到页脚部分</li>
-<li>引入样式的几种方式的权重</li>
-<li>css属性书写顺序建议</li>
-<li>何种类型的DOM操作是耗费性能的</li>
-</ol>
-<h4 id="2-1-浏览器渲染主要流程"><a href="#2-1-浏览器渲染主要流程" class="headerlink" title="2.1 浏览器渲染主要流程"></a>2.1 浏览器渲染主要流程</h4><p>不同的浏览器内核不同，所以渲染过程不太一样。</p>
-<p><code>WebKit 主流程</code></p>
-<p><img data-src="pic1.png"></p>
-<p><code>Mozilla</code> 的 <code>Gecko</code> 呈现引擎主流程</p>
-<p><img data-src="pic2.png"></p>
-<p>由上面两张图可以看出，虽然主流浏览器渲染过程叫法有区别，但是主要流程还是相同的。</p>
-<p><code>Gecko</code> 将视觉格式化元素组成的树称为“框架树”。每个元素都是一个框架。<br>WebKit 使用的术语是“呈现树”，它由“呈现对象”组成。</p>
-<p>对于元素的放置，<code>WebKit</code> 使用的术语是“布局”，而 <code>Gecko</code> 称之为“重排”。</p>
-<p>对于连接 DOM 节点和可视化信息从而创    建呈现树的过程，<code>WebKit</code> 使用的术语是“附加”。</p>
-<p><strong>所以可以分析出基本过程：</strong></p>
-<ol>
-<li>HTML解析出DOM Tree</li>
-<li>CSS解析出Style Rules</li>
-<li>将二者关联生成Render Tree</li>
-<li>Layout 根据Render Tree计算每个节点的信息</li>
-<li>Painting 根据计算好的信息绘制整个页面</li>
-</ol>
-<h4 id="2-2-HTML-解析"><a href="#2-2-HTML-解析" class="headerlink" title="2.2 HTML 解析"></a>2.2 HTML 解析</h4><p><code>HTML Parser</code>的任务是将HTML标记解析成<code>DOM Tree</code><br>这个解析可以参考React解析DOM的过程，但是这里面有很多别的规则和操作，比如容错机制，识别<code>&lt;/br&gt;</code>和<code>&lt;br&gt;</code>等等。<br>感兴趣的可以参考 <a href="https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/">《How Browser Work》</a>，<a href="https://www.html5rocks.com/zh/tutorials/internals/howbrowserswork/">中文翻译</a><br>举个例子：一段HTML</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Web page parsing<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Web page parsing<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>This is an example Web page.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>经过解析之后的DOM Tree差不多就是</p>
-<p><img data-src="pic3.png"></p>
-<p>将文本的HTML文档，提炼出关键信息，嵌套层级的树形结构，便于计算拓展。这就是HTML Parser的作用。</p>
-<h4 id="2-3-CSS解析"><a href="#2-3-CSS解析" class="headerlink" title="2.3 CSS解析"></a>2.3 CSS解析</h4><p><code>CSS Parser</code>将CSS解析成<code>Style Rules</code>，<code>Style Rules</code>也叫<code>CSSOM（CSS Object Model）</code>。<br><code>StyleRules</code>也是一个树形结构，根据CSS文件整理出来的类似<code>DOM Tree</code>的树形结构：</p>
-<p><img data-src="pic4.png"></p>
-<p>与<code>HTML Parser</code>相似，<code>CSS Parser</code>作用就是将很多个CSS文件中的样式合并解析出具有树形结构Style Rules。</p>
-<h4 id="2-4-脚本处理"><a href="#2-4-脚本处理" class="headerlink" title="2.4 脚本处理"></a>2.4 脚本处理</h4><p>浏览器解析文档，当遇到<code>&lt;script&gt;</code>标签的时候，会立即解析脚本，停止解析文档（因为JS可能会改动DOM和CSS，所以继续解析会造成浪费）。<br>如果脚本是外部的，会等待脚本下载完毕，再继续解析文档。现在可以在script标签上增加属性 <code>defer</code>或者<code>async</code>。<br>脚本解析会将脚本中改变DOM和CSS的地方分别解析出来，追加到<code>DOM Tree</code>和<code>Style Rules</code>上。</p>
-<h4 id="2-5-呈现树（Render-Tree）"><a href="#2-5-呈现树（Render-Tree）" class="headerlink" title="2.5 呈现树（Render Tree）"></a>2.5 呈现树（Render Tree）</h4><p><code>Render Tree</code>的构建其实就是<code>DOM Tree</code>和<code>CSSOM</code> <strong>Attach</strong>的过程。</p>
-<p>呈现树是和 DOM 元素相对应的，但并非一一对应。Render Tree实际上就是一个计算好样式，与HTML对应的（包括哪些显示，那些不显示）的Tree。</p>
-<blockquote>
-<p>在 WebKit 中，解析样式和创建呈现树的过程称为“附加”。每个 DOM 节点都有一个<code>“attach”</code>方法。附加是同步进行的，将节点插入 DOM 树需要调用新的节点<code>“attach”</code>方法。</p>
-</blockquote>
-<p><img data-src="pic5.png"></p>
-<h4 id="2-6-样式计算"><a href="#2-6-样式计算" class="headerlink" title="2.6 样式计算"></a>2.6 样式计算</h4><p>样式计算是个很复杂的问题。DOM中的一个元素可以对应样式表中的多个元素。样式表包括了所有样式：浏览器默认样式表，自定义样式表，inline样式元素，<strong>HTML可视化属性如：width=100。后者将转化以匹配CSS样式。</strong></p>
-<blockquote>
-<p>WebKit 节点会引用样式对象 (RenderStyle)。这些对象在某些情况下可以由不同节点共享。这些节点是同级关系，并且：</p>
-<ol>
-<li>这些元素必须处于相同的鼠标状态（例如，不允许其中一个是“:hover”状态，而另一个不是）</li>
-<li>任何元素都没有 ID</li>
-<li>标记名称应匹配</li>
-<li>类属性应匹配</li>
-<li>映射属性的集合必须是完全相同的</li>
-<li>链接状态必须匹配</li>
-<li>焦点状态必须匹配</li>
-<li>任何元素都不应受属性选择器的影响，这里所说的“影响”是指在选择器中的任何位置有任何使用了属性选择器的选择器匹配</li>
-<li>元素中不能有任何 inline 样式属性</li>
-<li>不能使用任何同级选择器。WebCore 在遇到任何同级选择器时，只会引发一个全局开关，并停用整个文档的样式共享（如果存在）。这包括 + 选择器以及 :first-child 和 :last-child 等选择器。</li>
-</ol>
-</blockquote>
-<p>为了简化样式计算，Firefox 还采用了另外两种树：规则树和样式上下文树。WebKit 也有样式对象，但它们不是保存在类似样式上下文树这样的树结构中，只是由 DOM 节点指向此类对象的相关样式。</p>
-<p><img data-src="pic6.png"></p>
-<p>样式上下文包含端值。要计算出这些值，应按照正确顺序应用所有的匹配规则，并将其从逻辑值转化为具体的值。<br>例如，<strong>如果逻辑值是屏幕大小的百分比，则需要换算成绝对的单位</strong>。规则树的点子真的很巧妙，它使得节点之间可以共享这些值，以避免重复计算，还可以节约空间。<br>所有匹配的规则都存储在树中。路径中的底层节点拥有较高的优先级。规则树包含了所有已知规则匹配的路径。规则的存储是延迟进行的。规则树不会在开始的时候就为所有的节点进行计算，而是只有当某个节点样式需要进行计算时，才会向规则树添加计算的路径。</p>
-<p>*<strong>举个例子</strong> 一段HTML代码：*</p>
-<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;div <span class="keyword">class</span>=&quot;<span class="symbol">err</span>&quot; <span class="symbol">id</span>=&quot;<span class="symbol">div1</span>&quot;&gt;</span><br><span class="line">      &lt;<span class="symbol">p</span>&gt;</span><br><span class="line">        <span class="symbol">this</span> <span class="symbol">is</span> <span class="symbol">a</span> &lt;<span class="symbol">span</span> <span class="symbol">class</span>=&quot;<span class="symbol">big</span>&quot;&gt; <span class="symbol">big</span> <span class="symbol">error</span> &lt;/<span class="symbol">span</span>&gt;</span><br><span class="line">        <span class="symbol">this</span> <span class="symbol">is</span> <span class="symbol">also</span> <span class="symbol">a</span></span><br><span class="line">        &lt;<span class="symbol">span</span> <span class="symbol">class</span>=&quot;<span class="symbol">big</span>&quot;&gt; <span class="symbol">very</span>  <span class="symbol">big</span>  <span class="symbol">error</span>&lt;/<span class="symbol">span</span>&gt; <span class="symbol">error</span></span><br><span class="line">      &lt;/<span class="symbol">p</span>&gt;</span><br><span class="line">    &lt;/<span class="symbol">div</span>&gt;</span><br><span class="line">    &lt;<span class="symbol">div</span> <span class="symbol">class</span>=&quot;<span class="symbol">err</span>&quot; <span class="symbol">id</span>=&quot;<span class="symbol">div2</span>&quot;&gt;<span class="symbol">another</span> <span class="symbol">error</span>&lt;/<span class="symbol">div</span>&gt;</span><br><span class="line">  &lt;/<span class="symbol">body</span>&gt;</span><br><span class="line">&lt;/<span class="symbol">html</span>&gt;</span><br></pre></td></tr></table></figure>
-
-<p>对应CSS规则如下：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">1. <span class="selector-tag">div</span> &#123;<span class="attribute">margin</span>:<span class="number">5px</span>;<span class="attribute">color</span>:black&#125;</span><br><span class="line">2. <span class="selector-class">.err</span> &#123;<span class="attribute">color</span>:red&#125;</span><br><span class="line">3. <span class="selector-class">.big</span> &#123;<span class="attribute">margin-top</span>:<span class="number">3px</span>&#125;</span><br><span class="line">4. <span class="selector-tag">div</span> <span class="selector-tag">span</span> &#123;<span class="attribute">margin-bottom</span>:<span class="number">4px</span>&#125;</span><br><span class="line">5. <span class="selector-id">#div1</span> &#123;<span class="attribute">color</span>:blue&#125;</span><br><span class="line">6. <span class="selector-id">#div2</span> &#123;<span class="attribute">color</span>:green&#125;</span><br></pre></td></tr></table></figure>
-
-<p>则CSS形成的规则树如下图所示（节点的标记方式为“节点名 : 指向的规则序号”）</p>
-<p><img data-src="pic7.png"></p>
-<blockquote>
-<p>下面的内容有点绕，但是很有逻辑</p>
-</blockquote>
-<p>假设我们解析 HTML 时遇到了第二个 <code>&lt;div&gt;</code> 标记，我们需要为此节点创建样式上下文，并填充其样式结构。<br>经过规则匹配，我们发现该 <code>&lt;div&gt;</code>的匹配规则是第 1、2 和 6 条。这意味着规则树中已有一条路径可供我们的元素使用，我们只需要再为其添加一个节点以匹配第 6 条规则（规则树中的 F 节点）。<br>我们将创建样式上下文并将其放入上下文树中。新的样式上下文将指向规则树中的 F 节点。</p>
-<p>现在我们需要填充样式结构。首先要填充的是 margin 结构。由于最后的规则节点 (F) 并没有添加到 margin 结构，我们需要上溯规则树，直至找到在先前节点插入中计算过的缓存结构，然后使用该结构。我们会在指定 margin 规则的最上层节点（即 B 节点）上找到该结构。</p>
-<p>我们已经有了 color 结构的定义，因此不能使用缓存的结构。由于 color 有一个属性，我们无需上溯规则树以填充其他属性。我们将计算端值（将字符串转化为 <code>RGB</code> 等）并在此节点上缓存经过计算的结构。</p>
-<p>第二个<code>&lt;span&gt;</code>元素处理起来更加简单。我们将匹配规则，最终发现它和之前的 span 一样指向规则 G。由于我们找到了指向同一节点的同级，就可以共享整个样式上下文了，只需指向之前 span 的上下文即可。</p>
-<p>对于包含了继承自父代的规则的结构，缓存是在上下文树中进行的（事实上 color 属性是继承的，但是 Firefox 将其视为 reset 属性，并缓存到规则树上）<br>所以生成的上下文树如下：</p>
-<p><img data-src="pic8.png"></p>
-<h4 id="2-7-以正确的层叠顺序应用规则"><a href="#2-7-以正确的层叠顺序应用规则" class="headerlink" title="2.7 以正确的层叠顺序应用规则"></a>2.7 以正确的层叠顺序应用规则</h4><p>样式对象具有与每个可视化属性一一对应的属性（均为 CSS 属性但更为通用）。如果某个属性未由任何匹配规则所定义，那么部分属性就可由父代元素样式对象继承。其他属性具有默认值。<br>如果定义不止一个，就会出现问题，需要通过层叠顺序来解决。</p>
-<p>一些例子：</p>
-<figure class="highlight stata"><table><tr><td class="code"><pre><span class="line"><span class="comment">*             &#123;&#125;  /* a=0 b=0 c=0 d=0 -&gt; specificity = 0,0,0,0 */</span></span><br><span class="line"><span class="keyword">li</span>            &#123;&#125;  <span class="comment">/* a=0 b=0 c=0 d=1 -&gt; specificity = 0,0,0,1 */</span></span><br><span class="line"><span class="keyword">li</span>:first-<span class="keyword">line</span> &#123;&#125;  <span class="comment">/* a=0 b=0 c=0 d=2 -&gt; specificity = 0,0,0,2 */</span></span><br><span class="line">ul <span class="keyword">li</span>         &#123;&#125;  <span class="comment">/* a=0 b=0 c=0 d=2 -&gt; specificity = 0,0,0,2 */</span></span><br><span class="line">ul ol+<span class="keyword">li</span>      &#123;&#125;  <span class="comment">/* a=0 b=0 c=0 d=3 -&gt; specificity = 0,0,0,3 */</span></span><br><span class="line">h1 + *[rel=up]&#123;&#125;  <span class="comment">/* a=0 b=0 c=1 d=1 -&gt; specificity = 0,0,1,1 */</span></span><br><span class="line">ul ol <span class="keyword">li</span>.red  &#123;&#125;  <span class="comment">/* a=0 b=0 c=1 d=3 -&gt; specificity = 0,0,1,3 */</span></span><br><span class="line"><span class="keyword">li</span>.red.level  &#123;&#125;  <span class="comment">/* a=0 b=0 c=2 d=1 -&gt; specificity = 0,0,2,1 */</span></span><br><span class="line">#x34y         &#123;&#125;  <span class="comment">/* a=0 b=1 c=0 d=0 -&gt; specificity = 0,1,0,0 */</span></span><br><span class="line">style=<span class="string">&quot;&quot;</span>          <span class="comment">/* a=1 b=0 c=0 d=0 -&gt; specificity = 1,0,0,0 */</span></span><br></pre></td></tr></table></figure>
-
-<p>利用上面的方法，基本可以快速确定不同选择器的优先级。</p>
-<h4 id="2-8-布局Layout"><a href="#2-8-布局Layout" class="headerlink" title="2.8 布局Layout"></a>2.8 布局Layout</h4><p>创建渲染树后，下一步就是<code>布局（Layout）</code>,或者叫<code>回流（reflow,relayout）</code>，这个过程就是通过渲染树中渲染对象的信息，计算出每一个渲染对象的位置和尺寸，将其安置在浏览器窗口的正确位置，而有些时候我们会在文档布局完成后对DOM进行修改，这时候可能需要重新进行布局，也可称其为<code>回流</code>，本质上还是一个布局的过程，每一个渲染对象都有一个布局或者回流方法，实现其布局或回流。</p>
-<p><strong>对渲染树的布局可以分为全局和局部的</strong></p>
-<ul>
-<li>全局即对整个渲染树进行重新布局，如<u>当我们改变了窗口尺寸或方向</u>或者是<u>修改了根元素的尺寸或者字体大小</u>等；</li>
-<li>而局部布局可以是对渲染树的某部分或某一个渲染对象进行重新布局。</li>
-</ul>
-<p>大多数web应用对DOM的操作都是比较频繁，这意味着经常需要对DOM进行布局和回流，而如果仅仅是一些小改变，就触发整个渲染树的回流，这显然是不好的，为了避免这种情况，浏览器使用了<code>脏位系统</code>，只有一个渲染对象改变了或者某渲染对象及其子渲染对象脏位值为”dirty”时，说明需要回流。</p>
-<blockquote>
-<p>表示需要布局的脏位值有两种：</p>
-<ul>
-<li>“dirty”–自身改变，需要回流</li>
-<li>“children are dirty”–子节点改变，需要回流</li>
-</ul>
-</blockquote>
-<p>布局是一个从上到下，从外到内进行的递归过程，从根渲染对象，即对应着HTML文档根元素，然后下一级渲染对象，如对应着元素，如此层层递归，依次计算每一个渲染对象的几何信息（位置和尺寸）。</p>
-<p><strong>每一个渲染对象的布局流程基本如：</strong></p>
-<ol>
-<li><p>计算渲染对象的宽度（width）；</p>
-</li>
-<li><p>遍历此渲染对象的所有子级，依次：</p>
-<p>2.1设置子级渲染对象的坐标</p>
-<p>2.2判断是否需要触发子渲染对象的布局或回流方法，计算子渲染对象的高度（height）</p>
-</li>
-<li><p>设置此渲染对象的高度：根据子渲染对象的累积高，margin和padding的高度设置其高度；</p>
-</li>
-<li><p>设置此渲染对象脏位值为false。</p>
-</li>
-</ol>
-<h4 id="2-9-绘制（Painting）"><a href="#2-9-绘制（Painting）" class="headerlink" title="2.9 绘制（Painting）"></a>2.9 绘制（Painting）</h4><p>在绘制阶段，系统会遍历呈现树，并调用呈现器的<code>“paint”</code>方法，将呈现器的内容显示在屏幕上。绘制工作是使用用户界面基础组件完成的。</p>
-<p>CSS2 规范定义了绘制流程的顺序。绘制的顺序其实就是元素进入堆栈样式上下文的顺序。这些堆栈会从后往前绘制，因此这样的顺序会影响绘制。块呈现器的堆栈顺序如下：</p>
-<ol>
-<li>背景颜色</li>
-<li>背景图片</li>
-<li>边框</li>
-<li>子代</li>
-<li>轮廓</li>
-</ol>
-<p>这里还要说两个概念，一个是<code>Reflow</code>，另一个是<code>Repaint</code>。这两个不是一回事。<br><strong>Repaint</strong> ——屏幕的一部分要重画，比如某个CSS的背景色变了。但是元素的几何尺寸没有变。<br><strong>Reflow</strong> 元件的几何尺寸变了，我们需要重新验证并计算Render Tree。是Render Tree的一部分或全部发生了变化。这就是Reflow，或是Layout。（HTML使用的是flow based layout，也就是流式布局，所以，如果某元件的几何尺寸发生了变化，需要重新布局，也就叫reflow）reflow 会从<code>&lt;html&gt;</code>这个root frame开始递归往下，依次计算所有的结点几何尺寸和位置，在reflow过程中，可能会增加一些frame，比如一个文本字符串必需被包装起来。</p>
-<blockquote>
-<p>Reflow的成本比Repaint的成本高得多的多。DOM Tree里的每个结点都会有reflow方法，一个结点的reflow很有可能导致子结点，甚至父点以及同级结点的reflow。在一些高性能的电脑上也许还没什么，但是如果reflow发生在手机上，那么这个过程是非常痛苦和耗电的。</p>
-</blockquote>
-<p> 所以，下面这些动作有很大可能会是成本比较高的。</p>
-<ul>
-<li>当你增加、删除、修改DOM结点时，会导致Reflow或Repaint</li>
-<li>当你移动DOM的位置，或是搞个动画的时候。</li>
-<li>当你修改CSS样式的时候。</li>
-<li>当你Resize窗口的时候（移动端没有这个问题），或是滚动的时候。</li>
-<li>当你修改网页的默认字体时。</li>
-<li>注：display:none会触发reflow，而visibility:hidden只会触发repaint，因为没有发现位置变化。</li>
-</ul>
-<p>基本上来说，reflow有如下的几个原因：</p>
-<ul>
-<li>Initial。网页初始化的时候。</li>
-<li>Incremental。一些Javascript在操作DOM Tree时。</li>
-<li>Resize。其些元件的尺寸变了。</li>
-<li>StyleChange。如果CSS的属性发生变化了。</li>
-<li>Dirty。几个Incremental的reflow发生在同一个frame的子树上。</li>
-</ul>
-<p>看几个例子：</p>
-<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&#x27;body&#x27;</span>).css(<span class="string">&#x27;color&#x27;</span>, <span class="string">&#x27;red&#x27;</span>); <span class="regexp">//</span> repaint</span><br><span class="line">$(<span class="string">&#x27;body&#x27;</span>).css(<span class="string">&#x27;margin&#x27;</span>, <span class="string">&#x27;2px&#x27;</span>); <span class="regexp">//</span> reflow, repaint</span><br><span class="line"></span><br><span class="line">var bstyle = document.body.style; <span class="regexp">//</span> cache</span><br><span class="line"></span><br><span class="line">bstyle.padding = <span class="string">&quot;20px&quot;</span>; <span class="regexp">//</span> reflow, repaint</span><br><span class="line">bstyle.border = <span class="string">&quot;10px solid red&quot;</span>; <span class="regexp">//</span>  再一次的 reflow 和 repaint</span><br><span class="line"></span><br><span class="line">bstyle.color = <span class="string">&quot;blue&quot;</span>; <span class="regexp">//</span> repaint</span><br><span class="line">bstyle.backgroundColor = <span class="string">&quot;#fad&quot;</span>; <span class="regexp">//</span> repaint</span><br><span class="line"></span><br><span class="line">bstyle.fontSize = <span class="string">&quot;2em&quot;</span>; <span class="regexp">//</span> reflow, repaint</span><br><span class="line"></span><br><span class="line"><span class="regexp">//</span> new DOM element - reflow, repaint</span><br><span class="line">document.body.appendChild(document.createTextNode(<span class="string">&#x27;dude!&#x27;</span>));</span><br></pre></td></tr></table></figure>
-
-<p>当然，我们的浏览器是聪明的，它不会像上面那样，你每改一次样式，它就reflow或repaint一次。一般来说，浏览器会把这样的操作积攒一批，然后做一次reflow，这又叫异步reflow或增量异步reflow。但是有些情况浏览器是不会这么做的，比如：resize窗口，改变了页面默认的字体，等。对于这些操作，浏览器会马上进行reflow。</p>
-<p>但是有些时候，我们的脚本会阻止浏览器这么干，比如：如果我们请求下面的一些DOM值：</p>
-<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">offsetTop, offsetLeft, offsetWidth, offsetHeight</span><br><span class="line">scrollTop<span class="regexp">/Left/</span>Width/Height</span><br><span class="line">clientTop<span class="regexp">/Left/</span>Width/Height</span><br><span class="line">IE中的 getComputedStyle(), 或 currentStyle</span><br></pre></td></tr></table></figure>
-
-<p>因为，如果我们的程序需要这些值，那么浏览器需要返回最新的值，而这样一样会flush出去一些样式的改变，从而造成频繁的reflow/repaint。</p>
-<h4 id="2-10-Chrome调试工具查看页面渲染顺序"><a href="#2-10-Chrome调试工具查看页面渲染顺序" class="headerlink" title="2.10 Chrome调试工具查看页面渲染顺序"></a>2.10 Chrome调试工具查看页面渲染顺序</h4><p>页面的渲染详细过程可以通过chrome开发者工具中的timeline查看</p>
-<p><img data-src="pic9.png"></p>
-<ol>
-<li>发起请求；</li>
-<li>解析HTML；</li>
-<li>解析样式；</li>
-<li>执行JavaScript；</li>
-<li>布局；</li>
-<li>绘制</li>
-</ol>
-<h2 id="二、页面渲染优化"><a href="#二、页面渲染优化" class="headerlink" title="二、页面渲染优化"></a>二、页面渲染优化</h2><p>浏览器对上文介绍的关键渲染路径进行了很多优化，针对每一次变化产生尽量少的操作，还有优化判断重新绘制或布局的方式等等。<br>在改变文档根元素的字体颜色等视觉性信息时，会触发整个文档的重绘，而改变某元素的字体颜色则只触发特定元素的重绘；改变元素的位置信息会同时触发此元素（可能还包括其兄弟元素或子级元素）的布局和重绘。某些重大改变，如更改文档根元素的字体尺寸，则会触发整个文档的重新布局和重绘，据此及上文所述，推荐以下优化和实践：</p>
-<ol>
-<li>HTML文档结构层次尽量少，最好不深于六层；</li>
-<li>脚本尽量后放，放最后即可；</li>
-<li>少量首屏样式内联放在标签内；</li>
-<li>样式结构层次尽量简单；</li>
-<li>在脚本中尽量减少DOM操作，尽量缓存访问DOM的样式信息，避免过度触发<code>回流</code>；</li>
-<li>减少通过JavaScript代码修改元素样式，尽量使用修改class名方式操作样式或动画；</li>
-<li>动画尽量使用在绝对定位或固定定位的元素上；</li>
-<li>隐藏在屏幕外，或在页面滚动时，尽量停止动画；</li>
-<li>尽量缓存DOM查找，查找器尽量简洁；</li>
-<li>涉及多域名的网站，可以开启域名预解析</li>
-</ol>
-<p><strong>补充</strong></p>
-<p>HTML整个解析过程看起来很简单，但是我们要知道解析过程中css、Js和DOM的加载顺序。我们都知道HTML是自上往下解析的，在解析过程中：</p>
-<p>1、如果遇到link和style，那就就会去下载这些外部的css资源，但是css跟DOM的构建是并行的，就是说不会阻塞DOM树的构建。</p>
-<p>2、如果遇到script，那么页面就会把控制权交给JavaScript，直到脚本加载完毕或者是执行完毕。</p>
-<p>3、页面的渲染是依靠render树，也就是说如果css没有加载完成，页面也不会渲染显示。</p>
-<p>4、JavaScript执行过程中有可能需要改变样式，所以css加载也会阻塞JavaScript的加载。</p>
-<p>5、JavaScript执行过程中如果操作DOM，但是DOM树又是在JavaScript之后才能构建，就会报错，找不到节点。</p>
-<p>这就是HTML的渲染过程，因为DOM和css并行构建，我们会把css用外部引入，可以更快的构建DOM，因为JavaScript会阻塞DOM和css构建，且操作DOM一定要在DOM构建完成，我们选择把script放在最下面。如果我们过多的在render渲染完成后改变render，那么重排和重绘就会一直被动重发执行，这也会造成渲染速度变慢。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>浏览器渲染问题每一步都涉及到很多底层知识，每一步都有对应的算法。<br>文章中间很多语句都是直接复制的原文，自己的语言概况还是不及原文精彩。</p>
-<p><strong>可参考原文链接</strong></p>
-<p><a href="https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/">《How Browser Work》</a></p>
-<p><a href="https://www.html5rocks.com/zh/tutorials/internals/howbrowserswork/">浏览器的工作原理：新式网络浏览器幕后揭秘</a></p>
-<p><a href="http://imweb.io/topic/56841c864c44bcc56092e3fa">浏览器渲染原理</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/25279069">浏览器 渲染,绘制流程及性能优化</a></p>
-<p><a href="http://caibaojian.com/css-reflow-repaint.html">优化CSS重排重绘与浏览器性能</a></p>
-<p><a href="http://web.jobbole.com/90961/">浅析前端页面渲染机制</a></p>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
-      <categories>
-        <category>Front End</category>
-      </categories>
-      <tags>
-        <tag>Html</tag>
       </tags>
   </entry>
   <entry>

@@ -2,7 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://hammerzer.github.io/2020/09/05/Vue-socket-io-API-description-and-usage/</loc>
+    <loc>https://hammerzer.github.io/2020/09/05/about-Swiper/</loc>
+    
+    <lastmod>2020-09-05</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://hammerzer.github.io/about/index.html</loc>
     
     <lastmod>2020-09-05</lastmod>
     
@@ -11,7 +18,14 @@
   <url>
     <loc>https://hammerzer.github.io/2020/08/31/css-animation/</loc>
     
-    <lastmod>2020-09-02</lastmod>
+    <lastmod>2020-09-05</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://hammerzer.github.io/2020/09/05/Vue-socket-io-API-description-and-usage/</loc>
+    
+    <lastmod>2020-09-05</lastmod>
     
   </url>
   
@@ -61,13 +75,6 @@
     <loc>https://hammerzer.github.io/2020/08/26/markdown/</loc>
     
     <lastmod>2020-08-27</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://hammerzer.github.io/about/index.html</loc>
-    
-    <lastmod>2020-08-26</lastmod>
     
   </url>
   
@@ -123,6 +130,20 @@
   </url>
   
   <url>
+    <loc>https://hammerzer.github.io/tags/JavaScript/</loc>
+    <lastmod>2020-09-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://hammerzer.github.io/tags/ES3-ES5/</loc>
+    <lastmod>2020-09-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://hammerzer.github.io/tags/%E6%A1%86%E6%9E%B6%E4%B8%8E%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2020-09-05</lastmod>
     <changefreq>daily</changefreq>
@@ -138,20 +159,6 @@
   
   <url>
     <loc>https://hammerzer.github.io/tags/Vue-Problems/</loc>
-    <lastmod>2020-09-05</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://hammerzer.github.io/tags/JavaScript/</loc>
-    <lastmod>2020-09-05</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://hammerzer.github.io/tags/ES3-ES5/</loc>
     <lastmod>2020-09-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
