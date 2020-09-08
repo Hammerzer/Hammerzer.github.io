@@ -1,12 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://hammerzer.github.io/2020/09/05/about-Swiper/</loc>
-    <lastmod>2020-09-05</lastmod>
+    <loc>https://hammerzer.github.io/2020/09/08/git-problems/</loc>
+    <lastmod>2020-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://hammerzer.github.io/2020/08/18/The-Starting-Point-of-Blogs/</loc>
+    <lastmod>2020-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://hammerzer.github.io/2020/08/20/Hexo-Next-Supplement/</loc>
+    <lastmod>2020-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://hammerzer.github.io/2020/08/25/JavaScript-commonly-used-functions/</loc>
+    <lastmod>2020-09-08</lastmod>
   </url>
   <url>
     <loc>https://hammerzer.github.io/2020/08/31/css-animation/</loc>
-    <lastmod>2020-09-05</lastmod>
+    <lastmod>2020-09-07</lastmod>
+  </url>
+  <url>
+    <loc>https://hammerzer.github.io/2020/09/05/about-Swiper/</loc>
+    <lastmod>2020-09-07</lastmod>
   </url>
   <url>
     <loc>https://hammerzer.github.io/2020/09/05/Vue-socket-io-API-description-and-usage/</loc>
@@ -29,20 +45,8 @@
     <lastmod>2020-08-31</lastmod>
   </url>
   <url>
-    <loc>https://hammerzer.github.io/2020/08/25/JavaScript-commonly-used-functions/</loc>
-    <lastmod>2020-08-31</lastmod>
-  </url>
-  <url>
-    <loc>https://hammerzer.github.io/2020/08/20/Hexo-Next-Supplement/</loc>
-    <lastmod>2020-08-27</lastmod>
-  </url>
-  <url>
     <loc>https://hammerzer.github.io/2020/08/26/markdown/</loc>
     <lastmod>2020-08-27</lastmod>
-  </url>
-  <url>
-    <loc>https://hammerzer.github.io/2020/08/18/The-Starting-Point-of-Blogs/</loc>
-    <lastmod>2020-08-25</lastmod>
   </url>
   <url>
     <loc>https://hammerzer.github.io/2020/08/25/Retrieve-the-Vue-response-principle/</loc>

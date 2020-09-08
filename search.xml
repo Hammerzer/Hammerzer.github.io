@@ -4,7 +4,7 @@
     <title>CSS 动画</title>
     <url>/2020/08/31/css-animation/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
-<p>下面总结和汇总了有关与CSS动画的知识点，确实很有用</p>
+<p>下面汇总并总结了有关与CSS动画的知识点，再次熟悉一遍！</p>
 </blockquote>
 <a id="more"></a>
 
@@ -21,18 +21,106 @@
 <li><code>translateX(x)</code>仅水平方向移动（X轴移动）</li>
 <li><code>translateY(Y)</code>仅垂直方向移动（Y轴移动）</li>
 </ul>
-<h4 id="2-1-translate"><a href="#2-1-translate" class="headerlink" title="2.1 translate()"></a>2.1 translate()</h4><p>通过矢量[tx, ty]指定一个2D变换，tx 是第一个过渡值参数，ty 是第二个过渡值参数选项默认值为0。</p>
-<p>它表示对象进行平移，按照设定的x,y参数值,当值为负数时，反方向移动物体，其基点默认为元素 中心点，也可以根据<code>transform-origin</code>进行改变基点。</p>
-<p>如<code>transform:translate(100px,20px)</code></p>
+<blockquote>
+<p>也可以根据<code>transform-origin</code>改变基点位置</p>
+</blockquote>
 <p><img data-src="translate.png"></p>
-<h4 id="2-2-translateX"><a href="#2-2-translateX" class="headerlink" title="2.2 translateX()"></a>2.2 translateX()</h4><p> 通过给定一个X方向上的数目指定一个移动</p>
-<h4 id="2-3-translateY"><a href="#2-3-translateY" class="headerlink" title="2.3 translateY()"></a>2.3 translateY()</h4><p>通过给定Y方向的数目指定一个移动</p>
+<h3 id="3-缩放scale"><a href="#3-缩放scale" class="headerlink" title="3. 缩放scale"></a>3. 缩放<code>scale</code></h3><p>缩放<code>scale</code>具有三种情况：</p>
+<ul>
+<li><code>scale(x,y)</code>使元素水平方向和垂直方向同时缩放（也就是X轴和Y轴同时缩放）</li>
+<li><code>scaleX(x)</code>元素仅水平方向缩放（X轴缩放）</li>
+<li><code>scaleY(y)</code>元素仅垂直方向缩放（Y轴缩放）</li>
+</ul>
+<blockquote>
+<p>但它们具有相同的缩放中心点和基数，其中心点就是元素的中心位置，<code>缩放基数为1</code>，如果<code>其值大于1</code>元素就放大，反之其值小于1，元素缩小。</p>
+</blockquote>
+<p><strong>scale([, ])：</strong>提供执行[sx,sy]缩放矢量的两个参数指定一个<code>2D缩放</code>。如果第二个参数未提供，则取与第一个参数一样的值。<code>scale(X,Y)</code>是用于对元素进行缩放，可以通过<code>transform-origin</code>对元素的基点进行设置，同样基点在元素中心位置；基中X表示水平方向缩放的倍数，Y表示垂直方向的缩放倍数，而Y是一个可选参数，如果没有设置Y值，则表示X，Y两个方向的缩放倍数是一样的。并以X为准。如：</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">transform</span>:scale(<span class="number">2</span>,<span class="number">1</span>.<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="scale.png"></p>
+<h3 id="4-扭曲skew"><a href="#4-扭曲skew" class="headerlink" title="4. 扭曲skew"></a>4. 扭曲skew</h3><p>扭曲<code>skew</code>具有三种情况：</p>
+<ul>
+<li><code>skew(x,y)</code>使元素在水平和垂直方向同时扭曲（X轴和Y轴同时按一定的角度值进行扭曲变形）</li>
+<li><code>skewX(x)</code>仅使元素在水平方向扭曲变形（X轴扭曲变形）</li>
+<li><code>skewY(y)</code>仅使元素在垂直方向扭曲变形（Y轴扭曲变形）</li>
+</ul>
+<p><strong>skew( [, ])</strong> ：X轴Y轴上的斜切变换。第一个参数对应X轴，第二个参数对应Y轴。如果第二个参数未提供，则值为0，也就是Y轴方向上无斜切。</p>
+<p>skew是用来对元素进行扭曲变行，第一个参数是水平方向扭曲角度，第二个参数是垂直方向扭曲角度。其中第二个参数是可选参数，如果没有设置第二个参数，那么Y轴为0deg。同样是以元素中心为基点，我们也可以通过<code>transform-origin</code>来改变元素的基点位置。如：</p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">transform:skew(<span class="number">30</span>deg,<span class="number">10</span>deg):</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="skew.png"></p>
+<p><strong>skewX()</strong> ： 按给定的角度沿X轴指定一个斜切变换。如：</p>
+<figure class="highlight isbl"><table><tr><td class="code"><pre><span class="line"><span class="variable">transform</span>:<span class="function"><span class="title">skewX</span>(<span class="number">30</span><span class="variable">deg</span>)</span></span><br></pre></td></tr></table></figure>
+
+<p><img data-src="skewX.png"></p>
+<h3 id="5-矩阵matrix"><a href="#5-矩阵matrix" class="headerlink" title="5. 矩阵matrix"></a>5. 矩阵<code>matrix</code></h3><p><code>matrix(, , , , , )</code> </p>
+<p> 以一个含六值的(a,b,c,d,e,f)<code>变换矩阵</code>的形式指定一个<code>2D变换</code>，相当于直接应用一个<code>[a b c d e f]变换矩阵</code>。就是基于水平方向（X轴）和垂直方向（Y轴）重新定位元素,此属性值使用涉及到数学中的矩阵。</p>
+<h3 id="6-改变元素基点transform-origin"><a href="#6-改变元素基点transform-origin" class="headerlink" title="6. 改变元素基点transform-origin"></a>6. 改变元素基点<code>transform-origin</code></h3><p><strong>其主要作用</strong>就是让我们在进行<code>transform</code>动作之前可以改变元素的基点位置。</p>
+<p>因为我们元素默认基点就是其中心位置，换句话说我们没有使用transform-origin改变元素基点位置的情况下，transform进行的rotate,translate,scale,skew,matrix等操作都是以元素自己中心位置进行变化的。但有时候我们需要在不同的位置对元素进行这些操作，那么我们就可以使用transform-origin来对元素进行基点位置改变，使元素基点不在是中心位置，以达到你需要的基点位置。下面我们主要来看看其使用规则：</p>
+<p>transform-origin(X,Y):用来设置元素的运动的基点（参照点）。默认点是元素的中心点。其中X和Y的值可以是百分值,em,px，其中X也可以是字符参数值left,center,right；Y和X一样除了百分值外还可以设置字符值top,center,bottom，这个看上去有点像我们background-position设置一样；下面我列出他们相对应的写法：</p>
+<p>1、top left | left top 等价于 0 0 | 0% 0%</p>
+<p>2、top | top center | center top 等价于 50% 0</p>
+<p>3、right top | top right 等价于 100% 0</p>
+<p>4、left | left center | center left 等价于 0 50% | 0% 50%</p>
+<p>5、center | center center 等价于 50% 50%（默认值）</p>
+<p>6、right | right center | center right 等价于 100% 50%</p>
+<p>7、bottom left | left bottom 等价于 0 100% | 0% 100%</p>
+<p>8、bottom | bottom center | center bottom 等价于 50% 100%</p>
+<p>9、bottom right | right bottom 等价于 100% 100%</p>
+<p>其中 left,center right是水平方向取值，对应的百分值为left=0%;center=50%;right=100%而top center bottom是垂直方向的取值，其中top=0%;center=50%;bottom=100%;如果只取一个值，表示垂直方向值不变，我们分别来看看以下几个实例</p>
+<p>(1)transform-origin:(left,top):</p>
+<p>作者：哆啦在这A梦在哪<br>链接：<a href="https://www.jianshu.com/p/8a33214a1b26">https://www.jianshu.com/p/8a33214a1b26</a><br>来源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
         <category>Front End</category>
       </categories>
       <tags>
         <tag>CSS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Git Problems</title>
+    <url>/2020/09/08/git-problems/</url>
+    <content><![CDATA[<h2 id="1-使用git将本地项目上传至git仓库"><a href="#1-使用git将本地项目上传至git仓库" class="headerlink" title="1. 使用git将本地项目上传至git仓库"></a>1. 使用git将本地项目上传至git仓库</h2><blockquote>
+<p><strong>介绍</strong>:  一般来说开发过程中都是先在git创建远程仓库，然后fetch到本地仓库，再进行commit push等操作，但是有时候也需要将本地已经开发的项目上传至一个空的远程仓库中，期间也是遇到不少问题，特此总结一下</p>
+</blockquote>
+<h3 id="初始化本地仓库"><a href="#初始化本地仓库" class="headerlink" title="初始化本地仓库"></a>初始化本地仓库</h3><p>初始化仓库</p>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">git init</span></span><br></pre></td></tr></table></figure>
+
+<p>将文件提交至本地仓库</p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="attribute">git</span> commit -m <span class="string">&quot;注释&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="关联线上仓库"><a href="#关联线上仓库" class="headerlink" title="关联线上仓库"></a>关联线上仓库</h3><figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">git remote add origin &lt;线上仓库url&gt;</span><br><span class="line"></span><br><span class="line"><span class="regexp">//</span> 线上仓库url 为如下链接</span><br><span class="line"><span class="regexp">//</span> https:<span class="regexp">//gi</span>thub.com<span class="regexp">/wenhaofan/</span>xxx.git</span><br></pre></td></tr></table></figure>
+
+<h3 id="提交代码"><a href="#提交代码" class="headerlink" title="提交代码"></a>提交代码</h3><figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="regexp">//</span> git pull </span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+
+<p><strong>常见错误及解决方案</strong></p>
+<p>现在已经创建好了本地仓库，并关联上了远程仓库，如果我们直接使用git push -u origin master将本地内容推送至线上那么可能会出现出现以下错误</p>
+<h4 id="git-push"><a href="#git-push" class="headerlink" title="git push"></a>git push</h4><figure class="highlight livecodeserver"><table><tr><td class="code"><pre><span class="line">failed <span class="built_in">to</span> push some refs <span class="built_in">to</span> <span class="string">&#x27;https://github.com/xxx/xxx.git&#x27;</span></span><br><span class="line">hint: Updates were rejected because <span class="keyword">the</span> remote <span class="keyword">contains</span> work that you dogit</span><br><span class="line">hint: <span class="keyword">not</span> have locally. This is usually caused <span class="keyword">by</span> another repository pushing</span><br><span class="line">hint: <span class="built_in">to</span> <span class="keyword">the</span> same ref. You may want <span class="built_in">to</span> <span class="keyword">first</span> integrate <span class="keyword">the</span> remote changes</span><br><span class="line">hint: (e.g., <span class="string">&#x27;git pull ...&#x27;</span>) <span class="keyword">before</span> pushing again.</span><br><span class="line">hint: See <span class="keyword">the</span> <span class="string">&#x27;Note about fast-forwards&#x27;</span> <span class="keyword">in</span> <span class="string">&#x27;git push --help&#x27;</span> <span class="keyword">for</span> details.</span><br></pre></td></tr></table></figure>
+
+<p>​    以上错误很明显的提示先执行 git pull 再push,需要先执行以下指令将远程仓库中master分支中的文件拉取到本地</p>
+<figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line">git pull origin <span class="literal">master</span></span><br></pre></td></tr></table></figure>
+
+<p>​    如果没有抛异常 那么就可以愉快的再次执行 git push 了，如果抛了异常，那么可以接着往下看</p>
+<h4 id="git-pull"><a href="#git-pull" class="headerlink" title="git pull"></a>git pull</h4><figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line"> * branch            <span class="keyword">master</span>     <span class="title">-&gt; FETCH_HEAD</span></span><br><span class="line">fatal: refusing to merge unrelated histories</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p> 出现这个问题是因为本地库和远程库没有进行关联远， 然后本地推送到远程库， 远端因为这个本地库跟自己没有关联， 所以告知无法合并，该情况有两种解决方法</p>
+</blockquote>
+<p><strong>第一种：</strong>    </p>
+<p>​    先从远端库拉下来代码，然后将本地代码放入本地库中， 然后再执行push提交上去 </p>
+<p><strong>第二种</strong>：</p>
+<p>使用以下命令,把两段不相干的 分支进行强行合并</p>
+<figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line">git pull origin <span class="keyword">master</span> <span class="title">--allow-unrelated-histories</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>然后再进行提交</strong></p>
+<figure class="highlight armasm"><table><tr><td class="code"><pre><span class="line"><span class="symbol">git</span> <span class="keyword">push</span> gitlab master:init</span><br></pre></td></tr></table></figure><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>Front End</category>
+      </categories>
+      <tags>
+        <tag>开发与调试</tag>
+        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
@@ -228,13 +316,11 @@
 <h5 id="以下记录经常忘记又常用的JS内置函数"><a href="#以下记录经常忘记又常用的JS内置函数" class="headerlink" title="以下记录经常忘记又常用的JS内置函数"></a>以下记录经常忘记又常用的<code>JS</code>内置函数</h5><p>推荐查阅相关 <code>资料</code>  ：</p>
 <p><a href="https://es6.ruanyifeng.com/">ECMAScript 6 入门</a></p>
 <p><a href="https://www.liaoxuefeng.com/wiki/1022910821149312">廖雪峰的JavaScript教程</a></p>
+<p><a href="https://developer.mozilla.org/zh-CN/">MSD—&gt;Nice！@</a></p>
 </blockquote>
 <a id="more"></a>
 
-<h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><h3 id="Array-forEach"><a href="#Array-forEach" class="headerlink" title="Array.forEach()"></a>Array.forEach()</h3><blockquote>
-<p>参考自<a href="https://www.jianshu.com/p/eed671b66f9f">简书</a></p>
-</blockquote>
-<h4 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h4><p>forEach()方法用于调用数组的每一个元素，并将元素传递给回调函数。</p>
+<h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><h3 id="1-Array-forEach"><a href="#1-Array-forEach" class="headerlink" title="1. Array.forEach()"></a>1. Array.forEach()</h3><p><strong>描述</strong>：forEach()方法用于调用数组的每一个元素，并将元素传递给回调函数。</p>
 <figure class="highlight reasonml"><table><tr><td class="code"><pre><span class="line"><span class="built_in">array</span>.<span class="keyword">for</span><span class="constructor">Each(<span class="params">function</span>(<span class="params">currentValue</span>, <span class="params">index</span>, <span class="params">arr</span>)</span>, thisValue)</span><br></pre></td></tr></table></figure>
 
 <blockquote>
@@ -249,7 +335,7 @@
 <p>上面的代码用了ES6语法，几乎等同于下面的代码</p>
 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* JS代码 */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> colors = [<span class="string">&#x27;red&#x27;</span>, <span class="string">&#x27;blue&#x27;</span>, <span class="string">&#x27;green&#x27;</span>];</span><br><span class="line"></span><br><span class="line">colors.<span class="keyword">forEach</span>(<span class="function"><span class="keyword">function</span>(<span class="params">item, $index, arr</span>) </span>&#123;</span><br><span class="line">  console.log(item + <span class="string">&#x27; =&gt; &#x27;</span> + $index + <span class="string">&#x27; =&gt; &#x27;</span> + arr);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
-<h4 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h4><p>其实，用 forEach() 主要是为了更方便的代替 for 对数组进行遍历。</p>
+<p><strong>区别</strong>：其实，用 forEach() 主要是为了更方便的代替 for 对数组进行遍历。</p>
 <p>用 for 遍历数组的方法</p>
 <figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* JS代码 */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> colors = [<span class="string">&#x27;red&#x27;</span>, <span class="string">&#x27;blue&#x27;</span>, <span class="string">&#x27;green&#x27;</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>( <span class="keyword">var</span> i=<span class="number">0</span>; i &lt; colors.length; i++)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log( colors[i] + <span class="string">&#x27; =&gt; &#x27;</span> + i + <span class="string">&#x27; =&gt; &#x27;</span> + colors);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -258,37 +344,40 @@
 <li>for可以用continue跳过循环中的一个迭代，forEach用continue会报错。</li>
 <li>forEach() 需要用 return 跳过循环中的一个迭代，跳过之后会执行下一个迭代。</li>
 </ul>
-<h4 id="如何跳过一次迭代"><a href="#如何跳过一次迭代" class="headerlink" title="如何跳过一次迭代"></a>如何跳过一次迭代</h4><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* JS代码 */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> colors = [<span class="string">&#x27;red&#x27;</span>, <span class="string">&#x27;blue&#x27;</span>, <span class="string">&#x27;green&#x27;</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>( <span class="keyword">var</span> i=<span class="number">0</span>; i &lt; colors.length; i++)&#123;</span><br><span class="line">  <span class="keyword">if</span>( colors[i] == <span class="string">&#x27;blue&#x27;</span>) &#123;</span><br><span class="line">    <span class="keyword">continue</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log( colors[i] );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">colors.forEach( <span class="function"><span class="keyword">function</span>(<span class="params"> item </span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(item == <span class="string">&#x27;blue&#x27;</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="built_in">console</span>.log( item );</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><strong>如何跳过一次迭代</strong></p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* JS代码 */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> colors = [<span class="string">&#x27;red&#x27;</span>, <span class="string">&#x27;blue&#x27;</span>, <span class="string">&#x27;green&#x27;</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>( <span class="keyword">var</span> i=<span class="number">0</span>; i &lt; colors.length; i++)&#123;</span><br><span class="line">  <span class="keyword">if</span>( colors[i] == <span class="string">&#x27;blue&#x27;</span>) &#123;</span><br><span class="line">    <span class="keyword">continue</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log( colors[i] );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">colors.forEach( <span class="function"><span class="keyword">function</span>(<span class="params"> item </span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(item == <span class="string">&#x27;blue&#x27;</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="built_in">console</span>.log( item );</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <p><strong>注意：</strong></p>
 <blockquote>
 <p>没有办法终止或跳出forEach循环，除非抛出一个异常。</p>
 <p>如果需要终止或者跳出循环，建议用some()或者every()。</p>
 </blockquote>
-<h3 id="Array-shift"><a href="#Array-shift" class="headerlink" title="Array.shift()"></a>Array.shift()</h3><p>shift() 方法用于把数组的第一个元素从其中删除，并返回第一个元素的值。</p>
+<h3 id="2-Array-shift"><a href="#2-Array-shift" class="headerlink" title="2. Array.shift()"></a>2. Array.shift()</h3><p>shift() 方法用于把数组的第一个元素从其中删除，并返回第一个元素的值。</p>
 <figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">array</span>Object.shift()</span><br></pre></td></tr></table></figure>
 
-<h4 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h4><p>数组原来的第一个元素的值。</p>
-<h4 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h4><ul>
+<p><strong>返回值</strong>：数组原来的第一个元素的值。</p>
+<p><strong>说明</strong></p>
+<ul>
 <li>如果数组是空的，那么 shift() 方法将不进行任何操作，返回 undefined 值。</li>
 <li>请注意，该方法不创建新数组，而是直接修改原有的 arrayObject。</li>
 <li>该方法会改变数组的长度。</li>
 </ul>
-<h3 id="Array-every-Array-some"><a href="#Array-every-Array-some" class="headerlink" title="Array.every()   Array.some()"></a>Array.every()   Array.some()</h3><blockquote>
+<h3 id="3-Array-every-Array-some"><a href="#3-Array-every-Array-some" class="headerlink" title="3. Array.every()   Array.some()"></a>3. Array.every()   Array.some()</h3><blockquote>
 <p>every()是对数组中每一项运行给定函数，如果该函数对每一项返回true,则返回true。</p>
 <p>some()是对数组中每一项运行给定函数，如果该函数对任一项返回true，则返回true。</p>
 <p>some一直在找符合条件的值，一旦找到，则不会继续迭代下去。<br>every从迭代开始，一旦有一个不符合条件，则不会继续迭代下去。</p>
 </blockquote>
 <figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">var arr = [ <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span> ];  </span><br><span class="line">console.log( arr.<span class="keyword">some</span>( <span class="keyword">function</span>( item, <span class="keyword">index</span>, <span class="keyword">array</span> )&#123;     </span><br><span class="line">    console.log( <span class="string">&#x27;item=&#x27;</span> + item + <span class="string">&#x27;,index=&#x27;</span>+<span class="keyword">index</span>+<span class="string">&#x27;,array=&#x27;</span>+<span class="keyword">array</span> );     </span><br><span class="line">    <span class="keyword">return</span> item &gt; <span class="number">3</span>;  </span><br><span class="line">&#125;));  </span><br><span class="line">console.log( arr.every( <span class="keyword">function</span>( item, <span class="keyword">index</span>, <span class="keyword">array</span> )&#123;     </span><br><span class="line">    console.log( <span class="string">&#x27;item=&#x27;</span> + item + <span class="string">&#x27;,index=&#x27;</span>+<span class="keyword">index</span>+<span class="string">&#x27;,array=&#x27;</span>+<span class="keyword">array</span> );     </span><br><span class="line">    <span class="keyword">return</span> item &gt; <span class="number">3</span>;  </span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
 
-<h3 id="Array-slice"><a href="#Array-slice" class="headerlink" title="Array.slice()"></a>Array.slice()</h3><h4 id="描述-1"><a href="#描述-1" class="headerlink" title="描述"></a>描述</h4><p>slice() 方法可从已有的数组中返回选定的元素。</p>
+<h3 id="4-Array-slice"><a href="#4-Array-slice" class="headerlink" title="4. Array.slice()"></a>4. Array.slice()</h3><p><strong>描述</strong>：slice() 方法可从已有的数组中返回选定的元素。</p>
 <p>返回一个新的数组，包含从 start 到 end （不包括该元素）的 arrayObject 中的元素。</p>
 <p>该方法并不会修改数组，而是返回一个子数组。</p>
 <blockquote>
 <p><strong>注释：</strong>您可使用负值从数组的尾部选取元素。</p>
 <p><strong>注释：</strong>如果 end 未被规定，那么 slice() 方法会选取从 start 到数组结尾的所有元素。</p>
 </blockquote>
-<h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">arrayObject.<span class="keyword">slice</span>(<span class="keyword">start</span>,<span class="keyword">end</span>)</span><br></pre></td></tr></table></figure>
+<p><strong>语法</strong></p>
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">arrayObject.<span class="keyword">slice</span>(<span class="keyword">start</span>,<span class="keyword">end</span>)</span><br></pre></td></tr></table></figure>
 
 <table>
 <thead>
@@ -306,6 +395,26 @@
 <td align="left">可选。规定从何处结束选取。该参数是数组片断结束处的数组下标。如果没有指定该参数，那么切分的数组包含从 start 到数组结束的所有元素。如果这个参数是负数，那么它规定的是从数组尾部开始算起的元素。</td>
 </tr>
 </tbody></table>
+<h3 id="5-String-prototype-indexOf"><a href="#5-String-prototype-indexOf" class="headerlink" title="5. String.prototype.indexOf()"></a>5. String.prototype.indexOf()</h3><p><strong>描述：</strong>方法返回调用它的 <code>String</code> 对象中第一次出现的<code>指定值</code>的索引，从 <code>fromIndex</code> 处进行搜索。如果未找到该值，则返回 -1。</p>
+<p><strong>语法</strong></p>
+<figure class="highlight reasonml"><table><tr><td class="code"><pre><span class="line">str.index<span class="constructor">Of(<span class="params">searchValue</span> [, <span class="params">fromIndex</span>])</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>参数</strong></p>
+<ul>
+<li><p><code>searchValue</code></p>
+<p>要被查找的字符串值。</p>
+<p>如果没有提供确切地提供字符串，searchValue 会被强制设置为 <code>&quot;undefined&quot;</code>， 然后在当前字符串中查找这个值。</p>
+<p>举个例子：<code>&#39;undefined&#39;.indexOf()</code> 将会返回0，因为 <code>undefined</code> 在位置0处被找到，但是 <code>&#39;undefine&#39;.indexOf()</code> 将会返回 -1 ，因为字符串 <code>&#39;undefined&#39;</code> 未被找到。</p>
+</li>
+<li><p><code>fromIndex</code> 可选</p>
+<p>数字表示开始查找的位置。可以是任意整数，默认值为 <code>0</code>。</p>
+<p>如果 <code>fromIndex</code> 的值小于 <code>0</code>，或者大于 <code>str.length</code> ，那么查找分别从 <code>0</code> 和<code>str.length</code> 开始。（译者注： <code>fromIndex</code> 的值小于 <code>0</code>，等同于为空情况； <code>fromIndex</code> 的值大于 <code>str.length</code> ，那么结果会直接返回 <code>-1</code> 。）</p>
+<p>举个例子，<code>&#39;hello world&#39;.indexOf(&#39;o&#39;, -5)</code> 返回 <code>4</code> ，因为它是从位置<code>0</code>处开始查找，然后 <code>o</code> 在位置<code>4</code>处被找到。另一方面，<code>&#39;hello world&#39;.indexOf(&#39;o&#39;, 11)</code> （或 <code>fromIndex</code> 填入任何大于<code>11</code>的值）将会返回 <code>-1</code> ，因为开始查找的位置<code>11</code>处，已经是这个字符串的结尾了。</p>
+</li>
+</ul>
+<p><strong>返回值</strong></p>
+<p>查找的字符串 <code>searchValue</code> 的第一次出现的索引，如果没有找到，则返回 <code>-1</code>。</p>
+<p>若被查找的字符串 <code>searchValue</code> 是一个空字符串，将会产生“奇怪”的结果。如果 <code>fromIndex</code> 值为空，或者 <code>fromIndex</code> 值小于被查找的字符串的长度，返回值和以下的 <code>fromIndex</code> 值一样</p>
 <h2 id="Problems"><a href="#Problems" class="headerlink" title="Problems"></a>Problems</h2><h3 id="1-JS中判断某个字符串是否包含另一个字符串的五种方法"><a href="#1-JS中判断某个字符串是否包含另一个字符串的五种方法" class="headerlink" title="1. JS中判断某个字符串是否包含另一个字符串的五种方法"></a>1. JS中判断某个字符串是否包含另一个字符串的五种方法</h3><h4 id="String对象的方法"><a href="#String对象的方法" class="headerlink" title="String对象的方法"></a>String对象的方法</h4><p><strong>方法一: indexOf()  (推荐)</strong></p>
 <figure class="highlight openscad"><table><tr><td class="code"><pre><span class="line">var <span class="built_in">str</span> = <span class="string">&quot;123&quot;</span></span><br><span class="line">console.<span class="built_in">log</span>(<span class="built_in">str</span>.indexOf(<span class="string">&quot;2&quot;</span>) != -<span class="number">1</span>);      <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
 
@@ -332,7 +441,6 @@
       </categories>
       <tags>
         <tag>JavaScript</tag>
-        <tag>ES3-ES5</tag>
       </tags>
   </entry>
   <entry>
@@ -483,6 +591,8 @@
 <p>在<code>vue</code>中使用<code>vue-awesome-swiper</code>的时候，踩坑无数，快爬不起来要哭了</p>
 <p>算是小问题却搞一下午，心态都崩了呀！</p>
 </blockquote>
+<a id="more"></a>
+
 <h2 id="一、关于Swiper"><a href="#一、关于Swiper" class="headerlink" title="一、关于Swiper"></a>一、关于Swiper</h2><blockquote>
 <p><a href="https://www.swiper.com.cn/">Swiper官网</a></p>
 </blockquote>
@@ -1936,11 +2046,10 @@
 <p><a href="http://www.guide2it.com/post/2019-03-10-1-make-flowcharts-with-mermaid-in-markdown/">多样的Mermaid流程图参考</a></p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
-        <category>Tool &amp; Platform</category>
+        <category>Front End</category>
       </categories>
       <tags>
-        <tag>hexo部署</tag>
-        <tag>next使用</tag>
+        <tag>Hexo &amp; Next部署与使用</tag>
       </tags>
   </entry>
   <entry>
@@ -2765,11 +2874,10 @@ D-->>A: Dashed open arrow</textarea><textarea id="sequence-2-options" style="dis
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
-        <category>Tool &amp; Platform</category>
+        <category>Front End</category>
       </categories>
       <tags>
-        <tag>hexo部署</tag>
-        <tag>next使用</tag>
+        <tag>Hexo &amp; Next部署与使用</tag>
       </tags>
   </entry>
 </search>
