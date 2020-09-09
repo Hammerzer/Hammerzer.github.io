@@ -57,20 +57,23 @@
 <p> 以一个含六值的(a,b,c,d,e,f)<code>变换矩阵</code>的形式指定一个<code>2D变换</code>，相当于直接应用一个<code>[a b c d e f]变换矩阵</code>。就是基于水平方向（X轴）和垂直方向（Y轴）重新定位元素,此属性值使用涉及到数学中的矩阵。</p>
 <h3 id="6-改变元素基点transform-origin"><a href="#6-改变元素基点transform-origin" class="headerlink" title="6. 改变元素基点transform-origin"></a>6. 改变元素基点<code>transform-origin</code></h3><p><strong>其主要作用</strong>就是让我们在进行<code>transform</code>动作之前可以改变元素的基点位置。</p>
 <p>因为我们元素默认基点就是其中心位置，换句话说我们没有使用transform-origin改变元素基点位置的情况下，transform进行的rotate,translate,scale,skew,matrix等操作都是以元素自己中心位置进行变化的。但有时候我们需要在不同的位置对元素进行这些操作，那么我们就可以使用transform-origin来对元素进行基点位置改变，使元素基点不在是中心位置，以达到你需要的基点位置。下面我们主要来看看其使用规则：</p>
-<p>transform-origin(X,Y):用来设置元素的运动的基点（参照点）。默认点是元素的中心点。其中X和Y的值可以是百分值,em,px，其中X也可以是字符参数值left,center,right；Y和X一样除了百分值外还可以设置字符值top,center,bottom，这个看上去有点像我们background-position设置一样；下面我列出他们相对应的写法：</p>
-<p>1、top left | left top 等价于 0 0 | 0% 0%</p>
-<p>2、top | top center | center top 等价于 50% 0</p>
-<p>3、right top | top right 等价于 100% 0</p>
-<p>4、left | left center | center left 等价于 0 50% | 0% 50%</p>
-<p>5、center | center center 等价于 50% 50%（默认值）</p>
-<p>6、right | right center | center right 等价于 100% 50%</p>
-<p>7、bottom left | left bottom 等价于 0 100% | 0% 100%</p>
-<p>8、bottom | bottom center | center bottom 等价于 50% 100%</p>
-<p>9、bottom right | right bottom 等价于 100% 100%</p>
-<p>其中 left,center right是水平方向取值，对应的百分值为left=0%;center=50%;right=100%而top center bottom是垂直方向的取值，其中top=0%;center=50%;bottom=100%;如果只取一个值，表示垂直方向值不变，我们分别来看看以下几个实例</p>
-<p>(1)transform-origin:(left,top):</p>
-<p>作者：哆啦在这A梦在哪<br>链接：<a href="https://www.jianshu.com/p/8a33214a1b26">https://www.jianshu.com/p/8a33214a1b26</a><br>来源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+<p><code>transform-origin(X,Y):</code> 用来设置元素的运动的基点（参照点）。默认点是元素的中心点。其中X和Y的值可以是<code>百分值</code>,<code>em</code>,<code>px</code>，其中X也可以是字符参数值<code>left,center,right</code>；Y和X一样除了百分值外还可以设置字符值<code>top,center,bottom</code></p>
+<ol>
+<li><code>top left | left top</code> 等价于 <code>0 0 | 0% 0%</code></li>
+<li><code>top | top center | center top</code> 等价于 <code>50% 0</code></li>
+<li><code>right top | top right</code> 等价于 <code>100% 0</code></li>
+<li><code>left | left center | center left</code> 等价于 <code>0 50% | 0% 50%</code></li>
+<li><code>center | center center</code> 等价于 <code>50% 50%（默认值）</code></li>
+<li><code>right | right center | center right</code> 等价于 <code>100% 50%</code></li>
+<li><code>bottom left | left bottom</code> 等价于 <code>0 100% | 0% 100%</code></li>
+<li><code>bottom | bottom center | center bottom</code> 等价于 <code>50% 100%</code></li>
+<li><code>bottom right | right bottom</code> 等价于 <code>100% 100%</code></li>
+</ol>
+<p>其中 <code>left,center right</code>是水平方向取值，对应的百分值为<code>left=0%;center=50%;right=100%</code>，而<code>top center bottom</code>是垂直方向的取值，其中<code>top=0%;center=50%;bottom=100%;</code>如果只取一个值，表示垂直方向值不变</p>
+<p>这里还要提醒大家一点的是，transform-origin并不是transform中的属性值，他具有自己的语法，跟其他的css3属性一样，我们需要在不同的浏览内核中加上相应的前缀，下面列出各种浏览器内核下的语法规则：</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="regexp">//</span>Mozilla内核浏览器：</span><br><span class="line">firefox3.<span class="number">5</span>+-moz-transform-origin: x y;</span><br><span class="line"><span class="regexp">//</span>Webkit内核浏览器：Safari and Chrome-webkit-transform-origin: x y;</span><br><span class="line"><span class="regexp">//</span>Opera-o-transform-origin: x y ;</span><br><span class="line"><span class="regexp">//</span>IE9-ms-transform-origin: x y;</span><br><span class="line"><span class="regexp">//</span>W3C标准transform-origin: x y ;</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、CSS-Transition"><a href="#二、CSS-Transition" class="headerlink" title="二、CSS Transition"></a>二、CSS Transition</h2><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
         <category>Front End</category>
       </categories>
@@ -81,7 +84,16 @@
   <entry>
     <title>Git Problems</title>
     <url>/2020/09/08/git-problems/</url>
-    <content><![CDATA[<h2 id="1-使用git将本地项目上传至git仓库"><a href="#1-使用git将本地项目上传至git仓库" class="headerlink" title="1. 使用git将本地项目上传至git仓库"></a>1. 使用git将本地项目上传至git仓库</h2><blockquote>
+    <content><![CDATA[<blockquote>
+<h2 id="CONTENT-OUTlINE"><a href="#CONTENT-OUTlINE" class="headerlink" title="CONTENT OUTlINE"></a>CONTENT OUTlINE</h2><p>收集汇总自己遇到的Git问题，并附上值得推荐的<code>Git</code>教程</p>
+<p><a href="https://www.liaoxuefeng.com/wiki/896043488029600">廖雪峰的Git教程</a></p>
+<p><a href="https://www.jianshu.com/p/e57a4a2cf077">Git使用教程（简书）</a></p>
+<p><a href="https://learngitbranching.js.org/?locale=zh_CN">Git 互动练习教程</a></p>
+<p>以及两个来自CSDN的  <a href="https://blog.csdn.net/weixin_42152081/article/details/80558282">Git教程(完整)</a> 和 <a href="https://blog.csdn.net/u011535541/article/details/83379151">Git傻瓜教程</a></p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="1-使用git将本地项目上传至git仓库"><a href="#1-使用git将本地项目上传至git仓库" class="headerlink" title="1. 使用git将本地项目上传至git仓库"></a>1. 使用git将本地项目上传至git仓库</h2><blockquote>
 <p><strong>介绍</strong>:  一般来说开发过程中都是先在git创建远程仓库，然后fetch到本地仓库，再进行commit push等操作，但是有时候也需要将本地已经开发的项目上传至一个空的远程仓库中，期间也是遇到不少问题，特此总结一下</p>
 </blockquote>
 <h3 id="初始化本地仓库"><a href="#初始化本地仓库" class="headerlink" title="初始化本地仓库"></a>初始化本地仓库</h3><p>初始化仓库</p>
@@ -444,6 +456,35 @@
       </tags>
   </entry>
   <entry>
+    <title>VsCode 杂谈</title>
+    <url>/2020/09/08/talk-about-VsCode/</url>
+    <content><![CDATA[<blockquote>
+<h2 id="CONTENT-OUTLINE"><a href="#CONTENT-OUTLINE" class="headerlink" title="CONTENT OUTLINE"></a>CONTENT OUTLINE</h2><p>这篇文章汇总有关**<code>VsCode</code>**的冷知识，换句话说就是<code>IDE</code>的使用和一些自己遇到的问题</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、值得推荐的-Vscode-插件"><a href="#一、值得推荐的-Vscode-插件" class="headerlink" title="一、值得推荐的**Vscode**插件"></a>一、值得推荐的**<code>Vscode</code>**插件</h2><h2 id="二、使用-Vscode-中遇到的问题"><a href="#二、使用-Vscode-中遇到的问题" class="headerlink" title="二、使用**Vscode**中遇到的问题"></a>二、使用**<code>Vscode</code>**中遇到的问题</h2><h3 id="1-解决eslint空格报错等问题"><a href="#1-解决eslint空格报错等问题" class="headerlink" title="1. 解决eslint空格报错等问题"></a>1. 解决<code>eslint</code>空格报错等问题</h3><blockquote>
+<p>参考<a href="https://www.cnblogs.com/fqh123/p/9967771.html">该博主</a></p>
+</blockquote>
+<p><code>eslint</code>检查代码风格是好的，不过 有些<code>换行报错</code> 、<code>空格报错</code>，还有在代码中有 console也是报错，这有些烦人—-&gt;</p>
+<p>为了把这些烦人的报错给禁止掉</p>
+<p>我们可以在<code>package.json</code>文件中 找到（或者在<code>.eslintrc.js</code>中找到<code>rules</code>）</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;eslintConfig&quot;</span>: &#123;</span><br><span class="line">　　<span class="string">&quot;root&quot;</span>: true,</span><br><span class="line">　　<span class="string">&quot;env&quot;</span>: &#123;</span><br><span class="line">　　　　<span class="string">&quot;node&quot;</span>: true</span><br><span class="line">　　&#125;,</span><br><span class="line">　　<span class="string">&quot;extends&quot;</span>: [</span><br><span class="line">　　　　<span class="string">&quot;plugin:vue/essential&quot;</span>,</span><br><span class="line">　　　　<span class="string">&quot;eslint:recommended&quot;</span></span><br><span class="line">　　],</span><br><span class="line">　　<span class="string">&quot;rules&quot;</span>: &#123;</span><br><span class="line">　　　　<span class="string">&quot;no-console&quot;</span>:<span class="string">&quot;off&quot;</span>,<span class="regexp">//</span>在这禁止掉console报错检查</span><br><span class="line">　　　　<span class="string">&quot;no-irregular-whitespace&quot;</span>:<span class="string">&quot;off&quot;</span><span class="regexp">//</span>这禁止掉 空格报错检查</span><br><span class="line">　　&#125;,</span><br><span class="line">　　<span class="string">&quot;parserOptions&quot;</span>: &#123;</span><br><span class="line">　　　　<span class="string">&quot;parser&quot;</span>: <span class="string">&quot;babel-eslint&quot;</span></span><br><span class="line">　　&#125;</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line"><span class="regexp">//</span>在rules规则中 禁止掉这些规则</span><br></pre></td></tr></table></figure>
+
+<p>下面罗列一些，一些规则的含义：</p>
+<blockquote>
+<p>“off” or 0 - 关闭(禁用)规则<br>“warn” or 1 - 将规则视为一个警告（并不会导致检查不通过）<br>“error” or 2 - 将规则视为一个错误 (退出码为1，检查不通过) </p>
+</blockquote>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>Front End</category>
+      </categories>
+      <tags>
+        <tag>开发与调试</tag>
+        <tag>开发工具</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Vue-socket-io API说明及使用</title>
     <url>/2020/09/05/Vue-socket-io-API-description-and-usage/</url>
     <content><![CDATA[<h3 id="问题缘起"><a href="#问题缘起" class="headerlink" title="问题缘起"></a>问题缘起</h3><blockquote>
@@ -541,6 +582,7 @@
 <h2 id="三、Vue-Socket-io-实现及使用"><a href="#三、Vue-Socket-io-实现及使用" class="headerlink" title="三、Vue-Socket-io 实现及使用"></a>三、<code>Vue-Socket-io</code> 实现及使用</h2><blockquote>
 <p>推荐参考文档 <a href="https://www.npmjs.com/package//vue-socket.io#using-socketio-client-instance">vue-socket.io</a></p>
 <p>参考自简书 <a href="https://www.jianshu.com/p/d509e8695850">候鸟与暖风</a></p>
+<p>推荐和我一样的<a href="https://www.cnblogs.com/dreamsqin/p/12018866.html">踩坑博文</a></p>
 </blockquote>
 <h3 id="1-下载vue-socket-io依赖"><a href="#1-下载vue-socket-io依赖" class="headerlink" title="1. 下载vue-socket-io依赖"></a>1. 下载<code>vue-socket-io</code>依赖</h3><figure class="highlight livecodeserver"><table><tr><td class="code"><pre><span class="line">npm install vue-<span class="built_in">socket</span>.io <span class="comment">--save</span></span><br></pre></td></tr></table></figure>
 
