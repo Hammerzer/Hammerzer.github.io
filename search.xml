@@ -2,8 +2,20 @@
 <search>
   <entry>
     <title>CSS 动画及图形解决方案</title>
-    <url>/2020/09/09/null/</url>
-    <content><![CDATA[<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+    <url>/2020/09/09/CSS-animation-and-graphics-solutions/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>CSS动画库</p>
+<p>一些CSS牛逼样式图形</p>
+</blockquote>
+<a id="more"></a>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>Front End</category>
+      </categories>
+      <tags>
+        <tag>CSS</tag>
+      </tags>
   </entry>
   <entry>
     <title>Git Problems</title>
@@ -555,6 +567,9 @@
     <url>/2020/09/09/vue-FAQ/</url>
     <content><![CDATA[<blockquote>
 <h2 id="CONTENT-OUTLINE"><a href="#CONTENT-OUTLINE" class="headerlink" title="CONTENT OUTLINE"></a>CONTENT OUTLINE</h2><p>这篇文章汇总使用<code>vue</code>的过程中遇到的小问题</p>
+<ul>
+<li>获取地址参数</li>
+</ul>
 </blockquote>
 <a id="more"></a>
 
@@ -784,8 +799,11 @@
     <url>/2020/08/31/css-animation/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
 <p>下面汇总并总结了有关与CSS动画的知识点，再次熟悉一遍！</p>
+<p><code>CSS Transform</code>/<code>CSS Transition</code>/<code>CSS Animation</code>/<code>CSS Gradient</code></p>
 </blockquote>
 <a id="more"></a>
+
+
 
 <h2 id="一、CSS-Transform"><a href="#一、CSS-Transform" class="headerlink" title="一、CSS Transform"></a>一、CSS Transform</h2><p><code>Transform</code>字面上就是<code>变形，改变</code>的意思。在CSS3中<code>transform</code>主要包括以下几种：<strong>旋转rotate</strong>、<strong>扭曲skew</strong>、<strong>缩放scale</strong>和<strong>移动translate</strong>以及<strong>矩阵变形matrix</strong>。</p>
 <p><strong>语法：</strong></p>
