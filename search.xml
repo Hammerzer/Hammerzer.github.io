@@ -2933,4 +2933,42 @@ D-->>A: Dashed open arrow</textarea><textarea id="sequence-2-options" style="dis
         <tag>Hexo &amp; Next部署与使用</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Vue常见打脸小问题</title>
+    <url>/2020/09/09/vue-FAQ/</url>
+    <content><![CDATA[<blockquote>
+<h2 id="CONTENT-OUTLINE"><a href="#CONTENT-OUTLINE" class="headerlink" title="CONTENT OUTLINE"></a>CONTENT OUTLINE</h2><p>这篇文章汇总使用<code>vue</code>的过程中遇到的小问题</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="1-获取地址参数"><a href="#1-获取地址参数" class="headerlink" title="1. 获取地址参数"></a>1. 获取地址参数</h2><h3 id="1-1-使用路由获取页面参数"><a href="#1-1-使用路由获取页面参数" class="headerlink" title="1.1 使用路由获取页面参数"></a>1.1 使用路由获取页面参数</h3><p><strong>在路由中设置</strong><code>path</code>：</p>
+<figure class="highlight less"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attribute">path</span>: <span class="string">&#x27;/detail/:id/&#x27;</span>,</span><br><span class="line">    <span class="attribute">name</span>: <span class="string">&#x27;detail&#x27;</span>,</span><br><span class="line">    <span class="attribute">component</span>: detail,</span><br><span class="line">    <span class="attribute">meta</span>: &#123;</span><br><span class="line">        <span class="attribute">title</span>: <span class="string">&#x27;详情&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>获取参数</p>
+<figure class="highlight xquery"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span><span class="built_in"> id</span> = this.<span class="variable">$route</span>.params<span class="built_in">.id</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>备注:</strong> </p>
+<p>1、参数名需要保持一致 </p>
+<p>2、如果路由中没有传参（<a href="http://192.168.1.12:8080/#/detail%EF%BC%89%EF%BC%8C%E4%BC%9A%E6%8A%A5%E9%94%99%EF%BC%8C%E9%A1%B5%E9%9D%A2%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%EF%BC%8C%E6%AD%A3%E5%B8%B8%E9%A1%B5%E9%9D%A2%E4%B8%BA">http://192.168.1.12:8080/#/detail），会报错，页面无法显示，正常页面为</a> <a href="http://192.168.1.12:8080/#/detail/234">http://192.168.1.12:8080/#/detail/234</a></p>
+<p><strong>如果有的参数可传可不传</strong>    传参例如：<a href="http://192.168.1.12:8080/#/detail/?id=123">http://192.168.1.12:8080/#/detail/?id=123</a>    </p>
+<p>获取的时候：</p>
+<figure class="highlight xquery"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span><span class="built_in"> id</span> = this.<span class="variable">$route</span>.query<span class="built_in">.id</span></span><br></pre></td></tr></table></figure>
+
+<p>这样即使取不到参数，页面也不会报错</p>
+<h3 id="1-2-使用Js获取页面参数-–-Location-href"><a href="#1-2-使用Js获取页面参数-–-Location-href" class="headerlink" title="1.2 使用Js获取页面参数 – Location.href"></a>1.2 使用Js获取页面参数 – Location.href</h3><p>如果是在普通js文件中，想获取url后面的参数，可以新建一个工具类，utils.js：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* eslint-disable */</span></span><br><span class="line"><span class="selector-tag">export</span> <span class="selector-tag">default</span>&#123;</span><br><span class="line">    <span class="attribute">getUrlKey</span>: function (name) &#123;</span><br><span class="line">        return <span class="built_in">decodeURIComponent</span>((new RegExp(<span class="string">&#x27;[?|&amp;]&#x27;</span> + name + <span class="string">&#x27;=&#x27;</span> + <span class="string">&#x27;([^&amp;;]+?)(&amp;|#|;|$)&#x27;</span>).<span class="built_in">exec</span>(location.href) || [, <span class="string">&quot;&quot;</span>])[<span class="number">1</span>].<span class="built_in">replace</span>(/\+/g, <span class="string">&#x27;%20&#x27;</span>)) || null</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在其他需要获取参数的js中引入</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> utils <span class="keyword">from</span> <span class="string">&#x27;../../assets/scripts/utils&#x27;</span></span><br><span class="line"><span class="comment">// Vue.prototype.$utils = utils // main.js中全局引入</span></span><br><span class="line"><span class="keyword">let</span> id = utils.getUrlKey(<span class="string">&#x27;id&#x27;</span>)</span><br><span class="line"><span class="built_in">console</span>.log()</span><br></pre></td></tr></table></figure>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>Front End</category>
+      </categories>
+      <tags>
+        <tag>框架与工具</tag>
+        <tag>Vue</tag>
+        <tag>Vue-Problems</tag>
+      </tags>
+  </entry>
 </search>
