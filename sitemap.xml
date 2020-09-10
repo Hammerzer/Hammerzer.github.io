@@ -151,6 +151,13 @@
 
   
   <url>
+    <loc>https://hammerzer.github.io/tags/CSS/</loc>
+    <lastmod>2020-09-10</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://hammerzer.github.io/tags/%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95/</loc>
     <lastmod>2020-09-10</lastmod>
     <changefreq>daily</changefreq>
@@ -208,13 +215,6 @@
   
   <url>
     <loc>https://hammerzer.github.io/tags/Vue-Problems/</loc>
-    <lastmod>2020-09-10</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://hammerzer.github.io/tags/CSS/</loc>
     <lastmod>2020-09-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

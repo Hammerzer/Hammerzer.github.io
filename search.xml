@@ -1,304 +1,282 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>CSS 动画及图形解决方案</title>
-    <url>/2020/09/09/CSS-animation-and-graphics-solutions/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
-<p>CSS动画库 （转载自知乎博主<a href="https://zhuanlan.zhihu.com/p/101563245">十个推荐的CSS动画库</a>）</p>
-<p>一些CSS牛逼样式图形</p>
+    <title>CSS 布局</title>
+    <url>/2020/09/10/css-layout/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
+<p>这篇文章来一次查漏补缺，回顾<code>CSS布局</code></p>
+<p>列举的布局如下：</p>
+<ul>
+<li>弹性布局<code>Flex</code></li>
+<li><code>Grid</code> 网格布局</li>
+<li>圣杯布局</li>
+</ul>
 </blockquote>
 <a id="more"></a>
 
-<h2 id="一、十个值得推荐的CSS动画库"><a href="#一、十个值得推荐的CSS动画库" class="headerlink" title="一、十个值得推荐的CSS动画库"></a>一、十个值得推荐的CSS动画库</h2><h3 id="1-Animista-生成器"><a href="#1-Animista-生成器" class="headerlink" title="1. Animista(生成器)"></a>1. <a href="https://animista.net/play/basic/slide-bck">Animista</a>(生成器)</h3><blockquote>
-<p>emmm,简直不要太爽！可视化自动生成！</p>
+<h2 id="一、CSS3弹性盒布局方式"><a href="#一、CSS3弹性盒布局方式" class="headerlink" title="一、CSS3弹性盒布局方式"></a>一、CSS3弹性盒布局方式</h2><p>弹性盒子是CSS3的一种新布局模式。</p>
+<p>CSS3 弹性盒（ <code>Flexible Box</code> 或 <code>flexbox</code>），是一种当页面需要适应不同的屏幕大小以及设备类型时确保元素拥有恰当的行为的布局方式。</p>
+<p>引入弹性盒布局模型的目的是提供一种更加有效的方式来对一个容器中的子元素进行排列、对齐和分配空白空间。</p>
+<p><strong>浏览器支持</strong></p>
+<blockquote>
+<p>表格中的数字表示支持该属性的第一个浏览器的版本号。</p>
+<p>紧跟在数字后面的 <code>-webkit-</code> 或 <code>-moz-</code> 为指定浏览器的前缀。</p>
 </blockquote>
-<h3 id="2-Animation-css（调用库）"><a href="#2-Animation-css（调用库）" class="headerlink" title="2. Animation.css（调用库）"></a>2. <a href="https://animate.style/">Animation.css</a>（调用库）</h3><p>当然，我也必须提及<code>Animate CSS</code>，也许这是一个众所周知的动画库。</p>
-<p><strong>1.使用</strong></p>
-<p>Install with npm:</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> npm install animate.css --save</span></span><br></pre></td></tr></table></figure>
-
-<p>or add it directly to your webpage using a CDN:</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">link</span></span></span><br><span class="line"><span class="tag">    <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">href</span>=<span class="string">&quot;https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css&quot;</span></span></span><br><span class="line"><span class="tag">  /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>然后在你需要添加动画的元素上添加<code>animated</code>类名，然后就是添加动画的名称。<strong>比如</strong></p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;animated slideInLeft&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>如果你希望动画是持久的，你可以添加<code>infinite</code>类，这样动画将不停地重复自身。</p>
+<p><img data-src="support.png"></p>
+<p><strong>注意：</strong> </p>
 <ul>
-<li><strong>通过 JavaScript</strong></li>
+<li>弹性盒子由弹性容器(<code>Flex container</code>)和弹性子元素(<code>Flex item</code>)组成。</li>
+<li>弹性容器通过设置 <code>display</code> 属性的值为 <code>flex</code> 或 <code>inline-flex</code>将其定义为弹性容器。</li>
+<li>弹性容器内包含了一个或多个弹性子元素。</li>
+<li>弹性容器外及弹性子元素内是正常渲染的。弹性盒子只定义了弹性子元素如何在弹性容器内布局。</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">&#x27;.my-element&#x27;</span>).classList.add(<span class="string">&#x27;animated&#x27;</span>, <span class="string">&#x27;slideInLeft&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>通过 Jquery</strong></li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&quot;.my-element&quot;</span>).addClass(<span class="string">&quot;animated slideInLeft&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<p><strong>2.额外的特性</strong></p>
-<p><code>Animate CSS</code>为你提供了一些基本的类去操作动画的延时和速度。</p>
-<ul>
-<li>延时</li>
-</ul>
-<p>你可以通过使用<code>delay</code>类来延迟你的动画。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;animated slideInLeft delay-&#123;1-5&#125;&quot;</span>&gt;<span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>速度</li>
-</ul>
-<p>你可以通过添加下表中的类来控制动画的速度。</p>
+<p><img data-src="flex0.png"></p>
+<h3 id="1-Flex-容器属性（设置在容器上）"><a href="#1-Flex-容器属性（设置在容器上）" class="headerlink" title="1. Flex 容器属性（设置在容器上）"></a>1. <code>Flex</code> 容器属性（设置在容器上）</h3><p><code>flex-direction</code>     指定弹性容器中子元素排列方式</p>
+<p><code>flex-wrap</code>     设置弹性盒子的子元素超出父容器时是否换行</p>
+<p><code>flex-flow</code>     <u>flex-direction</u> 和 <u>flex-wrap</u> 的简写</p>
+<p><code>align-items</code>    设置弹性盒子元素在侧轴（纵轴）方向上的对齐方式</p>
+<p><code>align-content</code>    修改 flex-wrap 属性的行为，类似 align-items, 但不是设置子元素对齐，而是设置行对齐  </p>
+<p><code>justify-content</code>    设置弹性盒子元素在主轴（横轴）方向上的对齐方式</p>
+<h4 id="1-1-flex-direction-属性"><a href="#1-1-flex-direction-属性" class="headerlink" title="1.1 flex-direction 属性"></a>1.1 flex-direction 属性</h4><p>决定项目的方向。</p>
+<p><strong>注意：</strong>如果元素不是弹性盒对象的元素，则 <code>flex-direction</code> 属性不起作用。</p>
+<p><img data-src="flex1.png"></p>
+<p><strong>属性值</strong></p>
 <table>
 <thead>
 <tr>
-<th>Class name</th>
-<th>Speed time</th>
+<th>值</th>
+<th>描述</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>slow</td>
-<td>2s</td>
+<td>row</td>
+<td>默认值。主轴为水平方向，起点在左端</td>
 </tr>
 <tr>
-<td>slower</td>
-<td>3s</td>
+<td>row-reverse</td>
+<td>主轴为水平方向，起点在右端</td>
 </tr>
 <tr>
-<td>fast</td>
-<td>800ms</td>
+<td>column</td>
+<td>主轴为垂直方向，起点在上沿</td>
 </tr>
 <tr>
-<td>faster</td>
-<td>500ms</td>
+<td>column-reverse</td>
+<td>主轴为垂直方向，起点在下沿</td>
 </tr>
 </tbody></table>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;animated slideInLeft slow|slower|fast|faster&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="3-Vivify（调用库）"><a href="#3-Vivify（调用库）" class="headerlink" title="3. Vivify（调用库）"></a>3. <a href="http://vivify.mkcreative.cz/">Vivify</a>（调用库）</h3><p>它的使用一样，有自己更多的类，但是也扩展了些。添加<code>vivify</code>类到元素中，而不是<code>animated</code>。比如：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;vivify slideInLeft&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>使用 Javascript</strong></li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">&#x27;.my-element&#x27;</span>).classList.add(<span class="string">&#x27;vivify&#x27;</span>, <span class="string">&#x27;slideInLeft&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>使用 Jquery</strong></li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&quot;.my-element&quot;</span>).addClass(<span class="string">&quot;vivify slideInLeft&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<p>就像<code>Animate CSS</code>一样，<code>Vivify</code>也为你提供了一些类来控制动画的持续时间和延迟时间。</p>
-<p>延迟和持续时间的类在下面的间隔中可用：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;delay|duration-&#123;100|150|200|250...1000|1250|1500|1750...10750&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
+<h4 id="1-2-flex-wrap-属性"><a href="#1-2-flex-wrap-属性" class="headerlink" title="1.2 flex-wrap 属性"></a>1.2 flex-wrap 属性</h4><p><code>flex-wrap</code> 属性规定flex容器是单行或者多行，同时横轴的方向决定了新行堆叠的方向。</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>nowrap</td>
+<td>默认值。规定元素不拆行或不拆列。</td>
+</tr>
+<tr>
+<td>wrap</td>
+<td>规定元素在必要的时候拆行或拆列。</td>
+</tr>
+<tr>
+<td>wrap-reverse</td>
+<td>规定元素在必要的时候拆行或拆列，但是以相反的顺序。</td>
+</tr>
+</tbody></table>
+<p><img data-src="flex2.png"></p>
+<h4 id="1-3-flex-flow-属性"><a href="#1-3-flex-flow-属性" class="headerlink" title="1.3 flex-flow 属性"></a>1.3 flex-flow 属性</h4><p><code>flex-flow</code>属性是<code>flex-direction</code>属性和<code>flex-wrap</code>属性的简写形式，默认值为<code>row nowrap</code>。</p>
+<h4 id="1-4-align-items属性"><a href="#1-4-align-items属性" class="headerlink" title="1.4 align-items属性"></a>1.4 align-items属性</h4><p><code>align-items</code> 属性定义flex子项在flex容器的当前行的侧轴（纵轴）方向上的对齐方式。</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>stretch</td>
+<td>默认值。项目被拉伸以适应容器。如果项目未设置高度或设为auto，将占满整个容器的高度。</td>
+</tr>
+<tr>
+<td>center</td>
+<td>项目位于容器的中心。</td>
+</tr>
+<tr>
+<td>flex-start</td>
+<td>项目位于容器的开头。</td>
+</tr>
+<tr>
+<td>flex-end</td>
+<td>项目位于容器的结尾。</td>
+</tr>
+<tr>
+<td>baseline</td>
+<td>项目位于容器的基线上。</td>
+</tr>
+</tbody></table>
+<p><img data-src="flex3.png"></p>
+<h4 id="1-5-justify-content属性"><a href="#1-5-justify-content属性" class="headerlink" title="1.5 justify-content属性"></a>1.5 justify-content属性</h4><p><code>justify-content</code> 用于设置或检索弹性盒子元素在主轴（横轴）方向上的对齐方式。</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>flex-start</td>
+<td>默认值。项目位于容器的开头。</td>
+</tr>
+<tr>
+<td>flex-end</td>
+<td>项目位于容器的结尾。</td>
+</tr>
+<tr>
+<td>center</td>
+<td>项目位于容器的中心。</td>
+</tr>
+<tr>
+<td>space-between</td>
+<td>两端对齐，项目之间的间隔都相等</td>
+</tr>
+<tr>
+<td>space-around</td>
+<td>项目位于各行之前、之间、之后都留有空白的容器内。</td>
+</tr>
+</tbody></table>
 <blockquote>
-<p>注意：值的单位是毫秒（ms）。1000ms = 1s</p>
+<p>space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。    </p>
 </blockquote>
-<h3 id="4-Magic-Animations-CSS3（调用库）"><a href="#4-Magic-Animations-CSS3（调用库）" class="headerlink" title="4. Magic Animations CSS3（调用库）"></a>4. <a href="https://www.minimamente.com/project/magic/">Magic Animations CSS3</a>（调用库）</h3><blockquote>
-<p>官网暂无相应（可能我不会用）</p>
-</blockquote>
-<p>这个动画库有些不错并且流畅的动画，我特别喜欢<code>3D</code>动画。</p>
-<p>没什么好说的，自己去尝试下，玩下动画。</p>
-<p>你可以添加<code>magictime &#123;animation_name&#125;</code>到你的元素中，如下：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;magictime fadeIn&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>使用 Javascript</strong></li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">&#x27;.my-element&#x27;</span>).classList.add(<span class="string">&#x27;magictime&#x27;</span>, <span class="string">&#x27;fadeIn&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>使用 Jquery</strong></li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&quot;.my-element&quot;</span>).addClass(<span class="string">&quot;magictime fadeIn&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<h3 id="5-cssanimation-io（调用库）"><a href="#5-cssanimation-io（调用库）" class="headerlink" title="5. cssanimation.io（调用库）"></a>5. <a href="http://cssanimation.io/index.html">cssanimation.io</a>（调用库）</h3><blockquote>
-<p>此时，我打不开它。。。</p>
-</blockquote>
-<p><code>cssanimation.io</code>是一大堆不同动画的集合，总共大约有200个，真是太神奇了。</p>
-<p>如果在这里都找不到你想要的动画，那你在哪都找不到了。</p>
-<p>它的使用方式类似<code>animista</code>。比如，你可以直接选择动画，然后直接从网站中获取，或者下载整个库。</p>
-<p><strong>使用</strong></p>
-<p>为你的元素添加<code>cssanimation &#123;animation_name&#125;</code>。</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;cssanimation fadeIn&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>使用 Javascript</strong></li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">&#x27;.my-element&#x27;</span>).classList.add(<span class="string">&#x27;cssanimation&#x27;</span>,<span class="string">&#x27;fadeIn&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>使用 Jquery</strong></li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&quot;.my-element&quot;</span>).addClass(<span class="string">&quot;cssanimation fadeIn&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<p>你也可以添加<code>infinite</code>类，以便动画不断重复。</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;cssanimation fadeIn infinite&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>此外，<code>cssanimations.io</code>为你提供了动画字母的功能。为了实现这个，你需要在<code>head</code>标签中引入<code>letteranimation.js</code>文件，然后在你的文本元素中添加<code>le&#123;animation_name&#125;</code>。</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;cssanimation leSnake&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>想要字母动画有序进行，添加<code>sequence</code>类；想要字母动画无序进行，添加<code>random</code>类。</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;cssanimation leSnake &#123;sequence|random&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="6-Angrytools（生成器）"><a href="#6-Angrytools（生成器）" class="headerlink" title="6. Angrytools（生成器）"></a>6. <a href="https://angrytools.com/css/animation/">Angrytools</a>（生成器）</h3><p>如果使用生成器（<code>Angrytools</code>不错），<code>Angrytools</code>实际上是一个集合，其中还包括<code>CSS</code>动画生成器。</p>
-<p>这个网站也为你提供了定制动画的功能，比如持续时间和延迟时间。</p>
-<p>最重要的是，你可以在时间线上添加<code>keyframes（关键帧）</code>，并且你可以直接在那里写代码。而且，你也可以编辑现有的一个效果。</p>
-<h3 id="7-Hover-css（调用库）"><a href="#7-Hover-css（调用库）" class="headerlink" title="7. Hover.css（调用库）"></a>7. <a href="http://ianlunn.github.io/Hover/">Hover.css</a>（调用库）</h3><p><code>Hover.css</code>是众多<code>CSS</code>动画的集合，与上面的动画不同，<strong>每次将元素悬停时</strong>都会触发。</p>
+<p><img data-src="flex4.png"></p>
+<h3 id="2-Flex-弹性子元素属性"><a href="#2-Flex-弹性子元素属性" class="headerlink" title="2. Flex 弹性子元素属性"></a>2. <code>Flex</code> 弹性子元素属性</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>order</td>
+<td align="left">设置弹性盒子的子元素排列顺序。</td>
+</tr>
+<tr>
+<td>flex-grow</td>
+<td align="left">设置或检索弹性盒子元素的扩展比率。</td>
+</tr>
+<tr>
+<td>flex-shrink</td>
+<td align="left">指定了 flex 元素的收缩规则。flex 元素仅在默认宽度之和大于容器的时候才会发生收缩，其收缩的大小是依据 flex-shrink 的值。</td>
+</tr>
+<tr>
+<td>flex-basis</td>
+<td align="left">用于设置或检索弹性盒伸缩基准值。</td>
+</tr>
+<tr>
+<td>flex</td>
+<td align="left">设置弹性盒子的子元素如何分配空间。</td>
+</tr>
+<tr>
+<td>align-self</td>
+<td align="left">在弹性子元素上使用。覆盖容器的 align-items 属性。</td>
+</tr>
+</tbody></table>
+<h4 id="2-1-order属性"><a href="#2-1-order属性" class="headerlink" title="2.1 order属性"></a>2.1 order属性</h4><p><code>&lt;integer&gt;</code>：用整数值来定义排列顺序，数值小的排在前面。可以为负值，默认为0。</p>
+<p><img data-src="flex5.png"></p>
+<h4 id="2-2-flex-grow属性"><a href="#2-2-flex-grow属性" class="headerlink" title="2.2 flex-grow属性"></a>2.2 flex-grow属性</h4><p><code>&lt;integer&gt;</code>：一个数字，规定项目将相对于其他灵活的项目进行扩展的量。默认值是 0。</p>
 <blockquote>
-<p>一组CSS3驱动的悬停效果，可以应用到链接，按钮，logos，svg，图片特性和其他。</p>
+<p><code>flex-grow</code>属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。</p>
+<p>如果所有项目的<code>flex-grow</code>属性都为1，则它们将等分剩余空间（如果有的话）。　　</p>
+<p>如果一个项目的<code>flex-grow</code>属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。</p>
 </blockquote>
-<p>它有一些惊人的动效。而且它还有用于动画图标的类，比如超棒的字体。</p>
-<p><strong>使用</strong></p>
-<p>使用很简单：将类名添加到你的元素中，比如：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">&lt;button class=&quot;hvr-fade&quot;&gt;Hover me!&lt;/button&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="8-WickedCSS-（调用库）"><a href="#8-WickedCSS-（调用库）" class="headerlink" title="8. WickedCSS （调用库）"></a>8. <a href="http://kristofferandreasen.github.io/wickedCSS/#">WickedCSS</a> （调用库）</h3><p><code>WickedCSS</code>是一个小型的<code>CSS</code>动画库，没有太多的动画体，但是它至少有很棒的动画。它们中大多数是我们熟悉的基本动画，但是它们真是很简洁。</p>
-<p>使用方法很简单，只要为你的元素添加动画名就行了。</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;bounceIn&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>使用 Javascript</strong></li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">&#x27;.my-element&#x27;</span>).classList.add(<span class="string">&#x27;bounceIn&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>使用 Jquery</strong></li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&quot;.my-element&quot;</span>).addClass(<span class="string">&quot;bounceIn&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<h3 id="9-Three-Dots（调用库）"><a href="#9-Three-Dots（调用库）" class="headerlink" title="9.  Three Dots（调用库）"></a>9.  <a href="https://nzbin.github.io/three-dots/">Three Dots</a>（调用库）</h3><blockquote>
-<p><code>Three Dots</code>是<code>CSS</code>加载动画的集合，仅由三个简单元素制作而成的三个点创建。</p>
+<p><img data-src="flex6.png"></p>
+<h4 id="2-3-flex-shrink属性"><a href="#2-3-flex-shrink属性" class="headerlink" title="2.3 flex-shrink属性"></a>2.3 flex-shrink属性</h4><p><code>&lt;integer&gt;</code>：一个数字，规定项目将相对于其他灵活的项目进行收缩的量。默认值是 1。</p>
+<blockquote>
+<p><code>flex-shrink</code>属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。</p>
+<p>如果所有项目的<code>flex-shrink</code>属性都为1，当空间不足时，都将等比例缩小。</p>
+<p>如果一个项目的<code>flex-shrink</code>属性为0，其他项目都为1，则空间不足时，前者不缩小。</p>
+<p>负值对该属性无效。</p>
 </blockquote>
-<p><strong>使用</strong></p>
-<p>创建一个<code>div</code>元素，然后添加动画名。</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;dot-elastic&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="attribute">flex-shrink</span>: &lt;number&gt;; <span class="comment">/* default 1 */</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="10-CSSHake（调用库）"><a href="#10-CSSHake（调用库）" class="headerlink" title="10. CSSHake（调用库）"></a>10. <a href="https://elrumordelaluz.github.io/csshake/">CSSHake</a>（调用库）</h3><p>最后，来点摇晃的抖动。</p>
-<p>如其名，<code>CSShake</code>包含了不同类型的抖动动画的<code>CSS</code>动画库。</p>
-<ul>
-<li><strong>使用</strong></li>
-</ul>
-<p>添加<code>shake &#123;animation_name&#125;</code>到你的元素中。</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;shake shake-hard&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img data-src="flex7.png"></p>
+<h4 id="2-4-flex-basis属性"><a href="#2-4-flex-basis属性" class="headerlink" title="2.4 flex-basis属性"></a>2.4 flex-basis属性</h4><p><code>flex-basis</code>属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.flex-container</span> <span class="selector-class">.flex-item</span> &#123; <span class="attribute">flex-basis</span>: &lt;integer&gt; | auto; &#125;</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li><strong>使用 Javascript</strong></li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">&#x27;.my-element&#x27;</span>).classList.add(<span class="string">&#x27;shake&#x27;</span>,<span class="string">&#x27;shake-hard&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>使用 Jquery</strong></li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&quot;.my-element&quot;</span>).addClass(<span class="string">&quot;shake shake-hard&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<h2 id="二、神奇的CSS多边形绘制"><a href="#二、神奇的CSS多边形绘制" class="headerlink" title="二、神奇的CSS多边形绘制"></a>二、神奇的CSS多边形绘制</h2><blockquote>
-<p>转载自 <a href="https://www.imooc.com/article/27838">手记</a></p>
+<p><code>&lt;integer&gt;</code>：一个长度单位或者一个百分比，规定元素的初始长度。<br> <code>auto</code>：默认值。长度等于元素的长度。如果该项目未指定长度，则长度将根据内容决定。</p>
+<blockquote>
+<p>浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。</p>
+<p>它可以设为跟width或height属性一样的值（比如350px），则项目将占据固定空间。</p>
 </blockquote>
-<p>CSS3之前，我们能做的只有矩形，四四方方，条条框框</p>
-<p>CSS3出来后，我们有了更广阔的施展空间，通过</p>
-<ul>
-<li><code>border-radius</code></li>
-<li><code>border</code></li>
-<li><code>transform</code></li>
-<li>伪元素配合</li>
-<li>gradient 渐变</li>
-</ul>
-<p>我们能够作出非常多的几何图形。</p>
-<h3 id="传统方式绘制"><a href="#传统方式绘制" class="headerlink" title="传统方式绘制"></a>传统方式绘制</h3><p>除去最常见的矩形，圆形（<code>border-radius</code>），下面稍微列举一些其他几何图形：</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 三角形 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;traingle&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 切角 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;notching&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 梯形 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;trapezoid&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 五边形 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;pentagon&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 六边形 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;hexagon&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 八边形 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;octagon&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- star --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;star&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 六角星 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;sixstar&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 八角星 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;eightstar&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 十二角星 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;twelvestar&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 椭圆 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;ellipse&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="1-三角形"><a href="#1-三角形" class="headerlink" title="1. 三角形"></a>1. 三角形</h4><p>通常会使用透明的border模拟出一个三角形：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.traingle</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">border-left</span>: <span class="number">50px</span> solid transparent;</span><br><span class="line">    <span class="attribute">border-right</span>: <span class="number">50px</span> solid transparent;</span><br><span class="line">    <span class="attribute">border-bottom</span>: <span class="number">100px</span> solid yellowgreen;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img data-src="shape1.png"></p>
-<h4 id="2-切角"><a href="#2-切角" class="headerlink" title="2. 切角"></a>2. 切角</h4><p>《CSS Secret》里面的方法，采用多重线性渐变实现切角。</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.notching</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">40px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">40px</span>;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">40px</span>;</span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(<span class="number">135deg</span>, transparent <span class="number">15px</span>, yellowgreen <span class="number">0</span>) top left,</span><br><span class="line">        <span class="built_in">linear-gradient</span>(-<span class="number">135deg</span>, transparent <span class="number">15px</span>, yellowgreen <span class="number">0</span>) top right,</span><br><span class="line">        <span class="built_in">linear-gradient</span>(-<span class="number">45deg</span>, transparent <span class="number">15px</span>, yellowgreen <span class="number">0</span>) bottom right,</span><br><span class="line">        <span class="built_in">linear-gradient</span>(<span class="number">45deg</span>, transparent <span class="number">15px</span>, yellowgreen <span class="number">0</span>) bottom left;</span><br><span class="line">    <span class="attribute">background-size</span>: <span class="number">50%</span> <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">background-repeat</span>: no-repeat;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img data-src="shape2.png"></p>
-<h4 id="3-梯形"><a href="#3-梯形" class="headerlink" title="3. 梯形"></a>3. 梯形</h4><p>利用伪元素加旋转透视实现梯形：</p>
-<p><img data-src="shape3.png"></p>
-<h4 id="4-五边形"><a href="#4-五边形" class="headerlink" title="4. 五边形"></a>4. 五边形</h4><p>梯形加上三角形，很容易就组合成一个五边形，这里需要借助一个伪元素实现：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.pentagon</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">60px</span>;</span><br><span class="line">    <span class="attribute">margin-bottom</span>: <span class="number">100px</span><span class="meta">!important</span>;</span><br><span class="line">    <span class="attribute">border-bottom</span>: <span class="number">60px</span> solid yellowgreen;</span><br><span class="line">    <span class="attribute">border-left</span>: <span class="number">40px</span> solid transparent;</span><br><span class="line">    <span class="attribute">border-right</span>: <span class="number">40px</span> solid transparent; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.pentagon</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>:<span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">border-top</span>: <span class="number">60px</span> solid yellowgreen;</span><br><span class="line">    <span class="attribute">border-left</span>: <span class="number">70px</span> solid transparent;</span><br><span class="line">    <span class="attribute">border-right</span>: <span class="number">70px</span> solid transparent;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">60px</span>;</span><br><span class="line">    <span class="attribute">left</span>: -<span class="number">40px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img data-src="shape4.png"></p>
-<h4 id="5-六边形"><a href="#5-六边形" class="headerlink" title="5. 六边形"></a>5. 六边形</h4><p>看看上面的梯形，如果两个反方向且底边同样大小的梯形，叠加在一起，是不是就能得到一个六边形</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.hexagon</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">60px</span>;</span><br><span class="line">    <span class="attribute">margin-bottom</span>: <span class="number">120px</span><span class="meta">!important</span>;</span><br><span class="line">    <span class="attribute">border-bottom</span>: <span class="number">60px</span> solid yellowgreen;</span><br><span class="line">    <span class="attribute">border-left</span>: <span class="number">40px</span> solid transparent;</span><br><span class="line">    <span class="attribute">border-right</span>: <span class="number">40px</span> solid transparent;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.hexagon</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">60px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">0px</span>;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">60px</span>;</span><br><span class="line">    <span class="attribute">left</span>: -<span class="number">40px</span>;</span><br><span class="line">    <span class="attribute">border-top</span>: <span class="number">60px</span> solid yellowgreen;</span><br><span class="line">    <span class="attribute">border-left</span>: <span class="number">40px</span> solid transparent;</span><br><span class="line">    <span class="attribute">border-right</span>: <span class="number">40px</span> solid transparent;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<p><img data-src="shape5.png"></p>
-<h4 id="6-八边形"><a href="#6-八边形" class="headerlink" title="6. 八边形"></a>6. 八边形</h4><p>六边形都解决了，八边形也不在话下，一个矩形加上两个梯形，可以合成一个八边形。</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.octagon</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">40px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">background</span>: yellowgreen;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.octagon</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">60px</span>;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">40px</span>;</span><br><span class="line">    <span class="attribute">border-left</span>: <span class="number">30px</span> solid yellowgreen;</span><br><span class="line">    <span class="attribute">border-top</span>: <span class="number">20px</span> solid transparent;</span><br><span class="line">    <span class="attribute">border-bottom</span>: <span class="number">20px</span> solid transparent;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.octagon</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">60px</span>;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">left</span>: -<span class="number">30px</span>;</span><br><span class="line">    <span class="attribute">border-right</span>: <span class="number">30px</span> solid yellowgreen;</span><br><span class="line">    <span class="attribute">border-top</span>: <span class="number">20px</span> solid transparent;</span><br><span class="line">    <span class="attribute">border-bottom</span>: <span class="number">20px</span> solid transparent;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img data-src="shape6.png"></p>
-<h4 id="7-五角星"><a href="#7-五角星" class="headerlink" title="7. 五角星"></a>7. 五角星</h4><p>好的，探索完多边形，我们继续探索X角星——-这里使用 3 个三角形叠加旋转在一起实现。</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.star</span> &#123;</span><br><span class="line">   <span class="attribute">margin</span>: <span class="number">50px</span> <span class="number">0</span>;</span><br><span class="line">   <span class="attribute">position</span>: relative;</span><br><span class="line">   <span class="attribute">width</span>: <span class="number">0</span>;</span><br><span class="line">   <span class="attribute">border-right</span>: <span class="number">100px</span> solid transparent;</span><br><span class="line">   <span class="attribute">border-bottom</span>: <span class="number">70px</span>  solid yellowgreen;</span><br><span class="line">   <span class="attribute">border-left</span>: <span class="number">100px</span> solid transparent;</span><br><span class="line">   <span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">35deg</span>) <span class="built_in">scale</span>(.<span class="number">6</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.star</span><span class="selector-pseudo">:before</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">border-bottom</span>: <span class="number">80px</span> solid yellowgreen;</span><br><span class="line">    <span class="attribute">border-left</span>: <span class="number">30px</span> solid transparent;</span><br><span class="line">    <span class="attribute">border-right</span>: <span class="number">30px</span> solid transparent;</span><br><span class="line">    <span class="attribute">top</span>: -<span class="number">45px</span>;</span><br><span class="line">    <span class="attribute">left</span>: -<span class="number">65px</span>;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">rotate</span>(-<span class="number">35deg</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.star</span><span class="selector-pseudo">:after</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">color</span>: yellowgreen;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">3px</span>;</span><br><span class="line">    <span class="attribute">left</span>: -<span class="number">105px</span>;</span><br><span class="line">    <span class="attribute">border-right</span>: <span class="number">100px</span> solid transparent;</span><br><span class="line">    <span class="attribute">border-bottom</span>: <span class="number">70px</span> solid yellowgreen;</span><br><span class="line">    <span class="attribute">border-left</span>: <span class="number">100px</span> solid transparent;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">rotate</span>(-<span class="number">70deg</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img data-src="shape7.png"></p>
-<h4 id="8-六角星"><a href="#8-六角星" class="headerlink" title="8. 六角星"></a>8. 六角星</h4><p>六角星呢？想象一下，一个向上的三角形 ▲，叠加上一个向下的三角形 ▼，就可以得到一个六边形：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.sixstar</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">border-left</span>: <span class="number">50px</span> solid transparent;</span><br><span class="line">  <span class="attribute">border-right</span>: <span class="number">50px</span> solid transparent;</span><br><span class="line">  <span class="attribute">border-bottom</span>: <span class="number">100px</span> solid yellowgreen;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.sixstar</span><span class="selector-pseudo">:after</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">border-left</span>: <span class="number">50px</span> solid transparen;</span><br><span class="line">  <span class="attribute">border-right</span>: <span class="number">50px</span> solid transparent;</span><br><span class="line">  <span class="attribute">border-top</span>: <span class="number">100px</span> solid yellowgreen;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">30px</span>;</span><br><span class="line">  <span class="attribute">left</span>: -<span class="number">50px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<p><img data-src="shape8.png"></p>
-<h4 id="9-八角星"><a href="#9-八角星" class="headerlink" title="9. 八角星"></a>9. 八角星</h4><p>八角星呢？八个角那么多呢。其实使用两个矩形进行旋转拼接就可以了。</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.eightstar</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">margin-bottom</span>: <span class="number">100px</span><span class="meta">!important</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: yellowgreen;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">30deg</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.eightstar</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">45deg</span>);</span><br><span class="line">    <span class="attribute">background-color</span>: yellowgreen;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img data-src="shape9.png"></p>
-<h4 id="10-十二角星"><a href="#10-十二角星" class="headerlink" title="10. 十二角星"></a>10. 十二角星</h4><p>好。最后多角星再来一个十二级角星。在八角星的基础上，再增加一个矩形，就能得到十二角啦。也就是要过第一个伪元素。</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.twelvestar</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">margin-bottom</span>: <span class="number">100px</span><span class="meta">!important</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: yellowgreen;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">30deg</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.twelvestar</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">30deg</span>);</span><br><span class="line">    <span class="attribute">background-color</span>: yellowgreen;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.twelvestar</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">60deg</span>);</span><br><span class="line">    <span class="attribute">background-color</span>: yellowgreen;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img data-src="shape10.png"></p>
-<h4 id="11-椭圆"><a href="#11-椭圆" class="headerlink" title="11. 椭圆"></a>11. 椭圆</h4><p>最后，再来使用传统的方法画一个椭圆，过去 CSS3 画椭圆，基本上只能借助 border 实现。</p>
-<p>这里使用 border 画一个蛋的形状：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.ellipse</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">120px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">160px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: yellowgreen;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">50%</span>` <span class="number">50%</span> <span class="number">50%</span> <span class="number">50%</span> / <span class="number">60%</span> <span class="number">60%</span> <span class="number">40%</span> <span class="number">40%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img data-src="shape11.png"></p>
-<h4 id="12-爱心"><a href="#12-爱心" class="headerlink" title="12. 爱心"></a>12. 爱心</h4><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#heart</span> &#123; </span><br><span class="line"><span class="attribute">position</span>: relative; </span><br><span class="line"><span class="attribute">width</span>: <span class="number">100px</span>; </span><br><span class="line"><span class="attribute">height</span>: <span class="number">90px</span>; </span><br><span class="line">&#125; </span><br><span class="line"><span class="selector-id">#heart</span><span class="selector-pseudo">:before</span>, </span><br><span class="line"><span class="selector-id">#heart</span><span class="selector-pseudo">:after</span> &#123; </span><br><span class="line"><span class="attribute">position</span>: absolute; </span><br><span class="line"><span class="attribute">content</span>: <span class="string">&quot;&quot;</span>; </span><br><span class="line"><span class="attribute">left</span>: <span class="number">50px</span>; </span><br><span class="line"><span class="attribute">top</span>: <span class="number">0</span>; </span><br><span class="line"><span class="attribute">width</span>: <span class="number">50px</span>; </span><br><span class="line"><span class="attribute">height</span>: <span class="number">80px</span>; </span><br><span class="line"><span class="attribute">background</span>: red; </span><br><span class="line"><span class="attribute">-moz-border-radius</span>: <span class="number">50px</span> <span class="number">50px</span> <span class="number">0</span> <span class="number">0</span>; </span><br><span class="line"><span class="attribute">border-radius</span>: <span class="number">50px</span> <span class="number">50px</span> <span class="number">0</span> <span class="number">0</span>; </span><br><span class="line"><span class="attribute">-webkit-transform</span>: <span class="built_in">rotate</span>(-<span class="number">45deg</span>); </span><br><span class="line"><span class="attribute">-moz-transform</span>: <span class="built_in">rotate</span>(-<span class="number">45deg</span>); </span><br><span class="line"><span class="attribute">-ms-transform</span>: <span class="built_in">rotate</span>(-<span class="number">45deg</span>); </span><br><span class="line"><span class="attribute">-o-transform</span>: <span class="built_in">rotate</span>(-<span class="number">45deg</span>); </span><br><span class="line"><span class="attribute">transform</span>: <span class="built_in">rotate</span>(-<span class="number">45deg</span>); </span><br><span class="line"><span class="attribute">-webkit-transform-origin</span>: <span class="number">0</span> <span class="number">100%</span>; </span><br><span class="line"><span class="attribute">-moz-transform-origin</span>: <span class="number">0</span> <span class="number">100%</span>; </span><br><span class="line"><span class="attribute">-ms-transform-origin</span>: <span class="number">0</span> <span class="number">100%</span>; </span><br><span class="line"><span class="attribute">-o-transform-origin</span>: <span class="number">0</span> <span class="number">100%</span>; </span><br><span class="line"><span class="attribute">transform-origin</span>: <span class="number">0</span> <span class="number">100%</span>; </span><br><span class="line">&#125; </span><br><span class="line"><span class="selector-id">#heart</span><span class="selector-pseudo">:after</span> &#123; </span><br><span class="line"><span class="attribute">left</span>: <span class="number">0</span>; </span><br><span class="line"><span class="attribute">-webkit-transform</span>: <span class="built_in">rotate</span>(<span class="number">45deg</span>); </span><br><span class="line"><span class="attribute">-moz-transform</span>: <span class="built_in">rotate</span>(<span class="number">45deg</span>); </span><br><span class="line"><span class="attribute">-ms-transform</span>: <span class="built_in">rotate</span>(<span class="number">45deg</span>); </span><br><span class="line"><span class="attribute">-o-transform</span>: <span class="built_in">rotate</span>(<span class="number">45deg</span>); </span><br><span class="line"><span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">45deg</span>); </span><br><span class="line"><span class="attribute">-webkit-transform-origin</span>: <span class="number">100%</span> <span class="number">100%</span>; </span><br><span class="line"><span class="attribute">-moz-transform-origin</span>: <span class="number">100%</span> <span class="number">100%</span>; </span><br><span class="line"><span class="attribute">-ms-transform-origin</span>: <span class="number">100%</span> <span class="number">100%</span>; </span><br><span class="line"><span class="attribute">-o-transform-origin</span>: <span class="number">100%</span> <span class="number">100%</span>; </span><br><span class="line"><span class="attribute">transform-origin </span>:<span class="number">100%</span> <span class="number">100%</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img data-src="shape13.png"></p>
-<h4 id="13-无穷大"><a href="#13-无穷大" class="headerlink" title="13. 无穷大"></a>13. 无穷大</h4><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#infinity</span> &#123; </span><br><span class="line"><span class="attribute">position</span>: relative; </span><br><span class="line"><span class="attribute">width</span>: <span class="number">212px</span>; </span><br><span class="line"><span class="attribute">height</span>: <span class="number">100px</span>; </span><br><span class="line">&#125; </span><br><span class="line"><span class="selector-id">#infinity</span><span class="selector-pseudo">:before</span>, </span><br><span class="line"><span class="selector-id">#infinity</span><span class="selector-pseudo">:after</span> &#123; </span><br><span class="line"><span class="attribute">content</span>: <span class="string">&quot;&quot;</span>; </span><br><span class="line"><span class="attribute">position</span>: absolute; </span><br><span class="line"><span class="attribute">top</span>: <span class="number">0</span>; </span><br><span class="line"><span class="attribute">left</span>: <span class="number">0</span>; </span><br><span class="line"><span class="attribute">width</span>: <span class="number">60px</span>; </span><br><span class="line"><span class="attribute">height</span>: <span class="number">60px</span>; </span><br><span class="line"><span class="attribute">border</span>: <span class="number">20px</span> solid red; </span><br><span class="line"><span class="attribute">-moz-border-radius</span>: <span class="number">50px</span> <span class="number">50px</span> <span class="number">0</span> <span class="number">50px</span>; </span><br><span class="line"><span class="attribute">border-radius</span>: <span class="number">50px</span> <span class="number">50px</span> <span class="number">0</span> <span class="number">50px</span>; </span><br><span class="line"><span class="attribute">-webkit-transform</span>: <span class="built_in">rotate</span>(-<span class="number">45deg</span>); </span><br><span class="line"><span class="attribute">-moz-transform</span>: <span class="built_in">rotate</span>(-<span class="number">45deg</span>); </span><br><span class="line"><span class="attribute">-ms-transform</span>: <span class="built_in">rotate</span>(-<span class="number">45deg</span>); </span><br><span class="line"><span class="attribute">-o-transform</span>: <span class="built_in">rotate</span>(-<span class="number">45deg</span>); </span><br><span class="line"><span class="attribute">transform</span>: <span class="built_in">rotate</span>(-<span class="number">45deg</span>); </span><br><span class="line">&#125; </span><br><span class="line"><span class="selector-id">#infinity</span><span class="selector-pseudo">:after</span> &#123; </span><br><span class="line"><span class="attribute">left</span>: auto; </span><br><span class="line"><span class="attribute">right</span>: <span class="number">0</span>; </span><br><span class="line"><span class="attribute">-moz-border-radius</span>: <span class="number">50px</span> <span class="number">50px</span> <span class="number">50px</span> <span class="number">0</span>; </span><br><span class="line"><span class="attribute">border-radius</span>: <span class="number">50px</span> <span class="number">50px</span> <span class="number">50px</span> <span class="number">0</span>; </span><br><span class="line"><span class="attribute">-webkit-transform</span>: <span class="built_in">rotate</span>(<span class="number">45deg</span>); </span><br><span class="line"><span class="attribute">-moz-transform</span>: <span class="built_in">rotate</span>(<span class="number">45deg</span>); </span><br><span class="line"><span class="attribute">-ms-transform</span>: <span class="built_in">rotate</span>(<span class="number">45deg</span>); </span><br><span class="line"><span class="attribute">-o-transform</span>: <span class="built_in">rotate</span>(<span class="number">45deg</span>); </span><br><span class="line"><span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">45deg</span>); </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-
-<p><img data-src="shape14.png"></p>
-<h4 id="14-食逗人（Pac-Man）"><a href="#14-食逗人（Pac-Man）" class="headerlink" title="14. 食逗人（Pac-Man）"></a>14. 食逗人（Pac-Man）</h4><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#pacman</span> &#123; </span><br><span class="line"><span class="attribute">width</span>: <span class="number">0px</span>; </span><br><span class="line"><span class="attribute">height</span>: <span class="number">0px</span>; </span><br><span class="line"><span class="attribute">border-right</span>: <span class="number">60px</span> solid transparent; </span><br><span class="line"><span class="attribute">border-top</span>: <span class="number">60px</span> solid red; </span><br><span class="line"><span class="attribute">border-left</span>: <span class="number">60px</span> solid red; </span><br><span class="line"><span class="attribute">border-bottom</span>: <span class="number">60px</span> solid red; </span><br><span class="line"><span class="attribute">border-top-left-radius</span>: <span class="number">60px</span>; </span><br><span class="line"><span class="attribute">border-top-right-radius</span>: <span class="number">60px</span>; </span><br><span class="line"><span class="attribute">border-bottom-left-radius</span>: <span class="number">60px</span>; </span><br><span class="line"><span class="attribute">border-bottom-right-radius</span>: <span class="number">60px</span>; </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-
-<p><img data-src="shape15.png"></p>
-<h4 id="15-提示对话框"><a href="#15-提示对话框" class="headerlink" title="15. 提示对话框"></a>15. 提示对话框</h4><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#talkbubble</span> &#123; </span><br><span class="line"><span class="attribute">width</span>: <span class="number">120px</span>; </span><br><span class="line"><span class="attribute">height</span>: <span class="number">80px</span>; </span><br><span class="line"><span class="attribute">background</span>: red; </span><br><span class="line"><span class="attribute">position</span>: relative; </span><br><span class="line"><span class="attribute">-moz-border-radius</span>: <span class="number">10px</span>; </span><br><span class="line"><span class="attribute">-webkit-border-radius</span>: <span class="number">10px</span>; </span><br><span class="line"><span class="attribute">border-radius</span>: <span class="number">10px</span>; </span><br><span class="line">&#125; </span><br><span class="line"><span class="selector-id">#talkbubble</span><span class="selector-pseudo">:before</span> &#123; </span><br><span class="line"><span class="attribute">content</span>:<span class="string">&quot;&quot;</span>; </span><br><span class="line"><span class="attribute">position</span>: absolute; </span><br><span class="line"><span class="attribute">right</span>: <span class="number">100%</span>; </span><br><span class="line"><span class="attribute">top</span>: <span class="number">26px</span>; </span><br><span class="line"><span class="attribute">width</span>: <span class="number">0</span>; </span><br><span class="line"><span class="attribute">height</span>: <span class="number">0</span>; </span><br><span class="line"><span class="attribute">border-top</span>: <span class="number">13px</span> solid transparent; </span><br><span class="line"><span class="attribute">border-right</span>: <span class="number">26px</span> solid red; </span><br><span class="line"><span class="attribute">border-bottom</span>: <span class="number">13px</span> solid transparent; </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-
-<p><img data-src="shape16.png"></p>
-<h4 id="16-阴阳八卦"><a href="#16-阴阳八卦" class="headerlink" title="16. 阴阳八卦"></a>16. 阴阳八卦</h4><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#yin-yang</span> &#123; </span><br><span class="line"><span class="attribute">width</span>: <span class="number">96px</span>; </span><br><span class="line"><span class="attribute">height</span>: <span class="number">48px</span>; </span><br><span class="line"><span class="attribute">background</span>: <span class="number">#eee</span>; </span><br><span class="line"><span class="attribute">border-color</span>: red; </span><br><span class="line"><span class="attribute">border-style</span>: solid; </span><br><span class="line"><span class="attribute">border-width</span>: <span class="number">2px</span> <span class="number">2px</span> <span class="number">50px</span> <span class="number">2px</span>; </span><br><span class="line"><span class="attribute">border-radius</span>: <span class="number">100%</span>; </span><br><span class="line"><span class="attribute">position</span>: relative; </span><br><span class="line">&#125; </span><br><span class="line"><span class="selector-id">#yin-yang</span><span class="selector-pseudo">:before</span> &#123; </span><br><span class="line"><span class="attribute">content</span>: <span class="string">&quot;&quot;</span>; </span><br><span class="line"><span class="attribute">position</span>: absolute; </span><br><span class="line"><span class="attribute">top</span>: <span class="number">50%</span>; </span><br><span class="line"><span class="attribute">left</span>: <span class="number">0</span>; </span><br><span class="line"><span class="attribute">background</span>: <span class="number">#eee</span>; </span><br><span class="line"><span class="attribute">border</span>: <span class="number">18px</span> solid red; </span><br><span class="line"><span class="attribute">border-radius</span>: <span class="number">100%</span>; </span><br><span class="line"><span class="attribute">width</span>: <span class="number">12px</span>; </span><br><span class="line"><span class="attribute">height</span>: <span class="number">12px</span>; </span><br><span class="line">&#125; </span><br><span class="line"><span class="selector-id">#yin-yang</span><span class="selector-pseudo">:after</span> &#123; </span><br><span class="line"><span class="attribute">content</span>: <span class="string">&quot;&quot;</span>; </span><br><span class="line"><span class="attribute">position</span>: absolute; </span><br><span class="line"><span class="attribute">top</span>: <span class="number">50%</span>; </span><br><span class="line"><span class="attribute">left</span>: <span class="number">50%</span>; </span><br><span class="line"><span class="attribute">background</span>: red; </span><br><span class="line"><span class="attribute">border</span>: <span class="number">18px</span> solid <span class="number">#eee</span>; </span><br><span class="line"><span class="attribute">border-radius</span>:<span class="number">100%</span>; </span><br><span class="line"><span class="attribute">width</span>: <span class="number">12px</span>; </span><br><span class="line"><span class="attribute">height</span>: <span class="number">12px</span>; </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-
-<p><img data-src="shape17.png"></p>
-<h3 id="CSS3新绘制方式"><a href="#CSS3新绘制方式" class="headerlink" title="CSS3新绘制方式"></a>CSS3新绘制方式</h3><blockquote>
-<p>上面所讲述的是使用传统 CSS3 的方式绘制几何图形，前人栽树后人乘凉，之前的大牛们在 CSS 绘制几何图形上已经做了非常深入的研究，更多的 CSS 图形你可以戳这里：The Shapes of CSS 。接下来我们将要了解一些更高级的绘制几何图形的方法。</p>
+<h4 id="2-5-flex属性"><a href="#2-5-flex属性" class="headerlink" title="2.5 flex属性"></a>2.5 flex属性</h4><p>flex 属性用于设置或检索弹性盒模型对象的子元素如何分配空间。</p>
+<p>flex 属性是 <code>flex-grow</code>、<code>flex-shrink</code> 和 <code>flex-basis</code> 属性的简写属性，默认值为<code>0 1 auto</code>。后两个属性可选。</p>
+<blockquote>
+<p>该属性有两个快捷值：auto (1 1 auto) 和 none (0 0 auto)。</p>
+<p>建议优先使用这个属性，而不是单独写三个分离的属性，因为浏览器会推算相关值。</p>
 </blockquote>
-<ul>
-<li>clip-path</li>
-<li>shape-outside</li>
-</ul>
-<h4 id="1-clip-path"><a href="#1-clip-path" class="headerlink" title="1. clip-path"></a>1. clip-path</h4><p>CSS 新属性 <code>clip-path</code>，意味裁剪路径的意思，让我们可以很便捷的生成各种几何图形。</p>
-<p>clip-path 通过定义特殊的路径，实现我们想要的图形。而这个路径，正是 SVG 中的 path 。</p>
-<p>看看它的 API：</p>
-<p><img data-src="ref1.png"></p>
-<p>看上去很多，其实很好理解，如果接触过 SVG 的 path，其实就是照搬 SVG 的 path 的一些定义。换言之，如果没有接触过 SVG，看完本文后再去学习 SVG 路径 ，也会十分容易上手。</p>
-<p>根据不同的语法，我们可以生成不同的图形。</p>
-<p>例如 <code>clip-path: circle(50px at 50px 50px)</code> 表示在元素的 （50px, 50px）处，裁剪生成一个半径为 50px 的圆。</p>
-<p>而整个 <code>clip-path</code> 属性，最为重要的当属 <code>polygon</code>，可以利用 <code>polygon</code> 生成任意多边形。clip-path 示例</p>
-<p>下面分别列举使用 clip-path 生成一个圆形和一个十边形。</p>
-<p><img data-src="shape12.png"></p>
-<p> <code>clip-path: polygon(50% 0%, 80% 10%, 100% 35%, 100% 70%, 80% 90%, 50% 100%, 20% 90%, 0% 70%, 0% 35%, 20% 10%)</code> 中，依次列出了 10 个坐标点。我们的图形就是依次连接这 10 个坐标点形成一个裁切图形。</p>
-<p>当然，这里采用的是百分比，也可以使用具体的数值。</p>
-<h4 id="2-clip-path-动画"><a href="#2-clip-path-动画" class="headerlink" title="2. clip-path 动画"></a>2. clip-path 动画</h4><p>clip-path 另外一个强大之处在于可以进行 CSS transtion 与 CSS animation，也就是过渡和动画。</p>
-<p>效果见<a href="https://codepen.io/Chokcoco/pen/LLNWyZ?editors=1100">这儿</a></p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">.polygon-animate</span> &#123;</span><br><span class="line">    <span class="attr">position:</span> <span class="string">absolute;</span></span><br><span class="line">    <span class="attr">width:</span> <span class="string">200px;</span></span><br><span class="line">    <span class="attr">height:</span> <span class="string">200px;</span></span><br><span class="line">    <span class="attr">top:</span> <span class="number">50</span><span class="string">%;</span></span><br><span class="line">    <span class="attr">left:</span> <span class="number">50</span><span class="string">%;</span></span><br><span class="line">    <span class="attr">transform:</span> <span class="string">translate(-50%</span>, <span class="number">-50</span><span class="string">%);</span></span><br><span class="line">    <span class="attr">background-color:</span> <span class="string">crimson;</span></span><br><span class="line">    <span class="attr">transition:</span> <span class="string">.3s;</span></span><br><span class="line">    <span class="attr">clip-path:</span> <span class="string">polygon(</span></span><br><span class="line">        <span class="number">50</span><span class="string">%</span> <span class="number">0</span><span class="string">%</span>,</span><br><span class="line">        <span class="number">0</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">        <span class="number">100</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">        <span class="number">100</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">        <span class="number">100</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">        <span class="number">100</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">        <span class="number">100</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">        <span class="number">100</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">        <span class="number">100</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span></span><br><span class="line">    <span class="string">);</span></span><br><span class="line">    <span class="attr">animation:</span> <span class="string">polygon-ani</span> <span class="string">5s</span> <span class="string">linear</span> <span class="string">infinite;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="string">@keyframes</span> <span class="string">polygon-ani</span> &#123;</span><br><span class="line">    <span class="number">10</span><span class="string">%</span> &#123;</span><br><span class="line">        <span class="attr">background-color:</span> <span class="string">darkorange;</span></span><br><span class="line">        <span class="attr">clip-path:</span> <span class="string">polygon(</span></span><br><span class="line">            <span class="number">50</span><span class="string">%</span> <span class="number">0</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">100</span><span class="string">%</span> <span class="number">50</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">50</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">50</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">50</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">50</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">50</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">50</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">50</span><span class="string">%</span></span><br><span class="line">        <span class="string">);</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="number">14</span><span class="string">%</span> &#123;</span><br><span class="line">        <span class="attr">clip-path:</span> <span class="string">polygon(</span></span><br><span class="line">            <span class="number">50</span><span class="string">%</span> <span class="number">0</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">100</span><span class="string">%</span> <span class="number">50</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">50</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">50</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">50</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">50</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">50</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">50</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">50</span><span class="string">%</span></span><br><span class="line">        <span class="string">);</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="number">24</span><span class="string">%</span> &#123;</span><br><span class="line">        <span class="attr">background-color:</span> <span class="string">lemonchiffon;</span></span><br><span class="line">        <span class="attr">clip-path:</span> <span class="string">polygon(</span></span><br><span class="line">            <span class="number">100</span><span class="string">%</span> <span class="number">38</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">82</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">82</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">18</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">38</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">38</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">38</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">38</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">50</span><span class="string">%</span> <span class="number">0</span><span class="string">%</span></span><br><span class="line">        <span class="string">);</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="number">28</span><span class="string">%</span> &#123;</span><br><span class="line">        <span class="attr">clip-path:</span> <span class="string">polygon(</span></span><br><span class="line">            <span class="number">100</span><span class="string">%</span> <span class="number">38</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">82</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">82</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">18</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">38</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">38</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">38</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">38</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">50</span><span class="string">%</span> <span class="number">0</span><span class="string">%</span></span><br><span class="line">        <span class="string">);</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="number">38</span><span class="string">%</span> &#123;</span><br><span class="line">        <span class="attr">background-color:</span> <span class="string">darkturquoise;</span></span><br><span class="line">        <span class="attr">clip-path:</span> <span class="string">polygon(</span></span><br><span class="line">            <span class="number">50</span><span class="string">%</span> <span class="number">0</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">100</span><span class="string">%</span> <span class="number">25</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">100</span><span class="string">%</span> <span class="number">75</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">100</span><span class="string">%</span> <span class="number">75</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">50</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">75</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">75</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">25</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">25</span><span class="string">%</span></span><br><span class="line">        <span class="string">);</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="number">42</span><span class="string">%</span> &#123;</span><br><span class="line">        <span class="attr">clip-path:</span> <span class="string">polygon(</span></span><br><span class="line">            <span class="number">50</span><span class="string">%</span> <span class="number">0</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">100</span><span class="string">%</span> <span class="number">25</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">100</span><span class="string">%</span> <span class="number">75</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">100</span><span class="string">%</span> <span class="number">75</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">50</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">75</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">75</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">25</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">25</span><span class="string">%</span></span><br><span class="line">        <span class="string">);</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="number">52</span><span class="string">%</span> &#123;</span><br><span class="line">        <span class="attr">background-color:</span> <span class="string">darkcyan;</span></span><br><span class="line">        <span class="attr">clip-path:</span> <span class="string">polygon(</span></span><br><span class="line">            <span class="number">50</span><span class="string">%</span> <span class="number">0</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">90</span><span class="string">%</span> <span class="number">20</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">100</span><span class="string">%</span> <span class="number">60</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">75</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">25</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">25</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">60</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">10</span><span class="string">%</span> <span class="number">20</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">50</span><span class="string">%</span> <span class="number">0</span><span class="string">%</span></span><br><span class="line">        <span class="string">);</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="number">56</span><span class="string">%</span> &#123;</span><br><span class="line">        <span class="attr">clip-path:</span> <span class="string">polygon(</span></span><br><span class="line">            <span class="number">50</span><span class="string">%</span> <span class="number">0</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">90</span><span class="string">%</span> <span class="number">20</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">100</span><span class="string">%</span> <span class="number">60</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">75</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">25</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">25</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">60</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">10</span><span class="string">%</span> <span class="number">20</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">50</span><span class="string">%</span> <span class="number">0</span><span class="string">%</span></span><br><span class="line">        <span class="string">);</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="number">66</span><span class="string">%</span> &#123;</span><br><span class="line">        <span class="attr">background-color:</span> <span class="string">deepskyblue;</span></span><br><span class="line">        <span class="attr">clip-path:</span> <span class="string">polygon(</span></span><br><span class="line">            <span class="number">30</span><span class="string">%</span> <span class="number">0</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">70</span><span class="string">%</span> <span class="number">0</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">70</span><span class="string">%</span> <span class="number">0</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">100</span><span class="string">%</span> <span class="number">30</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">100</span><span class="string">%</span> <span class="number">70</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">70</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">30</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">70</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">30</span><span class="string">%</span></span><br><span class="line">        <span class="string">);</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="number">70</span><span class="string">%</span> &#123;</span><br><span class="line">        <span class="attr">clip-path:</span> <span class="string">polygon(</span></span><br><span class="line">            <span class="number">30</span><span class="string">%</span> <span class="number">0</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">70</span><span class="string">%</span> <span class="number">0</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">70</span><span class="string">%</span> <span class="number">0</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">100</span><span class="string">%</span> <span class="number">30</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">100</span><span class="string">%</span> <span class="number">70</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">70</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">30</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">70</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">30</span><span class="string">%</span></span><br><span class="line">        <span class="string">);</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="number">80</span><span class="string">%</span> &#123;</span><br><span class="line">        <span class="attr">background-color:</span> <span class="string">indigo;</span></span><br><span class="line">        <span class="attr">clip-path:</span> <span class="string">polygon(</span></span><br><span class="line">            <span class="number">83</span><span class="string">%</span> <span class="number">12</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">100</span><span class="string">%</span> <span class="number">43</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">94</span><span class="string">%</span> <span class="number">78</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">68</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">32</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">6</span><span class="string">%</span> <span class="number">78</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">43</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">17</span><span class="string">%</span> <span class="number">12</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">50</span><span class="string">%</span> <span class="number">0</span><span class="string">%</span></span><br><span class="line">        <span class="string">);</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="number">84</span><span class="string">%</span> &#123;</span><br><span class="line">        <span class="attr">clip-path:</span> <span class="string">polygon(</span></span><br><span class="line">            <span class="number">83</span><span class="string">%</span> <span class="number">12</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">100</span><span class="string">%</span> <span class="number">43</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">94</span><span class="string">%</span> <span class="number">78</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">68</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">32</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">6</span><span class="string">%</span> <span class="number">78</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">43</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">17</span><span class="string">%</span> <span class="number">12</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">50</span><span class="string">%</span> <span class="number">0</span><span class="string">%</span></span><br><span class="line">        <span class="string">);</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="number">94</span><span class="string">%</span> &#123;</span><br><span class="line">        <span class="attr">background-color:</span> <span class="string">crimson;</span></span><br><span class="line">        <span class="attr">clip-path:</span> <span class="string">polygon(</span></span><br><span class="line">            <span class="number">50</span><span class="string">%</span> <span class="number">0</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">100</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">100</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">100</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">100</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">100</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">100</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">100</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span></span><br><span class="line">        <span class="string">);</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>特殊值</strong>： <code>flex: 1;</code>  等价于  <code>flex: 1 1</code>   但不等于  <code>flex: auto;</code></p>
+<p>其含义为为<strong>均分</strong>，详细解释见<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex">MDN文档</a>和<a href="https://zhuanlan.zhihu.com/p/136223806">知乎解答文档</a></p>
+<p><img data-src="flex9.png"></p>
+<h4 id="2-6-align-self属性"><a href="#2-6-align-self属性" class="headerlink" title="2.6     align-self属性"></a>2.6     align-self属性</h4><p><code>align-self</code> 属性允许单个项目有与其他项目不一样的对齐方式，可覆盖<code>align-items</code>属性。</p>
+<blockquote>
+<p>默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.flex-container</span> <span class="selector-class">.flex-item</span> &#123;</span><br><span class="line">    <span class="attribute">align-self</span>: auto | stretch | center | flex-start | flex-end | baseline | initial | inherit;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><strong>图形变换动画</strong></p>
-<p>除此之外，我们还可以尝试，将一个完整的图形，分割成多个小图形，这也是 <code>clip-path</code> 的魅力所在，纯 CSS 的图形变换：</p>
-<p><a href="https://codepen.io/Chokcoco/pen/yXOjZm">多边形切换传送门</a></p>
-<p><a href="https://codepen.io/Chokcoco/pen/XgJRzO">N边形切换传送门</a></p>
-<p><a href="https://codepen.io/Chokcoco/pen/NgqGOo">VueN边形切换</a></p>
-<h4 id="3-shape-outside"><a href="#3-shape-outside" class="headerlink" title="3. shape-outside"></a>3. shape-outside</h4><p>最后再来看看 <code>shape-outside</code>，另外一个有趣的有能力生成几何图形的属性。</p>
-<p><code>shape-outside</code> 是啥？它也有制造各种几何图形的能力，但是它只能和浮动 <code>float</code> 一起使用。</p>
-<p>虽然使用上有所限制，但是它赋予了我们一种更为自由的图文混排的能力。</p>
-<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/shape-outside">MDN文档传送门</a></p>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>auto</td>
+<td>默认值。元素继承了它的父容器的 align-items 属性。如果没有父容器则为 “stretch”。</td>
+</tr>
+<tr>
+<td>stretch</td>
+<td>元素被拉伸以适应容器。</td>
+</tr>
+<tr>
+<td>center</td>
+<td>元素位于容器的中心。</td>
+</tr>
+<tr>
+<td>flex-start</td>
+<td>元素位于容器的开头。</td>
+</tr>
+<tr>
+<td>flex-end</td>
+<td>元素位于容器的结尾。</td>
+</tr>
+<tr>
+<td>baseline</td>
+<td>元素位于容器的基线上。</td>
+</tr>
+<tr>
+<td>initial</td>
+<td>设置该属性为它的默认值。</td>
+</tr>
+<tr>
+<td>inherit</td>
+<td>从父元素继承该属性。</td>
+</tr>
+</tbody></table>
+<p><img data-src="flex8.png"></p>
+<h2 id="二、Grid-网格布局"><a href="#二、Grid-网格布局" class="headerlink" title="二、Grid 网格布局"></a>二、<code>Grid</code> 网格布局</h2><blockquote>
+<p>转载<a href="http://www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html">阮一峰CSS Grid 网格布局教程</a>，写的很不错，牛啊！</p>
+<p>这篇文章也可做为参考  <a href="https://www.cnblogs.com/jcxfighting/p/10711210.html">传送门</a></p>
+</blockquote>
+<p>网格布局（Grid）是最强大的 CSS 布局方案。</p>
+<p>它将网页划分成一个个网格，可以任意组合不同的网格，做出各种各样的布局。以前，只能通过复杂的 CSS 框架达到的效果，现在浏览器内置了。</p>
+<p><img data-src="grid0.png"></p>
+<p>上图这样的布局，就是 Grid 布局的拿手好戏。</p>
+<p>Grid 布局与 <a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html">Flex 布局</a>有一定的相似性，都可以指定容器内部多个项目的位置。但是，它们也存在重大区别。</p>
+<p>Flex 布局是轴线布局，只能指定”项目”针对轴线的位置，可以看作是<strong>一维布局</strong>。Grid 布局则是将容器划分成”行”和”列”，产生单元格，然后指定”项目所在”的单元格，可以看作是<strong>二维布局</strong>。Grid 布局远比 Flex 布局强大。</p>
+<h2 id="三、圣杯布局"><a href="#三、圣杯布局" class="headerlink" title="三、圣杯布局"></a>三、圣杯布局</h2><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
         <category>Front End</category>
       </categories>
@@ -1373,6 +1351,312 @@
 <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.color-hint</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(blue, <span class="number">10%</span>, pink);</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.simple-linear</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(blue, pink);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>更多内容如<strong>在图片上的叠加鉴别</strong>、<strong>增加不透明度</strong>  以及其他的<strong>渐变函数</strong>  见<a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Using_CSS_gradients">MDN</a></p>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>Front End</category>
+      </categories>
+      <tags>
+        <tag>CSS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CSS 动画及图形解决方案</title>
+    <url>/2020/09/09/CSS-animation-and-graphics-solutions/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>CSS动画库 （转载自知乎博主<a href="https://zhuanlan.zhihu.com/p/101563245">十个推荐的CSS动画库</a>）</p>
+<p>一些CSS牛逼样式图形</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、十个值得推荐的CSS动画库"><a href="#一、十个值得推荐的CSS动画库" class="headerlink" title="一、十个值得推荐的CSS动画库"></a>一、十个值得推荐的CSS动画库</h2><h3 id="1-Animista-生成器"><a href="#1-Animista-生成器" class="headerlink" title="1. Animista(生成器)"></a>1. <a href="https://animista.net/play/basic/slide-bck">Animista</a>(生成器)</h3><blockquote>
+<p>emmm,简直不要太爽！可视化自动生成！</p>
+</blockquote>
+<h3 id="2-Animation-css（调用库）"><a href="#2-Animation-css（调用库）" class="headerlink" title="2. Animation.css（调用库）"></a>2. <a href="https://animate.style/">Animation.css</a>（调用库）</h3><p>当然，我也必须提及<code>Animate CSS</code>，也许这是一个众所周知的动画库。</p>
+<p><strong>1.使用</strong></p>
+<p>Install with npm:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> npm install animate.css --save</span></span><br></pre></td></tr></table></figure>
+
+<p>or add it directly to your webpage using a CDN:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">link</span></span></span><br><span class="line"><span class="tag">    <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">href</span>=<span class="string">&quot;https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css&quot;</span></span></span><br><span class="line"><span class="tag">  /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>然后在你需要添加动画的元素上添加<code>animated</code>类名，然后就是添加动画的名称。<strong>比如</strong></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;animated slideInLeft&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>如果你希望动画是持久的，你可以添加<code>infinite</code>类，这样动画将不停地重复自身。</p>
+<ul>
+<li><strong>通过 JavaScript</strong></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">&#x27;.my-element&#x27;</span>).classList.add(<span class="string">&#x27;animated&#x27;</span>, <span class="string">&#x27;slideInLeft&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>通过 Jquery</strong></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&quot;.my-element&quot;</span>).addClass(<span class="string">&quot;animated slideInLeft&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>2.额外的特性</strong></p>
+<p><code>Animate CSS</code>为你提供了一些基本的类去操作动画的延时和速度。</p>
+<ul>
+<li>延时</li>
+</ul>
+<p>你可以通过使用<code>delay</code>类来延迟你的动画。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;animated slideInLeft delay-&#123;1-5&#125;&quot;</span>&gt;<span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>速度</li>
+</ul>
+<p>你可以通过添加下表中的类来控制动画的速度。</p>
+<table>
+<thead>
+<tr>
+<th>Class name</th>
+<th>Speed time</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>slow</td>
+<td>2s</td>
+</tr>
+<tr>
+<td>slower</td>
+<td>3s</td>
+</tr>
+<tr>
+<td>fast</td>
+<td>800ms</td>
+</tr>
+<tr>
+<td>faster</td>
+<td>500ms</td>
+</tr>
+</tbody></table>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;animated slideInLeft slow|slower|fast|faster&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-Vivify（调用库）"><a href="#3-Vivify（调用库）" class="headerlink" title="3. Vivify（调用库）"></a>3. <a href="http://vivify.mkcreative.cz/">Vivify</a>（调用库）</h3><p>它的使用一样，有自己更多的类，但是也扩展了些。添加<code>vivify</code>类到元素中，而不是<code>animated</code>。比如：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;vivify slideInLeft&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>使用 Javascript</strong></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">&#x27;.my-element&#x27;</span>).classList.add(<span class="string">&#x27;vivify&#x27;</span>, <span class="string">&#x27;slideInLeft&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>使用 Jquery</strong></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&quot;.my-element&quot;</span>).addClass(<span class="string">&quot;vivify slideInLeft&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>就像<code>Animate CSS</code>一样，<code>Vivify</code>也为你提供了一些类来控制动画的持续时间和延迟时间。</p>
+<p>延迟和持续时间的类在下面的间隔中可用：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;delay|duration-&#123;100|150|200|250...1000|1250|1500|1750...10750&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：值的单位是毫秒（ms）。1000ms = 1s</p>
+</blockquote>
+<h3 id="4-Magic-Animations-CSS3（调用库）"><a href="#4-Magic-Animations-CSS3（调用库）" class="headerlink" title="4. Magic Animations CSS3（调用库）"></a>4. <a href="https://www.minimamente.com/project/magic/">Magic Animations CSS3</a>（调用库）</h3><blockquote>
+<p>官网暂无相应（可能我不会用）</p>
+</blockquote>
+<p>这个动画库有些不错并且流畅的动画，我特别喜欢<code>3D</code>动画。</p>
+<p>没什么好说的，自己去尝试下，玩下动画。</p>
+<p>你可以添加<code>magictime &#123;animation_name&#125;</code>到你的元素中，如下：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;magictime fadeIn&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>使用 Javascript</strong></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">&#x27;.my-element&#x27;</span>).classList.add(<span class="string">&#x27;magictime&#x27;</span>, <span class="string">&#x27;fadeIn&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>使用 Jquery</strong></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&quot;.my-element&quot;</span>).addClass(<span class="string">&quot;magictime fadeIn&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-cssanimation-io（调用库）"><a href="#5-cssanimation-io（调用库）" class="headerlink" title="5. cssanimation.io（调用库）"></a>5. <a href="http://cssanimation.io/index.html">cssanimation.io</a>（调用库）</h3><blockquote>
+<p>此时，我打不开它。。。</p>
+</blockquote>
+<p><code>cssanimation.io</code>是一大堆不同动画的集合，总共大约有200个，真是太神奇了。</p>
+<p>如果在这里都找不到你想要的动画，那你在哪都找不到了。</p>
+<p>它的使用方式类似<code>animista</code>。比如，你可以直接选择动画，然后直接从网站中获取，或者下载整个库。</p>
+<p><strong>使用</strong></p>
+<p>为你的元素添加<code>cssanimation &#123;animation_name&#125;</code>。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;cssanimation fadeIn&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>使用 Javascript</strong></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">&#x27;.my-element&#x27;</span>).classList.add(<span class="string">&#x27;cssanimation&#x27;</span>,<span class="string">&#x27;fadeIn&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>使用 Jquery</strong></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&quot;.my-element&quot;</span>).addClass(<span class="string">&quot;cssanimation fadeIn&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>你也可以添加<code>infinite</code>类，以便动画不断重复。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;cssanimation fadeIn infinite&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>此外，<code>cssanimations.io</code>为你提供了动画字母的功能。为了实现这个，你需要在<code>head</code>标签中引入<code>letteranimation.js</code>文件，然后在你的文本元素中添加<code>le&#123;animation_name&#125;</code>。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;cssanimation leSnake&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>想要字母动画有序进行，添加<code>sequence</code>类；想要字母动画无序进行，添加<code>random</code>类。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;cssanimation leSnake &#123;sequence|random&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="6-Angrytools（生成器）"><a href="#6-Angrytools（生成器）" class="headerlink" title="6. Angrytools（生成器）"></a>6. <a href="https://angrytools.com/css/animation/">Angrytools</a>（生成器）</h3><p>如果使用生成器（<code>Angrytools</code>不错），<code>Angrytools</code>实际上是一个集合，其中还包括<code>CSS</code>动画生成器。</p>
+<p>这个网站也为你提供了定制动画的功能，比如持续时间和延迟时间。</p>
+<p>最重要的是，你可以在时间线上添加<code>keyframes（关键帧）</code>，并且你可以直接在那里写代码。而且，你也可以编辑现有的一个效果。</p>
+<h3 id="7-Hover-css（调用库）"><a href="#7-Hover-css（调用库）" class="headerlink" title="7. Hover.css（调用库）"></a>7. <a href="http://ianlunn.github.io/Hover/">Hover.css</a>（调用库）</h3><p><code>Hover.css</code>是众多<code>CSS</code>动画的集合，与上面的动画不同，<strong>每次将元素悬停时</strong>都会触发。</p>
+<blockquote>
+<p>一组CSS3驱动的悬停效果，可以应用到链接，按钮，logos，svg，图片特性和其他。</p>
+</blockquote>
+<p>它有一些惊人的动效。而且它还有用于动画图标的类，比如超棒的字体。</p>
+<p><strong>使用</strong></p>
+<p>使用很简单：将类名添加到你的元素中，比如：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">&lt;button class=&quot;hvr-fade&quot;&gt;Hover me!&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-WickedCSS-（调用库）"><a href="#8-WickedCSS-（调用库）" class="headerlink" title="8. WickedCSS （调用库）"></a>8. <a href="http://kristofferandreasen.github.io/wickedCSS/#">WickedCSS</a> （调用库）</h3><p><code>WickedCSS</code>是一个小型的<code>CSS</code>动画库，没有太多的动画体，但是它至少有很棒的动画。它们中大多数是我们熟悉的基本动画，但是它们真是很简洁。</p>
+<p>使用方法很简单，只要为你的元素添加动画名就行了。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;bounceIn&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>使用 Javascript</strong></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">&#x27;.my-element&#x27;</span>).classList.add(<span class="string">&#x27;bounceIn&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>使用 Jquery</strong></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&quot;.my-element&quot;</span>).addClass(<span class="string">&quot;bounceIn&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="9-Three-Dots（调用库）"><a href="#9-Three-Dots（调用库）" class="headerlink" title="9.  Three Dots（调用库）"></a>9.  <a href="https://nzbin.github.io/three-dots/">Three Dots</a>（调用库）</h3><blockquote>
+<p><code>Three Dots</code>是<code>CSS</code>加载动画的集合，仅由三个简单元素制作而成的三个点创建。</p>
+</blockquote>
+<p><strong>使用</strong></p>
+<p>创建一个<code>div</code>元素，然后添加动画名。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;dot-elastic&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="10-CSSHake（调用库）"><a href="#10-CSSHake（调用库）" class="headerlink" title="10. CSSHake（调用库）"></a>10. <a href="https://elrumordelaluz.github.io/csshake/">CSSHake</a>（调用库）</h3><p>最后，来点摇晃的抖动。</p>
+<p>如其名，<code>CSShake</code>包含了不同类型的抖动动画的<code>CSS</code>动画库。</p>
+<ul>
+<li><strong>使用</strong></li>
+</ul>
+<p>添加<code>shake &#123;animation_name&#125;</code>到你的元素中。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;shake shake-hard&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>使用 Javascript</strong></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">&#x27;.my-element&#x27;</span>).classList.add(<span class="string">&#x27;shake&#x27;</span>,<span class="string">&#x27;shake-hard&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>使用 Jquery</strong></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&quot;.my-element&quot;</span>).addClass(<span class="string">&quot;shake shake-hard&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、神奇的CSS多边形绘制"><a href="#二、神奇的CSS多边形绘制" class="headerlink" title="二、神奇的CSS多边形绘制"></a>二、神奇的CSS多边形绘制</h2><blockquote>
+<p>转载自 <a href="https://www.imooc.com/article/27838">手记</a></p>
+</blockquote>
+<p>CSS3之前，我们能做的只有矩形，四四方方，条条框框</p>
+<p>CSS3出来后，我们有了更广阔的施展空间，通过</p>
+<ul>
+<li><code>border-radius</code></li>
+<li><code>border</code></li>
+<li><code>transform</code></li>
+<li>伪元素配合</li>
+<li>gradient 渐变</li>
+</ul>
+<p>我们能够作出非常多的几何图形。</p>
+<h3 id="传统方式绘制"><a href="#传统方式绘制" class="headerlink" title="传统方式绘制"></a>传统方式绘制</h3><p>除去最常见的矩形，圆形（<code>border-radius</code>），下面稍微列举一些其他几何图形：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 三角形 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;traingle&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 切角 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;notching&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 梯形 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;trapezoid&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 五边形 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;pentagon&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 六边形 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;hexagon&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 八边形 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;octagon&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- star --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;star&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 六角星 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;sixstar&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 八角星 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;eightstar&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 十二角星 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;twelvestar&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 椭圆 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;ellipse&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="1-三角形"><a href="#1-三角形" class="headerlink" title="1. 三角形"></a>1. 三角形</h4><p>通常会使用透明的border模拟出一个三角形：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.traingle</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">border-left</span>: <span class="number">50px</span> solid transparent;</span><br><span class="line">    <span class="attribute">border-right</span>: <span class="number">50px</span> solid transparent;</span><br><span class="line">    <span class="attribute">border-bottom</span>: <span class="number">100px</span> solid yellowgreen;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="shape1.png"></p>
+<h4 id="2-切角"><a href="#2-切角" class="headerlink" title="2. 切角"></a>2. 切角</h4><p>《CSS Secret》里面的方法，采用多重线性渐变实现切角。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.notching</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">40px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">40px</span>;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">40px</span>;</span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(<span class="number">135deg</span>, transparent <span class="number">15px</span>, yellowgreen <span class="number">0</span>) top left,</span><br><span class="line">        <span class="built_in">linear-gradient</span>(-<span class="number">135deg</span>, transparent <span class="number">15px</span>, yellowgreen <span class="number">0</span>) top right,</span><br><span class="line">        <span class="built_in">linear-gradient</span>(-<span class="number">45deg</span>, transparent <span class="number">15px</span>, yellowgreen <span class="number">0</span>) bottom right,</span><br><span class="line">        <span class="built_in">linear-gradient</span>(<span class="number">45deg</span>, transparent <span class="number">15px</span>, yellowgreen <span class="number">0</span>) bottom left;</span><br><span class="line">    <span class="attribute">background-size</span>: <span class="number">50%</span> <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">background-repeat</span>: no-repeat;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="shape2.png"></p>
+<h4 id="3-梯形"><a href="#3-梯形" class="headerlink" title="3. 梯形"></a>3. 梯形</h4><p>利用伪元素加旋转透视实现梯形：</p>
+<p><img data-src="shape3.png"></p>
+<h4 id="4-五边形"><a href="#4-五边形" class="headerlink" title="4. 五边形"></a>4. 五边形</h4><p>梯形加上三角形，很容易就组合成一个五边形，这里需要借助一个伪元素实现：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.pentagon</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">60px</span>;</span><br><span class="line">    <span class="attribute">margin-bottom</span>: <span class="number">100px</span><span class="meta">!important</span>;</span><br><span class="line">    <span class="attribute">border-bottom</span>: <span class="number">60px</span> solid yellowgreen;</span><br><span class="line">    <span class="attribute">border-left</span>: <span class="number">40px</span> solid transparent;</span><br><span class="line">    <span class="attribute">border-right</span>: <span class="number">40px</span> solid transparent; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.pentagon</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>:<span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">border-top</span>: <span class="number">60px</span> solid yellowgreen;</span><br><span class="line">    <span class="attribute">border-left</span>: <span class="number">70px</span> solid transparent;</span><br><span class="line">    <span class="attribute">border-right</span>: <span class="number">70px</span> solid transparent;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">60px</span>;</span><br><span class="line">    <span class="attribute">left</span>: -<span class="number">40px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="shape4.png"></p>
+<h4 id="5-六边形"><a href="#5-六边形" class="headerlink" title="5. 六边形"></a>5. 六边形</h4><p>看看上面的梯形，如果两个反方向且底边同样大小的梯形，叠加在一起，是不是就能得到一个六边形</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.hexagon</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">60px</span>;</span><br><span class="line">    <span class="attribute">margin-bottom</span>: <span class="number">120px</span><span class="meta">!important</span>;</span><br><span class="line">    <span class="attribute">border-bottom</span>: <span class="number">60px</span> solid yellowgreen;</span><br><span class="line">    <span class="attribute">border-left</span>: <span class="number">40px</span> solid transparent;</span><br><span class="line">    <span class="attribute">border-right</span>: <span class="number">40px</span> solid transparent;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.hexagon</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">60px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">0px</span>;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">60px</span>;</span><br><span class="line">    <span class="attribute">left</span>: -<span class="number">40px</span>;</span><br><span class="line">    <span class="attribute">border-top</span>: <span class="number">60px</span> solid yellowgreen;</span><br><span class="line">    <span class="attribute">border-left</span>: <span class="number">40px</span> solid transparent;</span><br><span class="line">    <span class="attribute">border-right</span>: <span class="number">40px</span> solid transparent;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p><img data-src="shape5.png"></p>
+<h4 id="6-八边形"><a href="#6-八边形" class="headerlink" title="6. 八边形"></a>6. 八边形</h4><p>六边形都解决了，八边形也不在话下，一个矩形加上两个梯形，可以合成一个八边形。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.octagon</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">40px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">background</span>: yellowgreen;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.octagon</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">60px</span>;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">40px</span>;</span><br><span class="line">    <span class="attribute">border-left</span>: <span class="number">30px</span> solid yellowgreen;</span><br><span class="line">    <span class="attribute">border-top</span>: <span class="number">20px</span> solid transparent;</span><br><span class="line">    <span class="attribute">border-bottom</span>: <span class="number">20px</span> solid transparent;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.octagon</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">60px</span>;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">left</span>: -<span class="number">30px</span>;</span><br><span class="line">    <span class="attribute">border-right</span>: <span class="number">30px</span> solid yellowgreen;</span><br><span class="line">    <span class="attribute">border-top</span>: <span class="number">20px</span> solid transparent;</span><br><span class="line">    <span class="attribute">border-bottom</span>: <span class="number">20px</span> solid transparent;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="shape6.png"></p>
+<h4 id="7-五角星"><a href="#7-五角星" class="headerlink" title="7. 五角星"></a>7. 五角星</h4><p>好的，探索完多边形，我们继续探索X角星——-这里使用 3 个三角形叠加旋转在一起实现。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.star</span> &#123;</span><br><span class="line">   <span class="attribute">margin</span>: <span class="number">50px</span> <span class="number">0</span>;</span><br><span class="line">   <span class="attribute">position</span>: relative;</span><br><span class="line">   <span class="attribute">width</span>: <span class="number">0</span>;</span><br><span class="line">   <span class="attribute">border-right</span>: <span class="number">100px</span> solid transparent;</span><br><span class="line">   <span class="attribute">border-bottom</span>: <span class="number">70px</span>  solid yellowgreen;</span><br><span class="line">   <span class="attribute">border-left</span>: <span class="number">100px</span> solid transparent;</span><br><span class="line">   <span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">35deg</span>) <span class="built_in">scale</span>(.<span class="number">6</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.star</span><span class="selector-pseudo">:before</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">border-bottom</span>: <span class="number">80px</span> solid yellowgreen;</span><br><span class="line">    <span class="attribute">border-left</span>: <span class="number">30px</span> solid transparent;</span><br><span class="line">    <span class="attribute">border-right</span>: <span class="number">30px</span> solid transparent;</span><br><span class="line">    <span class="attribute">top</span>: -<span class="number">45px</span>;</span><br><span class="line">    <span class="attribute">left</span>: -<span class="number">65px</span>;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">rotate</span>(-<span class="number">35deg</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.star</span><span class="selector-pseudo">:after</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">color</span>: yellowgreen;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">3px</span>;</span><br><span class="line">    <span class="attribute">left</span>: -<span class="number">105px</span>;</span><br><span class="line">    <span class="attribute">border-right</span>: <span class="number">100px</span> solid transparent;</span><br><span class="line">    <span class="attribute">border-bottom</span>: <span class="number">70px</span> solid yellowgreen;</span><br><span class="line">    <span class="attribute">border-left</span>: <span class="number">100px</span> solid transparent;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">rotate</span>(-<span class="number">70deg</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="shape7.png"></p>
+<h4 id="8-六角星"><a href="#8-六角星" class="headerlink" title="8. 六角星"></a>8. 六角星</h4><p>六角星呢？想象一下，一个向上的三角形 ▲，叠加上一个向下的三角形 ▼，就可以得到一个六边形：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.sixstar</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">border-left</span>: <span class="number">50px</span> solid transparent;</span><br><span class="line">  <span class="attribute">border-right</span>: <span class="number">50px</span> solid transparent;</span><br><span class="line">  <span class="attribute">border-bottom</span>: <span class="number">100px</span> solid yellowgreen;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.sixstar</span><span class="selector-pseudo">:after</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">border-left</span>: <span class="number">50px</span> solid transparen;</span><br><span class="line">  <span class="attribute">border-right</span>: <span class="number">50px</span> solid transparent;</span><br><span class="line">  <span class="attribute">border-top</span>: <span class="number">100px</span> solid yellowgreen;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">30px</span>;</span><br><span class="line">  <span class="attribute">left</span>: -<span class="number">50px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p><img data-src="shape8.png"></p>
+<h4 id="9-八角星"><a href="#9-八角星" class="headerlink" title="9. 八角星"></a>9. 八角星</h4><p>八角星呢？八个角那么多呢。其实使用两个矩形进行旋转拼接就可以了。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.eightstar</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">margin-bottom</span>: <span class="number">100px</span><span class="meta">!important</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: yellowgreen;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">30deg</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.eightstar</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">45deg</span>);</span><br><span class="line">    <span class="attribute">background-color</span>: yellowgreen;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="shape9.png"></p>
+<h4 id="10-十二角星"><a href="#10-十二角星" class="headerlink" title="10. 十二角星"></a>10. 十二角星</h4><p>好。最后多角星再来一个十二级角星。在八角星的基础上，再增加一个矩形，就能得到十二角啦。也就是要过第一个伪元素。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.twelvestar</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">margin-bottom</span>: <span class="number">100px</span><span class="meta">!important</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: yellowgreen;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">30deg</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.twelvestar</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">30deg</span>);</span><br><span class="line">    <span class="attribute">background-color</span>: yellowgreen;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.twelvestar</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">60deg</span>);</span><br><span class="line">    <span class="attribute">background-color</span>: yellowgreen;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="shape10.png"></p>
+<h4 id="11-椭圆"><a href="#11-椭圆" class="headerlink" title="11. 椭圆"></a>11. 椭圆</h4><p>最后，再来使用传统的方法画一个椭圆，过去 CSS3 画椭圆，基本上只能借助 border 实现。</p>
+<p>这里使用 border 画一个蛋的形状：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.ellipse</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">120px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">160px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: yellowgreen;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">50%</span>` <span class="number">50%</span> <span class="number">50%</span> <span class="number">50%</span> / <span class="number">60%</span> <span class="number">60%</span> <span class="number">40%</span> <span class="number">40%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="shape11.png"></p>
+<h4 id="12-爱心"><a href="#12-爱心" class="headerlink" title="12. 爱心"></a>12. 爱心</h4><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#heart</span> &#123; </span><br><span class="line"><span class="attribute">position</span>: relative; </span><br><span class="line"><span class="attribute">width</span>: <span class="number">100px</span>; </span><br><span class="line"><span class="attribute">height</span>: <span class="number">90px</span>; </span><br><span class="line">&#125; </span><br><span class="line"><span class="selector-id">#heart</span><span class="selector-pseudo">:before</span>, </span><br><span class="line"><span class="selector-id">#heart</span><span class="selector-pseudo">:after</span> &#123; </span><br><span class="line"><span class="attribute">position</span>: absolute; </span><br><span class="line"><span class="attribute">content</span>: <span class="string">&quot;&quot;</span>; </span><br><span class="line"><span class="attribute">left</span>: <span class="number">50px</span>; </span><br><span class="line"><span class="attribute">top</span>: <span class="number">0</span>; </span><br><span class="line"><span class="attribute">width</span>: <span class="number">50px</span>; </span><br><span class="line"><span class="attribute">height</span>: <span class="number">80px</span>; </span><br><span class="line"><span class="attribute">background</span>: red; </span><br><span class="line"><span class="attribute">-moz-border-radius</span>: <span class="number">50px</span> <span class="number">50px</span> <span class="number">0</span> <span class="number">0</span>; </span><br><span class="line"><span class="attribute">border-radius</span>: <span class="number">50px</span> <span class="number">50px</span> <span class="number">0</span> <span class="number">0</span>; </span><br><span class="line"><span class="attribute">-webkit-transform</span>: <span class="built_in">rotate</span>(-<span class="number">45deg</span>); </span><br><span class="line"><span class="attribute">-moz-transform</span>: <span class="built_in">rotate</span>(-<span class="number">45deg</span>); </span><br><span class="line"><span class="attribute">-ms-transform</span>: <span class="built_in">rotate</span>(-<span class="number">45deg</span>); </span><br><span class="line"><span class="attribute">-o-transform</span>: <span class="built_in">rotate</span>(-<span class="number">45deg</span>); </span><br><span class="line"><span class="attribute">transform</span>: <span class="built_in">rotate</span>(-<span class="number">45deg</span>); </span><br><span class="line"><span class="attribute">-webkit-transform-origin</span>: <span class="number">0</span> <span class="number">100%</span>; </span><br><span class="line"><span class="attribute">-moz-transform-origin</span>: <span class="number">0</span> <span class="number">100%</span>; </span><br><span class="line"><span class="attribute">-ms-transform-origin</span>: <span class="number">0</span> <span class="number">100%</span>; </span><br><span class="line"><span class="attribute">-o-transform-origin</span>: <span class="number">0</span> <span class="number">100%</span>; </span><br><span class="line"><span class="attribute">transform-origin</span>: <span class="number">0</span> <span class="number">100%</span>; </span><br><span class="line">&#125; </span><br><span class="line"><span class="selector-id">#heart</span><span class="selector-pseudo">:after</span> &#123; </span><br><span class="line"><span class="attribute">left</span>: <span class="number">0</span>; </span><br><span class="line"><span class="attribute">-webkit-transform</span>: <span class="built_in">rotate</span>(<span class="number">45deg</span>); </span><br><span class="line"><span class="attribute">-moz-transform</span>: <span class="built_in">rotate</span>(<span class="number">45deg</span>); </span><br><span class="line"><span class="attribute">-ms-transform</span>: <span class="built_in">rotate</span>(<span class="number">45deg</span>); </span><br><span class="line"><span class="attribute">-o-transform</span>: <span class="built_in">rotate</span>(<span class="number">45deg</span>); </span><br><span class="line"><span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">45deg</span>); </span><br><span class="line"><span class="attribute">-webkit-transform-origin</span>: <span class="number">100%</span> <span class="number">100%</span>; </span><br><span class="line"><span class="attribute">-moz-transform-origin</span>: <span class="number">100%</span> <span class="number">100%</span>; </span><br><span class="line"><span class="attribute">-ms-transform-origin</span>: <span class="number">100%</span> <span class="number">100%</span>; </span><br><span class="line"><span class="attribute">-o-transform-origin</span>: <span class="number">100%</span> <span class="number">100%</span>; </span><br><span class="line"><span class="attribute">transform-origin </span>:<span class="number">100%</span> <span class="number">100%</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="shape13.png"></p>
+<h4 id="13-无穷大"><a href="#13-无穷大" class="headerlink" title="13. 无穷大"></a>13. 无穷大</h4><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#infinity</span> &#123; </span><br><span class="line"><span class="attribute">position</span>: relative; </span><br><span class="line"><span class="attribute">width</span>: <span class="number">212px</span>; </span><br><span class="line"><span class="attribute">height</span>: <span class="number">100px</span>; </span><br><span class="line">&#125; </span><br><span class="line"><span class="selector-id">#infinity</span><span class="selector-pseudo">:before</span>, </span><br><span class="line"><span class="selector-id">#infinity</span><span class="selector-pseudo">:after</span> &#123; </span><br><span class="line"><span class="attribute">content</span>: <span class="string">&quot;&quot;</span>; </span><br><span class="line"><span class="attribute">position</span>: absolute; </span><br><span class="line"><span class="attribute">top</span>: <span class="number">0</span>; </span><br><span class="line"><span class="attribute">left</span>: <span class="number">0</span>; </span><br><span class="line"><span class="attribute">width</span>: <span class="number">60px</span>; </span><br><span class="line"><span class="attribute">height</span>: <span class="number">60px</span>; </span><br><span class="line"><span class="attribute">border</span>: <span class="number">20px</span> solid red; </span><br><span class="line"><span class="attribute">-moz-border-radius</span>: <span class="number">50px</span> <span class="number">50px</span> <span class="number">0</span> <span class="number">50px</span>; </span><br><span class="line"><span class="attribute">border-radius</span>: <span class="number">50px</span> <span class="number">50px</span> <span class="number">0</span> <span class="number">50px</span>; </span><br><span class="line"><span class="attribute">-webkit-transform</span>: <span class="built_in">rotate</span>(-<span class="number">45deg</span>); </span><br><span class="line"><span class="attribute">-moz-transform</span>: <span class="built_in">rotate</span>(-<span class="number">45deg</span>); </span><br><span class="line"><span class="attribute">-ms-transform</span>: <span class="built_in">rotate</span>(-<span class="number">45deg</span>); </span><br><span class="line"><span class="attribute">-o-transform</span>: <span class="built_in">rotate</span>(-<span class="number">45deg</span>); </span><br><span class="line"><span class="attribute">transform</span>: <span class="built_in">rotate</span>(-<span class="number">45deg</span>); </span><br><span class="line">&#125; </span><br><span class="line"><span class="selector-id">#infinity</span><span class="selector-pseudo">:after</span> &#123; </span><br><span class="line"><span class="attribute">left</span>: auto; </span><br><span class="line"><span class="attribute">right</span>: <span class="number">0</span>; </span><br><span class="line"><span class="attribute">-moz-border-radius</span>: <span class="number">50px</span> <span class="number">50px</span> <span class="number">50px</span> <span class="number">0</span>; </span><br><span class="line"><span class="attribute">border-radius</span>: <span class="number">50px</span> <span class="number">50px</span> <span class="number">50px</span> <span class="number">0</span>; </span><br><span class="line"><span class="attribute">-webkit-transform</span>: <span class="built_in">rotate</span>(<span class="number">45deg</span>); </span><br><span class="line"><span class="attribute">-moz-transform</span>: <span class="built_in">rotate</span>(<span class="number">45deg</span>); </span><br><span class="line"><span class="attribute">-ms-transform</span>: <span class="built_in">rotate</span>(<span class="number">45deg</span>); </span><br><span class="line"><span class="attribute">-o-transform</span>: <span class="built_in">rotate</span>(<span class="number">45deg</span>); </span><br><span class="line"><span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">45deg</span>); </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<p><img data-src="shape14.png"></p>
+<h4 id="14-食逗人（Pac-Man）"><a href="#14-食逗人（Pac-Man）" class="headerlink" title="14. 食逗人（Pac-Man）"></a>14. 食逗人（Pac-Man）</h4><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#pacman</span> &#123; </span><br><span class="line"><span class="attribute">width</span>: <span class="number">0px</span>; </span><br><span class="line"><span class="attribute">height</span>: <span class="number">0px</span>; </span><br><span class="line"><span class="attribute">border-right</span>: <span class="number">60px</span> solid transparent; </span><br><span class="line"><span class="attribute">border-top</span>: <span class="number">60px</span> solid red; </span><br><span class="line"><span class="attribute">border-left</span>: <span class="number">60px</span> solid red; </span><br><span class="line"><span class="attribute">border-bottom</span>: <span class="number">60px</span> solid red; </span><br><span class="line"><span class="attribute">border-top-left-radius</span>: <span class="number">60px</span>; </span><br><span class="line"><span class="attribute">border-top-right-radius</span>: <span class="number">60px</span>; </span><br><span class="line"><span class="attribute">border-bottom-left-radius</span>: <span class="number">60px</span>; </span><br><span class="line"><span class="attribute">border-bottom-right-radius</span>: <span class="number">60px</span>; </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<p><img data-src="shape15.png"></p>
+<h4 id="15-提示对话框"><a href="#15-提示对话框" class="headerlink" title="15. 提示对话框"></a>15. 提示对话框</h4><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#talkbubble</span> &#123; </span><br><span class="line"><span class="attribute">width</span>: <span class="number">120px</span>; </span><br><span class="line"><span class="attribute">height</span>: <span class="number">80px</span>; </span><br><span class="line"><span class="attribute">background</span>: red; </span><br><span class="line"><span class="attribute">position</span>: relative; </span><br><span class="line"><span class="attribute">-moz-border-radius</span>: <span class="number">10px</span>; </span><br><span class="line"><span class="attribute">-webkit-border-radius</span>: <span class="number">10px</span>; </span><br><span class="line"><span class="attribute">border-radius</span>: <span class="number">10px</span>; </span><br><span class="line">&#125; </span><br><span class="line"><span class="selector-id">#talkbubble</span><span class="selector-pseudo">:before</span> &#123; </span><br><span class="line"><span class="attribute">content</span>:<span class="string">&quot;&quot;</span>; </span><br><span class="line"><span class="attribute">position</span>: absolute; </span><br><span class="line"><span class="attribute">right</span>: <span class="number">100%</span>; </span><br><span class="line"><span class="attribute">top</span>: <span class="number">26px</span>; </span><br><span class="line"><span class="attribute">width</span>: <span class="number">0</span>; </span><br><span class="line"><span class="attribute">height</span>: <span class="number">0</span>; </span><br><span class="line"><span class="attribute">border-top</span>: <span class="number">13px</span> solid transparent; </span><br><span class="line"><span class="attribute">border-right</span>: <span class="number">26px</span> solid red; </span><br><span class="line"><span class="attribute">border-bottom</span>: <span class="number">13px</span> solid transparent; </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<p><img data-src="shape16.png"></p>
+<h4 id="16-阴阳八卦"><a href="#16-阴阳八卦" class="headerlink" title="16. 阴阳八卦"></a>16. 阴阳八卦</h4><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#yin-yang</span> &#123; </span><br><span class="line"><span class="attribute">width</span>: <span class="number">96px</span>; </span><br><span class="line"><span class="attribute">height</span>: <span class="number">48px</span>; </span><br><span class="line"><span class="attribute">background</span>: <span class="number">#eee</span>; </span><br><span class="line"><span class="attribute">border-color</span>: red; </span><br><span class="line"><span class="attribute">border-style</span>: solid; </span><br><span class="line"><span class="attribute">border-width</span>: <span class="number">2px</span> <span class="number">2px</span> <span class="number">50px</span> <span class="number">2px</span>; </span><br><span class="line"><span class="attribute">border-radius</span>: <span class="number">100%</span>; </span><br><span class="line"><span class="attribute">position</span>: relative; </span><br><span class="line">&#125; </span><br><span class="line"><span class="selector-id">#yin-yang</span><span class="selector-pseudo">:before</span> &#123; </span><br><span class="line"><span class="attribute">content</span>: <span class="string">&quot;&quot;</span>; </span><br><span class="line"><span class="attribute">position</span>: absolute; </span><br><span class="line"><span class="attribute">top</span>: <span class="number">50%</span>; </span><br><span class="line"><span class="attribute">left</span>: <span class="number">0</span>; </span><br><span class="line"><span class="attribute">background</span>: <span class="number">#eee</span>; </span><br><span class="line"><span class="attribute">border</span>: <span class="number">18px</span> solid red; </span><br><span class="line"><span class="attribute">border-radius</span>: <span class="number">100%</span>; </span><br><span class="line"><span class="attribute">width</span>: <span class="number">12px</span>; </span><br><span class="line"><span class="attribute">height</span>: <span class="number">12px</span>; </span><br><span class="line">&#125; </span><br><span class="line"><span class="selector-id">#yin-yang</span><span class="selector-pseudo">:after</span> &#123; </span><br><span class="line"><span class="attribute">content</span>: <span class="string">&quot;&quot;</span>; </span><br><span class="line"><span class="attribute">position</span>: absolute; </span><br><span class="line"><span class="attribute">top</span>: <span class="number">50%</span>; </span><br><span class="line"><span class="attribute">left</span>: <span class="number">50%</span>; </span><br><span class="line"><span class="attribute">background</span>: red; </span><br><span class="line"><span class="attribute">border</span>: <span class="number">18px</span> solid <span class="number">#eee</span>; </span><br><span class="line"><span class="attribute">border-radius</span>:<span class="number">100%</span>; </span><br><span class="line"><span class="attribute">width</span>: <span class="number">12px</span>; </span><br><span class="line"><span class="attribute">height</span>: <span class="number">12px</span>; </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<p><img data-src="shape17.png"></p>
+<h3 id="CSS3新绘制方式"><a href="#CSS3新绘制方式" class="headerlink" title="CSS3新绘制方式"></a>CSS3新绘制方式</h3><blockquote>
+<p>上面所讲述的是使用传统 CSS3 的方式绘制几何图形，前人栽树后人乘凉，之前的大牛们在 CSS 绘制几何图形上已经做了非常深入的研究，更多的 CSS 图形你可以戳这里：The Shapes of CSS 。接下来我们将要了解一些更高级的绘制几何图形的方法。</p>
+</blockquote>
+<ul>
+<li>clip-path</li>
+<li>shape-outside</li>
+</ul>
+<h4 id="1-clip-path"><a href="#1-clip-path" class="headerlink" title="1. clip-path"></a>1. clip-path</h4><p>CSS 新属性 <code>clip-path</code>，意味裁剪路径的意思，让我们可以很便捷的生成各种几何图形。</p>
+<p>clip-path 通过定义特殊的路径，实现我们想要的图形。而这个路径，正是 SVG 中的 path 。</p>
+<p>看看它的 API：</p>
+<p><img data-src="ref1.png"></p>
+<p>看上去很多，其实很好理解，如果接触过 SVG 的 path，其实就是照搬 SVG 的 path 的一些定义。换言之，如果没有接触过 SVG，看完本文后再去学习 SVG 路径 ，也会十分容易上手。</p>
+<p>根据不同的语法，我们可以生成不同的图形。</p>
+<p>例如 <code>clip-path: circle(50px at 50px 50px)</code> 表示在元素的 （50px, 50px）处，裁剪生成一个半径为 50px 的圆。</p>
+<p>而整个 <code>clip-path</code> 属性，最为重要的当属 <code>polygon</code>，可以利用 <code>polygon</code> 生成任意多边形。clip-path 示例</p>
+<p>下面分别列举使用 clip-path 生成一个圆形和一个十边形。</p>
+<p><img data-src="shape12.png"></p>
+<p> <code>clip-path: polygon(50% 0%, 80% 10%, 100% 35%, 100% 70%, 80% 90%, 50% 100%, 20% 90%, 0% 70%, 0% 35%, 20% 10%)</code> 中，依次列出了 10 个坐标点。我们的图形就是依次连接这 10 个坐标点形成一个裁切图形。</p>
+<p>当然，这里采用的是百分比，也可以使用具体的数值。</p>
+<h4 id="2-clip-path-动画"><a href="#2-clip-path-动画" class="headerlink" title="2. clip-path 动画"></a>2. clip-path 动画</h4><p>clip-path 另外一个强大之处在于可以进行 CSS transtion 与 CSS animation，也就是过渡和动画。</p>
+<p>效果见<a href="https://codepen.io/Chokcoco/pen/LLNWyZ?editors=1100">这儿</a></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">.polygon-animate</span> &#123;</span><br><span class="line">    <span class="attr">position:</span> <span class="string">absolute;</span></span><br><span class="line">    <span class="attr">width:</span> <span class="string">200px;</span></span><br><span class="line">    <span class="attr">height:</span> <span class="string">200px;</span></span><br><span class="line">    <span class="attr">top:</span> <span class="number">50</span><span class="string">%;</span></span><br><span class="line">    <span class="attr">left:</span> <span class="number">50</span><span class="string">%;</span></span><br><span class="line">    <span class="attr">transform:</span> <span class="string">translate(-50%</span>, <span class="number">-50</span><span class="string">%);</span></span><br><span class="line">    <span class="attr">background-color:</span> <span class="string">crimson;</span></span><br><span class="line">    <span class="attr">transition:</span> <span class="string">.3s;</span></span><br><span class="line">    <span class="attr">clip-path:</span> <span class="string">polygon(</span></span><br><span class="line">        <span class="number">50</span><span class="string">%</span> <span class="number">0</span><span class="string">%</span>,</span><br><span class="line">        <span class="number">0</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">        <span class="number">100</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">        <span class="number">100</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">        <span class="number">100</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">        <span class="number">100</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">        <span class="number">100</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">        <span class="number">100</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">        <span class="number">100</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span></span><br><span class="line">    <span class="string">);</span></span><br><span class="line">    <span class="attr">animation:</span> <span class="string">polygon-ani</span> <span class="string">5s</span> <span class="string">linear</span> <span class="string">infinite;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="string">@keyframes</span> <span class="string">polygon-ani</span> &#123;</span><br><span class="line">    <span class="number">10</span><span class="string">%</span> &#123;</span><br><span class="line">        <span class="attr">background-color:</span> <span class="string">darkorange;</span></span><br><span class="line">        <span class="attr">clip-path:</span> <span class="string">polygon(</span></span><br><span class="line">            <span class="number">50</span><span class="string">%</span> <span class="number">0</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">100</span><span class="string">%</span> <span class="number">50</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">50</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">50</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">50</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">50</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">50</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">50</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">50</span><span class="string">%</span></span><br><span class="line">        <span class="string">);</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="number">14</span><span class="string">%</span> &#123;</span><br><span class="line">        <span class="attr">clip-path:</span> <span class="string">polygon(</span></span><br><span class="line">            <span class="number">50</span><span class="string">%</span> <span class="number">0</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">100</span><span class="string">%</span> <span class="number">50</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">50</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">50</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">50</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">50</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">50</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">50</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">50</span><span class="string">%</span></span><br><span class="line">        <span class="string">);</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="number">24</span><span class="string">%</span> &#123;</span><br><span class="line">        <span class="attr">background-color:</span> <span class="string">lemonchiffon;</span></span><br><span class="line">        <span class="attr">clip-path:</span> <span class="string">polygon(</span></span><br><span class="line">            <span class="number">100</span><span class="string">%</span> <span class="number">38</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">82</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">82</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">18</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">38</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">38</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">38</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">38</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">50</span><span class="string">%</span> <span class="number">0</span><span class="string">%</span></span><br><span class="line">        <span class="string">);</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="number">28</span><span class="string">%</span> &#123;</span><br><span class="line">        <span class="attr">clip-path:</span> <span class="string">polygon(</span></span><br><span class="line">            <span class="number">100</span><span class="string">%</span> <span class="number">38</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">82</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">82</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">18</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">38</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">38</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">38</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">38</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">50</span><span class="string">%</span> <span class="number">0</span><span class="string">%</span></span><br><span class="line">        <span class="string">);</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="number">38</span><span class="string">%</span> &#123;</span><br><span class="line">        <span class="attr">background-color:</span> <span class="string">darkturquoise;</span></span><br><span class="line">        <span class="attr">clip-path:</span> <span class="string">polygon(</span></span><br><span class="line">            <span class="number">50</span><span class="string">%</span> <span class="number">0</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">100</span><span class="string">%</span> <span class="number">25</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">100</span><span class="string">%</span> <span class="number">75</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">100</span><span class="string">%</span> <span class="number">75</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">50</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">75</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">75</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">25</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">25</span><span class="string">%</span></span><br><span class="line">        <span class="string">);</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="number">42</span><span class="string">%</span> &#123;</span><br><span class="line">        <span class="attr">clip-path:</span> <span class="string">polygon(</span></span><br><span class="line">            <span class="number">50</span><span class="string">%</span> <span class="number">0</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">100</span><span class="string">%</span> <span class="number">25</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">100</span><span class="string">%</span> <span class="number">75</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">100</span><span class="string">%</span> <span class="number">75</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">50</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">75</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">75</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">25</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">25</span><span class="string">%</span></span><br><span class="line">        <span class="string">);</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="number">52</span><span class="string">%</span> &#123;</span><br><span class="line">        <span class="attr">background-color:</span> <span class="string">darkcyan;</span></span><br><span class="line">        <span class="attr">clip-path:</span> <span class="string">polygon(</span></span><br><span class="line">            <span class="number">50</span><span class="string">%</span> <span class="number">0</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">90</span><span class="string">%</span> <span class="number">20</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">100</span><span class="string">%</span> <span class="number">60</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">75</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">25</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">25</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">60</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">10</span><span class="string">%</span> <span class="number">20</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">50</span><span class="string">%</span> <span class="number">0</span><span class="string">%</span></span><br><span class="line">        <span class="string">);</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="number">56</span><span class="string">%</span> &#123;</span><br><span class="line">        <span class="attr">clip-path:</span> <span class="string">polygon(</span></span><br><span class="line">            <span class="number">50</span><span class="string">%</span> <span class="number">0</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">90</span><span class="string">%</span> <span class="number">20</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">100</span><span class="string">%</span> <span class="number">60</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">75</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">25</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">25</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">60</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">10</span><span class="string">%</span> <span class="number">20</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">50</span><span class="string">%</span> <span class="number">0</span><span class="string">%</span></span><br><span class="line">        <span class="string">);</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="number">66</span><span class="string">%</span> &#123;</span><br><span class="line">        <span class="attr">background-color:</span> <span class="string">deepskyblue;</span></span><br><span class="line">        <span class="attr">clip-path:</span> <span class="string">polygon(</span></span><br><span class="line">            <span class="number">30</span><span class="string">%</span> <span class="number">0</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">70</span><span class="string">%</span> <span class="number">0</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">70</span><span class="string">%</span> <span class="number">0</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">100</span><span class="string">%</span> <span class="number">30</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">100</span><span class="string">%</span> <span class="number">70</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">70</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">30</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">70</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">30</span><span class="string">%</span></span><br><span class="line">        <span class="string">);</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="number">70</span><span class="string">%</span> &#123;</span><br><span class="line">        <span class="attr">clip-path:</span> <span class="string">polygon(</span></span><br><span class="line">            <span class="number">30</span><span class="string">%</span> <span class="number">0</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">70</span><span class="string">%</span> <span class="number">0</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">70</span><span class="string">%</span> <span class="number">0</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">100</span><span class="string">%</span> <span class="number">30</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">100</span><span class="string">%</span> <span class="number">70</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">70</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">30</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">70</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">30</span><span class="string">%</span></span><br><span class="line">        <span class="string">);</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="number">80</span><span class="string">%</span> &#123;</span><br><span class="line">        <span class="attr">background-color:</span> <span class="string">indigo;</span></span><br><span class="line">        <span class="attr">clip-path:</span> <span class="string">polygon(</span></span><br><span class="line">            <span class="number">83</span><span class="string">%</span> <span class="number">12</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">100</span><span class="string">%</span> <span class="number">43</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">94</span><span class="string">%</span> <span class="number">78</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">68</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">32</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">6</span><span class="string">%</span> <span class="number">78</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">43</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">17</span><span class="string">%</span> <span class="number">12</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">50</span><span class="string">%</span> <span class="number">0</span><span class="string">%</span></span><br><span class="line">        <span class="string">);</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="number">84</span><span class="string">%</span> &#123;</span><br><span class="line">        <span class="attr">clip-path:</span> <span class="string">polygon(</span></span><br><span class="line">            <span class="number">83</span><span class="string">%</span> <span class="number">12</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">100</span><span class="string">%</span> <span class="number">43</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">94</span><span class="string">%</span> <span class="number">78</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">68</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">32</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">6</span><span class="string">%</span> <span class="number">78</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">43</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">17</span><span class="string">%</span> <span class="number">12</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">50</span><span class="string">%</span> <span class="number">0</span><span class="string">%</span></span><br><span class="line">        <span class="string">);</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="number">94</span><span class="string">%</span> &#123;</span><br><span class="line">        <span class="attr">background-color:</span> <span class="string">crimson;</span></span><br><span class="line">        <span class="attr">clip-path:</span> <span class="string">polygon(</span></span><br><span class="line">            <span class="number">50</span><span class="string">%</span> <span class="number">0</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">0</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">100</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">100</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">100</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">100</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">100</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">100</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span>,</span><br><span class="line">            <span class="number">100</span><span class="string">%</span> <span class="number">100</span><span class="string">%</span></span><br><span class="line">        <span class="string">);</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>图形变换动画</strong></p>
+<p>除此之外，我们还可以尝试，将一个完整的图形，分割成多个小图形，这也是 <code>clip-path</code> 的魅力所在，纯 CSS 的图形变换：</p>
+<p><a href="https://codepen.io/Chokcoco/pen/yXOjZm">多边形切换传送门</a></p>
+<p><a href="https://codepen.io/Chokcoco/pen/XgJRzO">N边形切换传送门</a></p>
+<p><a href="https://codepen.io/Chokcoco/pen/NgqGOo">VueN边形切换</a></p>
+<h4 id="3-shape-outside"><a href="#3-shape-outside" class="headerlink" title="3. shape-outside"></a>3. shape-outside</h4><p>最后再来看看 <code>shape-outside</code>，另外一个有趣的有能力生成几何图形的属性。</p>
+<p><code>shape-outside</code> 是啥？它也有制造各种几何图形的能力，但是它只能和浮动 <code>float</code> 一起使用。</p>
+<p>虽然使用上有所限制，但是它赋予了我们一种更为自由的图文混排的能力。</p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/shape-outside">MDN文档传送门</a></p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
         <category>Front End</category>
@@ -3495,290 +3779,6 @@ D-->>A: Dashed open arrow</textarea><textarea id="sequence-2-options" style="dis
       </categories>
       <tags>
         <tag>Hexo &amp; Next部署与使用</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CSS 布局</title>
-    <url>/2020/09/10/css-layout/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
-<p>这篇文章来一次查漏补缺，回顾<code>CSS布局</code></p>
-<p>列举的布局如下：</p>
-<ul>
-<li>弹性布局<code>Flex</code></li>
-<li><code>Grid</code> 网格布局</li>
-<li>圣杯布局</li>
-</ul>
-</blockquote>
-<a id="more"></a>
-
-<h2 id="一、CSS3弹性盒布局方式"><a href="#一、CSS3弹性盒布局方式" class="headerlink" title="一、CSS3弹性盒布局方式"></a>一、CSS3弹性盒布局方式</h2><p>弹性盒子是CSS3的一种新布局模式。</p>
-<p>CSS3 弹性盒（ <code>Flexible Box</code> 或 <code>flexbox</code>），是一种当页面需要适应不同的屏幕大小以及设备类型时确保元素拥有恰当的行为的布局方式。</p>
-<p>引入弹性盒布局模型的目的是提供一种更加有效的方式来对一个容器中的子元素进行排列、对齐和分配空白空间。</p>
-<p><strong>浏览器支持</strong></p>
-<blockquote>
-<p>表格中的数字表示支持该属性的第一个浏览器的版本号。</p>
-<p>紧跟在数字后面的 <code>-webkit-</code> 或 <code>-moz-</code> 为指定浏览器的前缀。</p>
-</blockquote>
-<p><img data-src="support.png"></p>
-<p><strong>注意：</strong> </p>
-<ul>
-<li>弹性盒子由弹性容器(<code>Flex container</code>)和弹性子元素(<code>Flex item</code>)组成。</li>
-<li>弹性容器通过设置 <code>display</code> 属性的值为 <code>flex</code> 或 <code>inline-flex</code>将其定义为弹性容器。</li>
-<li>弹性容器内包含了一个或多个弹性子元素。</li>
-<li>弹性容器外及弹性子元素内是正常渲染的。弹性盒子只定义了弹性子元素如何在弹性容器内布局。</li>
-</ul>
-<p><img data-src="flex0.png"></p>
-<h3 id="1-Flex-容器属性（设置在容器上）"><a href="#1-Flex-容器属性（设置在容器上）" class="headerlink" title="1. Flex 容器属性（设置在容器上）"></a>1. <code>Flex</code> 容器属性（设置在容器上）</h3><p><code>flex-direction</code>     指定弹性容器中子元素排列方式</p>
-<p><code>flex-wrap</code>     设置弹性盒子的子元素超出父容器时是否换行</p>
-<p><code>flex-flow</code>     <u>flex-direction</u> 和 <u>flex-wrap</u> 的简写</p>
-<p><code>align-items</code>    设置弹性盒子元素在侧轴（纵轴）方向上的对齐方式</p>
-<p><code>align-content</code>    修改 flex-wrap 属性的行为，类似 align-items, 但不是设置子元素对齐，而是设置行对齐  </p>
-<p><code>justify-content</code>    设置弹性盒子元素在主轴（横轴）方向上的对齐方式</p>
-<h4 id="1-1-flex-direction-属性"><a href="#1-1-flex-direction-属性" class="headerlink" title="1.1 flex-direction 属性"></a>1.1 flex-direction 属性</h4><p>决定项目的方向。</p>
-<p><strong>注意：</strong>如果元素不是弹性盒对象的元素，则 <code>flex-direction</code> 属性不起作用。</p>
-<p><img data-src="flex1.png"></p>
-<p><strong>属性值</strong></p>
-<table>
-<thead>
-<tr>
-<th>值</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>row</td>
-<td>默认值。主轴为水平方向，起点在左端</td>
-</tr>
-<tr>
-<td>row-reverse</td>
-<td>主轴为水平方向，起点在右端</td>
-</tr>
-<tr>
-<td>column</td>
-<td>主轴为垂直方向，起点在上沿</td>
-</tr>
-<tr>
-<td>column-reverse</td>
-<td>主轴为垂直方向，起点在下沿</td>
-</tr>
-</tbody></table>
-<h4 id="1-2-flex-wrap-属性"><a href="#1-2-flex-wrap-属性" class="headerlink" title="1.2 flex-wrap 属性"></a>1.2 flex-wrap 属性</h4><p><code>flex-wrap</code> 属性规定flex容器是单行或者多行，同时横轴的方向决定了新行堆叠的方向。</p>
-<table>
-<thead>
-<tr>
-<th>值</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>nowrap</td>
-<td>默认值。规定元素不拆行或不拆列。</td>
-</tr>
-<tr>
-<td>wrap</td>
-<td>规定元素在必要的时候拆行或拆列。</td>
-</tr>
-<tr>
-<td>wrap-reverse</td>
-<td>规定元素在必要的时候拆行或拆列，但是以相反的顺序。</td>
-</tr>
-</tbody></table>
-<p><img data-src="flex2.png"></p>
-<h4 id="1-3-flex-flow-属性"><a href="#1-3-flex-flow-属性" class="headerlink" title="1.3 flex-flow 属性"></a>1.3 flex-flow 属性</h4><p><code>flex-flow</code>属性是<code>flex-direction</code>属性和<code>flex-wrap</code>属性的简写形式，默认值为<code>row nowrap</code>。</p>
-<h4 id="1-4-align-items属性"><a href="#1-4-align-items属性" class="headerlink" title="1.4 align-items属性"></a>1.4 align-items属性</h4><p><code>align-items</code> 属性定义flex子项在flex容器的当前行的侧轴（纵轴）方向上的对齐方式。</p>
-<table>
-<thead>
-<tr>
-<th>值</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>stretch</td>
-<td>默认值。项目被拉伸以适应容器。如果项目未设置高度或设为auto，将占满整个容器的高度。</td>
-</tr>
-<tr>
-<td>center</td>
-<td>项目位于容器的中心。</td>
-</tr>
-<tr>
-<td>flex-start</td>
-<td>项目位于容器的开头。</td>
-</tr>
-<tr>
-<td>flex-end</td>
-<td>项目位于容器的结尾。</td>
-</tr>
-<tr>
-<td>baseline</td>
-<td>项目位于容器的基线上。</td>
-</tr>
-</tbody></table>
-<p><img data-src="flex3.png"></p>
-<h4 id="1-5-justify-content属性"><a href="#1-5-justify-content属性" class="headerlink" title="1.5 justify-content属性"></a>1.5 justify-content属性</h4><p><code>justify-content</code> 用于设置或检索弹性盒子元素在主轴（横轴）方向上的对齐方式。</p>
-<table>
-<thead>
-<tr>
-<th>值</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>flex-start</td>
-<td>默认值。项目位于容器的开头。</td>
-</tr>
-<tr>
-<td>flex-end</td>
-<td>项目位于容器的结尾。</td>
-</tr>
-<tr>
-<td>center</td>
-<td>项目位于容器的中心。</td>
-</tr>
-<tr>
-<td>space-between</td>
-<td>两端对齐，项目之间的间隔都相等</td>
-</tr>
-<tr>
-<td>space-around</td>
-<td>项目位于各行之前、之间、之后都留有空白的容器内。</td>
-</tr>
-</tbody></table>
-<blockquote>
-<p>space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。    </p>
-</blockquote>
-<p><img data-src="flex4.png"></p>
-<h3 id="2-Flex-弹性子元素属性"><a href="#2-Flex-弹性子元素属性" class="headerlink" title="2. Flex 弹性子元素属性"></a>2. <code>Flex</code> 弹性子元素属性</h3><table>
-<thead>
-<tr>
-<th>属性</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>order</td>
-<td align="left">设置弹性盒子的子元素排列顺序。</td>
-</tr>
-<tr>
-<td>flex-grow</td>
-<td align="left">设置或检索弹性盒子元素的扩展比率。</td>
-</tr>
-<tr>
-<td>flex-shrink</td>
-<td align="left">指定了 flex 元素的收缩规则。flex 元素仅在默认宽度之和大于容器的时候才会发生收缩，其收缩的大小是依据 flex-shrink 的值。</td>
-</tr>
-<tr>
-<td>flex-basis</td>
-<td align="left">用于设置或检索弹性盒伸缩基准值。</td>
-</tr>
-<tr>
-<td>flex</td>
-<td align="left">设置弹性盒子的子元素如何分配空间。</td>
-</tr>
-<tr>
-<td>align-self</td>
-<td align="left">在弹性子元素上使用。覆盖容器的 align-items 属性。</td>
-</tr>
-</tbody></table>
-<h4 id="2-1-order属性"><a href="#2-1-order属性" class="headerlink" title="2.1 order属性"></a>2.1 order属性</h4><p><code>&lt;integer&gt;</code>：用整数值来定义排列顺序，数值小的排在前面。可以为负值，默认为0。</p>
-<p><img data-src="flex5.png"></p>
-<h4 id="2-2-flex-grow属性"><a href="#2-2-flex-grow属性" class="headerlink" title="2.2 flex-grow属性"></a>2.2 flex-grow属性</h4><p><code>&lt;integer&gt;</code>：一个数字，规定项目将相对于其他灵活的项目进行扩展的量。默认值是 0。</p>
-<blockquote>
-<p><code>flex-grow</code>属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。</p>
-<p>如果所有项目的<code>flex-grow</code>属性都为1，则它们将等分剩余空间（如果有的话）。　　</p>
-<p>如果一个项目的<code>flex-grow</code>属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。</p>
-</blockquote>
-<p><img data-src="flex6.png"></p>
-<h4 id="2-3-flex-shrink属性"><a href="#2-3-flex-shrink属性" class="headerlink" title="2.3 flex-shrink属性"></a>2.3 flex-shrink属性</h4><p><code>&lt;integer&gt;</code>：一个数字，规定项目将相对于其他灵活的项目进行收缩的量。默认值是 1。</p>
-<blockquote>
-<p><code>flex-shrink</code>属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。</p>
-<p>如果所有项目的<code>flex-shrink</code>属性都为1，当空间不足时，都将等比例缩小。</p>
-<p>如果一个项目的<code>flex-shrink</code>属性为0，其他项目都为1，则空间不足时，前者不缩小。</p>
-<p>负值对该属性无效。</p>
-</blockquote>
-<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="attribute">flex-shrink</span>: &lt;number&gt;; <span class="comment">/* default 1 */</span></span><br></pre></td></tr></table></figure>
-
-<p><img data-src="flex7.png"></p>
-<h4 id="2-4-flex-basis属性"><a href="#2-4-flex-basis属性" class="headerlink" title="2.4 flex-basis属性"></a>2.4 flex-basis属性</h4><p><code>flex-basis</code>属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.flex-container</span> <span class="selector-class">.flex-item</span> &#123; <span class="attribute">flex-basis</span>: &lt;integer&gt; | auto; &#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>&lt;integer&gt;</code>：一个长度单位或者一个百分比，规定元素的初始长度。<br> <code>auto</code>：默认值。长度等于元素的长度。如果该项目未指定长度，则长度将根据内容决定。</p>
-<blockquote>
-<p>浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。</p>
-<p>它可以设为跟width或height属性一样的值（比如350px），则项目将占据固定空间。</p>
-</blockquote>
-<h4 id="2-5-flex属性"><a href="#2-5-flex属性" class="headerlink" title="2.5 flex属性"></a>2.5 flex属性</h4><p>flex 属性用于设置或检索弹性盒模型对象的子元素如何分配空间。</p>
-<p>flex 属性是 <code>flex-grow</code>、<code>flex-shrink</code> 和 <code>flex-basis</code> 属性的简写属性，默认值为<code>0 1 auto</code>。后两个属性可选。</p>
-<blockquote>
-<p>该属性有两个快捷值：auto (1 1 auto) 和 none (0 0 auto)。</p>
-<p>建议优先使用这个属性，而不是单独写三个分离的属性，因为浏览器会推算相关值。</p>
-</blockquote>
-<p><strong>特殊值</strong>： <code>flex: 1;</code>  等价于  <code>flex: 1 1</code>   但不等于  <code>flex: auto;</code></p>
-<p>其含义为为<strong>均分</strong>，详细解释见<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex">MDN文档</a>和<a href="https://zhuanlan.zhihu.com/p/136223806">知乎解答文档</a></p>
-<p><img data-src="flex9.png"></p>
-<h4 id="2-6-align-self属性"><a href="#2-6-align-self属性" class="headerlink" title="2.6     align-self属性"></a>2.6     align-self属性</h4><p><code>align-self</code> 属性允许单个项目有与其他项目不一样的对齐方式，可覆盖<code>align-items</code>属性。</p>
-<blockquote>
-<p>默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。</p>
-</blockquote>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.flex-container</span> <span class="selector-class">.flex-item</span> &#123;</span><br><span class="line">    <span class="attribute">align-self</span>: auto | stretch | center | flex-start | flex-end | baseline | initial | inherit;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th>值</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>auto</td>
-<td>默认值。元素继承了它的父容器的 align-items 属性。如果没有父容器则为 “stretch”。</td>
-</tr>
-<tr>
-<td>stretch</td>
-<td>元素被拉伸以适应容器。</td>
-</tr>
-<tr>
-<td>center</td>
-<td>元素位于容器的中心。</td>
-</tr>
-<tr>
-<td>flex-start</td>
-<td>元素位于容器的开头。</td>
-</tr>
-<tr>
-<td>flex-end</td>
-<td>元素位于容器的结尾。</td>
-</tr>
-<tr>
-<td>baseline</td>
-<td>元素位于容器的基线上。</td>
-</tr>
-<tr>
-<td>initial</td>
-<td>设置该属性为它的默认值。</td>
-</tr>
-<tr>
-<td>inherit</td>
-<td>从父元素继承该属性。</td>
-</tr>
-</tbody></table>
-<p><img data-src="flex8.png"></p>
-<h2 id="二、Grid-网格布局"><a href="#二、Grid-网格布局" class="headerlink" title="二、Grid 网格布局"></a>二、<code>Grid</code> 网格布局</h2><blockquote>
-<p>转载<a href="http://www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html">阮一峰CSS Grid 网格布局教程</a>，写的很不错，牛啊！</p>
-<p>这篇文章也可做为参考  <a href="https://www.cnblogs.com/jcxfighting/p/10711210.html">传送门</a></p>
-</blockquote>
-<p>网格布局（Grid）是最强大的 CSS 布局方案。</p>
-<p>它将网页划分成一个个网格，可以任意组合不同的网格，做出各种各样的布局。以前，只能通过复杂的 CSS 框架达到的效果，现在浏览器内置了。</p>
-<p><img data-src="grid0.png"></p>
-<p>上图这样的布局，就是 Grid 布局的拿手好戏。</p>
-<p>Grid 布局与 <a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html">Flex 布局</a>有一定的相似性，都可以指定容器内部多个项目的位置。但是，它们也存在重大区别。</p>
-<p>Flex 布局是轴线布局，只能指定”项目”针对轴线的位置，可以看作是<strong>一维布局</strong>。Grid 布局则是将容器划分成”行”和”列”，产生单元格，然后指定”项目所在”的单元格，可以看作是<strong>二维布局</strong>。Grid 布局远比 Flex 布局强大。</p>
-<h2 id="三、圣杯布局"><a href="#三、圣杯布局" class="headerlink" title="三、圣杯布局"></a>三、圣杯布局</h2><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
-      <categories>
-        <category>Front End</category>
-      </categories>
-      <tags>
-        <tag>CSS</tag>
       </tags>
   </entry>
 </search>
