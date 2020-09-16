@@ -14,6 +14,8 @@
 </blockquote>
 <a id="more"></a>
 
+
+
 <h2 id="一、CSS3弹性盒布局方式"><a href="#一、CSS3弹性盒布局方式" class="headerlink" title="一、CSS3弹性盒布局方式"></a>一、CSS3弹性盒布局方式</h2><p>弹性盒子是CSS3的一种新布局模式。</p>
 <p>CSS3 弹性盒（ <code>Flexible Box</code> 或 <code>flexbox</code>），是一种当页面需要适应不同的屏幕大小以及设备类型时确保元素拥有恰当的行为的布局方式。</p>
 <p>引入弹性盒布局模型的目的是提供一种更加有效的方式来对一个容器中的子元素进行排列、对齐和分配空白空间。</p>
@@ -276,7 +278,77 @@
 <p>上图这样的布局，就是 Grid 布局的拿手好戏。</p>
 <p>Grid 布局与 <a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html">Flex 布局</a>有一定的相似性，都可以指定容器内部多个项目的位置。但是，它们也存在重大区别。</p>
 <p>Flex 布局是轴线布局，只能指定”项目”针对轴线的位置，可以看作是<strong>一维布局</strong>。Grid 布局则是将容器划分成”行”和”列”，产生单元格，然后指定”项目所在”的单元格，可以看作是<strong>二维布局</strong>。Grid 布局远比 Flex 布局强大。</p>
-<h2 id="三、圣杯布局"><a href="#三、圣杯布局" class="headerlink" title="三、圣杯布局"></a>三、圣杯布局</h2><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+<h2 id="三、圣杯布局"><a href="#三、圣杯布局" class="headerlink" title="三、圣杯布局"></a>三、圣杯布局</h2><p>所谓的<code>圣杯布局</code>就是左右两边大小固定不变，中间宽度自适应。我们可以用<code>浮动</code>、<code>定位</code>以及<code>flex</code>这三种方式来实现</p>
+<p> 一般这种布局方式适用于各种移动端顶部搜索部分，这是最常见的，如京东手机版主页面顶部搜索：</p>
+<p><img data-src="shengbei.png"></p>
+<blockquote>
+<p>可以看到左边有个菜单按钮，中间是搜索框，右边是登录两个文字，左右大小是固定的，而中间部分则是随着手机屏幕尺寸的大小而自适应</p>
+</blockquote>
+<h3 id="第一种方法-flex实现"><a href="#第一种方法-flex实现" class="headerlink" title="第一种方法 flex实现"></a>第一种方法 <code>flex</code>实现</h3><blockquote>
+<p>需要理解<code>flex</code>的用法</p>
+<p> <code>*</code>  <code>vh</code> 为相对于视口的高度。视口被均分为100单位的vh</p>
+</blockquote>
+<pre><code>&lt;div class=&#39;container&#39;&gt;
+    &lt;header&gt;头部&lt;/header&gt;
+        &lt;section&gt;
+            &lt;div class=&#39;left&#39;&gt;左&lt;/div&gt;
+        &lt;div class=&#39;center&#39;&gt;中&lt;/div&gt;
+        &lt;div class=&#39;right&#39;&gt;右&lt;/div&gt;
+    &lt;/section&gt;
+    &lt;footer&gt;底部&lt;/footer&gt;
+&lt;/div&gt;</code></pre>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.container</span>&#123;</span></span><br><span class="line">        display: flex;</span><br><span class="line">        height: 100vh;</span><br><span class="line">        flex-direction: column;</span><br><span class="line">    &#125;</span><br><span class="line">    header&#123;</span><br><span class="line"><span class="css">        <span class="selector-tag">background</span>: <span class="selector-id">#000</span>;</span></span><br><span class="line">    &#125;</span><br><span class="line">    section&#123;</span><br><span class="line"><span class="css">        <span class="selector-tag">flex</span><span class="selector-pseudo">:1</span>;</span></span><br><span class="line">        background: pink;</span><br><span class="line">        display: flex;</span><br><span class="line">    &#125;</span><br><span class="line">    footer&#123;</span><br><span class="line"><span class="css">        <span class="selector-tag">background</span>: <span class="selector-id">#000</span>;</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="css">    <span class="selector-class">.left</span>&#123;</span></span><br><span class="line">        background: red;</span><br><span class="line"><span class="css">        <span class="selector-tag">flex</span><span class="selector-pseudo">:0</span> 0 100<span class="selector-tag">px</span>;</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="css">    <span class="selector-class">.center</span>&#123;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">flex</span><span class="selector-pseudo">:1</span>;</span></span><br><span class="line">        background: blue;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="css">    <span class="selector-class">.right</span>&#123;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">flex</span><span class="selector-pseudo">:0</span> 0 100<span class="selector-tag">px</span>;</span></span><br><span class="line">        background: red;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img data-src="shengbei-flex.png"></p>
+<h3 id="第二种-position实现"><a href="#第二种-position实现" class="headerlink" title="第二种  position实现"></a>第二种  <code>position</code>实现</h3><blockquote>
+<p><strong>思路</strong>：给容器设置左右内<code>padding</code>，让中间部分占满所有剩余空间，左右设置<code>absolute</code>使其左右分布</p>
+</blockquote>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">&lt;div <span class="keyword">class</span>=&quot;<span class="symbol">main</span>&quot;&gt;</span><br><span class="line">    &lt;<span class="symbol">div</span> <span class="symbol">class</span>=&quot;<span class="symbol">center</span>&quot;&gt;<span class="symbol">z</span>中间&lt;/<span class="symbol">div</span>&gt;</span><br><span class="line">    &lt;<span class="symbol">div</span> <span class="symbol">class</span>=&quot;<span class="symbol">left</span>&quot;&gt;左&lt;/<span class="symbol">div</span>&gt;</span><br><span class="line">    &lt;<span class="symbol">div</span> <span class="symbol">class</span>=&quot;<span class="symbol">right</span>&quot;&gt;右&lt;/<span class="symbol">div</span>&gt;</span><br><span class="line">&lt;/<span class="symbol">div</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.main</span> <span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.main</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="built_in">calc</span>(<span class="number">100%</span> - <span class="number">400px</span>);</span><br><span class="line">    <span class="attribute">background</span>: red;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">padding-left</span>: <span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">padding-right</span>: <span class="number">200px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.center</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">background</span>: pink</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.left</span>&#123;</span><br><span class="line">    <span class="attribute">background</span>: yellow ;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.right</span>&#123;</span><br><span class="line">    <span class="attribute">background</span>: blue ;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">right</span>:<span class="number">0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="shengbei-position.png"></p>
+<h3 id="第三种方法-float实现"><a href="#第三种方法-float实现" class="headerlink" title="第三种方法 float实现"></a>第三种方法 <code>float</code>实现</h3><p><strong>经典实现方式：</strong></p>
+<blockquote>
+<p>应遵循以下要点</p>
+<ul>
+<li>两侧宽度固定，中间宽度自适应</li>
+<li>中间部分在DOM结构上优先，以便先行渲染</li>
+<li>允许三列中的任意一列成为最高列</li>
+<li>只需要使用一个额外的<code>&lt;div&gt;</code>标签</li>
+</ul>
+</blockquote>
+<p>有一个跟完美解释  <code>圣杯布局</code>  的文章：<a href="https://www.cnblogs.com/niujifei/p/11269093.html">传送门</a></p>
+<h4 id="HTML结构"><a href="#HTML结构" class="headerlink" title="HTML结构"></a>HTML结构</h4><figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div <span class="keyword">class</span>=&quot;<span class="symbol">header</span>&quot;&gt;#<span class="symbol">header</span>&lt;/<span class="symbol">div</span>&gt;</span><br><span class="line">    &lt;<span class="symbol">div</span> <span class="symbol">class</span>=&quot;<span class="symbol">container</span>&quot;&gt;</span><br><span class="line">      &lt;<span class="symbol">div</span> <span class="symbol">class</span>=&quot;<span class="symbol">center</span> &quot;&gt;#<span class="symbol">center</span>&lt;/<span class="symbol">div</span>&gt;</span><br><span class="line">      &lt;<span class="symbol">div</span> <span class="symbol">class</span>=&quot;<span class="symbol">left</span>&quot;&gt;#<span class="symbol">left</span>&lt;/<span class="symbol">div</span>&gt;</span><br><span class="line">      &lt;<span class="symbol">div</span> <span class="symbol">class</span>=&quot;<span class="symbol">right</span>&quot;&gt;#<span class="symbol">right</span>&lt;/<span class="symbol">div</span>&gt;</span><br><span class="line">    &lt;/<span class="symbol">div</span>&gt;</span><br><span class="line">    &lt;<span class="symbol">div</span> <span class="symbol">class</span>=&quot;<span class="symbol">footer</span>&quot;&gt;#<span class="symbol">footer</span>&lt;/<span class="symbol">div</span>&gt;</span><br><span class="line">&lt;/<span class="symbol">body</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="CSS结构"><a href="#CSS结构" class="headerlink" title="CSS结构"></a>CSS结构</h4><p><strong>1. 假设左侧的固定宽度为200px，右侧的固定宽度为150px，则首先在<code>container</code>上设置：</strong></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="attribute">padding-left</span>: <span class="number">200px</span>; </span><br><span class="line">    <span class="attribute">padding-right</span>: <span class="number">150px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>为左右两列预留出相应的空间，得到如下示意图：</p>
+<p><img data-src="shengbei-float-1.png"></p>
+<p><strong>2. 随后分别为三列设置宽度与浮动，同时对<code>footer</code>设置清除浮动：</strong></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.container</span> <span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="attribute">float</span>: left;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.center</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#85D989</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.left</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: pink;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.right</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">150px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: blueviolet;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.footer</span>&#123;</span><br><span class="line">    <span class="attribute">clear</span>: both;</span><br><span class="line">    <span class="attribute">background-color</span>: darkslategray;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>效果如下：</p>
+<p><img data-src="shengbei-float-2.png"></p>
+<blockquote>
+<p>注意：根据浮动的特性，由于<code>center</code>的宽度为100%，即占据了第一行的所有空间，所以<code>left</code>和<code>right</code>被“挤”到了第二行</p>
+</blockquote>
+<p><strong>3. 接下来的工作是将<code>left</code>放置到之前预留出的位置上，这里使用  <code>负外边距</code>  ：</strong></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.left</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: pink;</span><br><span class="line">    <span class="attribute">margin-left</span>: -<span class="number">100%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>效果如下：</p>
+<p><img data-src="shengbei-float-3.png"></p>
+<p><strong>4. 随后还需要使用定位(position)方法：</strong></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.left</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: pink;</span><br><span class="line">    <span class="attribute">margin-left</span>: -<span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">right</span>: <span class="number">200px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里使用<code>position: relative</code>和<code>right: 200px</code>将<code>left</code>的位置在原有位置基础上左移200px，以完成<code>left</code>的放置：</p>
+<p><img data-src="shengbei-float-4.png"></p>
+<p><strong>5. 最终效果</strong></p>
+<p><img data-src="shengbei-float-5.png"></p>
+<p>至此，布局效果完成。不过还需要考虑最后一步，那就是<strong>页面的最小宽度</strong>：要想保证该布局效果正常显示，由于两侧都具有固定的宽度，所以需要给定页面一个最小的宽度，</p>
+<p>但这并不只是简单的200+150=350px。回想之前<code>left</code>使用了<code>position: relative</code>，所以就意味着在<code>center</code>开始的区域，还存在着一个<code>left</code>的宽度。所以页面的最小宽度应该设置为200+150+200=550px：</p>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
         <category>Front End</category>
       </categories>
@@ -528,7 +600,8 @@
     <title>JavaScript Function</title>
     <url>/2020/08/25/JavaScript-commonly-used-functions/</url>
     <content><![CDATA[<blockquote>
-<h5 id="以下记录经常忘记又常用的JS内置函数"><a href="#以下记录经常忘记又常用的JS内置函数" class="headerlink" title="以下记录经常忘记又常用的JS内置函数"></a>以下记录经常忘记又常用的<code>JS</code>内置函数</h5><p>推荐查阅相关 <code>资料</code>  ：</p>
+<h2 id="CONTENT-OUTLINE"><a href="#CONTENT-OUTLINE" class="headerlink" title="CONTENT OUTLINE"></a>CONTENT OUTLINE</h2><p>以下记录经常忘记又常用的<code>JS</code>内置函数</p>
+<p><strong>相关 资料  ：</strong></p>
 <p><a href="https://es6.ruanyifeng.com/">ECMAScript 6 入门</a></p>
 <p><a href="https://www.liaoxuefeng.com/wiki/1022910821149312">廖雪峰的JavaScript教程</a></p>
 <p><a href="https://developer.mozilla.org/zh-CN/">MSD—&gt;Nice！@</a></p>
@@ -630,6 +703,29 @@
 <p><strong>返回值</strong></p>
 <p>查找的字符串 <code>searchValue</code> 的第一次出现的索引，如果没有找到，则返回 <code>-1</code>。</p>
 <p>若被查找的字符串 <code>searchValue</code> 是一个空字符串，将会产生“奇怪”的结果。如果 <code>fromIndex</code> 值为空，或者 <code>fromIndex</code> 值小于被查找的字符串的长度，返回值和以下的 <code>fromIndex</code> 值一样</p>
+<h3 id="6-Array-prototype-splice"><a href="#6-Array-prototype-splice" class="headerlink" title="6. Array.prototype.splice()"></a>6. Array.prototype.splice()</h3><p><strong>描述</strong></p>
+<p>splice() 方法向/从数组中<code>添加</code>/<code>删除</code>项目，然后返回被删除的项目。</p>
+<figure class="highlight inform7"><table><tr><td class="code"><pre><span class="line">array.splice(start<span class="comment">[, deleteCount<span class="comment">[, item1<span class="comment">[, item2<span class="comment">[, ...]</span>]</span>]</span>]</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>参数</strong></p>
+<ul>
+<li><p><code>start</code></p>
+<p>指定修改的开始位置（从0计数）。如果超出了数组的长度，则从数组末尾开始添加内容；如果是负值，则表示从数组末位开始的第几位（从-1计数，这意味着-n是倒数第n个元素并且等价于<code>array.length-n</code>）；如果负数的绝对值大于数组的长度，则表示开始位置为第0位。</p>
+</li>
+<li><p><code>deleteCount</code> 可选</p>
+<p>整数，表示要移除的数组元素的个数。</p>
+<p>如果 <code>deleteCount</code> 大于 <code>start</code> 之后的元素的总数，则从 <code>start</code> 后面的元素都将被删除（含第 <code>start</code> 位）。</p>
+<p>如果 <code>deleteCount</code> 被省略了，或者它的值大于等于<code>array.length - start</code>(也就是说，如果它大于或者等于<code>start</code>之后的所有元素的数量)，那么<code>start</code>之后数组的所有元素都会被删除。</p>
+<p>如果 <code>deleteCount</code> 是 0 或者负数，则不移除元素。这种情况下，至少应添加一个新元素。</p>
+</li>
+<li><p><code>item1, item2, *...*</code> 可选</p>
+<p>要添加进数组的元素,从<code>start</code> 位置开始。如果不指定，则 <code>splice()</code> 将只删除数组元素。</p>
+</li>
+</ul>
+<p><strong>返回值</strong></p>
+<p>由被删除的元素组成的一个数组。如果只删除了一个元素，则返回只包含一个元素的数组。如果没有删除元素，则返回空数组。</p>
+<p><strong>注意</strong></p>
+<p>该方法会改变原始数组。</p>
 <h2 id="Problems"><a href="#Problems" class="headerlink" title="Problems"></a>Problems</h2><h3 id="1-JS中判断某个字符串是否包含另一个字符串的五种方法"><a href="#1-JS中判断某个字符串是否包含另一个字符串的五种方法" class="headerlink" title="1. JS中判断某个字符串是否包含另一个字符串的五种方法"></a>1. JS中判断某个字符串是否包含另一个字符串的五种方法</h3><h4 id="String对象的方法"><a href="#String对象的方法" class="headerlink" title="String对象的方法"></a>String对象的方法</h4><p><strong>方法一: indexOf()  (推荐)</strong></p>
 <figure class="highlight openscad"><table><tr><td class="code"><pre><span class="line">var <span class="built_in">str</span> = <span class="string">&quot;123&quot;</span></span><br><span class="line">console.<span class="built_in">log</span>(<span class="built_in">str</span>.indexOf(<span class="string">&quot;2&quot;</span>) != -<span class="number">1</span>);      <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
 
@@ -859,6 +955,17 @@
 
 <p>在其他需要获取参数的js中引入</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> utils <span class="keyword">from</span> <span class="string">&#x27;../../assets/scripts/utils&#x27;</span></span><br><span class="line"><span class="comment">// Vue.prototype.$utils = utils // main.js中全局引入</span></span><br><span class="line"><span class="keyword">let</span> id = utils.getUrlKey(<span class="string">&#x27;id&#x27;</span>)</span><br><span class="line"><span class="built_in">console</span>.log()</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-实现一段时间请求一次接口（轮询）"><a href="#2-实现一段时间请求一次接口（轮询）" class="headerlink" title="2. 实现一段时间请求一次接口（轮询）"></a>2. 实现一段时间请求一次接口（轮询）</h2><h4 id="需要注意的一点是-setTimeOut-和-setInterval-的使用"><a href="#需要注意的一点是-setTimeOut-和-setInterval-的使用" class="headerlink" title="需要注意的一点是  setTimeOut 和 setInterval 的使用"></a>需要注意的一点是  <code>setTimeOut</code> 和 <code>setInterval</code> 的使用</h4><p><strong>一般都会使用setInterval，但要注意单纯使用它会导致页面卡死</strong></p>
+<p>解决方法如下：</p>
+<figure class="highlight coffeescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">window</span>.<span class="built_in">setInterval</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(fun, <span class="number">0</span>)</span><br><span class="line">&#125;, <span class="number">30000</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>解释</strong>：<code>setInterval</code>不会清除定时器队列，每重复执行1次都会导致定时器叠加，最终卡死你的网页。<br>但是<code>setTimeout</code>是自带清除定时器的</p>
+<h4 id="下面是我使用的方法："><a href="#下面是我使用的方法：" class="headerlink" title="下面是我使用的方法："></a>下面是我使用的方法：</h4><p>在<code>mounted</code>中调用</p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line">mounted() &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">this</span>.$socket.emit(<span class="string">&#x27;connect&#x27;</span>, <span class="number">1</span>);</span><br><span class="line">  <span class="keyword">this</span>.$socket.emit(<span class="string">&#x27;LIST_EVENT&#x27;</span>, &#123;</span><br><span class="line">   type: <span class="number">1</span>,</span><br><span class="line">   storeId: <span class="keyword">this</span>.storeId,</span><br><span class="line">   <span class="keyword">data</span>: &#123;&#125;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">this</span>.getListData();</span><br><span class="line">  <span class="keyword">this</span>.updatedData();</span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure>
+
+<p><code>updateData()</code>中定义了轮询</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line"><span class="attribute">methods</span>: &#123;</span><br><span class="line"></span><br><span class="line">  updatedData() &#123;</span><br><span class="line">   setInterval(()=&gt;&#123;</span><br><span class="line">     setTimeout(this.getListData, 0)</span><br><span class="line">   &#125;, 180000);</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  getListData() &#123;</span><br><span class="line">   this.$socket.emit(&#x27;LIST_EVENT&#x27;, &#123;</span><br><span class="line">     type: 3,</span><br><span class="line">     storeId: this.storeId,</span><br><span class="line">     data: &#123;&#125;</span><br><span class="line">   &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
