@@ -41,22 +41,52 @@
 <h3 id="什么情况下会触发BFC"><a href="#什么情况下会触发BFC" class="headerlink" title="什么情况下会触发BFC"></a>什么情况下会触发BFC</h3><ol>
 <li>设置了float属性，并且不为none</li>
 <li>position属性为absolute或fixed</li>
-<li>display为inline-block、table-cell、table-caption、flex、inline-flex</li>
-<li>overflow属性不为visible</li>
+<li>display为<code>inline-block</code>、<code>table-cell</code>、<code>table-caption</code>、<code>flex</code>、<code>inline-flex</code></li>
+<li>overflow 除了 visible 以外的值<code>（hidden，auto，scroll）</code></li>
 </ol>
 <h3 id="BFC元素所具有的特性"><a href="#BFC元素所具有的特性" class="headerlink" title="BFC元素所具有的特性"></a>BFC元素所具有的特性</h3><ol>
 <li>在bfc中，盒子从顶端开始垂直地一个接一个的排列；</li>
-<li>盒子垂直方向的距离由margin决定，属于同一个bfc的盒子的margin会重叠；</li>
+<li>盒子垂直方向的距离由margin决定，<strong>属于同一个BFC的盒子的margin会重叠；</strong></li>
 <li>在bfc中，每一个盒子的左边缘会触碰到父容器的左边缘内部，也就是说在没有margin和padding时，父border的内边和子border的外边重叠；</li>
 <li>bfc的区域不会与浮动盒子产生交集，而是紧贴浮动边缘；</li>
-<li>如果父盒子没有设置高度，但子盒子中有浮动元素，那么在计算bfc的高度时， 会计算上浮动盒子的高度。</li>
+<li><strong>如果父盒子没有设置高度，但子盒子中有浮动元素，那么在计算bfc的高度时， 会计算上浮动盒子的高度。</strong></li>
 </ol>
-<h3 id="BFC的主要用途"><a href="#BFC的主要用途" class="headerlink" title="BFC的主要用途"></a>BFC的主要用途</h3><h4 id="1-清除元素内部浮动"><a href="#1-清除元素内部浮动" class="headerlink" title="1. 清除元素内部浮动    "></a>1. 清除元素内部浮动    <i class="fas fa-star" style="color:#e97171"></i></h4><p>    只要把父元素设置为bfc就可以清除子元素的浮动，最常见的就是给父元素添加<code>overflow：hidden</code>属性。<br>    啥意思呢，其实我有一段时间不是很明白“清除子元素浮动”这句话，人家设置的好好的浮动，你干嘛给人家清除呢，那不就是不生效了么？其实清除浮动的意思不是清除你设置的元素的浮动属性，而是清除设置了浮动属性之后给别的元素带来的影响。举个栗子：</p>
+<h4 id="特性解读"><a href="#特性解读" class="headerlink" title="特性解读"></a>特性解读</h4><h5 id="第二条解读"><a href="#第二条解读" class="headerlink" title="第二条解读"></a>第二条解读</h5><p>在常规文档流中，两个兄弟盒子之间的垂直距离是由他们的外边距所决定的，但不是他们的两个外边距之和，而是以较大的为准。</p>
+<p><img data-src="css-bfc-6.png"></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span> </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.box1</span> &#123;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">20px</span>;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">10px</span> <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: green;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.box2</span> &#123;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">20px</span>;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">20px</span> <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: green;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 这里我门可以看到，第一个子盒子有上边距（不会发生margin穿透的问题）；两个子盒子的垂直距离为20px而不是30px，因为垂直外边距会折叠，间距以较大的为准。</p>
+<p> 那么有没有方法让垂直外边距不折叠呢？答案是：有。特性的第5条就说了：bfc就是页面上的一个独立容器，容器里面的子元素不会影响外面元素，同样外面的元素不会影响到BFC内的元素。所以就让box1或box2再处于另一个BFC中就行了。</p>
+<p><img data-src="css-bfc-7.png"></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;wrapper&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box1&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box2&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.wrapper</span> &#123;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="BFC的主要用途"><a href="#BFC的主要用途" class="headerlink" title="BFC的主要用途"></a>BFC的主要用途</h3><h4 id="1-清除元素内部浮动"><a href="#1-清除元素内部浮动" class="headerlink" title="1. 清除元素内部浮动    "></a>1. 清除元素内部浮动    <i class="fas fa-star" style="color:#e97171"></i></h4><p>    只要把父元素设置为 <code>BFC</code> 就可以清除子元素的浮动，最常见的就是给父元素添加<code>overflow：hidden</code>属性。<br>    <strong>其实我有一段时间不是很明白“清除子元素浮动”这句话，人家设置的好好的浮动，你干嘛给人家清除呢，那不就是不生效了么？其实清除浮动的意思不是清除你设置的元素的浮动属性，而是清除设置了浮动属性之后给别的元素带来的影响。</strong>举个栗子：</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;father&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;son1&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;son2&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.father</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">150px</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.son1</span>, <span class="selector-class">.son2</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">50px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">50px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: pink;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.son2</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: purple;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>正常情况下的样子是上下块撑开父元素的高度</p>
+<p><img data-src="css-bfc-1.png"></p>
+<p>当给两个子元素设置了float属性之后，子元素不再占据父元素的空间，此时父元素的高度就为0</p>
+<p><img data-src="css-bfc-2.png"></p>
+<p>当设置父元素 <code>BFC</code> 后，此时就清除了子元素浮动带来的影响，什么影响呢，就是不撑开父元素的高度的影响，那么父元素的高度就是子元素的高度</p>
+<blockquote>
+<p>为父元素添加  <code>overflow: hidden;</code></p>
+</blockquote>
+<p><img data-src="css-bfc-3.png"></p>
+<h4 id="2-解决外边距合并问题"><a href="#2-解决外边距合并问题" class="headerlink" title="2. 解决外边距合并问题"></a>2. 解决外边距合并问题</h4><p>我们知道，两个盒子在一起时，当有相邻的外边距时，会取外边距较大的那一个，也就是外边距会合并，但这种情况只发生在同属一个bfc的两个盒子中间，换言之，要想解决外边距合并问题，只要把两个盒子放在不同的<code>BFC</code>中即可。</p>
+<h4 id="3-制作右侧盒子自适应宽度的问题"><a href="#3-制作右侧盒子自适应宽度的问题" class="headerlink" title="3. 制作右侧盒子自适应宽度的问题"></a>3. 制作右侧盒子自适应宽度的问题</h4><p><strong>左侧盒子宽度固定，右侧宽度不固定</strong>：当在父元素中只设定一个盒子浮动，另一个不浮动时，会造成第二个盒子在第一个盒子的下方，被覆盖掉一部分（但文字不会被覆盖）。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.father2</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.s1</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">50px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">50px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: pink;</span><br><span class="line">    <span class="attribute">float</span>: left;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.s2</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: purple;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="css-bfc-4.png"></p>
+<p>给第2个元素设定  <code>BFC</code></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.s2</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: purple;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">overflow</span>: auto;</span><br><span class="line">    <span class="attribute">word-break</span>: break-all;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="css-bfc-5.png"></p>
+<p>当增加第一个块的宽度时，第二个块的宽度会自动缩小，实现宽度自适应。</p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
         <category>Front End</category>
@@ -4091,6 +4121,8 @@ D-->>A: Dashed open arrow</textarea><textarea id="sequence-2-options" style="dis
 <p>css 作用域是全局的，项目越来越大，人越来越多，命名慢慢成为问题</p>
 <p>以下是几种解决命名问题的方案</p>
 <p>– BEM</p>
+<p>– Scoped CSS</p>
+<p>– CSS modules</p>
 </blockquote>
 <a id="more"></a>
 
