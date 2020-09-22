@@ -4181,4 +4181,123 @@ D-->>A: Dashed open arrow</textarea><textarea id="sequence-2-options" style="dis
         <tag>CSS</tag>
       </tags>
   </entry>
+  <entry>
+    <title>JS 基础概念</title>
+    <url>/2020/09/22/JS-basic-concept/</url>
+    <content><![CDATA[<h2 id="CONTENT-OUTLINE"><a href="#CONTENT-OUTLINE" class="headerlink" title="CONTENT OUTLINE"></a>CONTENT OUTLINE</h2><blockquote>
+<p>回顾一些JavaScript基本概念</p>
+<p>–  JS 白屏</p>
+<p>–  JS FOUC 原理</p>
+<p>–  async  await  defer</p>
+<p>–  原型链</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、JS-白屏"><a href="#一、JS-白屏" class="headerlink" title="一、JS 白屏"></a>一、JS <code>白屏</code></h2><h3 id="白屏原因"><a href="#白屏原因" class="headerlink" title="白屏原因"></a>白屏原因</h3><ol>
+<li>在弱网络下(2G网路或者GPRS网络) ,网络延迟，JS加载延迟 ,会阻塞页面</li>
+<li>客户端存在bug，缓存模块错乱，不缓存js等后来挂起的文件，以及乱缓存index.html</li>
+</ol>
+<h3 id="白屏优化实践"><a href="#白屏优化实践" class="headerlink" title="白屏优化实践"></a>白屏优化实践</h3><blockquote>
+<p>待补充</p>
+</blockquote>
+<h2 id="二、JS-FOUC-原理"><a href="#二、JS-FOUC-原理" class="headerlink" title="二、JS FOUC 原理"></a>二、JS <code>FOUC</code> 原理</h2><p><strong>浏览器样式闪烁</strong></p>
+<p>如果使用import方法对css进行导入,会导致某些页面在Windows 下的<code>Internet Explorer</code>出现一些奇怪的现象：<strong>以无样式显示页面内容的瞬间闪烁</strong></p>
+<p>这种现象称之为<code>文档样式短暂失效</code>(Flash of Unstyled Content)，简称为<code>FOUC</code>.</p>
+<p><strong>原因大致为：</strong></p>
+<ol>
+<li>使用import方法导入样式表。</li>
+<li>将样式表放在页面底部</li>
+<li>有几个样式表，放在html结构的不同位置。</li>
+</ol>
+<blockquote>
+<p>其实原理很清楚：</p>
+<p>当样式表晚于结构性html 加载，当加载到此样式表时，页面将停止之前的渲染。此样</p>
+<p>式表被下载和解析后，将重新渲染页面，也就出现了短暂的花屏现象。</p>
+</blockquote>
+<p><strong>解决方法：</strong>使用link标签将样式表放在文档head中</p>
+<h2 id="三、async-await-defer"><a href="#三、async-await-defer" class="headerlink" title="三、async   await   defer"></a>三、async   await   defer</h2><h3 id="3-1-async"><a href="#3-1-async" class="headerlink" title="3.1 async"></a>3.1 async</h3><p>带<code>async</code>关键字的函数，是声明异步函数，返回值是promise对象，如果<code>async</code>关键字函数返回的不是promise，会自动用Promise.resolve()包装。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;test&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line">test();</span><br></pre></td></tr></table></figure>
+
+<p>返回值为 <code>Promise &#123;&lt;resolved&gt;: &quot;test&quot;&#125;</code>。</p>
+<h3 id="3-2-await"><a href="#3-2-await" class="headerlink" title="3.2 await"></a>3.2 await</h3><p><code>await</code>等待右侧表达式的结果，这个结果是promise对象或者其他值。</p>
+<ul>
+<li>如果它等到的不是一个 promise 对象，那 <code>await</code> 表达式的运算结果就是它等到的东西。</li>
+<li>如果它等到的是一个 promise 对象，await 就忙起来了，它会阻塞后面的代码，等着 promise 对象 resolve，然后得到 resolve 的值，作为 <code>await</code> 表达式的运算结果。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> resolve(<span class="string">&quot;test&quot;</span>), <span class="number">2000</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> result = <span class="keyword">await</span> test();</span><br><span class="line"><span class="built_in">console</span>.log(result);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;end&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>由于<code>test()</code>造成的阻塞，<code>console.log(&#39;end&#39;)</code>会等到两秒后执行</p>
+<p>所以为了避免造成阻塞，await 必须用在 async 函数中，async 函数调用不会造成阻塞。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> resolve(<span class="string">&quot;test&quot;</span>), <span class="number">2000</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">test2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> result = <span class="keyword">await</span> test();</span><br><span class="line">    <span class="built_in">console</span>.log(result);</span><br><span class="line">&#125;</span><br><span class="line">test2();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;end&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>先执行console.log(‘end’)，两秒后执行console.log(‘test’)</p>
+<p>如果await用在普通函数中，会报错，如下：</p>
+<p><img data-src="js-concept-await.png"></p>
+<h3 id="3-3-async-await的执行顺序"><a href="#3-3-async-await的执行顺序" class="headerlink" title="3.3 async/await的执行顺序"></a>3.3 async/await的执行顺序</h3><p>遇到await会阻塞后面的代码，先执行async外面的同步代码，同步代码执行完，再回到async内部，继续执行await后面的代码。以下面的代码分析：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">test1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;start test1&#x27;</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">await</span> test2());</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;end test1&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">test2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;test2&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">await</span> <span class="string">&#x27;return test2 value&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line">test1();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;start async&#x27;</span>);</span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;setTimeout&#x27;</span>);</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;promise1&#x27;</span>);</span><br><span class="line">    resolve();</span><br><span class="line">    &#125;).then(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&#x27;promise2&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;end async&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>执行的结果</p>
+<p><img data-src="js-concept-await-demo.jpg"></p>
+<ul>
+<li>首先执行宏任务，执行<code>test1</code>函数，执行<code>console.log(&#39;start test1&#39;)</code></li>
+<li>遇到<code>await</code>，先执行右边<code>test2中的console.log(&#39;test2&#39;)</code>，中断了后面的代码，执行<code>test1</code>外面的同步代码</li>
+<li>执行<code>console.log(&#39;start async&#39;)</code></li>
+<li>遇到<code>setTimeout</code>，推到到下个宏任务队列中</li>
+<li>执行Promise里面的同步代码<code>console.log(&#39;promise1&#39;)</code></li>
+<li>运行到<code>promise().then</code>，发现是promise对象，推到微任务队列中</li>
+<li>执行<code>console.log(&#39;end async&#39;)</code></li>
+<li><code>test1</code>外面的同步代码执行结束后，回到<code>test1</code>中，<code>console.log(await test2())</code>执行完成后**<u>返回Promise</u>** {<code>&lt;resolved&gt;</code>: “return test2 value”}，是promise对象，推到微任务队列中</li>
+<li>此时第一个宏任务结束，执行所有的微任务，因为微任务队列先进先出，所以先执行<code>console.log(&#39;promise2&#39;)</code>，后执行<code>console.log(&#39;return test2 value&#39;)</code></li>
+<li>执行test2完成后，后面的代码不再阻塞，执行<code>console.log(&#39;end test1&#39;)</code></li>
+<li>执行下个宏任务，即执行<code>console.log(&#39;setTimeout&#39;)</code></li>
+</ul>
+<p><strong>补充下有关宏任务和微任务的知识</strong></p>
+<p>宏任务和微任务都是队列，宏任务有<code>script</code>、<code>setTimeout</code>、<code>setInterval</code>等，微任务有<code>Promise.then catch finally</code>、<code>process.nextTick</code>等，宏任务和微任务的关系如下：</p>
+<p><img data-src="js-await-task.jpg"></p>
+<h3 id="3-4-async-await的优缺点"><a href="#3-4-async-await的优缺点" class="headerlink" title="3.4 async/await的优缺点"></a>3.4 async/await的优缺点</h3><p><strong>1. 优点</strong></p>
+<p>相对于<code>promise</code>，<code>async/await</code>处理 then 的调用链，代码要清晰很多，几乎和同步代码一样</p>
+<p><strong>2. 缺点</strong></p>
+<p>滥用 await 可能会导致性能问题，因为 await 会阻塞代码</p>
+<h3 id="3-5-处理reject"><a href="#3-5-处理reject" class="headerlink" title="3.5 处理reject"></a>3.5 处理reject</h3><p><strong>1. try/catch</strong></p>
+<figure class="highlight coffeescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span> function fn() &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">await</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">(resolve, reject)</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">setTimeout</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">                reject(<span class="string">&#x27;err3&#x27;</span>);</span><br><span class="line">            &#125;, <span class="number">1000</span>);</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125; <span class="keyword">catch</span> (err)&#123;</span><br><span class="line">        alert(err)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">fn()</span><br></pre></td></tr></table></figure>
+
+<p><strong>2. catch</strong></p>
+<figure class="highlight coffeescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span> function fn() &#123;</span><br><span class="line">    <span class="keyword">await</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">(resolve, re    ject)</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            reject(<span class="string">&#x27;err&#x27;</span>);</span><br><span class="line">        &#125;, <span class="number">1000</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line">fn().<span class="keyword">catch</span>(alert)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-6-脚本加载标志-async-defer"><a href="#3-6-脚本加载标志-async-defer" class="headerlink" title="3.6 脚本加载标志 async  defer"></a>3.6 脚本加载标志 <code>async</code>  <code>defer</code></h3><ol>
+<li><p><span style="color:red;"><code>&lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;</code></span></p>
+<p>没有 <code>defer</code> 或 <code>async</code>，浏览器会立即加载并执行指定的脚本，“立即”指的是在渲染该 script 标签之下的文档元素之前，也就是说不等待后续载入的文档元素，读到就加载并执行。</p>
+</li>
+<li><p><span style="color:red;"><code>&lt;script async src=&quot;script.js&quot;&gt;&lt;/script&gt;</code></span></p>
+<p>有 <code>async</code>，加载和渲染后续文档元素的过程将和 <code>script.js</code> 的加载与执行并行进行（异步）</p>
+</li>
+<li><p><span style="color:red;"><code>&lt;script defer src=&quot;myscript.js&quot;&gt;&lt;/script&gt;</code></span></p>
+<p>有 <code>defer</code>，加载后续文档元素的过程将和 <code>script.js</code> 的加载并行进行（异步），但是 <code>script.js</code> 的执行要在所有元素解析完成之后，<code>DOMContentLoaded</code> 事件触发之前完成</p>
+</li>
+</ol>
+<p>然后从实用角度来说呢，首先把所有脚本都丢到 <code>&lt;/body&gt;</code> 之前是最佳实践，因为对于旧浏览器来说这是唯一的优化选择，此法可保证非脚本的其他一切元素能够以最快的速度得到加载和解析。</p>
+<p><img data-src="js-defer-1.jpg"></p>
+<p>蓝色线代表网络读取，红色线代表执行时间，这俩都是针对脚本的；绿色线代表 HTML 解析。</p>
+<p><strong>此图告诉我们以下几个要点：</strong></p>
+<ol>
+<li><em>defer</em> 和 <em>async</em> 在网络读取（下载）这块儿是一样的，都是异步的（相较于 HTML 解析）</li>
+<li>差别在于脚本下载完之后何时执行，显然 <em>defer</em> 是最接近我们对于应用脚本加载和执行的要求的</li>
+<li>关于 <em>defer</em>，此图未尽之处在于它是按照加载顺序执行脚本的，这一点要善加利用</li>
+<li><em>async</em> 则是一个乱序执行的主，反正对它来说脚本的加载和执行是紧紧挨着的，所以不管你声明的顺序如何，只要它加载完了就会立刻执行</li>
+<li>仔细想想，<em>async</em> 对于应用脚本的用处不大，因为它完全不考虑依赖（哪怕是最低级的顺序执行），不过它对于那些可以不依赖任何脚本或不被任何脚本依赖的脚本来说却是非常合适的，最典型的例子：Google Analytics</li>
+</ol>
+<blockquote>
+<p>一图胜千言</p>
+</blockquote>
+<p><img data-src="js-defer-2.jpg"></p>
+<h2 id="四、原型链"><a href="#四、原型链" class="headerlink" title="四、原型链"></a>四、原型链</h2><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>Front End</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
 </search>
