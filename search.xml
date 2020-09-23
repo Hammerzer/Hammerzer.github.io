@@ -4396,7 +4396,59 @@ D-->>A: Dashed open arrow</textarea><textarea id="sequence-2-options" style="dis
 <p>一图胜千言</p>
 </blockquote>
 <p><img data-src="js-defer-2.jpg"></p>
-<h2 id="四、原型链"><a href="#四、原型链" class="headerlink" title="四、原型链"></a>四、原型链</h2><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+<h2 id="四、原型链"><a href="#四、原型链" class="headerlink" title="四、原型链"></a>四、原型链</h2><blockquote>
+<p>膜拜这位简书大佬   <a href="https://www.jianshu.com/p/116ea3be6ef5">彻底理解js的原型链</a></p>
+<p>写的太牛博以至于我只能转载  </p>
+<p>–  本文主要参考了<a href="https://link.jianshu.com/?t=https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Inheritance_and_the_prototype_chain">MDN文档</a>和<a href="https://link.jianshu.com/?t=https://www.zhihu.com/question/34183746">知乎讨论</a>。</p>
+</blockquote>
+<h3 id="由浅入深的理解原型链"><a href="#由浅入深的理解原型链" class="headerlink" title="由浅入深的理解原型链"></a>由浅入深的理解原型链</h3><p>在js中，大部分东西都是对象，数组是对象，函数也是对象，对象更加是对象。<strong>不管我们给数组和函数定义什么内容，它们总是有一些相同的方法和属性</strong>。比如说hasOwnProperty()，toString()等：</p>
+<p><img data-src="chrome.png"></p>
+<p><strong>这说明一个对象所拥有的属性不仅仅是它本身拥有的属性，它还会从其他对象中继承一些属性。当js在一个对象中找不到需要的属性时，它会到这个对象的父对象上去找，以此类推，这就构成了对象的原型链</strong>。理解js的原型链对使用js的对象非常有帮助。</p>
+<blockquote>
+<p>Chrome强大的控制台可以显示出每一个对象所有的属性！包括prototype、__proto__、constructor等</p>
+</blockquote>
+<p>让我们通过一个例子由浅到深地理解原型链：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params">_name</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">this</span>.name = _name;</span><br><span class="line">&#125;</span><br><span class="line">Foo.prototype.show = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;I am &#x27;</span>, <span class="built_in">this</span>.name);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> f1 = <span class="keyword">new</span> Foo(<span class="string">&#x27;obj1&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> f2 = <span class="keyword">new</span> Foo(<span class="string">&#x27;obj2&#x27;</span>);</span><br><span class="line"></span><br><span class="line">f1.show();  <span class="comment">//  I am obj1</span></span><br><span class="line">f2.show();  <span class="comment">//  I am obj2</span></span><br></pre></td></tr></table></figure>
+
+<p>这是我们经常使用的创建对象的方式，将共同的方法放到Foo.prototype中，所有实例都共有这个方法了。</p>
+<p>这是怎么实现的呢？我们看下面这张图的第一行：</p>
+<p><img data-src="prototype.jpg"></p>
+<h4 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h4><p><strong>先只用看第一行</strong></p>
+<p>我们定义的show函数在Foo.prototype中，当我们执行<code>f1.show()</code>时，js发现f1本身没有show这个属性，所以它就到f1的原型（也就是<code>__proto__</code>指向的对象）去找，找到了就可以调用。</p>
+<blockquote>
+<p>注：每个对象都有一个方法<code>hasOwnProperty()</code>来检查对象本身是否有某个属性，如果有则返回true；如果这个属性在它的原型链上或原型链上都没有，则返回false；</p>
+</blockquote>
+<p>图片第一行告诉了我们4点：</p>
+<ol>
+<li><strong>所有函数都有一个prototype指针</strong>，指向原型对象，如图中的Foo的prototype指针。prototype指针的意义是，当我们使用这个构造函数new出新对象的时候，<strong>新对象的原型是谁</strong>。</li>
+<li><strong>构造函数的prototype所指向的原型对象</strong>有一个constructor指针，指回构造函数。如图中Foo.prototype的constructor指针指向Foo。constructor指针有助于我们找到一个对象的构造函数是谁。</li>
+<li>__proto__<strong>每个对象都有</strong>，js在new一个对象的时候，会将它的__proto__指向<strong>构造函数的prototype指向的那个对象</strong>。在上图中，f1、f2这些实例对象的__proto__都指向了Foo.prototype。</li>
+<li>如果一个对象的__proto__指向了另一个对象，那么前者就继承了后者的所有属性。</li>
+</ol>
+<blockquote>
+<p>请注意<code>__proto__</code>与prototype的区别！<code>__proto__</code>才是真正连接原型链的东西，而prototype只是构造函数的一个指针属性而已。</p>
+</blockquote>
+<h4 id="Js原生对象的继承关系"><a href="#Js原生对象的继承关系" class="headerlink" title="Js原生对象的继承关系"></a>Js原生对象的继承关系</h4><p><strong>理解了这个小例子我们就可以往图片的下面看了，它展示了js原生对象的继承关系是怎么样的。</strong></p>
+<p>我们先看看Foo的原型吧！Foo是一个函数，它的构造函数是js内部的function Function()，Function的prototype指向了一个对象Function.prototype，因此Foo的<code>__proto__</code>就指向了<code>Function.prototype</code>，如图。</p>
+<blockquote>
+<p>所有的函数都以function Function()为构造函数，因此，所有函数<strong>（包括function Function()和function Object()）</strong>的<code>__proto__</code>都指向Function.prototype这个对象，这个对象中定义了所有函数都共有的方法，比如call()、apply()等。</p>
+</blockquote>
+<p>我们继续深入下去，Function.prototype这个对象，它就是一个普通的对象，它的构造函数是js内置的function Object()，function Object()的prototype指向Object.prototype，因此Function.prototype.<code>__proto__</code>就指向Object.prototype，这个对象中定义了所有对象共有的属性，比如我们之前说的hasOwnProperty()和toString()等。</p>
+<blockquote>
+<p>同理，Foo.prototype和其他自定义的对象也是<code>__proto__</code>指向Object.prototype对象，就不需要说明了。</p>
+</blockquote>
+<p>Object.prototype就是原型链的终点了，它的<code>__proto__</code>是null，js查找属性时，如果到这里还没有找到，那就是<code>undefined</code>了。</p>
+<p>到这里就不难理解为什么我们说在js中，函数也是对象了，它就是继承自对象的！</p>
+<h3 id="由原型链到继承和对象声明"><a href="#由原型链到继承和对象声明" class="headerlink" title="由原型链到继承和对象声明"></a>由原型链到继承和对象声明</h3><p><code>new</code>操作符具体干了什么呢?其实很简单，就干了三件事情。</p>
+<figure class="highlight basic"><table><tr><td class="code"><pre><span class="line"><span class="symbol">1 </span>var obj  = &#123;&#125;;</span><br><span class="line"><span class="symbol">2 </span>obj.__proto__ = <span class="keyword">Base</span>.prototype;</span><br><span class="line"><span class="symbol">3 </span><span class="keyword">Base</span>.<span class="keyword">call</span>(obj);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>第一行，我们创建了一个空对象obj</li>
+<li>第二行，我们将这个空对象的__proto__成员指向了Base函数对象prototype成员对象</li>
+<li>第三行，我们将Base函数对象的this指针替换成obj，然后再调用Base函数，于是我们就给obj对象赋值了一个id成员变量，这个成员变量的值是”base”，关于call函数的用法。</li>
+</ul>
+<p>在谈原型链之前，我们首先要了解自定义函数与 Function 之间是什么关系，而构造函数、原型和实例之间又存在什么千丝万缕的关系呢？其实，所有的函数都是 Function 的实例。在构造函数上都有一个原型属性 prototype，该属性也是一个对象；那么在原型对象上有一个 constructor 属性，该属性指向的就是构造函数；而实例对象上有一个 <em>proto</em> 属性，该属性也指向原型对象，并且该属性不是标准属性，不可以用在编程中，该属性用于浏览器内部使用。</p>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
         <category>Front End</category>
       </categories>
