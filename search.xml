@@ -4491,29 +4491,30 @@ D-->>A: Dashed open arrow</textarea><textarea id="sequence-2-options" style="dis
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">   <span class="built_in">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype.showName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="built_in">this</span>.name);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params">name,age</span>)</span>&#123;</span><br><span class="line">   Person.call(<span class="built_in">this</span>,name);</span><br><span class="line">   <span class="built_in">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line">Student.prototype = <span class="keyword">new</span> Person();</span><br><span class="line">Student.prototype.contructor = Student;</span><br><span class="line">Student.prototype.showAge = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.age);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> stu = <span class="keyword">new</span> Student(<span class="string">&#x27;张三&#x27;</span>,<span class="number">12</span>);</span><br><span class="line">stu.showName();</span><br><span class="line">stu.showAge();</span><br></pre></td></tr></table></figure>
 
 <p>【原型继承+借用构造函数继承】它的特点就是属性每个实例一份，方法共享</p>
-<p><strong>【小结】</strong>套用一句很粗暴的话，所谓原型链就是找妈的一种行为方式，就可以理解为人是人他妈生的，妖是妖他妈生的。原型链的核心其实就只有一个：属性共享和独立的控制，当你的对象实例需要独立的属性，所有做法的本质都是在对象实例里面创建属性。若不考虑太多，你大可以在Person里面直接定义你所需要独立的属性来覆盖掉原型的属性。总之，使用原型继承的时候，要对于原型中的属性要特别注意，因为他们都是牵一发而动全身的存在。现在最常用的方法是组合模式。</p>
-<p>1、原型链</p>
-<p>  1）构造函数、原型和实例的关系</p>
+<p><strong>【小结】</strong>套用一句很粗暴的话，所谓原型链就是找妈的一种行为方式，就可以理解为人是人他妈生的，妖是妖他妈生的。原型链的核心其实就只有一个：属性共享和独立的控制，当你的对象实例需要独立的属性，所有做法的本质都是在对象实例里面创建属性。若不考虑太多，你大可以在Person里面直接定义你所需要独立的属性来覆盖掉原型的属性。总之，使用原型继承的时候，要对于原型中的属性要特别注意，因为他们都是牵一发而动全身的存在。现在最常用的方法是<strong>组合模式</strong>。</p>
+<h4 id="3-总结"><a href="#3-总结" class="headerlink" title="3. 总结"></a>3. 总结</h4><h5 id="3-1-原型链"><a href="#3-1-原型链" class="headerlink" title="3.1 原型链"></a>3.1 原型链</h5><p>  <strong>1）构造函数、原型和实例的关系</strong></p>
 <p>​    ①构造函数都有一个属性prototype，这个属性是一个对象（Object的实例）</p>
 <p>​    ②原型对象prototype里面有一个constructor属性，该属性指向原型对象所属的构造函数</p>
 <p>​    ③实例对象都有一个_proto_属性，该属性也指向构造函数的原型对象，它是一个非标准属性，不可以用于编程，它是用于浏览器自己使用的</p>
-<p>  2）prototype与_proto_的关系</p>
+<p>  <strong>2）prototype与_proto_的关系</strong></p>
 <p>​    ①prototype是构造函数的属性</p>
-<p>​    ②_proto_是实例对象的属性</p>
+<p>​    ②<code>_proto_</code>是实例对象的属性</p>
 <p>​          ——这两者都指向同一个对象</p>
-<p>  【总结】i）函数也是对象，对象不一定是函数；</p>
+<p>  <u>【总结】</u></p>
+<p>​      i）函数也是对象，对象不一定是函数；</p>
 <p>​      ii）对象的本质：无序的键值对集合；键值对当中的值可以是任意数据类型的值</p>
 <p>​      iii）对象就是一个容器，这个容器当中放的是（属性和方法）</p>
-<p>  3）属性搜索</p>
-<p>  　　①在访问对象的某个成员的时候会先在对象中找是否存在</p>
-<p>  　　②如果当前对象中没有就在构造函数的原型对象中找</p>
-<p>  　　③如果原型对象中没有找到就到原型对象的原型上找</p>
-<p>  　　④知道Object的原型对象的原型是null为止</p>
-<p>2、Function</p>
-<p>——所有函数都是Function的实例</p>
-<p>  ①本地对象：独立于宿主环境（浏览器）的对象——包括Object、Array、Date、RegExp、Function、Error、Number、String、Boolean</p>
+<p>  <strong>3）属性搜索</strong></p>
+<p>  　　① 在访问对象的某个成员的时候会先在对象中找是否存在</p>
+<p>  　　② 如果当前对象中没有就在构造函数的原型对象中找</p>
+<p>  　　③ 如果原型对象中没有找到就到原型对象的原型上找</p>
+<p>  　　④ 知道<code>Object</code>的原型对象的原型是null为止</p>
+<h5 id="3-2-Function"><a href="#3-2-Function" class="headerlink" title="3.2 Function"></a>3.2 Function</h5><p><strong>——所有函数都是Function的实例</strong></p>
+<p>  ①本地对象：独立于宿主环境（浏览器）的对象</p>
+<figure class="highlight coffeescript"><table><tr><td class="code"><pre><span class="line">——  包括<span class="built_in">Object</span>、<span class="built_in">Array</span>、<span class="built_in">Date</span>、<span class="built_in">RegExp</span>、<span class="built_in">Function</span>、<span class="built_in">Error</span>、<span class="built_in">Number</span>、<span class="built_in">String</span>、<span class="built_in">Boolean</span></span><br></pre></td></tr></table></figure>
+
 <p>  ②内置对象——包括Math、Global（window，在js中就是全局变量），使用的时候不需要new</p>
-<p>  ③宿主对象——包括自定义对象、DOM、BOM</p>
+<p>  ③宿主对象——包括<code>自定义对象</code>、<code>DOM</code>、<code>BOM</code></p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
         <category>Front End</category>
