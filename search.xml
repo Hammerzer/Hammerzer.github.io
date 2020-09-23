@@ -4439,15 +4439,81 @@ D-->>A: Dashed open arrow</textarea><textarea id="sequence-2-options" style="dis
 </blockquote>
 <p>Object.prototype就是原型链的终点了，它的<code>__proto__</code>是null，js查找属性时，如果到这里还没有找到，那就是<code>undefined</code>了。</p>
 <p>到这里就不难理解为什么我们说在js中，函数也是对象了，它就是继承自对象的！</p>
-<h3 id="由原型链到继承和对象声明"><a href="#由原型链到继承和对象声明" class="headerlink" title="由原型链到继承和对象声明"></a>由原型链到继承和对象声明</h3><p><code>new</code>操作符具体干了什么呢?其实很简单，就干了三件事情。</p>
-<figure class="highlight basic"><table><tr><td class="code"><pre><span class="line"><span class="symbol">1 </span>var obj  = &#123;&#125;;</span><br><span class="line"><span class="symbol">2 </span>obj.__proto__ = <span class="keyword">Base</span>.prototype;</span><br><span class="line"><span class="symbol">3 </span><span class="keyword">Base</span>.<span class="keyword">call</span>(obj);</span><br></pre></td></tr></table></figure>
+<h3 id="由原型链到继承和对象声明"><a href="#由原型链到继承和对象声明" class="headerlink" title="由原型链到继承和对象声明"></a>由原型链到继承和对象声明</h3><blockquote>
+<p>转载自<a href="https://www.cnblogs.com/xfcao/p/10029731.html">JS中原型链的理解</a></p>
+</blockquote>
+<p><code>new</code>操作符具体干了什么呢?其实很简单，就干了三件事情。</p>
+<figure class="highlight reasonml"><table><tr><td class="code"><pre><span class="line">var obj  = &#123;&#125;;</span><br><span class="line">obj.__proto__ = <span class="module-access"><span class="module"><span class="identifier">Base</span>.</span></span>prototype;</span><br><span class="line"><span class="module-access"><span class="module"><span class="identifier">Base</span>.</span></span>call(obj);</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>第一行，我们创建了一个空对象obj</li>
 <li>第二行，我们将这个空对象的__proto__成员指向了Base函数对象prototype成员对象</li>
 <li>第三行，我们将Base函数对象的this指针替换成obj，然后再调用Base函数，于是我们就给obj对象赋值了一个id成员变量，这个成员变量的值是”base”，关于call函数的用法。</li>
 </ul>
-<p>在谈原型链之前，我们首先要了解自定义函数与 Function 之间是什么关系，而构造函数、原型和实例之间又存在什么千丝万缕的关系呢？其实，所有的函数都是 Function 的实例。在构造函数上都有一个原型属性 prototype，该属性也是一个对象；那么在原型对象上有一个 constructor 属性，该属性指向的就是构造函数；而实例对象上有一个 <em>proto</em> 属性，该属性也指向原型对象，并且该属性不是标准属性，不可以用在编程中，该属性用于浏览器内部使用。</p>
+<p>在谈原型链之前，我们首先要了解自定义函数与 Function 之间是什么关系，而构造函数、原型和实例之间又存在什么千丝万缕的关系呢？</p>
+<p>其实，所有的函数都是 <code>Function</code> 的实例。</p>
+<p>在构造函数上都有一个原型属性 <code>prototype</code>，该属性也是一个对象；那么在原型对象上有一个 <code>constructor</code> 属性，该属性指向的就是构造函数；而实例对象上有一个 <code>_proto_</code> 属性，<span style="color:red;font-weight:bold;">该属性也指向原型对象，并且该属性不是标准属性，不可以用在编程中，该属性用于浏览器内部使用</span>。</p>
+<h4 id="1-构造函数、原型和实例之间的关系"><a href="#1-构造函数、原型和实例之间的关系" class="headerlink" title="1.  构造函数、原型和实例之间的关系"></a>1.  构造函数、原型和实例之间的关系</h4><p> <strong><code>_proto_</code></strong></p>
+<ul>
+<li>在函数里有一个属性prototype</li>
+<li>由该函数创建的对象默认会连接到该属性上</li>
+</ul>
+<p><strong>prototype 与 <code>_proto_</code> 的关系</strong></p>
+<ul>
+<li><code>_proto_</code>是站在对象角度来说的</li>
+<li>prototype 是站在构造函数角度来说的</li>
+</ul>
+<h5 id="①-Object"><a href="#①-Object" class="headerlink" title="①+Object"></a>①+Object</h5><p><img data-src="prototype-1.png"></p>
+<h5 id="②-Function-Object-Array"><a href="#②-Function-Object-Array" class="headerlink" title="②+Function+Object+Array"></a>②+Function+Object+Array</h5><p><img data-src="prototype-2.png"></p>
+<p>接下来再来讨论什么是原型链。其实，就是有限的实例对象和原型之间组成有限链，就是用来实现共享属性和继承的。下面，我们看代码：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line"><span class="comment">// 对象是有原型对象的</span></span><br><span class="line"><span class="comment">// 原型对象也有原型对象</span></span><br><span class="line"><span class="comment">// obj._proto_._proto_._proto_</span></span><br><span class="line"><span class="comment">// 原型对象也有原型对象，对象的原型对象一直往上找，会找到一个null</span></span><br><span class="line"><span class="comment">// 原型链示例</span></span><br><span class="line"><span class="keyword">var</span> arr = [];</span><br><span class="line"><span class="comment">// arr -&gt; Array.prototype -&gt; Object.prototype -&gt; null</span></span><br><span class="line"><span class="keyword">var</span> o = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line"><span class="comment">// o -&gt; Object.prototype -&gt; null;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="built_in">this</span>.name1 = <span class="string">&#x27;1&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="built_in">this</span>.name2 = <span class="string">&#x27;2&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line">Foo2.prototype = <span class="keyword">new</span> Foo1();</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo3</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="built_in">this</span>.name = <span class="string">&#x27;3&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line">Foo3.prototype = <span class="keyword">new</span> Foo2();</span><br><span class="line"><span class="keyword">var</span> foo3 = <span class="keyword">new</span> Foo3();</span><br><span class="line"><span class="built_in">console</span>.dir(foo3);</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="prototype-3.png"></p>
+<p><img data-src="prototype-4.png"></p>
+<h4 id="2-继承"><a href="#2-继承" class="headerlink" title="2. 继承"></a>2. 继承</h4><h5 id="2-1-原型继承"><a href="#2-1-原型继承" class="headerlink" title="2.1 原型继承"></a>2.1 原型继承</h5><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Tiger</span>(<span class="params">color</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.color = color;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//   var tiger = new Tiger(&#x27;yellow&#x27;);</span></span><br><span class="line"><span class="comment">//   console.log(tiger.color);</span></span><br><span class="line"><span class="comment">//   console.log(tiger.name);  //undefined</span></span><br><span class="line"><span class="comment">//   Tiger.prototype = new Animal(&#x27;老虎&#x27;);   //一种方式</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.name = <span class="string">&#x27;大老虎&#x27;</span>;   <span class="comment">//第二种方式</span></span><br><span class="line"><span class="keyword">var</span> tiger = <span class="keyword">new</span> Tiger(<span class="string">&#x27;yellow&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(tiger.color);</span><br><span class="line"><span class="built_in">console</span>.log(tiger.name);</span><br></pre></td></tr></table></figure>
+
+<p><strong>值得注意的是，这里存在两个主要的问题：</strong></p>
+<p> ①它不方便给父级类型传递参数；</p>
+<p> ②父级类型当中的引用类型被所有的实例共享</p>
+<h5 id="2-2-ES5-提供了Object-create-方法来实现继承"><a href="#2-2-ES5-提供了Object-create-方法来实现继承" class="headerlink" title="2.2 ES5 提供了Object.create() 方法来实现继承"></a>2.2 ES5 提供了Object.create() 方法来实现继承</h5><p>这种方法是ES5的新特性，其实就是<strong>复制继承</strong>。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">————做兼容</span><br><span class="line"><span class="comment">//shim垫片</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">create</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">Object</span>.create)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Object</span>.create(obj);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">        Foo.prototype = obj;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Foo();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="2-3-拷贝继承"><a href="#2-3-拷贝继承" class="headerlink" title="2.3 拷贝继承"></a>2.3 拷贝继承</h5><p>初始化 <code>obj</code> 时，生成相应的 <code>__proto__</code>；通过此函数获取继承属性</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line">obj.extend = <span class="function"><span class="keyword">function</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> k <span class="keyword">in</span> obj)&#123;</span><br><span class="line">        <span class="built_in">this</span>[k] = obj[k];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="2-4-借用构造函数继承"><a href="#2-4-借用构造函数继承" class="headerlink" title="2.4 借用构造函数继承"></a>2.4 借用构造函数继承</h5><p>被借用的构造函数中原型上的成员没有被借过来</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Mouse</span>(<span class="params">nickname</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>);</span><br><span class="line">    Animal.call(<span class="built_in">this</span>,<span class="string">&#x27;老鼠&#x27;</span>);</span><br><span class="line">    <span class="built_in">this</span>.nickname = nickname;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> m = <span class="keyword">new</span> Mouse(<span class="string">&#x27;杰瑞&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(m.name);</span><br><span class="line"><span class="built_in">console</span>.log(m.nickname);</span><br></pre></td></tr></table></figure>
+
+<p><strong>存在的问题：</strong>可以解决原型继承当中传参问题，但是父类型当中的原型对象上的成员（属性和方法）不能被继承到</p>
+<h5 id="2-5-组合继承"><a href="#2-5-组合继承" class="headerlink" title="2.5 组合继承"></a>2.5 组合继承</h5><p>——prototype对象是有动态性的</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">   <span class="built_in">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype.showName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="built_in">this</span>.name);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params">name,age</span>)</span>&#123;</span><br><span class="line">   Person.call(<span class="built_in">this</span>,name);</span><br><span class="line">   <span class="built_in">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line">Student.prototype = <span class="keyword">new</span> Person();</span><br><span class="line">Student.prototype.contructor = Student;</span><br><span class="line">Student.prototype.showAge = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.age);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> stu = <span class="keyword">new</span> Student(<span class="string">&#x27;张三&#x27;</span>,<span class="number">12</span>);</span><br><span class="line">stu.showName();</span><br><span class="line">stu.showAge();</span><br></pre></td></tr></table></figure>
+
+<p>【原型继承+借用构造函数继承】它的特点就是属性每个实例一份，方法共享</p>
+<p><strong>【小结】</strong>套用一句很粗暴的话，所谓原型链就是找妈的一种行为方式，就可以理解为人是人他妈生的，妖是妖他妈生的。原型链的核心其实就只有一个：属性共享和独立的控制，当你的对象实例需要独立的属性，所有做法的本质都是在对象实例里面创建属性。若不考虑太多，你大可以在Person里面直接定义你所需要独立的属性来覆盖掉原型的属性。总之，使用原型继承的时候，要对于原型中的属性要特别注意，因为他们都是牵一发而动全身的存在。现在最常用的方法是组合模式。</p>
+<p>1、原型链</p>
+<p>  1）构造函数、原型和实例的关系</p>
+<p>​    ①构造函数都有一个属性prototype，这个属性是一个对象（Object的实例）</p>
+<p>​    ②原型对象prototype里面有一个constructor属性，该属性指向原型对象所属的构造函数</p>
+<p>​    ③实例对象都有一个_proto_属性，该属性也指向构造函数的原型对象，它是一个非标准属性，不可以用于编程，它是用于浏览器自己使用的</p>
+<p>  2）prototype与_proto_的关系</p>
+<p>​    ①prototype是构造函数的属性</p>
+<p>​    ②_proto_是实例对象的属性</p>
+<p>​          ——这两者都指向同一个对象</p>
+<p>  【总结】i）函数也是对象，对象不一定是函数；</p>
+<p>​      ii）对象的本质：无序的键值对集合；键值对当中的值可以是任意数据类型的值</p>
+<p>​      iii）对象就是一个容器，这个容器当中放的是（属性和方法）</p>
+<p>  3）属性搜索</p>
+<p>  　　①在访问对象的某个成员的时候会先在对象中找是否存在</p>
+<p>  　　②如果当前对象中没有就在构造函数的原型对象中找</p>
+<p>  　　③如果原型对象中没有找到就到原型对象的原型上找</p>
+<p>  　　④知道Object的原型对象的原型是null为止</p>
+<p>2、Function</p>
+<p>——所有函数都是Function的实例</p>
+<p>  ①本地对象：独立于宿主环境（浏览器）的对象——包括Object、Array、Date、RegExp、Function、Error、Number、String、Boolean</p>
+<p>  ②内置对象——包括Math、Global（window，在js中就是全局变量），使用的时候不需要new</p>
+<p>  ③宿主对象——包括自定义对象、DOM、BOM</p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
         <category>Front End</category>
