@@ -5,7 +5,9 @@
     <url>/2020/09/17/css-knowledge-points-summary/</url>
     <content><![CDATA[<h2 id="CONTENT-OUTLINE"><a href="#CONTENT-OUTLINE" class="headerlink" title="CONTENT-OUTLINE"></a>CONTENT-OUTLINE</h2><blockquote>
 <p>汇总一些日常碰见的<code>CSS</code>小问题</p>
-<p>– 盒子模型 <code>box-size</code></p>
+<p>–  盒子模型 <code>box-size</code></p>
+<p>–  CSS <code>BFC</code></p>
+<p>–  使用外部字体<code>@Font-Face</code></p>
 </blockquote>
 <a id="more"></a>
 
@@ -87,6 +89,99 @@
 
 <p><img data-src="css-bfc-5.png"></p>
 <p>当增加第一个块的宽度时，第二个块的宽度会自动缩小，实现宽度自适应。</p>
+<h2 id="三、使用外部字体"><a href="#三、使用外部字体" class="headerlink" title="三、使用外部字体"></a>三、使用外部字体</h2><p>先说自己遇到的问题：有个vue项目需要用给定的字体包，一直不能正确显示</p>
+<p>刚开始的时候，字体包 是放在<code>public</code>下，并在<code>src</code>中的 <code>css文件</code>中使用绝对路径引用，像这样</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@font-face</span>&#123;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">&#x27;MHei-PRC-Heavy&#x27;</span>;</span><br><span class="line">    <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">&quot;/public/fonts/MHeiPRC-Heavy.ttf&quot;</span>) <span class="built_in">format</span>(<span class="string">&#x27;truetype&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="font-face-1.png"></p>
+<p>但一直报错</p>
+<p><img data-src="font-face-2.png"></p>
+<p>后来的<strong>解决办法</strong>是 把<code>fonts文件</code>移到<code>asset</code>中，然后在引用时候使用<code>相对路径</code></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@font-face</span>&#123;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">&#x27;MHei-PRC-Heavy&#x27;</span>;</span><br><span class="line">    <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">&quot;../assets/fonts/MHeiPRC-Heavy.ttf&quot;</span>) <span class="built_in">format</span>(<span class="string">&#x27;truetype&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>另外，在<code>@font-face</code>中使用<code>font-weight</code>不生效（未解决）</p>
+<p>下面是关于<code>@font-face</code>的内容  <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/@font-face">MDN文档</a></p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><blockquote>
+<p>参考自 <a href="https://www.jianshu.com/p/2fb8ef458400">font-face 详解</a></p>
+</blockquote>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@font-face</span> &#123;</span><br><span class="line">  [ font-family: &lt;family-name&gt;; ] ||</span><br><span class="line">  [ src: &lt;src&gt;; ] ||</span><br><span class="line">  [ unicode-range: &lt;unicode-range&gt;; ] ||</span><br><span class="line">  [ font-variant: &lt;font-variant&gt;; ] ||</span><br><span class="line">  [ font-feature-settings: &lt;font-feature-settings&gt;; ] ||</span><br><span class="line">  [ font-variation-settings: &lt;font-variation-settings&gt;; ] ||</span><br><span class="line">  [ font-stretch: &lt;font-stretch&gt;; ] ||</span><br><span class="line">  [ font-weight: &lt;font-weight&gt;; ] ||</span><br><span class="line">  <span class="selector-attr">[ font-style: &lt;font-style&gt;; ]</span></span><br><span class="line">&#125;where &lt;family-name&gt; = &lt;string&gt; | &lt;custom-ident&gt;+</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@font-face</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: &lt;webFontName&gt;;</span><br><span class="line">    <span class="attribute">src</span>: &lt;source&gt; [&lt;format&gt;][,&lt;source&gt; [&lt;format&gt;]]*;</span><br><span class="line">    [font-weight: &lt;weight&gt;];</span><br><span class="line">    <span class="selector-attr">[font-style: &lt;style&gt;]</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><code>webFontName</code>: 引入的自定义字体名称，将会为指定的元素添加 <code>font-family: webFontName</code></p>
+</li>
+<li><p><code>source</code>: 字体路径</p>
+</li>
+<li><p><code>format</code>: 字体格式，用于帮助浏览器识别</p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line"><span class="literal">true</span>type  opentype  <span class="literal">true</span>type-aat   embedded-opentype   svg …</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>weight</code>: 字体是否粗体</p>
+</li>
+<li><p><code>style</code>: 字体样式</p>
+</li>
+</ul>
+<h3 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h3><ol>
+<li><code>truetype - ttf</code><ul>
+<li>Windows 和 Mac 最常见字体</li>
+<li>RAW 格式，不为任何网站优化</li>
+<li>IE9+、Firefox3.5+、Chrome4+、Safari3+、Opera10+、iOS Mobile Safari4.2+</li>
+</ul>
+</li>
+<li><code>opentype - otf</code><ul>
+<li>原始字体格式，内置在 truetype 基础之上</li>
+<li>提供更多功能</li>
+<li>Firefox3.5+、Chrome4.0+、Safari3.1+、Opera10.0+、iOS Mobile Safari4.2+</li>
+</ul>
+</li>
+<li><code>web-open-font-format - woff</code><ul>
+<li>Web 字体最佳格式</li>
+<li>是一个开放的 truetype、opentype 压缩版本</li>
+<li>支持元数据包的分离</li>
+<li>IE9+、Firefox3.5+、Chrome6+、Safari3.6+、Opera11.1+</li>
+</ul>
+</li>
+<li><code>embedded-opentype - eot</code><ul>
+<li>IE 专用字体</li>
+<li>可以从 truetype 创建此格式</li>
+<li>IE4+</li>
+</ul>
+</li>
+<li><code>svg - svg</code><ul>
+<li>基于 svg 渲染</li>
+<li>Chrome4+、Safari3.1+、Opera10.0+、iOS Mobile Safari3.2+</li>
+</ul>
+</li>
+</ol>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><ul>
+<li>获取自定义字体的原始文件，可前往 <a href="https://www.dafont.com/">DaFont</a> 下载</li>
+<li>在 <a href="https://www.fontsquirrel.com/fontface/generator">Font Squirrel</a> 将字体转换为兼容各浏览器的 Web 字体</li>
+<li>按上述兼容性语法指定 @font-face 中的字体</li>
+<li>在指定元素中调用该自定义字体</li>
+</ul>
+<h3 id="使用注意"><a href="#使用注意" class="headerlink" title="使用注意"></a>使用注意</h3><h4 id="1-字体文件名简写"><a href="#1-字体文件名简写" class="headerlink" title="1. 字体文件名简写"></a>1. 字体文件名简写</h4><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@font-face</span> &#123;</span><br><span class="line">　　<span class="attribute">font-family</span>: <span class="string">&#x27;YT&#x27;</span>;   <span class="comment">/*声明一个名为yt的字体变量*/</span></span><br><span class="line">　　<span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">&#x27;YourWebFontName.eot&#x27;</span>)，<span class="built_in">local</span>(<span class="string">&#x27;YourFontName.eot&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line">// 然后在任何需要使用YT字体的地方就可以直接使用以下：</span><br><span class="line"><span class="selector-tag">h1</span>&#123;<span class="attribute">font-family</span>:YT;&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>src</code>属性定义字体的下载地址，<code>local</code>表示本机地址，<code>url</code>表示网址（比如使用服务器上下载的字体）</li>
+<li>如果在<code>src</code>上定义了多种字体，他们也是候选关系，如上段代码</li>
+<li>如果修改了src中定义的字体或者顺序，一定要关闭浏览器再打开才能看到修改后的效果，刷新是看不到的</li>
+<li>在<code>@font-face</code>规则中,font-family的作用是声明字体变量，与普通选择器中的font-family是不一样的。</li>
+</ul>
+<h4 id="2-使用服务端字体"><a href="#2-使用服务端字体" class="headerlink" title="2. 使用服务端字体"></a>2. 使用服务端字体</h4><p>在<code>@font-face</code>规则中，如果src属性定义的字体是一个<code>url路径</code>，则网页加载时会自动从服务器下载字体文件，再显示出来。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@font-face</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">&#x27;FZCYS&#x27;</span>;</span><br><span class="line">    <span class="attribute">src</span>: <span class="built_in">local</span>(<span class="string">&#x27;FZYaSongA-B-GB&#x27;</span>);</span><br><span class="line">    <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">&#x27;YourWebFontName.eot&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-font-face浏览器兼容"><a href="#3-font-face浏览器兼容" class="headerlink" title="3. @font-face浏览器兼容"></a>3. <code>@font-face</code>浏览器兼容</h4><p>由于每种浏览器对@font-face的兼容性不同，不同的浏览器对字体的支持格式不同，这就意味着在<code>@font-face</code>中我们至少需要.woff,.eot两种格式字体，甚至还需要.svg等字体达到更多种浏览版本的支持。</p>
+<ul>
+<li><code>.TTF</code>或<code>.OTF</code>，适用于Firefox 3.5、Safari、Opera；</li>
+<li><code>.EOT</code>  适用于Internet Explorer 4.0+；</li>
+<li><code>.SVG</code>  适用于Chrome、IPhone， 获取要使用字体的三种文件格式，确保能在主流浏览器中都能正常显示该字体。</li>
+</ul>
+<p>使用CSS3的<code>@font-face</code>属性可以实现在网页中嵌入任意字体，但是IE只支持微软自有的EOT格式字体，而其他浏览器都不支持这一字体格式，其它浏览器可以设置TTF(TrueType)和OTF(OpenType)两种字体作为自定义字体</p>
+<p>下面要解决的是如何获取到某种字体的这三种格式文件。一般地，我们在手头上（或在设计资源站点已经找到）有该字体的某种格式文件，最常见的是.TTF 文件，我们需要通过这种文件格式转换为其余两种文件格式。字体文件格式的转换可以通过网站<a href="https://www.fontsquirrel.com/tools/webfont-generator">FontsQuirrel</a>或 onlinefontconverter提供的在线字体转换服务获取。获取到三种格式的字体文件后，</p>
+<p>下一步要在样式表中声明该字体，并在需要的地方使用该字体。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@font-face</span> &#123;</span><br><span class="line"><span class="attribute">font-family</span>: <span class="string">&#x27;YourWebFontName&#x27;</span>;</span><br><span class="line"><span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">&#x27;YourWebFontName.eot&#x27;</span>); <span class="comment">/* IE9 Compat Modes */</span></span><br><span class="line"><span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">&#x27;YourWebFontName.eot?#iefix&#x27;</span>) <span class="built_in">format</span>(<span class="string">&#x27;embedded-opentype&#x27;</span>), <span class="comment">/* IE6-IE8 */</span></span><br><span class="line">     <span class="built_in">url</span>(<span class="string">&#x27;YourWebFontName.woff&#x27;</span>) <span class="built_in">format</span>(<span class="string">&#x27;woff&#x27;</span>), <span class="comment">/* Modern Browsers */</span></span><br><span class="line">     <span class="built_in">url</span>(<span class="string">&#x27;YourWebFontName.ttf&#x27;</span>)  <span class="built_in">format</span>(<span class="string">&#x27;truetype&#x27;</span>), <span class="comment">/* Safari, Android, iOS */</span></span><br><span class="line">     <span class="built_in">url</span>(<span class="string">&#x27;YourWebFontName.svg#YourWebFontName&#x27;</span>) <span class="built_in">format</span>(<span class="string">&#x27;svg&#x27;</span>); <span class="comment">/* Legacy iOS */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
         <category>Front End</category>
@@ -747,11 +842,11 @@
   <entry>
     <title>Vue常见打脸小问题</title>
     <url>/2020/09/09/vue-FAQ/</url>
-    <content><![CDATA[<blockquote>
-<h2 id="CONTENT-OUTLINE"><a href="#CONTENT-OUTLINE" class="headerlink" title="CONTENT OUTLINE"></a>CONTENT OUTLINE</h2><p>这篇文章汇总使用<code>vue</code>的过程中遇到的小问题</p>
-<ul>
-<li>获取地址参数</li>
-</ul>
+    <content><![CDATA[<h2 id="CONTENT-OUTLINE"><a href="#CONTENT-OUTLINE" class="headerlink" title="CONTENT OUTLINE"></a>CONTENT OUTLINE</h2><blockquote>
+<p>这篇文章汇总使用<code>vue</code>的过程中遇到的小问题</p>
+<p>–  获取地址参数</p>
+<p>–  实现一段时间请求一次接口</p>
+<p>–  Vue <code>v-loading</code> 加载</p>
 </blockquote>
 <a id="more"></a>
 
@@ -1605,25 +1700,13 @@
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
 <p>这篇文章来一次查漏补缺，回顾<code>CSS布局</code></p>
 <p>列举的布局如下：</p>
-<blockquote>
-<p>弹性布局<code>Flex</code></p>
-</blockquote>
-<blockquote>
-<p><code>Grid</code> 网格布局</p>
-</blockquote>
-<blockquote>
-<p>浮动布局</p>
-</blockquote>
-<blockquote>
-<p>圣杯布局</p>
-</blockquote>
-<blockquote>
-<p>双飞翼布局</p>
-</blockquote>
+<p>–  弹性布局<code>Flex</code></p>
+<p>–  <code>Grid</code> 网格布局</p>
+<p>–  浮动布局</p>
+<p>–  圣杯布局</p>
+<p>–  双飞翼布局</p>
 </blockquote>
 <a id="more"></a>
-
-
 
 <h2 id="一、CSS3弹性盒布局方式"><a href="#一、CSS3弹性盒布局方式" class="headerlink" title="一、CSS3弹性盒布局方式"></a>一、CSS3弹性盒布局方式</h2><p>弹性盒子是CSS3的一种新布局模式。</p>
 <p>CSS3 弹性盒（ <code>Flexible Box</code> 或 <code>flexbox</code>），是一种当页面需要适应不同的屏幕大小以及设备类型时确保元素拥有恰当的行为的布局方式。</p>
@@ -2001,9 +2084,17 @@
   <entry>
     <title>HTML标签</title>
     <url>/2020/08/31/HTML-tags/</url>
-    <content><![CDATA[<h2 id="一、Html5废弃标签"><a href="#一、Html5废弃标签" class="headerlink" title="一、Html5废弃标签"></a>一、Html5废弃标签</h2><h3 id="第一类：表现性元素"><a href="#第一类：表现性元素" class="headerlink" title="第一类：表现性元素"></a>第一类：表现性元素</h3><a id="more"></a>
+    <content><![CDATA[<h2 id="CONTENT-OUTLINE"><a href="#CONTENT-OUTLINE" class="headerlink" title="CONTENT OUTLINE"></a>CONTENT OUTLINE</h2><blockquote>
+<p>总结了一下关于HTML标签的内容</p>
+<p>–  <code>HTML5</code>废弃标签</p>
+<p>–  <code>HTML5</code>新增语义化标签</p>
+<p>–  <code>&lt;a&gt;</code>标签</p>
+<p>–  <code>&lt;table&gt;</code>标签</p>
+<p>–  <code>HTML</code>语义化</p>
+</blockquote>
+<a id="more"></a>
 
-<ul>
+<h2 id="一、Html5废弃标签"><a href="#一、Html5废弃标签" class="headerlink" title="一、Html5废弃标签"></a>一、Html5废弃标签</h2><h3 id="第一类：表现性元素"><a href="#第一类：表现性元素" class="headerlink" title="第一类：表现性元素"></a>第一类：表现性元素</h3><ul>
 <li>basefont</li>
 <li>big</li>
 <li>center</li>
@@ -2286,7 +2377,14 @@
   <entry>
     <title>HTML渲染</title>
     <url>/2020/08/29/HTML-render/</url>
-    <content><![CDATA[<h2 id="一、HTML渲染过程"><a href="#一、HTML渲染过程" class="headerlink" title="一、HTML渲染过程"></a>一、HTML渲染过程</h2><h3 id="1-HTML解析过程"><a href="#1-HTML解析过程" class="headerlink" title="1. HTML解析过程"></a>1. HTML解析过程</h3><ol>
+    <content><![CDATA[<h2 id="CONTENT-OUTLINE"><a href="#CONTENT-OUTLINE" class="headerlink" title="CONTENT OUTLINE"></a>CONTENT OUTLINE</h2><blockquote>
+<p>下面，总结了关于页面渲染的相关内容</p>
+<p>–  <code>HTML</code>渲染或者说 <code>JavaScript</code>页面渲染原理</p>
+<p>–  渲染优化方案</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、HTML渲染过程"><a href="#一、HTML渲染过程" class="headerlink" title="一、HTML渲染过程"></a>一、HTML渲染过程</h2><h3 id="1-HTML解析过程"><a href="#1-HTML解析过程" class="headerlink" title="1. HTML解析过程"></a>1. HTML解析过程</h3><ol>
 <li><p><strong>构建DOM树</strong>：将HTML构建成一个DOM树，也就是构建节点，把所有的节点都构建出来</p>
 </li>
 <li><p><strong>构建CSSOM树</strong>：解析css去构建CSSOM树</p>
@@ -2302,8 +2400,6 @@
 <li><p><strong><em>重绘repaint</em></strong>：既然重排了，最后当然得重新绘制页面。</p>
 </li>
 </ol>
-<a id="more"></a>
-
 <h3 id="2-浏览器渲染页面详解"><a href="#2-浏览器渲染页面详解" class="headerlink" title="2. 浏览器渲染页面详解"></a>2. 浏览器渲染页面详解</h3><blockquote>
 <p>找了一篇已经很全的文章，所以不继续造轮子了，接下来分享一下<a href="https://segmentfault.com/a/1190000010298038">这篇文章</a>，同时感谢原作者</p>
 </blockquote>
@@ -2857,9 +2953,17 @@
   <entry>
     <title>HTML基本问题</title>
     <url>/2020/08/28/HTML-Bacics/</url>
-    <content><![CDATA[<h2 id="一、HTML新特性"><a href="#一、HTML新特性" class="headerlink" title="一、HTML新特性"></a>一、HTML新特性</h2><a id="more"></a>
+    <content><![CDATA[<h2 id="CONTENT-OUTLINE"><a href="#CONTENT-OUTLINE" class="headerlink" title="CONTENT OUTLINE"></a>CONTENT OUTLINE</h2><blockquote>
+<p>总结了关于<code>HTML</code>的基本问题</p>
+<p>–  <code>HTML</code> 新特性</p>
+<p>–  浏览器标准模式和怪异模式</p>
+<p>–  <code>HTML</code>和<code>XHTML</code>的区别</p>
+<p>–  使用<code>data-*</code></p>
+<p>–  <code>HTML</code>模板引擎</p>
+</blockquote>
+<a id="more"></a>
 
-<blockquote>
+<h2 id="一、HTML新特性"><a href="#一、HTML新特性" class="headerlink" title="一、HTML新特性"></a>一、HTML新特性</h2><blockquote>
 <p>参考自<a href="https://www.cnblogs.com/gaosirs/p/10756524.html">该文章</a></p>
 </blockquote>
 <h3 id="1-语义化标签"><a href="#1-语义化标签" class="headerlink" title="1. 语义化标签"></a>1. 语义化标签</h3><p>语义化标签 为页面提供了更好的<strong>页面结构</strong>。</p>
@@ -4237,7 +4341,7 @@ D-->>A: Dashed open arrow</textarea><textarea id="sequence-2-options" style="dis
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">test1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;start test1&#x27;</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">await</span> test2());</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;end test1&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">test2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;test2&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">await</span> <span class="string">&#x27;return test2 value&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line">test1();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;start async&#x27;</span>);</span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;setTimeout&#x27;</span>);</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;promise1&#x27;</span>);</span><br><span class="line">    resolve();</span><br><span class="line">    &#125;).then(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&#x27;promise2&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;end async&#x27;</span>);</span><br></pre></td></tr></table></figure>
 
 <p>执行的结果</p>
-<p><img data-src="js-concept-await-demo.jpg"></p>
+<p><img data-src="js-concept-await-demo.png"></p>
 <ul>
 <li>首先执行宏任务，执行<code>test1</code>函数，执行<code>console.log(&#39;start test1&#39;)</code></li>
 <li>遇到<code>await</code>，先执行右边<code>test2中的console.log(&#39;test2&#39;)</code>，中断了后面的代码，执行<code>test1</code>外面的同步代码</li>

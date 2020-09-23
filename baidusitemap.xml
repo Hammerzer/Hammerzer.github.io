@@ -1,12 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://hammerzer.github.io/2020/09/17/css-knowledge-points-summary/</loc>
+    <lastmod>2020-09-23</lastmod>
+  </url>
+  <url>
     <loc>https://hammerzer.github.io/2020/09/22/JS-basic-concept/</loc>
     <lastmod>2020-09-22</lastmod>
   </url>
   <url>
-    <loc>https://hammerzer.github.io/2020/09/17/css-knowledge-points-summary/</loc>
-    <lastmod>2020-09-18</lastmod>
+    <loc>https://hammerzer.github.io/2020/08/28/HTML-Bacics/</loc>
+    <lastmod>2020-09-22</lastmod>
+  </url>
+  <url>
+    <loc>https://hammerzer.github.io/2020/08/29/HTML-render/</loc>
+    <lastmod>2020-09-22</lastmod>
+  </url>
+  <url>
+    <loc>https://hammerzer.github.io/2020/08/31/HTML-tags/</loc>
+    <lastmod>2020-09-22</lastmod>
+  </url>
+  <url>
+    <loc>https://hammerzer.github.io/2020/09/10/css-layout/</loc>
+    <lastmod>2020-09-22</lastmod>
+  </url>
+  <url>
+    <loc>https://hammerzer.github.io/2020/09/09/vue-FAQ/</loc>
+    <lastmod>2020-09-22</lastmod>
   </url>
   <url>
     <loc>https://hammerzer.github.io/2020/09/17/css-naming-scheme/</loc>
@@ -18,14 +38,6 @@
   </url>
   <url>
     <loc>https://hammerzer.github.io/2020/09/17/css-responsive-design/</loc>
-    <lastmod>2020-09-17</lastmod>
-  </url>
-  <url>
-    <loc>https://hammerzer.github.io/2020/09/10/css-layout/</loc>
-    <lastmod>2020-09-17</lastmod>
-  </url>
-  <url>
-    <loc>https://hammerzer.github.io/2020/09/09/vue-FAQ/</loc>
     <lastmod>2020-09-17</lastmod>
   </url>
   <url>
@@ -69,19 +81,7 @@
     <lastmod>2020-09-07</lastmod>
   </url>
   <url>
-    <loc>https://hammerzer.github.io/2020/08/31/HTML-tags/</loc>
-    <lastmod>2020-09-02</lastmod>
-  </url>
-  <url>
     <loc>https://hammerzer.github.io/2020/08/31/HTML-meta/</loc>
-    <lastmod>2020-08-31</lastmod>
-  </url>
-  <url>
-    <loc>https://hammerzer.github.io/2020/08/29/HTML-render/</loc>
-    <lastmod>2020-08-31</lastmod>
-  </url>
-  <url>
-    <loc>https://hammerzer.github.io/2020/08/28/HTML-Bacics/</loc>
     <lastmod>2020-08-31</lastmod>
   </url>
   <url>
