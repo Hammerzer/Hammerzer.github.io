@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://hammerzer.github.io/2020/10/07/JS-basic-concept-sec/</loc>
+    <lastmod>2020-10-08</lastmod>
+  </url>
+  <url>
+    <loc>https://hammerzer.github.io/2020/09/17/css-selectors/</loc>
+    <lastmod>2020-10-07</lastmod>
+  </url>
+  <url>
+    <loc>https://hammerzer.github.io/2020/09/17/css-knowledge-points-summary/</loc>
+    <lastmod>2020-10-07</lastmod>
+  </url>
+  <url>
     <loc>https://hammerzer.github.io/2020/09/22/JS-basic-concept/</loc>
     <lastmod>2020-10-07</lastmod>
   </url>
@@ -17,10 +29,6 @@
     <lastmod>2020-10-05</lastmod>
   </url>
   <url>
-    <loc>https://hammerzer.github.io/2020/09/17/css-knowledge-points-summary/</loc>
-    <lastmod>2020-10-05</lastmod>
-  </url>
-  <url>
     <loc>https://hammerzer.github.io/2020/08/31/HTML-tags/</loc>
     <lastmod>2020-10-05</lastmod>
   </url>
@@ -34,10 +42,6 @@
   </url>
   <url>
     <loc>https://hammerzer.github.io/2020/09/17/css-naming-scheme/</loc>
-    <lastmod>2020-09-17</lastmod>
-  </url>
-  <url>
-    <loc>https://hammerzer.github.io/2020/09/17/css-selectors/</loc>
     <lastmod>2020-09-17</lastmod>
   </url>
   <url>

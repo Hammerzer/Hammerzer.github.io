@@ -62,6 +62,8 @@
 <p>–  CSS <code>BFC</code></p>
 <p>–  使用外部字体<code>@Font-Face</code></p>
 <p>–  禁用输入法<code>（chrome、opera、Safari尚未支持）</code></p>
+<p>–  高度塌陷问题</p>
+<p>–  <code>margin-top</code>失效问题</p>
 </blockquote>
 <a id="more"></a>
 
@@ -273,6 +275,59 @@
 <h3 id="2-替代方法"><a href="#2-替代方法" class="headerlink" title="2. 替代方法"></a>2. 替代方法</h3><p>由于第一种方法不被广泛支持，因此另一种方法就是  <strong>使用<code>readonly</code>禁止掉文本框弹出输入法</strong></p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">&quot;selectCarBtn&quot;</span> <span class="attr">readonly</span>=<span class="string">&quot;readonly&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;输入车牌号&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
+<h2 id="五、高度塌陷"><a href="#五、高度塌陷" class="headerlink" title="五、高度塌陷"></a>五、高度塌陷</h2><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>高度塌陷问题<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">            <span class="selector-class">.div-outer</span> &#123;</span></span><br><span class="line"><span class="css">                <span class="selector-tag">border</span>: <span class="selector-tag">solid</span> 2<span class="selector-tag">px</span> <span class="selector-id">#223344</span>;</span></span><br><span class="line">            &#125;</span><br><span class="line"><span class="css">            <span class="selector-class">.div1</span> &#123;</span></span><br><span class="line">                width: 200px;</span><br><span class="line">                height: 100px;</span><br><span class="line"><span class="css">                <span class="selector-tag">border</span>: <span class="selector-tag">solid</span> 2<span class="selector-tag">px</span> <span class="selector-id">#667788</span>;</span></span><br><span class="line">            &#125;</span><br><span class="line"><span class="css">            <span class="selector-class">.div2</span> &#123;</span></span><br><span class="line">                width: 200px;</span><br><span class="line">                height: 100px;</span><br><span class="line"><span class="css">                <span class="selector-tag">border</span>: <span class="selector-tag">solid</span> 2<span class="selector-tag">px</span> <span class="selector-id">#667788</span>;</span></span><br><span class="line">            &#125;</span><br><span class="line"><span class="css">            <span class="selector-class">.div3</span> &#123;</span></span><br><span class="line">                width: 200px;</span><br><span class="line">                height: 100px;</span><br><span class="line"><span class="css">                <span class="selector-tag">border</span>: <span class="selector-tag">solid</span> 2<span class="selector-tag">px</span> <span class="selector-id">#667788</span>;</span></span><br><span class="line">            &#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div-outer&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div1&quot;</span>&gt;</span>div1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div2&quot;</span>&gt;</span>div2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div3&quot;</span>&gt;</span>div3<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>页面效果如下：</p>
+<p><img data-src="css-gdtx-0.jpg"></p>
+<p>在div-outer内部的三个div默认每个div会占一行，所以三个div会成列显示。</p>
+<hr>
+
+<p>现在对div1设置<code>float: left</code>，页面如图所示</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*操作一*/</span></span><br><span class="line"><span class="selector-class">.div1</span>&#123; <span class="attribute">float</span>: left; &#125;</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="css-gdtx-2.png"></p>
+<p>可以看到div2和div3重合了</p>
+<hr>
+
+<p>对div1设置float: left属性，div1脱离文档流，但是仍占据位置，div2和div3重合是因为div2位置不变，div3也在div2的位置。但是发现这样理解是不对的，正确的理解是<strong>div2被div1挤到了现在div3的位置</strong>。</p>
+<p>因为如果对div1设置<code>float: right</code>，页面如图所示</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*操作二*/</span></span><br><span class="line"><span class="selector-class">.div1</span>&#123; <span class="attribute">float</span>: right; &#125;</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="css-gdtx-1.png"></p>
+<p>所以如果对div1设置float: left时，div2会被div1挤到现在div3的位置。</p>
+<h3 id="对css高度塌陷问题的理解"><a href="#对css高度塌陷问题的理解" class="headerlink" title="对css高度塌陷问题的理解"></a>对css高度塌陷问题的理解</h3><p>如果对div1，div2，div3都设置float: left，但是父元素div-outer没有设置宽度和高度，页面如图所示</p>
+<p><img data-src="css-gdtx-3.png"></p>
+<p>如果没有设置父元素高度，父元素的高度默认是auto，会随子元素的高度而改变，如果对div1，div2，div3都设置float: left，那么此时父元素高度为0，这就是<strong>浮动塌陷</strong>。</p>
+<p><strong>解决办法一：添加一个新的div</strong></p>
+<p>设置该div为 <code>clear：both;</code>  的空div</p>
+<p><strong>解决办法二：设置父元素属性</strong></p>
+<p>对父元素设置属性overflow: hidden或overflow: auto，</p>
+<p>设置overflow: hidden的意思是，overflow规定当内容溢出元素框时发生的事情</p>
+<p><img data-src="css-gdtx-4.png"></p>
+<p>因为父元素没有指定高度，默认是auto，所以需要计算父元素包含的内容的高度，这样子元素浮动的高度就被计算进去，解决了浮动塌陷。</p>
+<p><strong>解决办法三：设置父元素display:table</strong></p>
+<p><strong>解决办法四：内墙法</strong></p>
+<h2 id="六、margin-top失效问题"><a href="#六、margin-top失效问题" class="headerlink" title="六、margin-top失效问题"></a>六、<code>margin-top</code>失效问题</h2><h3 id="现象："><a href="#现象：" class="headerlink" title="现象："></a>现象：</h3><p>当两个空的块级元素嵌套时，如果内部的块设置有margin-top属性，而且父元素没有下边解决方法所述的特征，那么内部块的margin-top属性会绑架父元素（即将margin-top传递凌驾给了父元素）。</p>
+<blockquote>
+<p>就好比一个小兵，看到上级有漏洞，就假传圣旨，利用漏洞扩张自己的权利。只要设置父元素的border（栅栏）或者padding（隔离墙），就能管住这个调皮的下属。</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;parrent&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;box1&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css"><span class="selector-id">#parrent</span>&#123;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">width</span><span class="selector-pseudo">:500px</span>;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">height</span><span class="selector-pseudo">:300px</span>;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">background</span><span class="selector-pseudo">:teal</span>;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="css"><span class="selector-id">#box1</span>&#123; </span></span><br><span class="line"><span class="css">    <span class="selector-tag">width</span><span class="selector-pseudo">:100px</span>; </span></span><br><span class="line"><span class="css">    <span class="selector-tag">height</span><span class="selector-pseudo">:100px</span>;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">background</span><span class="selector-pseudo">:aqua</span>; </span></span><br><span class="line"><span class="css">    <span class="selector-tag">margin</span><span class="selector-pseudo">:20px</span>;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img data-src="css-margin-1.png"></p>
+<p><strong>这个现象并不是bug，而是有理论依据的</strong>：</p>
+<blockquote>
+<p>《on having layout》</p>
+</blockquote>
+<p><code>hasLayout</code> 会影响一个盒子和其子孙的边距重叠。<strong>根据规范，一个盒子如果没有上补白和上边框，那么它的上边距应该和其文档流中的第一个孩子元素的上边距重叠。</strong></p>
+<p>但值得一提的是，只有在<code>Fire Fox</code>和<code>Chrome</code>下才会出现这种margin-top绑架父节点的情况，在IE6 IE7中均显示正常，但这恰恰说明了他们是不符合规范的，而FF合Chrome则是严格遵守规范的。</p>
+<h3 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h3><ol>
+<li>设置父元素或者自身的display:inline-block;</li>
+<li><strong>设置父元素的border</strong>:1px aqua solid;(&gt;0)</li>
+<li><strong>设置父元素的padding</strong>:1px;(&gt;0)</li>
+<li>给父元素设置overflow:hidden;</li>
+<li>给父元素或者自身设置position:absolute;</li>
+<li>设置父元素非空，填充一定的内容。</li>
+</ol>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
         <category>Front End</category>
@@ -286,8 +341,362 @@
     <url>/2020/09/17/css-selectors/</url>
     <content><![CDATA[<h2 id="CONTENT-OUTLINE"><a href="#CONTENT-OUTLINE" class="headerlink" title="CONTENT-OUTLINE"></a>CONTENT-OUTLINE</h2><blockquote>
 <p>下面再次回顾一下CSS 选择器<code>(selectors)</code></p>
+<p>–  共五大类：基本选择器、组合选择器、伪类选择器、伪对象选择器、属性选择器</p>
+<p>–  选择器权重计算</p>
 </blockquote>
-<a id="more"></a><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+<a id="more"></a>
+
+<blockquote>
+<p>参考相应的书籍整理，但自从发现<a href="http://www.ruanyifeng.com/blog/2009/03/css_selectors.html">阮一峰老师笔记</a>，整理的很不错！</p>
+</blockquote>
+<h2 id="五大类选择器概述"><a href="#五大类选择器概述" class="headerlink" title="五大类选择器概述"></a>五大类选择器概述</h2><h3 id="一、基本选择器"><a href="#一、基本选择器" class="headerlink" title="一、基本选择器"></a>一、基本选择器</h3><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>选择器</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1.</td>
+<td>*****</td>
+<td>通用元素选择器，匹配任何元素</td>
+</tr>
+<tr>
+<td>2.</td>
+<td><strong>E</strong></td>
+<td>标签选择器，匹配所有使用E标签的元素</td>
+</tr>
+<tr>
+<td>3.</td>
+<td><strong>.info</strong></td>
+<td>class选择器，匹配所有class属性中包含info的元素</td>
+</tr>
+<tr>
+<td>4.</td>
+<td><strong>#footer</strong></td>
+<td>id选择器，匹配所有id属性等于footer的元素</td>
+</tr>
+</tbody></table>
+<h3 id="二、组合选择器"><a href="#二、组合选择器" class="headerlink" title="二、组合选择器"></a>二、组合选择器</h3><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>选择器</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>5.</td>
+<td>E,F</td>
+<td>多元素选择器，同时匹配所有E元素或F元素，E和F之间用逗号分隔</td>
+</tr>
+<tr>
+<td>6.</td>
+<td>E F</td>
+<td>后代元素选择器，匹配所有属于E元素后代的F元素，E和F之间用空格分隔</td>
+</tr>
+<tr>
+<td>7.</td>
+<td>E &gt; F</td>
+<td>子元素选择器，匹配所有E元素的子元素F</td>
+</tr>
+<tr>
+<td>8.</td>
+<td>E + F</td>
+<td>毗邻元素选择器，匹配所有紧随E元素之后的同级元素F</td>
+</tr>
+</tbody></table>
+<h3 id="三、CSS-2-1-属性选择器"><a href="#三、CSS-2-1-属性选择器" class="headerlink" title="三、CSS 2.1 属性选择器"></a>三、<em>CSS 2.1</em> 属性选择器</h3><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>选择器</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>9.</td>
+<td>E[att]</td>
+<td>匹配所有具有att属性的E元素，不考虑它的值。（注意：E在此处可以省略，比如”[cheacked]”。以下同。）</td>
+</tr>
+<tr>
+<td>10.</td>
+<td>E[att=val]</td>
+<td>匹配所有att属性等于”val”的E元素</td>
+</tr>
+<tr>
+<td>11.</td>
+<td>E[att~=val]</td>
+<td>匹配所有att属性具有多个空格分隔的值、其中一个值等于”val”的E元素</td>
+</tr>
+<tr>
+<td>12.</td>
+<td>E[att|=val]</td>
+<td>匹配所有att属性具有多个连字号分隔（hyphen-separated）的值、其中一个值以”val”开头的E元素，主要用于lang属性，比如”en”、”en-us”、”en-gb”等等</td>
+</tr>
+</tbody></table>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">p</span><span class="selector-attr">[title]</span> &#123; <span class="attribute">color</span>:<span class="number">#f00</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">div</span><span class="selector-attr">[class=error]</span> &#123; <span class="attribute">color</span>:<span class="number">#f00</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">td</span><span class="selector-attr">[headers~=col1]</span> &#123; <span class="attribute">color</span>:<span class="number">#f00</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">p</span><span class="selector-attr">[lang|=en]</span> &#123; <span class="attribute">color</span>:<span class="number">#f00</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">blockquote</span><span class="selector-attr">[class=quote]</span><span class="selector-attr">[cite]</span> &#123; <span class="attribute">color</span>:<span class="number">#f00</span>; &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="四、CSS-2-1中的伪类"><a href="#四、CSS-2-1中的伪类" class="headerlink" title="四、CSS 2.1中的伪类"></a>四、<em>CSS 2.1</em>中的伪类</h3><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>选择器</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>13.</td>
+<td>E:first-child</td>
+<td>匹配父元素的第一个子元素</td>
+</tr>
+<tr>
+<td>14.</td>
+<td>E:link</td>
+<td>匹配所有未被点击的链接</td>
+</tr>
+<tr>
+<td>15.</td>
+<td>E:visited</td>
+<td>匹配所有已被点击的链接</td>
+</tr>
+<tr>
+<td>16.</td>
+<td>E:active</td>
+<td>匹配鼠标已经其上按下、还没有释放的E元素</td>
+</tr>
+<tr>
+<td>17.</td>
+<td>E:hover</td>
+<td>匹配鼠标悬停其上的E元素</td>
+</tr>
+<tr>
+<td>18.</td>
+<td>E:focus</td>
+<td>匹配获得当前焦点的E元素</td>
+</tr>
+<tr>
+<td>19.</td>
+<td>E:lang(c)</td>
+<td>匹配lang属性等于c的E元素</td>
+</tr>
+</tbody></table>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">p</span><span class="selector-pseudo">:first-child</span> &#123; <span class="attribute">font-style</span>:italic; &#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">input</span><span class="selector-attr">[type=text]</span><span class="selector-pseudo">:focus</span> &#123; <span class="attribute">color</span>:<span class="number">#000</span>; <span class="attribute">background</span>:<span class="number">#ffe</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">input</span><span class="selector-attr">[type=text]</span><span class="selector-pseudo">:focus</span><span class="selector-pseudo">:hover</span> &#123; <span class="attribute">background</span>:<span class="number">#fff</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">q</span><span class="selector-pseudo">:lang(sv)</span> &#123; <span class="attribute">quotes</span>: <span class="string">&quot;\201D&quot;</span> <span class="string">&quot;\201D&quot;</span> <span class="string">&quot;\2019&quot;</span> <span class="string">&quot;\2019&quot;</span>; &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="五、-CSS-2-1中的伪元素"><a href="#五、-CSS-2-1中的伪元素" class="headerlink" title="五、 CSS 2.1中的伪元素"></a>五、 <em>CSS 2.1</em>中的伪元素</h3><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>选择器</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>20.</td>
+<td>E:first-line</td>
+<td>匹配E元素的第一行</td>
+</tr>
+<tr>
+<td>21.</td>
+<td>E:first-letter</td>
+<td>匹配E元素的第一个字母</td>
+</tr>
+<tr>
+<td>22.</td>
+<td>E:before</td>
+<td>在E元素之前插入生成的内容</td>
+</tr>
+<tr>
+<td>23.</td>
+<td>E:after</td>
+<td>在E元素之后插入生成的内容</td>
+</tr>
+</tbody></table>
+<h3 id="六、CSS-3的同级元素通用选择器"><a href="#六、CSS-3的同级元素通用选择器" class="headerlink" title="六、CSS 3的同级元素通用选择器"></a>六、CSS 3的同级元素通用选择器</h3><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>选择器</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>24.</td>
+<td>E ~ F</td>
+<td>匹配任何在E元素之后的同级F元素</td>
+</tr>
+</tbody></table>
+<h3 id="七、CSS-3-属性选择器"><a href="#七、CSS-3-属性选择器" class="headerlink" title="七、CSS 3 属性选择器"></a>七、CSS 3 属性选择器</h3><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>选择器</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>25.</td>
+<td>E[att^=”val”]</td>
+<td>属性att的值以”val”开头的元素</td>
+</tr>
+<tr>
+<td>26.</td>
+<td>E[att$=”val”]</td>
+<td>属性att的值以”val”结尾的元素</td>
+</tr>
+<tr>
+<td>27.</td>
+<td>E[att*=”val”]</td>
+<td>属性att的值包含”val”字符串的元素</td>
+</tr>
+</tbody></table>
+<h3 id="八、CSS-3中与用户界面有关的伪类"><a href="#八、CSS-3中与用户界面有关的伪类" class="headerlink" title="八、CSS 3中与用户界面有关的伪类"></a>八、CSS 3中与用户界面有关的伪类</h3><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>选择器</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>28.</td>
+<td>E:enabled</td>
+<td>匹配表单中激活的元素</td>
+</tr>
+<tr>
+<td>29.</td>
+<td>E:disabled</td>
+<td>匹配表单中禁用的元素</td>
+</tr>
+<tr>
+<td>30.</td>
+<td>E:checked</td>
+<td>匹配表单中被选中的radio（单选框）或checkbox（复选框）元素</td>
+</tr>
+<tr>
+<td>31.</td>
+<td>E::selection</td>
+<td>匹配用户当前选中的元素</td>
+</tr>
+</tbody></table>
+<h3 id="九、CSS-3中的结构性伪类"><a href="#九、CSS-3中的结构性伪类" class="headerlink" title="九、CSS 3中的结构性伪类"></a>九、CSS 3中的结构性伪类</h3><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>选择器</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>32.</td>
+<td>E:root</td>
+<td>匹配文档的根元素，对于HTML文档，就是HTML元素</td>
+</tr>
+<tr>
+<td>33.</td>
+<td>E:nth-child(n)</td>
+<td>匹配其父元素的第n个子元素，第一个编号为1</td>
+</tr>
+<tr>
+<td>34.</td>
+<td>E:nth-last-child(n)</td>
+<td>匹配其父元素的倒数第n个子元素，第一个编号为1</td>
+</tr>
+<tr>
+<td>35.</td>
+<td>E:nth-of-type(n)</td>
+<td>与:nth-child()作用类似，但是仅匹配使用同种标签的元素</td>
+</tr>
+<tr>
+<td>36.</td>
+<td>E:nth-last-of-type(n)</td>
+<td>与:nth-last-child() 作用类似，但是仅匹配使用同种标签的元素</td>
+</tr>
+<tr>
+<td>37.</td>
+<td>E:last-child</td>
+<td>匹配父元素的最后一个子元素，等同于:nth-last-child(1)</td>
+</tr>
+<tr>
+<td>38.</td>
+<td>E:first-of-type</td>
+<td>匹配父元素下使用同种标签的第一个子元素，等同于:nth-of-type(1)</td>
+</tr>
+<tr>
+<td>39.</td>
+<td>E:last-of-type</td>
+<td>匹配父元素下使用同种标签的最后一个子元素，等同于:nth-last-of-type(1)</td>
+</tr>
+<tr>
+<td>40.</td>
+<td>E:only-child</td>
+<td>匹配父元素下仅有的一个子元素，等同于:first-child:last-child或 :nth-child(1):nth-last-child(1)</td>
+</tr>
+<tr>
+<td>41.</td>
+<td>E:only-of-type</td>
+<td>匹配父元素下使用同种标签的唯一一个子元素，等同于:first-of-type:last-of-type或 :nth-of-type(1):nth-last-of-type(1)</td>
+</tr>
+<tr>
+<td>42.</td>
+<td>E:empty</td>
+<td>匹配一个不包含任何子元素的元素，注意，文本节点也被看作子元素</td>
+</tr>
+</tbody></table>
+<h3 id="十、CSS-3的反选伪类"><a href="#十、CSS-3的反选伪类" class="headerlink" title="十、CSS 3的反选伪类"></a>十、CSS 3的反选伪类</h3><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>选择器</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>43.</td>
+<td>E:not(s)</td>
+<td>匹配不符合当前选择器的任何元素</td>
+</tr>
+</tbody></table>
+<h3 id="十一、CSS-3中的-target-伪类"><a href="#十一、CSS-3中的-target-伪类" class="headerlink" title="十一、CSS 3中的 :target 伪类"></a>十一、CSS 3中的 :target 伪类</h3><blockquote>
+<p>目标伪类：它表示匹配 E 的所有元素，且匹配元素被相关URL指向。</p>
+<p>该选择器为动态选择器，只有当存在URL指向该匹配元素时，样式效果才有效。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>选择器</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>44.</td>
+<td>E:target</td>
+<td>匹配文档中特定”id”点击后的效果</td>
+</tr>
+</tbody></table>
+<h2 id="选择器权重计算"><a href="#选择器权重计算" class="headerlink" title="选择器权重计算"></a>选择器权重计算</h2><h3 id="权重计算规则"><a href="#权重计算规则" class="headerlink" title="权重计算规则"></a>权重计算规则</h3><ol>
+<li>内联样式，如: style=”…”，权值为1000。</li>
+<li>ID选择器，如：#content，权值为0100。</li>
+<li>类，伪类、属性选择器，如.content，权值为0010。</li>
+<li>类型选择器、伪元素选择器，如div p，权值为0001。</li>
+<li>通配符、子选择器、相邻选择器等。如* &gt; +，权值为0000。</li>
+<li>继承的样式没有权值</li>
+</ol>
+<h3 id="比较规则"><a href="#比较规则" class="headerlink" title="比较规则"></a>比较规则</h3><p>1,0,0,0 &gt; 0,99,99,99。也就是说从左往右逐个等级比较，前一等级相等才往后比。</p>
+<p>无论是行间、内部和外部样式，都是按照这个规则来进行比较。而不是直观的行间&gt;内部&gt;外部样式；ID&gt;class&gt;元素。之所以有这样的错觉，是因为确实行间为第一等的权重，所以它的权重是最高的。而内部样式可能一般写在了外部样式引用了之后，所以覆盖掉了之前的。</p>
+<p>在权重相同的情况下，后面的样式会覆盖掉前面的样式。</p>
+<p>通配符、子选择器、相邻选择器等的。虽然权值为0000，但是也比继承的样式优先，0 权值比无权值优先。</p>
+<h3 id="important"><a href="#important" class="headerlink" title="!important"></a><code>!important</code></h3><p><code>!important</code> 的作用是提升优先级，换句话说。加了这句的样式的优先级是最高的（比内联样式的优先级还高)。</p>
+<p><strong>在使用 !important 时需要注意：</strong></p>
+<ol>
+<li>Never 永远不要在全站范围的 css 上使用 !important</li>
+<li>Only 只在需要覆盖全站或外部 css（例如引用的 ExtJs 或者YUI ）的特定页面中使用 !important</li>
+<li>Never 永远不要在你的插件中使用 !important</li>
+<li>Always 要优化考虑使用样式规则的优先级来解决问题而不是 !important</li>
+</ol>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
         <category>Front End</category>
       </categories>
@@ -5005,6 +5414,176 @@ D-->>A: Dashed open arrow</textarea><textarea id="sequence-2-options" style="dis
 <p> 如果未指定this，则是undefined</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="meta">&quot;use strict&quot;</span>; </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>) <span class="comment">// undefined</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">f2() === <span class="literal">undefined</span>; <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
 
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>Front End</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JS 基础概念二</title>
+    <url>/2020/10/07/JS-basic-concept-sec/</url>
+    <content><![CDATA[<h2 id="CONTENT-OUTLINE"><a href="#CONTENT-OUTLINE" class="headerlink" title="CONTENT OUTLINE"></a>CONTENT OUTLINE</h2><blockquote>
+<p>紧接 <code>基础概念二</code>  做一系列补充</p>
+<p>–  变量提升</p>
+<p>–  作用域</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、变量提升"><a href="#一、变量提升" class="headerlink" title="一、变量提升"></a>一、变量提升</h2><h3 id="JS代码的运行规则"><a href="#JS代码的运行规则" class="headerlink" title="JS代码的运行规则"></a>JS代码的运行规则</h3><p>在<code>JavaScript</code>代码运行之前其实是有一个编译阶段的。编译之后才是从上到下，一行一行解释执行。<code>变量提升</code>就发生在编译阶段，<em>它把变量和函数的声明提升至作用域的顶端</em>。（编译阶段的工作之一就是将变量与其作用域进行关联）。<br>所以对于代码<code>var a =2;</code>来说，编译器看到的是两行代码<code>var a; a = 2;</code>第一个语句是声明语句，在编译阶段处理。第二个语句是赋值语句，在运行阶段处理。</p>
+<h3 id="变量提升"><a href="#变量提升" class="headerlink" title="变量提升"></a>变量提升</h3><p>ES6之前我们一般使用var来声明变量，<strong>提升</strong>简单来说就是把我们所写的类似于<code>var a = 123;</code>这样的变量声明，提升到它所在作用域的顶端去执行，到我们代码所在的位置来赋值。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a);  <span class="comment">//undefined</span></span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">123</span>; </span><br><span class="line">&#125;;</span><br><span class="line">test();</span><br></pre></td></tr></table></figure>
+
+<p>上述代码a的结果是<code>undefined</code>，它的实际执行顺序如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">    a = <span class="number">123</span>;</span><br><span class="line">&#125;</span><br><span class="line">test();</span><br></pre></td></tr></table></figure>
+
+<p>再看一个：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> a;</span><br><span class="line"><span class="built_in">console</span>.log(a); <span class="comment">//1</span></span><br></pre></td></tr></table></figure>
+
+<p>第一眼看到的时候会认为<code>undefined</code>, 但是记住声明会提升到作用域顶端</p>
+<p><strong>下面来看一道经典面试题：</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(v1);</span><br><span class="line"><span class="keyword">var</span> v1 = <span class="number">100</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(v1);</span><br><span class="line">    <span class="keyword">var</span> v1 = <span class="number">200</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(v1);</span><br><span class="line">&#125;</span><br><span class="line">foo();</span><br><span class="line"><span class="built_in">console</span>.log(v1);</span><br></pre></td></tr></table></figure>
+
+<p>输出的结果：</p>
+<blockquote>
+<p>//undefined<br>//undefined<br>//200<br>//100</p>
+</blockquote>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p><strong>变量提升</strong>需要注意两点：</p>
+<ol>
+<li>提升的部分只是变量声明，赋值语句和可执行的代码逻辑还保持在原地不动</li>
+<li>提升只是将变量声明提升到变量所在的变量范围的顶端，并不是提升到全局范围，说明如下：</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">foo();</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a); <span class="comment">//会输出undefined</span></span><br><span class="line">    <span class="keyword">var</span> a = <span class="string">&quot;2&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//变量提升之后的效果</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">    a = <span class="string">&quot;2&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line">foo();</span><br></pre></td></tr></table></figure>
+
+<h3 id="函数提升"><a href="#函数提升" class="headerlink" title="函数提升"></a>函数提升</h3><p><code>Javascript</code>中不仅仅是变量声明有提升的现象，函数的声明也是一样</p>
+<p>具名函数的声明有两种方式：  <strong>函数声明式</strong>   <strong>函数字面量式</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//函数声明式</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span> (<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="comment">//函数字面量式 </span></span><br><span class="line"><span class="keyword">var</span> foo = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>函数字面量式</strong>的声明和<strong>变量提升</strong>的结果是一样的，函数只是一个具体的值；</p>
+<p>但是函数声明式的提升现象和变量提升略有不同</p>
+<h4 id="函数声明式"><a href="#函数声明式" class="headerlink" title="函数声明式"></a>函数声明式</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(bar);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//打印结果：ƒ bar () &#123;</span></span><br><span class="line"><span class="comment">//  console.log(1);</span></span><br><span class="line"><span class="comment">//&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>执行顺序相当于：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(bar);</span><br></pre></td></tr></table></figure>
+
+<p><strong>函数提升是整个代码块提升到它所在的作用域的最开始执行</strong></p>
+<h4 id="函数字面量式"><a href="#函数字面量式" class="headerlink" title="函数字面量式"></a>函数字面量式</h4><p><strong>函数声明会提升，但是函数表达式不会提升。</strong> 看如下代码：</p>
+<p><span style="color:red;">注意：变量提升和变量赋值 是两回事！</span></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">foo();</span><br><span class="line"><span class="keyword">var</span> foo = <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>)</span>&#123;    <span class="comment">//这是一个函数表达式，不再是函数声明。</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;bar&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>处理方式如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> foo;    </span><br><span class="line">foo();    <span class="comment">//TypeError，因为还没有赋值</span></span><br><span class="line">bar();    <span class="comment">//bar不可以在全局范围内引用</span></span><br><span class="line">foo = <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>)</span>&#123;            </span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;bar&quot;</span>);</span><br><span class="line">&#125;    </span><br></pre></td></tr></table></figure>
+
+<h4 id="函数优先规则"><a href="#函数优先规则" class="headerlink" title="函数优先规则"></a>函数优先规则</h4><p>思考下面的问题:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">foo(); <span class="comment">//1</span></span><br><span class="line"><span class="keyword">var</span> foo;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line">foo = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这就是<strong>函数优先规则</strong></p>
+<p><span style="color:red;">变量声明和函数声明都会得到变量提升，但函数声明会最先得到提升，然后是变量声明。</span></p>
+<p>处理方式如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">&#125; </span><br><span class="line">foo();</span><br><span class="line">foo = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">&#125;   </span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>：<code>var foo;</code>由于是重复声明变量，所以被编译优化去掉。</p>
+<h4 id="补充情况"><a href="#补充情况" class="headerlink" title="补充情况"></a>补充情况</h4><p><strong>1、对于函数声明来说，如果定义了相同的函数变量声明，后定义的声明会覆盖掉先前的声明，看如下代码：</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">foo();    <span class="comment">//输出3</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> foo = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">&#125;  </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">3</span>);</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<p><strong>2、JavaScript中是没有块级作用域的概念</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">foo();    <span class="comment">//输出结果为2</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">if</span>(a)&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;   </span><br></pre></td></tr></table></figure>
+
+<h2 id="二、作用域"><a href="#二、作用域" class="headerlink" title="二、作用域"></a>二、作用域</h2><h3 id="什么是作用域"><a href="#什么是作用域" class="headerlink" title="什么是作用域"></a>什么是作用域</h3><p>作用域是<span style="color:red;">在运行时代码中的某些特定部分中变量，函数和对象的可访问性</span>。换句话说，<em>作用域决定了代码区块中变量和其他资源的可见性。</em></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">outFun2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> inVariable = <span class="string">&quot;内层变量2&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line">outFun2();<span class="comment">//要先执行这个函数，否则根本不知道里面是啥</span></span><br><span class="line"><span class="built_in">console</span>.log(inVariable);<span class="comment">// inVariable is not defined</span></span><br></pre></td></tr></table></figure>
+
+<p>从上面的例子可以体会到作用域的概念，变量 <code>inVariable</code> 在全局作用域没有声明，所以在全局作用域下取值会报错。我们可以这样理解：作用域就是一个独立的地盘，让变量不会外泄、暴露出去。<strong>也就是说作用域最大的用处就是隔离变量，不同作用域下同名变量不会有冲突。</strong></p>
+<p>ES6 之前 JavaScript 没有块级作用域,只有全局作用域和函数作用域。ES6 的到来，为我们提供了<strong>块级作用域</strong>，可通过新增命令 <code>let</code> 和 <code>const</code> 来体现。</p>
+<h3 id="全局作用域"><a href="#全局作用域" class="headerlink" title="全局作用域"></a>全局作用域</h3><p>在代码中任何地方都能访问到的对象拥有<strong>全局作用域</strong>，一般来说以下几种情形拥有全局作用域：</p>
+<blockquote>
+<p>在代码中任何地方都能访问到的对象拥有全局作用域一般来说以下几种情形拥有全局作用域：</p>
+</blockquote>
+<p><strong>1、最外层函数</strong>和<strong>在最外层函数外面定义的变量</strong>拥有全局作用域</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> outVariable = <span class="string">&quot;我是最外层变量&quot;</span>; <span class="comment">//最外层变量</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">outFun</span>(<span class="params"></span>) </span>&#123; <span class="comment">//最外层函数</span></span><br><span class="line">    <span class="keyword">var</span> inVariable = <span class="string">&quot;内层变量&quot;</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">innerFun</span>(<span class="params"></span>) </span>&#123; <span class="comment">//内层函数</span></span><br><span class="line">        <span class="built_in">console</span>.log(inVariable);</span><br><span class="line">    &#125;</span><br><span class="line">    innerFun();</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(outVariable); <span class="comment">//我是最外层变量</span></span><br><span class="line">outFun(); <span class="comment">//内层变量</span></span><br><span class="line"><span class="built_in">console</span>.log(inVariable); <span class="comment">//inVariable is not defined</span></span><br><span class="line">innerFun(); <span class="comment">//innerFun is not defined</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>2、所有未定义直接赋值的变量</strong>，自动声明为拥有全局作用域</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">outFun2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    variable = <span class="string">&quot;未定义直接赋值的变量&quot;</span>;</span><br><span class="line">    <span class="keyword">var</span> inVariable2 = <span class="string">&quot;内层变量2&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line">outFun2();<span class="comment">//要先执行这个函数，否则根本不知道里面是啥</span></span><br><span class="line"><span class="built_in">console</span>.log(variable); <span class="comment">//未定义直接赋值的变量</span></span><br><span class="line"><span class="built_in">console</span>.log(inVariable2); <span class="comment">//inVariable2 is not defined</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>3、所有 window 对象的属性拥有全局作用域</strong></p>
+<p>一般情况下，window 对象的内置属性都拥有全局作用域，例如 window.name、window.location、window.top 等等。</p>
+<p>全局作用域有个弊端：如果我们写了很多行 JS 代码，变量定义都没有用函数包括，那么它们就全部都在全局作用域中。这样就会污染全局命名空间, 容易引起命名冲突。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 张三写的代码中</span></span><br><span class="line"><span class="keyword">var</span> data = &#123;<span class="attr">a</span>: <span class="number">100</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 李四写的代码中</span></span><br><span class="line"><span class="keyword">var</span> data = &#123;<span class="attr">x</span>: <span class="literal">true</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这就是为何 jQuery、Zepto 等库的源码，所有的代码都会放在(function(){…})()中。因为放在里面的所有变量，都不会被外泄和暴露，不会污染到外面，不会对其他的库或者 JS 脚本造成影响。这是<strong>函数作用域</strong>的一个体现。</p>
+<h3 id="函数作用域"><a href="#函数作用域" class="headerlink" title="函数作用域"></a>函数作用域</h3><blockquote>
+<p>函数作用域，是指声明在函数内部的变量，和全局作用域相反，局部作用域一般只在固定的代码片段内可访问到，最常见的例如函数内部。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> blogName=<span class="string">&quot;浮游天地&quot;</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">innerSay</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        alert(blogName);</span><br><span class="line">    &#125;</span><br><span class="line">    innerSay();</span><br><span class="line">&#125;</span><br><span class="line">alert(blogName); <span class="comment">//脚本错误</span></span><br><span class="line">innerSay(); <span class="comment">//脚本错误</span></span><br></pre></td></tr></table></figure>
+
+<p>作用域是分层的，内层作用域可以访问外层作用域的变量，反之则不行。</p>
+<p><strong>值得注意的是</strong>：块语句（大括号“｛｝”中间的语句），如 if 和 switch 条件语句或 for 和 while 循环语句，不像函数，它们不会创建一个新的作用域。在块语句中定义的变量将保留在它们已经存在的作用域中。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">    <span class="comment">// &#x27;if&#x27; 条件语句块不会创建一个新的作用域</span></span><br><span class="line">    <span class="keyword">var</span> name = <span class="string">&#x27;Hammad&#x27;</span>; <span class="comment">// name 依然在全局作用域中</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(name); <span class="comment">// logs &#x27;Hammad&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>初学者经常需要花点时间才能习惯变量提升，而如果不理解这种特有行为，就可能导致bug 。正因为如此，ES6 引入了块级作用域，让变量的生命周期更加可控。</p>
+<p><strong>函数作用域有两种方式</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//函数声明</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">3</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//函数表达式</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>两者的区别在于它们的名称标识符会被绑定到何处，第一段代码中会被绑定到所在作用域中，第二段代码被绑定在函数表达式自身的函数中而不是所在作用域中。</p>
+<h3 id="块级作用域"><a href="#块级作用域" class="headerlink" title="块级作用域"></a>块级作用域</h3><p>ES6之前，在javascript中<strong>没有块作用域</strong>,也就是说在<code>&#123;...&#125;</code>中声明的变量会泄露到外面作用域</p>
+<p>另外，ES5利用<strong>函数闭包</strong>，也可以<em>模仿块级作用域</em></p>
+<blockquote>
+<p>块级作用域可通过ES6新增命令 let 和 const 声明，所声明的变量在指定块的作用域外无法被访问。</p>
+<p>let 声明的语法与 var 的语法一致。基本上可以用 let 来代替 var 进行变量声明，但会将变量的作用域限制在当前代码块中。</p>
+</blockquote>
+<p><strong>块级作用域在如下情况被创建：</strong></p>
+<ul>
+<li>在一个函数内部</li>
+<li>在一个代码块（由一对花括号包裹）内部</li>
+</ul>
+<p><strong>块级作用域有以下几个特点：</strong></p>
+<p><strong>1、声明变量不会提升到代码块顶部</strong>：let/const 声明并不会被提升到当前代码块的顶部，因此你需要手动将 let/const 声明放置到顶部，以便让变量在整个代码块内部可用。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getValue</span>(<span class="params">condition</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (condition) &#123;</span><br><span class="line">        <span class="keyword">let</span> value = <span class="string">&quot;blue&quot;</span>;</span><br><span class="line">        <span class="keyword">return</span> value;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// value 在此处不可用</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">        <span class="comment">// value 在此处不可用</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>2、禁止重复声明</strong></p>
+<p>如果一个标识符已经在代码块内部被定义，那么在此代码块内使用同一个标识符进行 let 声明就会导致抛出错误。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> count = <span class="number">30</span>;</span><br><span class="line"><span class="keyword">let</span> count = <span class="number">40</span>; <span class="comment">// Identifier &#x27;count&#x27; has already been declared</span></span><br></pre></td></tr></table></figure>
+
+<p>在本例中， count 变量被声明了两次：一次使用 var ，另一次使用 let 。因为 let 不能在同一作用域内重复声明一个已有标识符，此处的 let 声明就会抛出错误。但如果在嵌套的作用域内使用 let 声明一个同名的新变量，则不会抛出错误。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> count = <span class="number">30</span>;</span><br><span class="line"><span class="comment">// 不会抛出错误</span></span><br><span class="line"><span class="keyword">if</span> (condition) &#123;</span><br><span class="line">    <span class="keyword">let</span> count = <span class="number">40</span>;</span><br><span class="line">    <span class="comment">// 其他代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>3、循环中的绑定块作用域的妙用</strong></p>
+<p>开发者可能最希望实现 for 循环的块级作用域了，因为可以把声明的计数器变量限制在循环内，例如：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span>&gt;</span>测试1<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span>&gt;</span>测试2<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span>&gt;</span>测试3<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">   <span class="keyword">var</span> btns = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;button&#x27;</span>)</span></span><br><span class="line"><span class="javascript">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; btns.length; i++) &#123;</span></span><br><span class="line"><span class="javascript">      btns[i].onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(<span class="string">&#x27;第&#x27;</span> + (i + <span class="number">1</span>) + <span class="string">&#x27;个&#x27;</span>)</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>我们要实现这样的一个需求: 点击某个按钮, 提示”点击的是第 n 个按钮”，结果点击任意一个按钮，后台都是弹出“第四个”，这是因为 i 是全局变量，执行到点击事件时，此时 i 的值为 3，最简单的方法是<code>用 let 声明 i</code></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; btns.length; i++) &#123;</span><br><span class="line">   btns[i].onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">&#x27;第&#x27;</span> + (i + <span class="number">1</span>) + <span class="string">&#x27;个&#x27;</span>)</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>三个简单案例</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> scope=<span class="string">&#x27;global&#x27;</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  alert(scope);</span><br><span class="line">  <span class="keyword">var</span> scope=<span class="string">&#x27;local&#x27;</span>;</span><br><span class="line">  alert(scope);</span><br><span class="line">&#125;</span><br><span class="line">fn();   </span><br><span class="line">alert(scope);</span><br><span class="line">  </span><br><span class="line"><span class="comment">//结果是undefined , local , global</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> scope=<span class="string">&#x27;global&#x27;</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  alert(scope);</span><br><span class="line">  scope=<span class="string">&#x27;local&#x27;</span>;</span><br><span class="line">  alert(scope);</span><br><span class="line">&#125;</span><br><span class="line">fn();</span><br><span class="line">alert(scope);</span><br><span class="line">  </span><br><span class="line"><span class="comment">//结果是global , local , local</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> scope=<span class="string">&#x27;global&#x27;</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">scope</span>)</span>&#123;</span><br><span class="line">  alert(scope);</span><br><span class="line">  scope=<span class="string">&#x27;local&#x27;</span>;</span><br><span class="line">  alert(scope);</span><br><span class="line">&#125;</span><br><span class="line">fn();</span><br><span class="line">alert(scope);</span><br><span class="line"></span><br><span class="line"><span class="comment">//结果是undefined , local , global</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h3><p>作用域链本质上就是<strong>根据名称查找变量(标识符名称)的一套规则</strong>。</p>
+<p>规则非常简单，在自己的变量对象里找不到变量，就上父级的变量对象查找，当抵达最外层的全局上下文中，无论找到还是没找到，查找过程都会停止。<strong>查找会在找到第一个匹配的变量时停止，被称为遮蔽效应</strong></p>
+<p><strong>作用域</strong>其实是由<strong>执行上下文中的变量对象</strong>和<strong>作用域链</strong>共同构成的。</p>
+<h3 id="相关试题"><a href="#相关试题" class="headerlink" title="相关试题"></a>相关试题</h3><p><strong>1、说明：因为<code>fn:function()</code>中的活动对象只有全局的a</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">var</span> o = &#123;</span><br><span class="line">    a:<span class="number">11</span>,</span><br><span class="line">    b:&#123;</span><br><span class="line">        fn:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(a);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">o.b.fn(); <span class="comment">//10</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>2、说明：foo()中先查找自己的活动对象是否有a, 发现有，直接输出自己活动对象的a=1</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(value);</span><br><span class="line">&#125;        </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> value = <span class="number">2</span>;</span><br><span class="line">    foo();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> value = <span class="number">1</span>;</span><br><span class="line">bar();<span class="comment">//1 </span></span><br></pre></td></tr></table></figure>
+<p><strong>3、这种情况与上面有点不同, value=2只有赋值没有定义，所以会被提升到最上面</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//var value = 2   </span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(value);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    value = <span class="number">2</span>;</span><br><span class="line">    foo();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> value = <span class="number">1</span>;</span><br><span class="line">bar();<span class="comment">//2</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>4、函数体内函数声明会被提升</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params">b</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(b);  <span class="comment">//函数b</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(b); <span class="comment">//函数b</span></span><br><span class="line">    &#125;</span><br><span class="line">    b();</span><br><span class="line">&#125;</span><br><span class="line">a(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+<p>等效于：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params">b</span>)</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(b); <span class="comment">//函数b</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(b);  <span class="comment">//函数b</span></span><br><span class="line">    b();</span><br><span class="line">&#125;</span><br><span class="line">a(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<p><span style="color:red;"></span></p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
         <category>Front End</category>
