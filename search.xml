@@ -745,6 +745,10 @@
     <title>The Second Birthday</title>
     <url>/2020/10/10/the-second-birthday/</url>
     <content><![CDATA[<p>d</p>
+<script>
+document.write(”<script language=javascript src="../../../js/Love_files/jquery.min.js"></script>”);
+<p>document.write(“<script language="javascript" src="../../../js/Love_files/jquery.min.js"></script>“);<br></p>
+<p></p>
 <p>d</p>
 <script type="text javascript" src="../../../js/Love_files/jscex.min.js">
 
