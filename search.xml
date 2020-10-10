@@ -746,11 +746,15 @@
     <url>/2020/10/10/the-second-birthday/</url>
     <content><![CDATA[<hr>
 
-<p><div id="clock-box" style="margin:10px auto;text-align:center;font-size:37px;font-weight:bold;"><br>    <span style="color:#FAE865">臭臭鑫</span>与<span style="color:#ffa5a5;font-size:39px;">@哈尼小宝贝</span>在一起的<br>    <div id="clock" style="margin:0 auto;font-size:40px;font-weight:bolder;color:#ff414d;"></div id="clock"></div id="clock-box"></p>
+<p><div id="clock-box" style="margin:10px auto;text-align:center;font-size:37px;font-weight:bold;"><br>    <span style="color:#FAE865">臭臭鑫</span>与<span style="color:#ffa5a5;font-size:39px;">@哈尼小宝贝</span>在一起的<br>    <div id="clock" style="margin:0 auto;font-size:40px;font-weight:bolder;color:#68b0ab;"></div id="clock"></div id="clock-box"></p>
 
 
 
 <p><canvas id="mycanvas" width="1100" height="680"></canvas></p>
+<div style="margin: 10px auto;text-align:center;">
+    <span style="font-size:40px;margin-right:16px;color:#ffc93c;">生日快乐</span> <span style="font-size:34px;color:#ed6663">哈尼！</span>
+</div>
+
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
         <category>My Life</category>
