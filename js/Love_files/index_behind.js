@@ -1,5 +1,8 @@
 (function(){
-    var canvas = $('#canvas');
+    var canvas = $('#mycanvas');
+    if(!canvas){
+        return;
+    }
     var width = canvas.width();
     var height = canvas.height();
     
