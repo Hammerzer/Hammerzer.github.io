@@ -1382,7 +1382,9 @@
 <p><code>animation</code>：<code>动画名称</code> <code>动画时间</code> <code>运动曲线</code> <code>何时开始</code> <code>播放次数</code> <code>是否反方向</code>;</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">animation: rotate 5s linear 0s infinite alternate;</span><br></pre></td></tr></table></figure>
 </blockquote>
-<h3 id="1、Animation-属性"><a href="#1、Animation-属性" class="headerlink" title="1、Animation 属性"></a>1、Animation 属性</h3><h4 id="简写属性形式"><a href="#简写属性形式" class="headerlink" title="简写属性形式:"></a>简写属性形式:</h4><blockquote>
+<h3 id="1、Animation-属性"><a href="#1、Animation-属性" class="headerlink" title="1、Animation 属性"></a>1、Animation 属性</h3><p><span style="color:red;font-weight:bold;">注意：由于animate为复合属性，简写时极易导致不对应而产生无效属性值的问题</span></p>
+<p><span style="color:red;">也有可能因为没有将元素设置为  <code>block</code> 或者  <code>inline-block</code> 而导致</span></p>
+<h4 id="简写属性形式"><a href="#简写属性形式" class="headerlink" title="简写属性形式:"></a>简写属性形式:</h4><blockquote>
 <p><strong>animation:</strong></p>
 <p>[<code>animation-name</code>] // 动画的名称</p>
 <p>[<code>animation-duration</code>] // 持续时间</p>
@@ -5977,6 +5979,44 @@ D-->>A: Dashed open arrow</textarea><textarea id="sequence-2-options" style="dis
 <p> 如果未指定this，则是undefined</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="meta">&quot;use strict&quot;</span>; </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>) <span class="comment">// undefined</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">f2() === <span class="literal">undefined</span>; <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
 
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>Front End</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JS 常见问题汇总</title>
+    <url>/2020/10/19/JS-little-questions/</url>
+    <content><![CDATA[<h2 id="CONTENT-OUTLINE"><a href="#CONTENT-OUTLINE" class="headerlink" title="CONTENT OUTLINE"></a>CONTENT OUTLINE</h2><blockquote>
+<p>对开发过程中常见的与<code>JavaScript</code>相关的问题进行汇总</p>
+<p>–  JS全局点击事件</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、JS全局点击事件"><a href="#一、JS全局点击事件" class="headerlink" title="一、JS全局点击事件"></a>一、JS全局点击事件</h2><p>在书写提示弹窗的时候，有可能去利用事件冒泡去捕获弹窗外的点击，然后去关闭该弹窗</p>
+<blockquote>
+<p>写在全局的点击事件</p>
+</blockquote>
+<p><img data-src="js-ques-1.png"></p>
+<blockquote>
+<p>弹窗部分代码</p>
+</blockquote>
+<p><img data-src="js-ques-2.png"></p>
+<p>但是，写在全局的点击事件会造成很多麻烦，为后期迭代维护造成障碍。</p>
+<p><strong>只需要将点击捕获事件放置到提示弹窗的遮罩层上即可</strong></p>
+<p>另外，针对于写在全局的点击事件，也可以用阻止<u>事件冒泡的方式</u>去<strong>补窟窿</strong></p>
+<h3 id="两种方法"><a href="#两种方法" class="headerlink" title="两种方法"></a>两种方法</h3><h4 id="①原生方法阻止事件穿透"><a href="#①原生方法阻止事件穿透" class="headerlink" title="①原生方法阻止事件穿透"></a>①原生方法阻止事件穿透</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;div @click=<span class="string">&quot;testout($event)&gt;</span></span><br><span class="line"><span class="string">    &lt;div @click=&quot;</span>testin($event)<span class="string">&quot;&gt;&lt;/div&gt;</span></span><br><span class="line"><span class="string">&lt;/div&gt;</span></span><br><span class="line"><span class="string">.......</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">testin(event) &#123;</span></span><br><span class="line"><span class="string">    ......</span></span><br><span class="line"><span class="string">    event.stopPropagation();</span></span><br><span class="line"><span class="string">&#125;,</span></span><br><span class="line"><span class="string"></span></span><br></pre></td></tr></table></figure>
+
+<h4 id="②-stop修饰符"><a href="#②-stop修饰符" class="headerlink" title="②.stop修饰符"></a>②<code>.stop</code>修饰符</h4><p>下面的例子中，将会先弹出“noclick”,再弹出“dodo”</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">    &lt;div v-on:click&#x3D;&quot;dodo&quot;&gt;</span><br><span class="line">        &lt;button v-on:click&#x3D;&quot;doThis&quot;&gt;阻止单击事件继续传播&lt;&#x2F;button&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var app &#x3D; new Vue(&#123;</span><br><span class="line">        el: &quot;#app&quot;,</span><br><span class="line">        data: &#123;</span><br><span class="line">            name: &quot;Vue.js&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        methods: &#123;</span><br><span class="line">            doThis: function () &#123;</span><br><span class="line">                alert(&quot;noclick&quot;);</span><br><span class="line">            &#125;,</span><br><span class="line">            dodo: function () &#123;</span><br><span class="line">                alert(&quot;dodo&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>修改为</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">v-on:click</span>=<span class="string">&quot;dodo&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">v-on:click.stop</span>=<span class="string">&quot;doThis&quot;</span>&gt;</span>阻止单击事件继续传播<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>只弹出“noclick”</p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
         <category>Front End</category>
