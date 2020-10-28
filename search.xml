@@ -1201,7 +1201,6 @@
       <tags>
         <tag>框架与工具</tag>
         <tag>Vue</tag>
-        <tag>Vue-Problems</tag>
       </tags>
   </entry>
   <entry>
@@ -1392,7 +1391,6 @@
       <tags>
         <tag>框架与工具</tag>
         <tag>Vue</tag>
-        <tag>Vue Problems</tag>
       </tags>
   </entry>
   <entry>
@@ -8547,6 +8545,39 @@ D-->>A: Dashed open arrow</textarea><textarea id="sequence-2-options" style="dis
 
 <p>上面的三行代码都通过<code>||</code>运算符指定默认值，但是这样写是错的。开发者的原意是，只要属性的值为<code>null</code>或<code>undefined</code>，默认值就会生效，但是属性的值如果为空字符串或<code>false</code>或<code>0</code>，默认值也会生效。</p>
 <p>为了避免这种情况，<a href="https://github.com/tc39/proposal-nullish-coalescing">ES2020</a> 引入了一个新的 Null 判断运算符<code>??</code>。它的行为类似<code>||</code>，但是只有运算符左侧的值为<code>null</code>或<code>undefined</code>时，才会返回右侧的值。</p>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>Front End</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ES6新特性及前沿二</title>
+    <url>/2020/10/27/new-features-and-frontiers-of-ES6-sec/</url>
+    <content><![CDATA[<h2 id="CONTENT-OUTLINE"><a href="#CONTENT-OUTLINE" class="headerlink" title="CONTENT OUTLINE"></a>CONTENT OUTLINE</h2><blockquote>
+<p>继上文仅仅是ES6的学习笔记，最后还是参考<a href="https://es6.ruanyifeng.com/#docs/set-map">ES6文档</a>的好</p>
+<p>–  Symbol</p>
+<p>–  Set 和 Map</p>
+<p>–  Proxy</p>
+<p>–  Reflect</p>
+<p>–  Promise</p>
+<p>–  Iterator 和 for…of 循环</p>
+<p>–  Generator 语法和异步应用</p>
+<p>–  asyncb</p>
+<p>–  class</p>
+<p><strong>以上均来自于阮一峰先生的资料</strong></p>
+<p>–  Web Worker</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、Web-Worker"><a href="#一、Web-Worker" class="headerlink" title="一、Web Worker"></a>一、Web Worker</h2><blockquote>
+<p>可参考  <a href="http://www.ruanyifeng.com/blog/2018/07/web-worker.html">Web Worker 使用教程</a></p>
+</blockquote>
+<p>JavaScript 语言采用的是单线程模型，也就是说，所有任务只能在一个线程上完成，一次只能做一件事。前面的任务没做完，后面的任务只能等着。随着电脑计算能力的增强，尤其是多核 CPU 的出现，单线程带来很大的不便，无法充分发挥计算机的计算能力。</p>
+<p>Web Worker 的作用，就是为 JavaScript 创造多线程环境，允许主线程创建 Worker 线程，将一些任务分配给后者运行。在主线程运行的同时，Worker 线程在后台运行，两者互不干扰。等到 Worker 线程完成计算任务，再把结果返回给主线程。这样的好处是，一些计算密集型或高延迟的任务，被 Worker 线程负担了，主线程（通常负责 UI 交互）就会很流畅，不会被阻塞或拖慢。</p>
+<p>Worker 线程一旦新建成功，就会始终运行，不会被主线程上的活动（比如用户点击按钮、提交表单）打断。这样有利于随时响应主线程的通信。但是，这也造成了 Worker 比较耗费资源，不应该过度使用，而且一旦使用完毕，就应该关闭。</p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
         <category>Front End</category>

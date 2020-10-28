@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://hammerzer.github.io/2020/09/09/vue-FAQ/</loc>
+    <lastmod>2020-10-28</lastmod>
+  </url>
+  <url>
+    <loc>https://hammerzer.github.io/2020/08/25/Retrieve-the-Vue-response-principle/</loc>
+    <lastmod>2020-10-28</lastmod>
+  </url>
+  <url>
+    <loc>https://hammerzer.github.io/2020/10/27/new-features-and-frontiers-of-ES6-sec/</loc>
+    <lastmod>2020-10-28</lastmod>
+  </url>
+  <url>
     <loc>https://hammerzer.github.io/2020/10/22/new-features-and-frontiers-of-ES6/</loc>
     <lastmod>2020-10-27</lastmod>
   </url>
@@ -22,10 +34,6 @@
   </url>
   <url>
     <loc>https://hammerzer.github.io/2020/08/31/css-animation/</loc>
-    <lastmod>2020-10-20</lastmod>
-  </url>
-  <url>
-    <loc>https://hammerzer.github.io/2020/09/09/vue-FAQ/</loc>
     <lastmod>2020-10-20</lastmod>
   </url>
   <url>
@@ -90,10 +98,6 @@
   </url>
   <url>
     <loc>https://hammerzer.github.io/2020/09/08/talk-about-VsCode/</loc>
-    <lastmod>2020-09-08</lastmod>
-  </url>
-  <url>
-    <loc>https://hammerzer.github.io/2020/08/25/Retrieve-the-Vue-response-principle/</loc>
     <lastmod>2020-09-08</lastmod>
   </url>
   <url>
