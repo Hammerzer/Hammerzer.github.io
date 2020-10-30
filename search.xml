@@ -563,6 +563,22 @@
 <p><strong>推送到git</strong></p>
 <figure class="highlight maxima"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">push</span> <span class="built_in">origin</span> yourbranchname </span><br></pre></td></tr></table></figure>
 
+<h2 id="4、git-删除分支"><a href="#4、git-删除分支" class="headerlink" title="4、git 删除分支"></a>4、git 删除分支</h2><p>在本地建立文件夹，将该分支clone下来</p>
+<figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line">git <span class="keyword">clone</span> <span class="title">-b</span>   该分支名    地址</span><br></pre></td></tr></table></figure>
+
+<p>查看分支，并创建分支</p>
+<figure class="highlight mipsasm"><table><tr><td class="code"><pre><span class="line">git <span class="keyword">branch </span>-a   (查看远端分支)</span><br><span class="line">git checkout -<span class="keyword">b </span>别的分支</span><br></pre></td></tr></table></figure>
+
+<p>删除本地分支，删除远程分支</p>
+<figure class="highlight maxima"><table><tr><td class="code"><pre><span class="line">git branch -D 要删除的分支</span><br><span class="line">git <span class="built_in">push</span> <span class="built_in">origin</span> --<span class="built_in">delete</span> 要删除的分支</span><br></pre></td></tr></table></figure>
+
+<h3 id="ERROR"><a href="#ERROR" class="headerlink" title="ERROR"></a>ERROR</h3><figure class="highlight subunit"><table><tr><td class="code"><pre><span class="line">PS E:\Reference\h5-template-me&gt; git branch -D &#x27;life-and-mart&#x27;</span><br><span class="line"><span class="keyword">error: </span>Cannot delete branch &#x27;life-and-mart&#x27; checked out at &#x27;E:/Reference/h5-template-me&#x27;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>解决参考<a href="https://blog.csdn.net/benben_2015/article/details/79782202">这篇文章</a></p>
+</blockquote>
+<p><strong>错误原因</strong>：很有可能是你正处于该分支上，然后尝试删除该分支是不被允许的。和Windows系统下删除打开的文件道理一样。</p>
+<p><strong>解决办法：是只要切换分支到其他任意分支上，然后进行删除即可。</strong></p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
         <category>Front End</category>
@@ -955,12 +971,14 @@
   <entry>
     <title>VsCode 杂谈</title>
     <url>/2020/09/08/talk-about-VsCode/</url>
-    <content><![CDATA[<blockquote>
-<h2 id="CONTENT-OUTLINE"><a href="#CONTENT-OUTLINE" class="headerlink" title="CONTENT OUTLINE"></a>CONTENT OUTLINE</h2><p>这篇文章汇总有关**<code>VsCode</code>**的冷知识，换句话说就是<code>IDE</code>的使用和一些自己遇到的问题</p>
+    <content><![CDATA[<h2 id="CONTENT-OUTLINE"><a href="#CONTENT-OUTLINE" class="headerlink" title="CONTENT OUTLINE"></a>CONTENT OUTLINE</h2><blockquote>
+<p>这篇文章汇总有关**<code>VsCode</code>**的冷知识，换句话说就是<code>IDE</code>的使用和一些自己遇到的问题</p>
 </blockquote>
 <a id="more"></a>
 
-<h2 id="一、值得推荐的-Vscode-插件"><a href="#一、值得推荐的-Vscode-插件" class="headerlink" title="一、值得推荐的**Vscode**插件"></a>一、值得推荐的**<code>Vscode</code>**插件</h2><h2 id="二、使用-Vscode-中遇到的问题"><a href="#二、使用-Vscode-中遇到的问题" class="headerlink" title="二、使用**Vscode**中遇到的问题"></a>二、使用**<code>Vscode</code>**中遇到的问题</h2><h3 id="1-解决eslint空格报错等问题"><a href="#1-解决eslint空格报错等问题" class="headerlink" title="1. 解决eslint空格报错等问题"></a>1. 解决<code>eslint</code>空格报错等问题</h3><blockquote>
+<h2 id="一、值得推荐的-Vscode-插件"><a href="#一、值得推荐的-Vscode-插件" class="headerlink" title="一、值得推荐的**Vscode**插件"></a>一、值得推荐的**<code>Vscode</code>**插件</h2><p><code>2020/10/29</code> 终于找到了比较全的文章</p>
+<p><a href="https://github.com/varHarrie/varharrie.github.io/issues/10">戳这儿</a></p>
+<h2 id="二、使用-Vscode-中遇到的问题"><a href="#二、使用-Vscode-中遇到的问题" class="headerlink" title="二、使用**Vscode**中遇到的问题"></a>二、使用**<code>Vscode</code>**中遇到的问题</h2><h3 id="1-解决eslint空格报错等问题"><a href="#1-解决eslint空格报错等问题" class="headerlink" title="1. 解决eslint空格报错等问题"></a>1. 解决<code>eslint</code>空格报错等问题</h3><blockquote>
 <p>参考<a href="https://www.cnblogs.com/fqh123/p/9967771.html">该博主</a></p>
 </blockquote>
 <p><code>eslint</code>检查代码风格是好的，不过 有些<code>换行报错</code> 、<code>空格报错</code>，还有在代码中有 console也是报错，这有些烦人—-&gt;</p>
@@ -1133,6 +1151,7 @@
 <p>–  Vue <code>v-loading</code> 加载</p>
 <p>–  Vue 模拟点击事件</p>
 <p>–  Vue 中使用定时器</p>
+<p>–  Vue 中的修饰符</p>
 </blockquote>
 <a id="more"></a>
 
@@ -1186,13 +1205,29 @@
 
 <h2 id="五、-Vue中使用定时器"><a href="#五、-Vue中使用定时器" class="headerlink" title="五、 Vue中使用定时器"></a>五、 Vue中使用定时器</h2><p>Js中定时器有两种，一个是循环执行<strong>setInterval</strong>，另一个是定时执行<strong>setTimeout</strong></p>
 <p><strong>要注意：在页面销毁的时候清除掉</strong></p>
-<h3 id="5-1-循环执行（setInterval）"><a href="#5-1-循环执行（setInterval）" class="headerlink" title="5.1 循环执行（setInterval）"></a>5.1 循环执行（setInterval）</h3><p>顾名思义，循环执行就是设置一个时间间隔，每过一段时间都会执行一次这个方法,直到这个定时器被销毁掉</p>
+<h3 id="1、循环执行（setInterval）"><a href="#1、循环执行（setInterval）" class="headerlink" title="1、循环执行（setInterval）"></a>1、循环执行（setInterval）</h3><p>顾名思义，循环执行就是设置一个时间间隔，每过一段时间都会执行一次这个方法,直到这个定时器被销毁掉</p>
 <p>用法是<strong>setInterval</strong>（“方法名或方法”，“延时”）， 第一个参数为方法名或者方法，注意为方法名的时候不要加括号,第二个参数为时间间隔</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;section&gt;</span><br><span class="line">    &lt;h1&gt;hello world~&lt;/h1&gt;</span><br><span class="line">  &lt;/section&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    data() &#123;</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        timer: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">        value: <span class="number">0</span></span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">      get() &#123;</span><br><span class="line">        <span class="built_in">this</span>.value ++;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="built_in">this</span>.value);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    mounted() &#123;</span><br><span class="line">      <span class="built_in">this</span>.timer = <span class="built_in">setInterval</span>(<span class="built_in">this</span>.get, <span class="number">1000</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    beforeDestroy() &#123;</span><br><span class="line">      <span class="built_in">clearInterval</span>(<span class="built_in">this</span>.timer);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 
-<h3 id="5-2-定时执行（setTimeout）"><a href="#5-2-定时执行（setTimeout）" class="headerlink" title="5.2 定时执行（setTimeout）"></a>5.2 定时执行（setTimeout）</h3><p>定时执行<strong>setTimeout</strong>是设置一个时间，等待时间到达的时候只执行一次，但是执行完以后定时器还在，只是没有运行</p>
+<h3 id="2、定时执行（setTimeout）"><a href="#2、定时执行（setTimeout）" class="headerlink" title="2、定时执行（setTimeout）"></a>2、定时执行（setTimeout）</h3><p>定时执行<strong>setTimeout</strong>是设置一个时间，等待时间到达的时候只执行一次，但是执行完以后定时器还在，只是没有运行</p>
 <p>用法是<strong>setTimeout</strong>(“方法名或方法”, “延时”); 第一个参数为方法名或者方法，注意为方法名的时候不要加括号,第二个参数为时间间隔</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;section&gt;</span><br><span class="line">    &lt;h1&gt;hello world~&lt;/h1&gt;</span><br><span class="line">  &lt;/section&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    data() &#123;</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        timer: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">        value: <span class="number">0</span></span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">      get() &#123;</span><br><span class="line">        <span class="built_in">this</span>.value ++;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="built_in">this</span>.value);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    mounted() &#123;</span><br><span class="line">      <span class="built_in">this</span>.timer = <span class="built_in">setTimeout</span>(<span class="built_in">this</span>.get, <span class="number">1000</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    beforeDestroy() &#123;</span><br><span class="line">      <span class="built_in">clearTimeout</span>(<span class="built_in">this</span>.timer);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3、在-promise-中使用-setTimeout"><a href="#3、在-promise-中使用-setTimeout" class="headerlink" title="3、在 promise 中使用 setTimeout"></a>3、在 <code>promise</code> 中使用 <code>setTimeout</code></h3><p>先看下面两对代码的区别：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getData</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">setTimeout</span>(resolve(<span class="string">&#x27;hello&#x27;</span>), <span class="number">2000</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line">getData().then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(res)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 立马输出 hello</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// code2</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getData</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">setTimeout</span>(resolve, <span class="number">2000</span>, <span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line">getData().then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(res)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 2s后输出hello</span></span><br></pre></td></tr></table></figure>
+
+<p>这个差异就是 <strong><code>func()</code> 和 <code>func</code> 的区别，<code>setTimeout</code> 的第一个参数是 <code>func</code>，如果用 <code>func()</code> 相当于其返回值为第一个参数</strong></p>
+<p>这个地方应该是一个函数 <code>func</code> ，如果你传的是 <code>func()</code> ，代码解析器执行到此处的时候，就会立即执行这个函数，起不到延时的效果了</p>
+<h4 id="常见的使用场景"><a href="#常见的使用场景" class="headerlink" title="常见的使用场景"></a>常见的使用场景</h4><p><strong>实现一个 sleep 函数</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 1s 后执行的代码</span></span><br><span class="line"><span class="keyword">const</span> sleep = <span class="function">(<span class="params">time</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> <span class="built_in">setTimeout</span>(resolve, time))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">sleep(<span class="number">1000</span>).then(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 这里写你的操作</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 代码延时</span></span><br><span class="line"><span class="keyword">const</span> sleep = <span class="function">(<span class="params">time</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> <span class="built_in">setTimeout</span>(resolve, time))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">sleepAsync</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;1&#x27;</span>)</span><br><span class="line">  <span class="keyword">let</span> res = <span class="keyword">await</span> sleep(<span class="number">1000</span>)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;2&#x27;</span>)</span><br><span class="line">  <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">sleepAsync()</span><br></pre></td></tr></table></figure>
+
+<h2 id="六、Vue-中的修饰符"><a href="#六、Vue-中的修饰符" class="headerlink" title="六、Vue 中的修饰符"></a>六、Vue 中的修饰符</h2><h3 id="native-修饰符"><a href="#native-修饰符" class="headerlink" title=".native 修饰符"></a><code>.native</code> 修饰符</h3><p>在某个组件的根元素上监听一个原生事件。可以使用 <code>v-on</code> 的修饰符 <code>.native</code> </p>
+<p><strong>通俗点讲</strong>：就是在父组件中给子组件绑定一个原生的事件，就将子组件变成了普通的HTML标签，不加’. native’事件是无法触发的。</p>
+<p>可以理解为该修饰符的作用就是把一个vue组件转化为一个普通的HTML标签，并且该修饰符对普通HTML标签是没有任何作用的。</p>
+<h3 id="stop-修饰符"><a href="#stop-修饰符" class="headerlink" title=".stop 修饰符"></a><code>.stop</code> 修饰符</h3><p>可以用来<strong>阻止冒泡事件的发生</strong></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">v-on:click.stop</span>=<span class="string">&quot;doThis&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
@@ -2013,6 +2048,9 @@
 <p>–  禁用输入法<code>（chrome、opera、Safari尚未支持）</code></p>
 <p>–  高度塌陷问题</p>
 <p>–  <code>margin-top</code>失效问题</p>
+<p>–  <code>css overflow</code> 隐藏滚动条</p>
+<p>–  <code>base64</code> 格式</p>
+<p>–  CSS 文本超出隐藏</p>
 </blockquote>
 <a id="more"></a>
 
@@ -2472,6 +2510,28 @@
 <p>b、利用 html5 的 FileReader 将图片转化base64格式 FileReader 是H5提供的一个处理文件的API，</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> reader=<span class="keyword">new</span> FileReader();  </span><br><span class="line">reader.readAsBinaryString(file);  </span><br></pre></td></tr></table></figure>
 
+<br>
+
+<h2 id="九、CSS-文本超出隐藏"><a href="#九、CSS-文本超出隐藏" class="headerlink" title="九、CSS 文本超出隐藏"></a>九、CSS 文本超出隐藏</h2><p>实现这个效果需要用到css的 <code>text-overflow</code> 属性，其表示文本溢出时发生的事情。</p>
+<p>它有三个属性值，分别是clip(修剪文本)、ellipsis(省略号代替)、<em>string</em>(指定字符串代替)。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;context&quot;</span>&gt;</span>sdsdsdsadsadsadas<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css"><span class="selector-class">.context</span>&#123;</span></span><br><span class="line">    width:50px; //div的宽度必须是固定的</span><br><span class="line"><span class="css">    <span class="selector-tag">overflow</span><span class="selector-pseudo">:hidden</span>;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">text-overflow</span><span class="selector-pseudo">:ellipsis</span>;</span></span><br><span class="line">    white-space: nowrap;//文本不进行换行，默认下宽度不够就会换行。</span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p> <strong>接下来重点说一说多行文本溢出显示省略号，实现方法如下：</strong></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">display</span>: <span class="selector-tag">-webkit-box</span>;</span><br><span class="line"><span class="selector-tag">-webkit-box-orient</span>: <span class="selector-tag">vertical</span>;</span><br><span class="line"><span class="selector-tag">-webkit-line-clamp</span>: 3;</span><br><span class="line"><span class="selector-tag">overflow</span>: <span class="selector-tag">hidden</span>;</span><br></pre></td></tr></table></figure>
+
+<p>效果如图：</p>
+<figure class="highlight gams"><table><tr><td class="code"><pre><span class="line">aaaaaaaaaaaaaa</span><br><span class="line">aaaaaaaaaaaaaa</span><br><span class="line"><span class="function"><span class="title">aaaaaaaaaaa</span></span>...</span><br></pre></td></tr></table></figure>
+
+<p><strong>适用范围：</strong></p>
+<p>因使用了WebKit的CSS扩展属性，该方法适用于WebKit浏览器及移动端；</p>
+<blockquote>
+<p>注意：</p>
+<ul>
+<li><code>-webkit-line-clamp</code>用来限制在一个块元素显示的文本的行数。 为了实现该效果，它需要组合其他的WebKit属性。常见结合属性：</li>
+<li><code>display: -webkit-box;</code> 必须结合的属性 ，将对象作为弹性伸缩盒子模型显示 。</li>
+<li><code>-webkit-box-orient</code> 必须结合的属性 ，设置或检索伸缩盒对象的子元素的排列方式 。</li>
+</ul>
+</blockquote>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
         <category>Front End</category>
@@ -5016,6 +5076,44 @@ D-->>A: Dashed open arrow</textarea><textarea id="sequence-2-options" style="dis
 <p><code>Object.prototype.toString.call(str)</code> –&gt;<code>执行结果</code>–&gt;<code>&quot;[object String]&quot;</code></p>
 </li>
 </ul>
+<h3 id="四、字符串转为数字的三种方法"><a href="#四、字符串转为数字的三种方法" class="headerlink" title="四、字符串转为数字的三种方法"></a>四、字符串转为数字的三种方法</h3><blockquote>
+<p><strong>三种方法</strong>：转换函数、强制类型转换、利用js变量弱类型转换</p>
+</blockquote>
+<h4 id="1、转换函数："><a href="#1、转换函数：" class="headerlink" title="1、转换函数："></a>1、转换函数：</h4><p>js提供了 <code>parseInt()</code> 和 <code>parseFloat()</code> 两个转换函数。前者把值转换成整数，后者把值转换成浮点数。只有对String类型调用这些方法，这两个函数才能正确运行；对其他类型返回的都是NaN(Not a Number)。</p>
+<p>一些示例 代码如下:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">parseInt</span>(<span class="string">&quot;1234blue&quot;</span>); <span class="comment">//returns 1234</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">&quot;0xA&quot;</span>); <span class="comment">//returns 10</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">&quot;22.5&quot;</span>); <span class="comment">//returns 22</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">&quot;blue&quot;</span>); <span class="comment">//returns NaN</span></span><br></pre></td></tr></table></figure>
+
+<p>parseInt()方法还有基模式，可以把二进制、八进制、十六进制或其他任何进制的字符串转换成整数。基是由parseInt()方法的第二个参数指定的，示例如下：</p>
+<p>代码如下:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">parseInt</span>(<span class="string">&quot;AF&quot;</span>, <span class="number">16</span>); <span class="comment">//returns 175</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">&quot;10&quot;</span>, <span class="number">2</span>); <span class="comment">//returns 2</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">&quot;10&quot;</span>, <span class="number">8</span>); <span class="comment">//returns 8</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">&quot;10&quot;</span>, <span class="number">10</span>); <span class="comment">//returns 10</span></span><br></pre></td></tr></table></figure>
+
+<p>parseFloat()方法与parseInt()方法的处理方式相似。<br>使用parseFloat()方法的另一不同之处在于，字符串必须以十进制形式表示浮点数，parseFloat()没有基模式。</p>
+<p>下面是使用parseFloat()方法的示例代码如下:</p>
+<figure class="highlight arduino"><table><tr><td class="code"><pre><span class="line"><span class="built_in">parseFloat</span>(<span class="string">&quot;1234blue&quot;</span>); <span class="comment">//returns 1234.0</span></span><br><span class="line"><span class="built_in">parseFloat</span>(<span class="string">&quot;0xA&quot;</span>); <span class="comment">//returns NaN</span></span><br><span class="line"><span class="built_in">parseFloat</span>(<span class="string">&quot;22.5&quot;</span>); <span class="comment">//returns 22.5</span></span><br><span class="line"><span class="built_in">parseFloat</span>(<span class="string">&quot;22.34.5&quot;</span>); <span class="comment">//returns 22.34</span></span><br><span class="line"><span class="built_in">parseFloat</span>(<span class="string">&quot;0908&quot;</span>); <span class="comment">//returns 908</span></span><br><span class="line"><span class="built_in">parseFloat</span>(<span class="string">&quot;blue&quot;</span>); <span class="comment">//returns NaN</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2、-强制类型转换"><a href="#2、-强制类型转换" class="headerlink" title="2、 强制类型转换"></a>2、 强制类型转换</h4><p>还可使用强制类型转换<code>（type casting）</code>处理转换值的类型。使用强制类型转换可以访问特定的值，即使它是另一种类型的。</p>
+<p><strong>ECMAScript中可用的3种强制类型转换如下：</strong></p>
+<ul>
+<li>Boolean(value)——把给定的值转换成Boolean型；</li>
+<li>Number(value)——把给定的值转换成数字（可以是整数或浮点数）；</li>
+<li>String(value)——把给定的值转换成字符串。</li>
+</ul>
+<p>用这三个函数之一转换值，将创建一个新值，存放由原始值直接转换成的值。这会造成意想不到的后果。</p>
+<p>当要转换的值是至少有一个字符的字符串、非0数字或对象时，Boolean()函数将返回true。如果该值是空字符串、数字0、undefined或null，它将返回false。</p>
+<p>可以用下面的代码段测试Boolean型的强制类型转换，代码如下:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Boolean</span>(<span class="string">&quot;&quot;</span>); <span class="comment">//false – empty string</span></span><br><span class="line"><span class="built_in">Boolean</span>(<span class="string">&quot;hi&quot;</span>); <span class="comment">//true – non-empty string</span></span><br><span class="line"><span class="built_in">Boolean</span>(<span class="number">100</span>); <span class="comment">//true – non-zero number</span></span><br><span class="line"><span class="built_in">Boolean</span>(<span class="literal">null</span>); <span class="comment">//false - null</span></span><br><span class="line"><span class="built_in">Boolean</span>(<span class="number">0</span>); <span class="comment">//false - zero</span></span><br><span class="line"><span class="built_in">Boolean</span>(<span class="keyword">new</span> <span class="built_in">Object</span>()); <span class="comment">//true – object</span></span><br></pre></td></tr></table></figure>
+
+<p>Number()的强制类型转换与parseInt()和parseFloat()方法的处理方式相似，只是它转换的是整个值，而不是部分值。示例如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Number</span>(<span class="literal">false</span>) <span class="number">0</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="literal">true</span>) <span class="number">1</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="literal">undefined</span>) <span class="literal">NaN</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="literal">null</span>) <span class="number">0</span></span><br><span class="line"><span class="built_in">Number</span>( <span class="string">&quot;5.5 &quot;</span>) <span class="number">5.5</span></span><br><span class="line"><span class="built_in">Number</span>( <span class="string">&quot;56 &quot;</span>) <span class="number">56</span></span><br><span class="line"><span class="built_in">Number</span>( <span class="string">&quot;5.6.7 &quot;</span>) <span class="literal">NaN</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="keyword">new</span> <span class="built_in">Object</span>()) <span class="literal">NaN</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="number">100</span>) <span class="number">100</span></span><br></pre></td></tr></table></figure>
+
+<p>最后一种强制类型转换方法String()是最简单的，示例如下：</p>
+<p>代码如下:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> s1 = <span class="built_in">String</span>(<span class="literal">null</span>); <span class="comment">//&quot;null&quot;</span></span><br><span class="line"><span class="keyword">var</span> oNull = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">var</span> s2 = oNull.toString(); <span class="comment">//won&#x27;t work, causes an error</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3、利用js变量弱类型转换"><a href="#3、利用js变量弱类型转换" class="headerlink" title="3、利用js变量弱类型转换"></a>3、利用js变量弱类型转换</h4><p>代码如下:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">var</span> str= <span class="string">&#x27;012.345 &#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> x = str<span class="number">-0</span>;</span><br><span class="line">x = x*<span class="number">1</span>;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>上例利用了js的弱类型的特点，只进行了算术运算，实现了字符串到数字的类型转换，不过这个方法还是不推荐的</p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
         <category>Front End</category>
@@ -8565,7 +8663,7 @@ D-->>A: Dashed open arrow</textarea><textarea id="sequence-2-options" style="dis
 <p>–  Promise</p>
 <p>–  Iterator 和 for…of 循环</p>
 <p>–  Generator 语法和异步应用</p>
-<p>–  asyncb</p>
+<p>–  async</p>
 <p>–  class</p>
 <p><strong>以上均来自于阮一峰先生的资料</strong></p>
 <p>–  Web Worker</p>
@@ -8584,6 +8682,23 @@ D-->>A: Dashed open arrow</textarea><textarea id="sequence-2-options" style="dis
       </categories>
       <tags>
         <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>被手摸手用Vue撸后台</title>
+    <url>/2020/10/28/Be-Led-to-Write-VUE-Background/</url>
+    <content><![CDATA[<h2 id="CONTENT-OUTLINE"><a href="#CONTENT-OUTLINE" class="headerlink" title="CONTENT OUTLINE"></a>CONTENT OUTLINE</h2><blockquote>
+<p>一起学习用 <code>Vue</code> 写后台吧！</p>
+<p>这儿参考大佬的文章来做练习，并记录一些遇到的问题和新知识</p>
+<p><a href="https://juejin.im/post/6844903476661583880#heading-0">原文传送门</a></p>
+</blockquote>
+<a id="more"></a><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>Front End</category>
+      </categories>
+      <tags>
+        <tag>框架与工具</tag>
+        <tag>Vue</tag>
       </tags>
   </entry>
 </search>

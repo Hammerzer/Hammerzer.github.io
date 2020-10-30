@@ -1,15 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://hammerzer.github.io/2020/09/09/vue-FAQ/</loc>
-    <lastmod>2020-10-28</lastmod>
+    <loc>https://hammerzer.github.io/2020/09/17/css-knowledge-points-summary/</loc>
+    <lastmod>2020-10-30</lastmod>
   </url>
   <url>
-    <loc>https://hammerzer.github.io/2020/08/25/Retrieve-the-Vue-response-principle/</loc>
+    <loc>https://hammerzer.github.io/2020/09/09/vue-FAQ/</loc>
+    <lastmod>2020-10-30</lastmod>
+  </url>
+  <url>
+    <loc>https://hammerzer.github.io/2020/08/25/JavaScript-commonly-used-functions/</loc>
+    <lastmod>2020-10-30</lastmod>
+  </url>
+  <url>
+    <loc>https://hammerzer.github.io/2020/09/08/git-problems/</loc>
+    <lastmod>2020-10-29</lastmod>
+  </url>
+  <url>
+    <loc>https://hammerzer.github.io/2020/09/08/talk-about-VsCode/</loc>
+    <lastmod>2020-10-29</lastmod>
+  </url>
+  <url>
+    <loc>https://hammerzer.github.io/2020/10/28/Be-Led-to-Write-VUE-Background/</loc>
     <lastmod>2020-10-28</lastmod>
   </url>
   <url>
     <loc>https://hammerzer.github.io/2020/10/27/new-features-and-frontiers-of-ES6-sec/</loc>
+    <lastmod>2020-10-28</lastmod>
+  </url>
+  <url>
+    <loc>https://hammerzer.github.io/2020/08/25/Retrieve-the-Vue-response-principle/</loc>
     <lastmod>2020-10-28</lastmod>
   </url>
   <url>
@@ -27,10 +47,6 @@
   <url>
     <loc>https://hammerzer.github.io/2020/10/21/DOM&BOM/</loc>
     <lastmod>2020-10-22</lastmod>
-  </url>
-  <url>
-    <loc>https://hammerzer.github.io/2020/09/08/git-problems/</loc>
-    <lastmod>2020-10-21</lastmod>
   </url>
   <url>
     <loc>https://hammerzer.github.io/2020/08/31/css-animation/</loc>
@@ -57,10 +73,6 @@
     <lastmod>2020-10-09</lastmod>
   </url>
   <url>
-    <loc>https://hammerzer.github.io/2020/09/17/css-knowledge-points-summary/</loc>
-    <lastmod>2020-10-09</lastmod>
-  </url>
-  <url>
     <loc>https://hammerzer.github.io/2020/09/09/CSS-animation-and-graphics-solutions/</loc>
     <lastmod>2020-10-09</lastmod>
   </url>
@@ -71,10 +83,6 @@
   <url>
     <loc>https://hammerzer.github.io/2020/09/17/css-selectors/</loc>
     <lastmod>2020-10-07</lastmod>
-  </url>
-  <url>
-    <loc>https://hammerzer.github.io/2020/08/25/JavaScript-commonly-used-functions/</loc>
-    <lastmod>2020-10-05</lastmod>
   </url>
   <url>
     <loc>https://hammerzer.github.io/2020/08/31/HTML-tags/</loc>
@@ -95,10 +103,6 @@
   <url>
     <loc>https://hammerzer.github.io/2020/09/17/css-responsive-design/</loc>
     <lastmod>2020-09-17</lastmod>
-  </url>
-  <url>
-    <loc>https://hammerzer.github.io/2020/09/08/talk-about-VsCode/</loc>
-    <lastmod>2020-09-08</lastmod>
   </url>
   <url>
     <loc>https://hammerzer.github.io/2020/08/18/The-Starting-Point-of-Blogs/</loc>
