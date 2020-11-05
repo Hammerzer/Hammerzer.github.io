@@ -2,30 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://hammerzer.github.io/2020/09/17/css-knowledge-points-summary/</loc>
+    <loc>https://hammerzer.github.io/2020/08/25/Retrieve-the-Vue-response-principle/</loc>
     
-    <lastmod>2020-10-30</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://hammerzer.github.io/2020/09/09/vue-FAQ/</loc>
-    
-    <lastmod>2020-10-30</lastmod>
+    <lastmod>2020-11-05</lastmod>
     
   </url>
   
   <url>
     <loc>https://hammerzer.github.io/2020/08/25/JavaScript-commonly-used-functions/</loc>
     
-    <lastmod>2020-10-30</lastmod>
+    <lastmod>2020-11-05</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://hammerzer.github.io/2020/09/09/vue-FAQ/</loc>
+    
+    <lastmod>2020-11-05</lastmod>
     
   </url>
   
   <url>
     <loc>https://hammerzer.github.io/2020/09/08/git-problems/</loc>
     
-    <lastmod>2020-10-29</lastmod>
+    <lastmod>2020-10-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://hammerzer.github.io/2020/09/17/css-knowledge-points-summary/</loc>
+    
+    <lastmod>2020-10-30</lastmod>
     
   </url>
   
@@ -45,13 +52,6 @@
   
   <url>
     <loc>https://hammerzer.github.io/2020/10/27/new-features-and-frontiers-of-ES6-sec/</loc>
-    
-    <lastmod>2020-10-28</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://hammerzer.github.io/2020/08/25/Retrieve-the-Vue-response-principle/</loc>
     
     <lastmod>2020-10-28</lastmod>
     
@@ -235,7 +235,7 @@
 
   <url>
     <loc>https://hammerzer.github.io/</loc>
-    <lastmod>2020-10-30</lastmod>
+    <lastmod>2020-11-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -243,77 +243,77 @@
   
   <url>
     <loc>https://hammerzer.github.io/tags/CSS/</loc>
-    <lastmod>2020-10-30</lastmod>
+    <lastmod>2020-11-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://hammerzer.github.io/tags/%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95/</loc>
-    <lastmod>2020-10-30</lastmod>
+    <lastmod>2020-11-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://hammerzer.github.io/tags/Git/</loc>
-    <lastmod>2020-10-30</lastmod>
+    <lastmod>2020-11-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://hammerzer.github.io/tags/Html/</loc>
-    <lastmod>2020-10-30</lastmod>
+    <lastmod>2020-11-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://hammerzer.github.io/tags/JavaScript/</loc>
-    <lastmod>2020-10-30</lastmod>
+    <lastmod>2020-11-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://hammerzer.github.io/tags/myLove/</loc>
-    <lastmod>2020-10-30</lastmod>
+    <lastmod>2020-11-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://hammerzer.github.io/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/</loc>
-    <lastmod>2020-10-30</lastmod>
+    <lastmod>2020-11-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://hammerzer.github.io/tags/%E6%A1%86%E6%9E%B6%E4%B8%8E%E5%B7%A5%E5%85%B7/</loc>
-    <lastmod>2020-10-30</lastmod>
+    <lastmod>2020-11-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://hammerzer.github.io/tags/Vue/</loc>
-    <lastmod>2020-10-30</lastmod>
+    <lastmod>2020-11-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://hammerzer.github.io/tags/Vue-Problems/</loc>
-    <lastmod>2020-10-30</lastmod>
+    <lastmod>2020-11-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://hammerzer.github.io/tags/Hexo-Next%E9%83%A8%E7%BD%B2%E4%B8%8E%E4%BD%BF%E7%94%A8/</loc>
-    <lastmod>2020-10-30</lastmod>
+    <lastmod>2020-11-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -322,21 +322,21 @@
   
   <url>
     <loc>https://hammerzer.github.io/categories/Front-End/</loc>
-    <lastmod>2020-10-30</lastmod>
+    <lastmod>2020-11-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://hammerzer.github.io/categories/My-Life/</loc>
-    <lastmod>2020-10-30</lastmod>
+    <lastmod>2020-11-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://hammerzer.github.io/categories/Tool-Platform/</loc>
-    <lastmod>2020-10-30</lastmod>
+    <lastmod>2020-11-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
