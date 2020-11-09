@@ -555,15 +555,21 @@
 <p>本地分支和远程分支建立映射关系的作用见：<a href="https://blog.csdn.net/tterminator/article/details/78108550">此文章</a> </p>
 <figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">git checkout -b my-<span class="keyword">test</span>  //在当前分支下创建my-<span class="keyword">test</span>的本地分支分支</span><br><span class="line">git push origin my-<span class="keyword">test</span>  //将my-<span class="keyword">test</span>分支推送到远程</span><br><span class="line">git branch --<span class="keyword">set</span>-upstream-to=origin/my-<span class="keyword">test</span> //将本地分支my-<span class="keyword">test</span>关联到远程分支my-<span class="keyword">test</span>上</span><br><span class="line">git branch -a //查看远程分支</span><br></pre></td></tr></table></figure>
 
-<h2 id="3、git基于某个分支创建分支"><a href="#3、git基于某个分支创建分支" class="headerlink" title="3、git基于某个分支创建分支"></a>3、git基于某个分支创建分支</h2><p><strong>拷贝源代码</strong></p>
+<h2 id="3、git基于某个分支创建分支并提交"><a href="#3、git基于某个分支创建分支并提交" class="headerlink" title="3、git基于某个分支创建分支并提交"></a>3、git基于某个分支创建分支并提交</h2><p><strong>拷贝源代码</strong></p>
 <figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line">git <span class="keyword">clone</span> <span class="title">git</span>@git地址 </span><br></pre></td></tr></table></figure>
 
 <p><strong>根据已有分支创建新的分支</strong></p>
 <figure class="highlight armasm"><table><tr><td class="code"><pre><span class="line"><span class="symbol">git</span> checkout -<span class="keyword">b</span> yourbranchname origin/oldbranchname</span><br></pre></td></tr></table></figure>
 
 <p><strong>推送到git</strong></p>
-<figure class="highlight maxima"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">push</span> <span class="built_in">origin</span> yourbranchname </span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git push origin yourbranchname </span><br></pre></td></tr></table></figure>
 
+<p><strong>合并</strong></p>
+<figure class="highlight console"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git checkout master</span></span><br><span class="line">Switched to branch &#x27;master&#x27;</span><br><span class="line"><span class="meta">$</span><span class="bash"> git merge iss53</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>详见 <a href="https://git-scm.com/book/zh/v2/Git-%E5%88%86%E6%94%AF-%E5%88%86%E6%94%AF%E7%9A%84%E6%96%B0%E5%BB%BA%E4%B8%8E%E5%90%88%E5%B9%B6">Git - 分支的创建与合并</a></p>
+</blockquote>
 <h2 id="4、git-删除分支"><a href="#4、git-删除分支" class="headerlink" title="4、git 删除分支"></a>4、git 删除分支</h2><p>在本地建立文件夹，将该分支clone下来</p>
 <figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line">git <span class="keyword">clone</span> <span class="title">-b</span>   该分支名    地址</span><br></pre></td></tr></table></figure>
 
@@ -580,12 +586,30 @@
 </blockquote>
 <p><strong>错误原因</strong>：很有可能是你正处于该分支上，然后尝试删除该分支是不被允许的。和Windows系统下删除打开的文件道理一样。</p>
 <p><strong>解决办法：是只要切换分支到其他任意分支上，然后进行删除即可。</strong></p>
+<h2 id="5、撤销git-commit-m-39-39"><a href="#5、撤销git-commit-m-39-39" class="headerlink" title="5、撤销git commit -m &#39;&#39;"></a>5、撤销<code>git commit -m &#39;&#39;</code></h2><h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><p>写完代码后，我们一般这样</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">git add . <span class="comment">//添加所有文件</span></span><br><span class="line">git commit -m <span class="string">&quot;本功能全部完成&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>执行完commit后，想撤回commit，怎么办？</p>
+<p><strong><code>git reset --soft HEAD^</code></strong></p>
+<p>这样就成功的撤销了你的commit</p>
+<p><strong>注意，仅仅是撤回commit操作，您写的代码仍然保留</strong></p>
+<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><p><strong>如果commit注释写错了，只是想改一下注释，只需要：</strong></p>
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">git <span class="keyword">commit</span> <span class="comment">--amend</span></span><br></pre></td></tr></table></figure>
+
+<p>此时会进入默认<code>vim编辑器</code>，修改注释完毕后保存就好了</p>
+<h3 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h3><p><code>HEAD^ </code>的意思是上一个版本，也可以写成<code>HEAD~1</code></p>
+<p>如果你进行了2次commit，想都撤回，可以使<code>用HEAD~2</code></p>
+<h3 id="git-reset参数："><a href="#git-reset参数：" class="headerlink" title="git reset参数："></a><code>git reset</code>参数：</h3><h4 id="mixed"><a href="#mixed" class="headerlink" title="--mixed"></a><code>--mixed</code></h4><p>意思是：不删除工作空间改动代码，撤销<code>commit</code>，并且撤销<code>git add .</code> 操作。效果同下：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">git reset --mixed HEAD^</span><br><span class="line">git reset HEAD^ </span><br></pre></td></tr></table></figure>
+
+<h4 id="soft"><a href="#soft" class="headerlink" title="--soft"></a><code>--soft</code></h4><p>不删除工作空间改动代码，撤销<code>commit</code>，不撤销<code>git add .</code> </p>
+<h4 id="hard"><a href="#hard" class="headerlink" title="--hard"></a><code>--hard</code></h4><p>删除工作空间改动代码，撤销<code>commit</code>，撤销<code>git add .</code> </p>
+<p>注意完成这个操作后，就恢复到了上一次的commit状态</p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
-        <category>Front End</category>
+        <category>Tool &amp; Platform</category>
       </categories>
       <tags>
-        <tag>开发与调试</tag>
         <tag>Git</tag>
       </tags>
   </entry>
@@ -979,7 +1003,8 @@
 
 <h2 id="一、值得推荐的-Vscode-插件"><a href="#一、值得推荐的-Vscode-插件" class="headerlink" title="一、值得推荐的**Vscode**插件"></a>一、值得推荐的**<code>Vscode</code>**插件</h2><p><code>2020/10/29</code> 终于找到了比较全的文章</p>
 <p><a href="https://github.com/varHarrie/varharrie.github.io/issues/10">戳这儿</a></p>
-<h2 id="二、使用-Vscode-中遇到的问题"><a href="#二、使用-Vscode-中遇到的问题" class="headerlink" title="二、使用**Vscode**中遇到的问题"></a>二、使用**<code>Vscode</code>**中遇到的问题</h2><h3 id="1-解决eslint空格报错等问题"><a href="#1-解决eslint空格报错等问题" class="headerlink" title="1. 解决eslint空格报错等问题"></a>1. 解决<code>eslint</code>空格报错等问题</h3><blockquote>
+<p>推荐一个上班摸鱼又炒鱿鱼小插件：<code>小霸王</code>  —— 绝对的炒鱿鱼小技巧</p>
+<h2 id="二、使用-Vscode-中遇到的问题"><a href="#二、使用-Vscode-中遇到的问题" class="headerlink" title="二、使用**Vscode**中遇到的问题"></a>二、使用**<code>Vscode</code>**中遇到的问题</h2><h3 id="1、解决eslint空格报错等问题"><a href="#1、解决eslint空格报错等问题" class="headerlink" title="1、解决eslint空格报错等问题"></a>1、解决<code>eslint</code>空格报错等问题</h3><blockquote>
 <p>参考<a href="https://www.cnblogs.com/fqh123/p/9967771.html">该博主</a></p>
 </blockquote>
 <p><code>eslint</code>检查代码风格是好的，不过 有些<code>换行报错</code> 、<code>空格报错</code>，还有在代码中有 console也是报错，这有些烦人—-&gt;</p>
@@ -991,9 +1016,10 @@
 <blockquote>
 <p>“off” or 0 - 关闭(禁用)规则<br>“warn” or 1 - 将规则视为一个警告（并不会导致检查不通过）<br>“error” or 2 - 将规则视为一个错误 (退出码为1，检查不通过) </p>
 </blockquote>
+<h3 id="2、代码行数统计"><a href="#2、代码行数统计" class="headerlink" title="2、代码行数统计"></a>2、代码行数统计</h3><p>选择<strong>编辑</strong> -&gt; <strong>在文件中查找（正则）</strong>        <code>^b*[^:b#/]+.*$</code>     </p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
-        <category>Front End</category>
+        <category>Tool &amp; Platform</category>
       </categories>
       <tags>
         <tag>开发与调试</tag>
@@ -1486,9 +1512,9 @@
 <blockquote>
 <p>（……是时候看看 <code>Vue</code> 源码了<del>~</del>）</p>
 <p>BUG—-2020/11/5</p>
-<p>问题一样应该还是不及时更新的问题，这次的解决方案仅仅是：</p>
+<p>问题同样应该还是数据不及时更新的问题，这次的解决方案仅仅是：</p>
 </blockquote>
-<p>①为一个组件的事件 <code>@select</code> 添加 <code>.native</code> ，</p>
+<p><strong>①为一个组件的事件 <code>@select</code> 添加 <code>.native</code> ，解决了数据未同步的问题</strong></p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
         <category>Front End</category>
@@ -4066,10 +4092,10 @@
 <p><a href="http://www.guide2it.com/post/2019-03-10-1-make-flowcharts-with-mermaid-in-markdown/">多样的Mermaid流程图参考</a></p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
-        <category>Front End</category>
+        <category>Tool &amp; Platform</category>
       </categories>
       <tags>
-        <tag>Hexo &amp; Next部署与使用</tag>
+        <tag>Hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -5953,10 +5979,10 @@ D-->>A: Dashed open arrow</textarea><textarea id="sequence-2-options" style="dis
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
-        <category>Front End</category>
+        <category>Tool &amp; Platform</category>
       </categories>
       <tags>
-        <tag>Hexo &amp; Next部署与使用</tag>
+        <tag>Hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -8774,6 +8800,22 @@ D-->>A: Dashed open arrow</textarea><textarea id="sequence-2-options" style="dis
       <tags>
         <tag>框架与工具</tag>
         <tag>Vue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>UI 框架</title>
+    <url>/2020/11/06/UI-frames/</url>
+    <content><![CDATA[<h2 id="CONTENT-OUTLINE"><a href="#CONTENT-OUTLINE" class="headerlink" title="CONTENT OUTLINE"></a>CONTENT OUTLINE</h2><p>bootstrap</p>
+<p>element-ui</p>
+<p>echart</p>
+<p>weui</p>
+<p>extjs</p>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>Front End</category>
+      </categories>
+      <tags>
+        <tag>CSS</tag>
       </tags>
   </entry>
 </search>
