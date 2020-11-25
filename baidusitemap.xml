@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://hammerzer.github.io/2020/09/08/git-problems/</loc>
+    <lastmod>2020-11-25</lastmod>
+  </url>
+  <url>
+    <loc>https://hammerzer.github.io/2020/11/25/webpack/</loc>
+    <lastmod>2020-11-25</lastmod>
+  </url>
+  <url>
+    <loc>https://hammerzer.github.io/2020/11/25/gitignore-Question/</loc>
+    <lastmod>2020-11-25</lastmod>
+  </url>
+  <url>
     <loc>https://hammerzer.github.io/2020/11/24/monitoring-and-analysis/</loc>
     <lastmod>2020-11-24</lastmod>
   </url>
@@ -10,10 +22,6 @@
   </url>
   <url>
     <loc>https://hammerzer.github.io/2020/11/06/UI-frames/</loc>
-    <lastmod>2020-11-23</lastmod>
-  </url>
-  <url>
-    <loc>https://hammerzer.github.io/2020/11/23/Vue-Eslint/</loc>
     <lastmod>2020-11-23</lastmod>
   </url>
   <url>
@@ -47,10 +55,6 @@
   <url>
     <loc>https://hammerzer.github.io/2020/10/28/Be-Led-to-Write-VUE-Background/</loc>
     <lastmod>2020-11-11</lastmod>
-  </url>
-  <url>
-    <loc>https://hammerzer.github.io/2020/09/08/git-problems/</loc>
-    <lastmod>2020-11-09</lastmod>
   </url>
   <url>
     <loc>https://hammerzer.github.io/2020/08/20/Hexo-Next-Supplement/</loc>

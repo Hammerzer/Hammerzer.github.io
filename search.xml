@@ -679,24 +679,23 @@
 <h2 id="1、-使用git将本地项目上传至git仓库"><a href="#1、-使用git将本地项目上传至git仓库" class="headerlink" title="1、 使用git将本地项目上传至git仓库"></a>1、 使用git将本地项目上传至git仓库</h2><blockquote>
 <p><strong>介绍</strong>:  一般来说开发过程中都是先在git创建远程仓库，然后fetch到本地仓库，再进行commit push等操作，但是有时候也需要将本地已经开发的项目上传至一个空的远程仓库中，期间也是遇到不少问题，特此总结一下</p>
 </blockquote>
-<h3 id="初始化本地仓库"><a href="#初始化本地仓库" class="headerlink" title="初始化本地仓库"></a>初始化本地仓库</h3><p>初始化仓库</p>
-<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">git init</span></span><br></pre></td></tr></table></figure>
+<h3 id="初始化本地仓库"><a href="#初始化本地仓库" class="headerlink" title="初始化本地仓库"></a>初始化本地仓库</h3><figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">git init</span></span><br></pre></td></tr></table></figure>
 
 <p>将文件提交至本地仓库</p>
 <figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="attribute">git</span> commit -m <span class="string">&quot;注释&quot;</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="关联线上仓库"><a href="#关联线上仓库" class="headerlink" title="关联线上仓库"></a>关联线上仓库</h3><figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">git remote add origin &lt;线上仓库url&gt;</span><br><span class="line"></span><br><span class="line"><span class="regexp">//</span> 线上仓库url 为如下链接</span><br><span class="line"><span class="regexp">//</span> https:<span class="regexp">//gi</span>thub.com<span class="regexp">/wenhaofan/</span>xxx.git</span><br></pre></td></tr></table></figure>
 
-<h3 id="提交代码"><a href="#提交代码" class="headerlink" title="提交代码"></a>提交代码</h3><figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="regexp">//</span> git pull </span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+<h3 id="提交代码"><a href="#提交代码" class="headerlink" title="提交代码"></a>提交代码</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">// git pull </span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
 
 <p><strong>常见错误及解决方案</strong></p>
-<p>现在已经创建好了本地仓库，并关联上了远程仓库，如果我们直接使用git push -u origin master将本地内容推送至线上那么可能会出现出现以下错误</p>
+<p>现在已经创建好了本地仓库，并关联上了远程仓库，如果我们直接使用 <code>git push -u origin master</code> 将本地内容推送至线上那么可能会出现出现以下错误</p>
 <h4 id="git-push"><a href="#git-push" class="headerlink" title="git push"></a>git push</h4><figure class="highlight livecodeserver"><table><tr><td class="code"><pre><span class="line">failed <span class="built_in">to</span> push some refs <span class="built_in">to</span> <span class="string">&#x27;https://github.com/xxx/xxx.git&#x27;</span></span><br><span class="line">hint: Updates were rejected because <span class="keyword">the</span> remote <span class="keyword">contains</span> work that you dogit</span><br><span class="line">hint: <span class="keyword">not</span> have locally. This is usually caused <span class="keyword">by</span> another repository pushing</span><br><span class="line">hint: <span class="built_in">to</span> <span class="keyword">the</span> same ref. You may want <span class="built_in">to</span> <span class="keyword">first</span> integrate <span class="keyword">the</span> remote changes</span><br><span class="line">hint: (e.g., <span class="string">&#x27;git pull ...&#x27;</span>) <span class="keyword">before</span> pushing again.</span><br><span class="line">hint: See <span class="keyword">the</span> <span class="string">&#x27;Note about fast-forwards&#x27;</span> <span class="keyword">in</span> <span class="string">&#x27;git push --help&#x27;</span> <span class="keyword">for</span> details.</span><br></pre></td></tr></table></figure>
 
 <p>​    以上错误很明显的提示先执行 git pull 再push,需要先执行以下指令将远程仓库中master分支中的文件拉取到本地</p>
 <figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line">git pull origin <span class="literal">master</span></span><br></pre></td></tr></table></figure>
 
-<p>​    如果没有抛异常 那么就可以愉快的再次执行 git push 了，如果抛了异常，那么可以接着往下看</p>
+<p>如果没有抛异常 那么就可以愉快的再次执行 git push 了，如果抛了异常，那么可以接着往下看</p>
 <h4 id="git-pull"><a href="#git-pull" class="headerlink" title="git pull"></a>git pull</h4><figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line"> * branch            <span class="keyword">master</span>     <span class="title">-&gt; FETCH_HEAD</span></span><br><span class="line">fatal: refusing to merge unrelated histories</span><br></pre></td></tr></table></figure>
 
 <blockquote>
@@ -776,7 +775,39 @@
 <h4 id="soft"><a href="#soft" class="headerlink" title="--soft"></a><code>--soft</code></h4><p>不删除工作空间改动代码，撤销<code>commit</code>，不撤销<code>git add .</code> </p>
 <h4 id="hard"><a href="#hard" class="headerlink" title="--hard"></a><code>--hard</code></h4><p>删除工作空间改动代码，撤销<code>commit</code>，撤销<code>git add .</code> </p>
 <p>注意完成这个操作后，就恢复到了上一次的commit状态</p>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+<h2 id="6、Git-修改远程仓库地址"><a href="#6、Git-修改远程仓库地址" class="headerlink" title="6、Git 修改远程仓库地址"></a>6、Git 修改远程仓库地址</h2><p>方法有三种：</p>
+<p><strong>1.修改命令</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote origin <span class="built_in">set</span>-url [url]</span><br></pre></td></tr></table></figure>
+
+<p><strong>2.先删后加</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote rm origin</span><br><span class="line">git remote add origin [url]</span><br></pre></td></tr></table></figure>
+
+<p><strong>3.直接修改config文件</strong></p>
+<h2 id="7、Git-添加标签"><a href="#7、Git-添加标签" class="headerlink" title="7、Git 添加标签"></a>7、Git 添加标签</h2><blockquote>
+<p>项目的版本管理中,每当一个release版本发布时,需要做一个记录,以便以后需要的时候重新打包这个版本,这时候就用到tag这个功能</p>
+</blockquote>
+<p><strong>打标签</strong></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">tag</span> <span class="selector-tag">-a</span> 1<span class="selector-class">.0</span><span class="selector-class">.2_RC2</span> <span class="selector-tag">-m</span> “<span class="selector-tag">Release</span> <span class="selector-tag">version</span> 1<span class="selector-class">.0</span><span class="selector-class">.2</span>″</span><br></pre></td></tr></table></figure>
+
+<p><strong>详解：</strong></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">tag</span> 是命令</span><br><span class="line"><span class="selector-tag">-a</span> 0<span class="selector-class">.1</span><span class="selector-class">.3</span>是增加 名为0<span class="selector-class">.1</span><span class="selector-class">.3</span>的标签</span><br><span class="line"><span class="selector-tag">-m</span> 后面跟着的是标签的注释</span><br></pre></td></tr></table></figure>
+
+<p>打标签的操作发生在我们commit修改到本地仓库之后。</p>
+<h3 id="相关操作"><a href="#相关操作" class="headerlink" title="相关操作"></a>相关操作</h3><p><strong>提交</strong></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">add</span> .</span><br><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">commit</span> <span class="selector-tag">-m</span> “<span class="selector-tag">fixed</span> <span class="selector-tag">some</span> <span class="selector-tag">bugs</span>”</span><br><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">tag</span> <span class="selector-tag">-a</span> 0<span class="selector-class">.1</span><span class="selector-class">.3</span> <span class="selector-tag">-m</span> “<span class="selector-tag">Release</span> <span class="selector-tag">version</span> 0<span class="selector-class">.1</span><span class="selector-class">.3</span>″</span><br></pre></td></tr></table></figure>
+
+<p><strong>分享提交标签到远程服务器上</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push origin master</span><br><span class="line">git push origin --tags</span><br></pre></td></tr></table></figure>
+
+<p><code>–tags</code> 参数表示提交所有tag至服务器端，普通的 <code>git push origin master</code> 操作不会推送标签到服务器端。</p>
+<p><strong>切换到已有Tag</strong></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">git tag --<span class="built_in">list</span>  <span class="comment">// 查看已有tag列表</span></span><br><span class="line">git checkout [tag/branch/commit]  <span class="comment">// 切换到指定tag/branch/commit都是此命令</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>删除标签的命令</strong></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">tag</span> <span class="selector-tag">-d</span> 1<span class="selector-class">.0</span><span class="selector-class">.2_RC2</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>删除远端服务器的标签</strong></p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">git push origin <span class="symbol">:refs/tags/</span><span class="number">1.0</span>.<span class="number">2_</span>RC2</span><br></pre></td></tr></table></figure><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
         <category>Tool &amp; Platform</category>
       </categories>
@@ -1090,18 +1121,6 @@
       <tags>
         <tag>开发与调试</tag>
         <tag>开发工具</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Vue-Eslint</title>
-    <url>/2020/11/23/Vue-Eslint/</url>
-    <content><![CDATA[<h2 id="CONTENT-OUTLINE"><a href="#CONTENT-OUTLINE" class="headerlink" title="CONTENT OUTLINE"></a>CONTENT OUTLINE</h2><a id="more"></a><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
-      <categories>
-        <category>Front End</category>
-      </categories>
-      <tags>
-        <tag>框架与工具</tag>
-        <tag>Vue</tag>
       </tags>
   </entry>
   <entry>
@@ -9516,6 +9535,80 @@ D-->>A: Dashed open arrow</textarea><textarea id="sequence-2-options" style="dis
       </categories>
       <tags>
         <tag>监控与分析</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>工程化-Webpack</title>
+    <url>/2020/11/25/webpack/</url>
+    <content><![CDATA[<h2 id="CONTENT-OUTLINE"><a href="#CONTENT-OUTLINE" class="headerlink" title="CONTENT OUTLINE"></a>CONTENT OUTLINE</h2><blockquote>
+<p>前端工程化包括 <strong>打包工具</strong> 和 <strong>转译工具</strong></p>
+<p>转译工具即 <code>Babel</code>， 打包工具包括 <code>Webpack</code>、<code>parcel</code>、<code>Gulp</code>、<code>Browserify</code></p>
+<p>这篇文章汇总关于 <code>Webpack</code> 学习资料</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="参考自"><a href="#参考自" class="headerlink" title="参考自"></a>参考自</h2><p><a href="https://www.bilibili.com/video/BV1e7411j7T5?p=2">b站尚硅谷Webpack讲解</a></p>
+<p><a href="https://webpack.docschina.org/guides/getting-started/">Webpack 官方文档</a></p>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>Front End</category>
+      </categories>
+      <tags>
+        <tag>工程化</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>gitignore-Question</title>
+    <url>/2020/11/25/gitignore-Question/</url>
+    <content><![CDATA[<h2 id="CONTENT-OUTLINE"><a href="#CONTENT-OUTLINE" class="headerlink" title="CONTENT OUTLINE"></a>CONTENT OUTLINE</h2><blockquote>
+<p>总结了有关 <code>.gitignore</code> 配置的注意事项</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="配置基础"><a href="#配置基础" class="headerlink" title="配置基础"></a>配置基础</h2><h3 id="一、简绍"><a href="#一、简绍" class="headerlink" title="一、简绍"></a>一、简绍</h3><p>我们做的每个Git项目中都需要一个“.gitignore”文件，这个文件的作用就是告诉Git哪些文件不需要添加到版本管理中。比如我们项目中的npm包(node_modules)，它在我们项目中是很重要的，但是它占的内存也是很大的，所以一般我们用Git管理的时候是不需要添加npm包的。</p>
+<h3 id="二、常用的规则"><a href="#二、常用的规则" class="headerlink" title="二、常用的规则"></a>二、常用的规则</h3><figure class="highlight swift"><table><tr><td class="code"><pre><span class="line">/mtk/ 过滤整个文件夹</span><br><span class="line">*.<span class="built_in">zip</span> 过滤所有.<span class="built_in">zip</span>文件</span><br><span class="line">/mtk/<span class="keyword">do</span>.<span class="built_in">c</span> 过滤某个具体文件</span><br></pre></td></tr></table></figure>
+
+<p>以上规则意思是：被过滤掉的文件就不会出现在你的GitHub库中了，当然本地库中还有，只是push的时候不会上传。<br>除了以上规则，它还可以指定要将哪些文件添加到版本管理中。</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line">!src/   不过滤该文件夹</span><br><span class="line">!*.<span class="built_in">zip</span>   不过滤所有.<span class="built_in">zip</span>文件</span><br><span class="line">!/mtk/<span class="keyword">do</span>.<span class="built_in">c</span> 不过滤该文件</span><br></pre></td></tr></table></figure>
+
+<h4 id="1、配置语法："><a href="#1、配置语法：" class="headerlink" title="1、配置语法："></a>1、配置语法：</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">以斜杠`/`开头表示目录；</span><br><span class="line">以星号`*`通配多个字符；</span><br><span class="line">以问号`?`通配单个字符</span><br><span class="line">以方括号`[]`包含单个字符的匹配列表；</span><br><span class="line">以叹号`!`表示不忽略(跟踪)匹配到的文件或目录；</span><br></pre></td></tr></table></figure>
+
+<p>此外，git 对于 .ignore 配置文件是按行从上到下进行规则匹配的，意味着如果前面的规则匹配的范围更大，则后面的规则将不会生效；</p>
+<h4 id="2、示例说明"><a href="#2、示例说明" class="headerlink" title="2、示例说明"></a>2、示例说明</h4><p> *<em>a、规则：fd1/**</em></p>
+<p> 说明：忽略目录 fd1 下的全部内容；注意，不管是根目录下的 /fd1/ 目录，还是某个子目录 /child/fd1/ 目录，都会被忽略；</p>
+<p> *<em>b、规则：/fd1/**</em></p>
+<p> 说明：忽略根目录下的 /fd1/ 目录的全部内容；</p>
+<p> <strong>c、规则：</strong></p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">/*</span><br><span class="line"> !.gitignore</span><br><span class="line"> !<span class="regexp">/fw/</span>bin/</span><br><span class="line"> !<span class="regexp">/fw/</span>sf/</span><br><span class="line"> 说明：忽略全部内容，但是不忽略 .gitignore 文件、根目录下的 <span class="regexp">/fw/</span>bin<span class="regexp">/ 和 /</span>fw<span class="regexp">/sf/</span> 目录；</span><br></pre></td></tr></table></figure>
+
+<h4 id="3、创建-gitignore文件"><a href="#3、创建-gitignore文件" class="headerlink" title="3、创建.gitignore文件"></a>3、创建.gitignore文件</h4><p><strong>1) 常规的windows操作</strong></p>
+<ul>
+<li>根目录下创建gitignore.txt；</li>
+<li>编辑gitignore.txt，写下你的规则，例如加上node_modules/；</li>
+<li>打开命令行窗口，切换到根目录（可以直接在文件夹上面的地址栏输入cmd回车）；</li>
+<li>执行命令ren gitignore.txt .gitignore。</li>
+</ul>
+<p><strong>2) 用Git Bash</strong></p>
+<ul>
+<li>根目录下右键选择“Git Bash Here”进入bash命令窗口；</li>
+<li>输入<code>vim .gitignore</code>或<code>touch .gitignore</code>命令，打开文件（没有文件会自动创建）；</li>
+<li>按i键切换到编辑状态，输入规则，例如node_modules/，然后按Esc键退出编辑，输入<code>:wq</code>保存退出。</li>
+</ul>
+<p>如图：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta"># dependencies  npm包文件</span></span><br><span class="line">/node_modules</span><br><span class="line"></span><br><span class="line"><span class="meta"># production  打包文件</span></span><br><span class="line">/build</span><br><span class="line"></span><br><span class="line"><span class="meta"># misc </span></span><br><span class="line">.DS_Store</span><br><span class="line"></span><br><span class="line">npm-debug.<span class="built_in">log</span>*</span><br></pre></td></tr></table></figure>
+
+<p><strong>.DS_Store：</strong>这个文件是Mac OS X用来存储文件夹的一些诸如自定义图标，ICON位置尺寸，窗口位置，显示列表种类以及一些像窗体自定义背景样式，颜色这样的元信息。默认情况下，Mac OS X下的每个文件夹下应该都会生成一个，包括网络介质存储盘和U盘这样的外部设备。</p>
+<p><strong>npm-debug.log：</strong>项目主目录下总是会出现这个文件，而且不止一个，原因是npm i 的时候，如果报错，就会增加一个此文件来显示报错信息，npm install的时候则不会出现。</p>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p><strong>Git忽略规则(.gitignore配置）不生效原因和解决</strong></p>
+<p>如果你不慎在创建 <code>.gitignore</code> 文件之前就push了项目，那么即使你在 <code>.gitignore</code> 文件中写入新的过滤规则，这些规则也不会起作用，Git仍然会对所有文件进行版本管理。</p>
+<p> 简单来说，出现这种问题的原因就是Git已经开始管理这些文件了，所以你无法再通过过滤规则过滤它们。</p>
+<p>此时，需要在本地删除相应的文件，然后再 <code>push</code> 进行修改</p>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>Tool &amp; Platform</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
       </tags>
   </entry>
 </search>
