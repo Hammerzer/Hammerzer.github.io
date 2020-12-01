@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://hammerzer.github.io/2020/09/17/css-knowledge-points-summary/</loc>
+    <lastmod>2020-12-01</lastmod>
+  </url>
+  <url>
     <loc>https://hammerzer.github.io/2020/09/08/git-problems/</loc>
-    <lastmod>2020-11-27</lastmod>
+    <lastmod>2020-11-30</lastmod>
+  </url>
+  <url>
+    <loc>https://hammerzer.github.io/2020/11/23/vue-config-js/</loc>
+    <lastmod>2020-11-28</lastmod>
+  </url>
+  <url>
+    <loc>https://hammerzer.github.io/2020/09/09/vue-FAQ/</loc>
+    <lastmod>2020-11-28</lastmod>
   </url>
   <url>
     <loc>https://hammerzer.github.io/2020/11/27/the-node-in-front-end/</loc>
@@ -17,20 +29,12 @@
     <lastmod>2020-11-27</lastmod>
   </url>
   <url>
-    <loc>https://hammerzer.github.io/2020/09/09/vue-FAQ/</loc>
-    <lastmod>2020-11-26</lastmod>
-  </url>
-  <url>
     <loc>https://hammerzer.github.io/2020/11/25/gitignore-Question/</loc>
     <lastmod>2020-11-25</lastmod>
   </url>
   <url>
     <loc>https://hammerzer.github.io/2020/11/24/monitoring-and-analysis/</loc>
     <lastmod>2020-11-24</lastmod>
-  </url>
-  <url>
-    <loc>https://hammerzer.github.io/2020/11/23/vue-config-js/</loc>
-    <lastmod>2020-11-23</lastmod>
   </url>
   <url>
     <loc>https://hammerzer.github.io/2020/11/10/vue-router's-two-models/</loc>
@@ -46,10 +50,6 @@
   </url>
   <url>
     <loc>https://hammerzer.github.io/2020/10/21/DOM&BOM/</loc>
-    <lastmod>2020-11-20</lastmod>
-  </url>
-  <url>
-    <loc>https://hammerzer.github.io/2020/09/17/css-knowledge-points-summary/</loc>
     <lastmod>2020-11-20</lastmod>
   </url>
   <url>
