@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://hammerzer.github.io/2020/12/21/vue-router-plus/</loc>
+    <lastmod>2020-12-21</lastmod>
+  </url>
+  <url>
+    <loc>https://hammerzer.github.io/2020/09/09/vue-FAQ/</loc>
+    <lastmod>2020-12-21</lastmod>
+  </url>
+  <url>
+    <loc>https://hammerzer.github.io/2020/08/28/HTML-Bacics/</loc>
+    <lastmod>2020-12-21</lastmod>
+  </url>
+  <url>
     <loc>https://hammerzer.github.io/2020/12/10/cocos-firstman/</loc>
     <lastmod>2020-12-17</lastmod>
   </url>
@@ -11,10 +23,6 @@
   <url>
     <loc>https://hammerzer.github.io/2020/08/25/JavaScript-commonly-used-functions/</loc>
     <lastmod>2020-12-10</lastmod>
-  </url>
-  <url>
-    <loc>https://hammerzer.github.io/2020/09/09/vue-FAQ/</loc>
-    <lastmod>2020-12-09</lastmod>
   </url>
   <url>
     <loc>https://hammerzer.github.io/2020/11/23/vue-config-js/</loc>
@@ -131,10 +139,6 @@
   <url>
     <loc>https://hammerzer.github.io/2020/08/31/HTML-tags/</loc>
     <lastmod>2020-10-05</lastmod>
-  </url>
-  <url>
-    <loc>https://hammerzer.github.io/2020/08/28/HTML-Bacics/</loc>
-    <lastmod>2020-09-22</lastmod>
   </url>
   <url>
     <loc>https://hammerzer.github.io/2020/08/29/HTML-render/</loc>
