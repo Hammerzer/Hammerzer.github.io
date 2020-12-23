@@ -1,20 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://hammerzer.github.io/2020/12/21/vue-router-plus/</loc>
-    <lastmod>2020-12-21</lastmod>
+    <loc>https://hammerzer.github.io/2020/09/09/vue-FAQ/</loc>
+    <lastmod>2020-12-23</lastmod>
   </url>
   <url>
-    <loc>https://hammerzer.github.io/2020/09/09/vue-FAQ/</loc>
+    <loc>https://hammerzer.github.io/2020/10/19/JS-little-questions/</loc>
+    <lastmod>2020-12-23</lastmod>
+  </url>
+  <url>
+    <loc>https://hammerzer.github.io/2020/12/10/cocos-firstman/</loc>
+    <lastmod>2020-12-23</lastmod>
+  </url>
+  <url>
+    <loc>https://hammerzer.github.io/2020/12/22/JS-modularization/</loc>
+    <lastmod>2020-12-23</lastmod>
+  </url>
+  <url>
+    <loc>https://hammerzer.github.io/2020/12/21/vue-router-plus/</loc>
     <lastmod>2020-12-21</lastmod>
   </url>
   <url>
     <loc>https://hammerzer.github.io/2020/08/28/HTML-Bacics/</loc>
     <lastmod>2020-12-21</lastmod>
-  </url>
-  <url>
-    <loc>https://hammerzer.github.io/2020/12/10/cocos-firstman/</loc>
-    <lastmod>2020-12-17</lastmod>
   </url>
   <url>
     <loc>https://hammerzer.github.io/2020/12/07/vue-performance-optimization/</loc>
@@ -67,10 +75,6 @@
   <url>
     <loc>https://hammerzer.github.io/2020/11/10/vue-router's-two-models/</loc>
     <lastmod>2020-11-23</lastmod>
-  </url>
-  <url>
-    <loc>https://hammerzer.github.io/2020/10/19/JS-little-questions/</loc>
-    <lastmod>2020-11-21</lastmod>
   </url>
   <url>
     <loc>https://hammerzer.github.io/2020/10/21/DOM&BOM/</loc>
