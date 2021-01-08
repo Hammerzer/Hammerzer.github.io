@@ -1134,6 +1134,12 @@
 <p><img data-src="select.png"></p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 使用API中函数，获取两种状态节点</span></span><br><span class="line"><span class="keyword">const</span> checkedIds = <span class="built_in">this</span>.$refs.rolesTree.getCheckedKeys();</span><br><span class="line"><span class="keyword">const</span> checkedIds2 = <span class="built_in">this</span>.$refs.rolesTree.getCheckedKeys()</span><br><span class="line">    .concat(<span class="built_in">this</span>.$refs.rolesTree.getHalfCheckedKeys());</span><br></pre></td></tr></table></figure>
 
+<h4 id="设置选中状态"><a href="#设置选中状态" class="headerlink" title="设置选中状态"></a>设置选中状态</h4><blockquote>
+<p>选中状态需要逐一设置，统一设置方法无效，待补充</p>
+</blockquote>
+<p>使用 <code>setChecked()</code> 和 <code>setCheckedKeys()</code> 设置选中状态</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 设置选中状态</span></span><br><span class="line"><span class="comment">// this.$refs.rolesTree.setCheckedKeys(this.currentRole.grantResourceIds);</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>, il = <span class="built_in">this</span>.currentRole.grantResourceIds.length; i &lt; il; i += <span class="number">1</span>)&#123;</span><br><span class="line">    <span class="keyword">const</span> menuID = <span class="built_in">this</span>.currentRole.grantResourceIds[i];</span><br><span class="line">    <span class="built_in">this</span>.$refs.rolesTree.setChecked(menuID, <span class="literal">true</span>, <span class="literal">false</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
         <category>Front End</category>
@@ -10157,6 +10163,84 @@ D-->>A: Dashed open arrow</textarea><textarea id="sequence-2-options" style="dis
       </categories>
       <tags>
         <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>H5离线缓存</title>
+    <url>/2021/01/08/H5-application-cache/</url>
+    <content><![CDATA[<h2 id="CONTENT-OUTLINE"><a href="#CONTENT-OUTLINE" class="headerlink" title="CONTENT OUTLINE"></a>CONTENT OUTLINE</h2><blockquote>
+<p>关于H5离线缓存的技术有点陌生，记一点笔记！</p>
+<p>参考原文<a href="https://www.cnblogs.com/PeterSpeaking/p/5912221.html">传送门</a></p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="H5离线缓存技术"><a href="#H5离线缓存技术" class="headerlink" title="H5离线缓存技术"></a>H5离线缓存技术</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p><strong>HTML5</strong>提供了很多新的功能以及相应的接口，离线存储就是其中的一个，离线存储可以将站点的一些文件存储在本地，在没有网络的时候还是可以访问到以缓存的对应的站点页面，其中这些文件可以包括html，js，css，img等等文件，但其实即使在有网络的时候，浏览器也会优先使用已离线存储的文件，返回一个200（from cache）头。这跟HTTP的缓存使用策略是不同的。</p>
+<p><strong>它</strong>是浏览器自己的一种机制，随着移动互联网时代的到来，网络可靠性降低，如果我们已经将需要的文件缓存下下来，一旦网络无法访问，也能继续访问。</p>
+<p>而且做好相应资源的缓存可以带来更好的用户体验，当用户使用自己的流量上网时，本地缓存不仅可以提高用户访问速度，而且大大节约用户的使用流量。</p>
+<h3 id="什么是Manifest"><a href="#什么是Manifest" class="headerlink" title="什么是Manifest"></a>什么是Manifest</h3><p>其实 <code>Manifest</code> 是一个简单的 文本文件，它的扩展名是任意的，定义需要缓存的文件、资源，当第一次打开时，浏览器会自动缓存相应的资源。</p>
+<p><strong>Manifest 的特点：</strong></p>
+<ul>
+<li>离线浏览：即当网络断开时，可以继续访问你的页面。</li>
+<li>访问速度快：将文件缓存到本地，不需每次都从网络上请求。</li>
+<li>稳定性：做了 <code>Manifest</code> 缓存，遇到突发网络故障或者服务器故障，继续访问本地缓存。</li>
+</ul>
+<p><img data-src="structure.png"></p>
+<h3 id="Manifest的使用"><a href="#Manifest的使用" class="headerlink" title="Manifest的使用"></a>Manifest的使用</h3><p><code>HTML</code> 新增了一个 <code>manifest</code> 属性，可以用来指定当前页面的 <code>manifest</code> 文件。</p>
+<p>创建一个和 <code>html</code> 同名的 <code>manifest</code> 文件，比如页面为 <code>index.html</code> ，那么可以建一个 <code>index.manifest</code> 的文件，然后给 <code>index.html</code> 的 <code>html</code> 标签添加如下属性即可：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span> <span class="attr">manifest</span>=<span class="string">&quot;index.manifest&quot;</span>&gt;</span> 或</span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">manifest</span>=<span class="string">&quot;http://www.example.com/index.manifest&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><p>1、<code>manifest</code>  的引入可以使绝对路径也可以是相对路径，如果你使用的是绝对路径，你的manifest文件必须和你的站点挂在同一个域名下</p>
+<p>2、<code>manifest</code> 文件你可以保存为任意的扩展名，但 <code>mine-type</code> 必须是 <code>text/cache-manifest</code>。</p>
+<p><code>&lt;html lang=&quot;en&quot; manifest=&quot;index.manifest&quot;&gt;</code>  或  <code>&lt;html lang=&quot;en&quot; manifest=&quot;index.cache&quot;&gt;</code> 在服务器上部署时需要在服务器上添加相应的 <code>mie-type</code></p>
+<p><img data-src="h5-cache-2.png"></p>
+<p>3、<code>manifest</code> 标签应该包含到你需要缓存资源的页面，当第一次打开该页面时，浏览器会解析该页面中的mainfest，并缓存里面列举的资源，同时该页面也会自动会被浏览器缓存，即使该页面没有在 <code>Manifest</code>中 列出。</p>
+<p>注意： “<code>/page-url/</code>“, “<code>/page-url/?something</code>“, “<code>/page-url/?something-else</code>“   <code>Manifest</code> 会当成不同的页面，如果 <code>page-url</code> 页面中包含了 <code>Manifest</code> 属性则浏览器会将该页面中列举出来的资源分别保存，所以 <code>Manifest</code> 最好使用在SPA（单页应用）项目中。</p>
+<p>在Chrome中，可以使用 <code>chrome://appcache-internals/</code> 查看你缓存在本地的资源文件。</p>
+<h3 id="Manifest文件结构"><a href="#Manifest文件结构" class="headerlink" title="Manifest文件结构"></a>Manifest文件结构</h3><p>接下来详细说说manifest的细节，一个典型的manifest文件代码结构像下面这样：</p>
+<p><img data-src="h5-cache-3.png"></p>
+<p><code>manifest</code> 文件，基本格式为三段： <code>CACHE</code>， <code>NETWORK</code>，与 <code>FALLBACK</code>，其中 <code>NETWORK</code> 和 <code>FALLBACK</code> 为可选项。</p>
+<p>而第一行 <code>CACHE MANIFEST</code> 为固定格式，必须写在前面。</p>
+<p>以#号开头的是注释，可以是版本号，时间戳等等。</p>
+<p>一般会在这写个版本号，用来在缓存的文件更新时，更改manifest的作用：浏览器已经缓存下来的缓存，只有当 <code>manifest</code> 文件发生了改变才会更新本地缓存，即使你的代码发生了更新，本地浏览器也是不知道的，所以每次发布代码时你可以更改下#后面的信息比如版本号或者时间，告诉浏览器相应的更新本地缓存。</p>
+<blockquote>
+<p>1、第一行是CACHE MANIFEST 这是必须需要的。</p>
+<p>2、CACHE（必须） 标识出哪些文件需要缓存，可以是相对路径也可以是绝对路径。这里列举出来的文件，当第一次加载下来时，会被浏览器缓存在本地。</p>
+<p>3、NETWORk  这一部分是要绕过缓存直接读取的文件，可以使用通配符 *，大多数网站使用 * 。 当使用* 时 表示出 CACHE指定文件外，其它所有页面都需要联网访问。</p>
+<p>4、FALLBACK  （可选） 当资源无法访问时，浏览器使用后备资源去替代。第二个表示后备页面。两个 URI 都必须使用相对路径并且与清单文件同源。可以使用通配符。</p>
+</blockquote>
+<p>下面的例子中，如果无法建立因特网连接，则用 “<code>404.html</code>” 替代 <code>/html5/</code> 目录中的所有文件。</p>
+<figure class="highlight arcade"><table><tr><td class="code"><pre><span class="line">FALLBACK:</span><br><span class="line">/html5/ /<span class="number">404.</span>html</span><br></pre></td></tr></table></figure>
+
+<p>下面的例子中，当任何页面无法访问时跳转到 “<code>404.html</code>”页。</p>
+<figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line">FALLBACK:</span><br><span class="line">*<span class="string">.html</span> <span class="string">/404.html</span></span><br></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<blockquote>
+<p>1 必须在第一行，2、3、4 直接的顺序是随意的，并且在同一个 <code>manifest</code> 文件中可以出现多次，多次和一次效果一样。</p>
+<p>添加 <code>manifest</code>　 属性的页面会自动被浏览器缓存，不需要再 <code>CACHE</code> 节点中再次添加。</p>
+</blockquote>
+<h3 id="如何更新缓存"><a href="#如何更新缓存" class="headerlink" title="如何更新缓存"></a>如何更新缓存</h3><p>如下三种方式，可以更新缓存：</p>
+<ul>
+<li>更新manifest文件</li>
+<li>通过javascript操作</li>
+<li>清除浏览器缓存</li>
+</ul>
+<p>给 <code>manifest</code> 添加或删除文件，都可更新缓存，如果我们更改了 <code>js</code> ，而没有新增或删除，前面例子中注释中的版本号，可以很好的用来更新 <code>manifest</code> 文件。</p>
+<p><code>html5</code> 中引入了js操作离线缓存的方法，下面的js可以手动更新本地缓存。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">window</span>.applicationCache.update();</span><br></pre></td></tr></table></figure>
+
+<p>如果用户清除了浏览器缓存（手动或用其他一些工具）都会重新下载文件。</p>
+<br>
+
+<p>我们可以使用代码手动更新manifest缓存，一旦webapp源码更新，会自动更新本地manifest缓存，使用户始终访问到最新的源码。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">window</span>.applicationCache.addEventListener(<span class="string">&#x27;updateready&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">window</span>.applicationCache.status == <span class="built_in">window</span>.applicationCache.UPDATEREADY) &#123;</span><br><span class="line">     <span class="built_in">window</span>.applicationCache .swapCache();</span><br><span class="line">      <span class="keyword">if</span> (confirm(<span class="string">&#x27;A new version of this site is available. Load it?&#x27;</span>)) &#123;</span><br><span class="line">        <span class="built_in">window</span>.location.reload();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// Manifest didn&#x27;t changed. Nothing new to server.</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>Front End</category>
+      </categories>
+      <tags>
+        <tag>Web新技术</tag>
       </tags>
   </entry>
 </search>
