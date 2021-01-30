@@ -841,6 +841,14 @@
 
 <h4 id="情况三：回退之后，又需返回到最近更新的版本"><a href="#情况三：回退之后，又需返回到最近更新的版本" class="headerlink" title="情况三：回退之后，又需返回到最近更新的版本"></a>情况三：回退之后，又需返回到最近更新的版本</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">// 查询近期执行命令，获取ID简称</span><br><span class="line">$ git reflog</span><br><span class="line">// 回退</span><br><span class="line">$ git reset --hard [580361e]</span><br></pre></td></tr></table></figure>
 
+<h2 id="9、分支的合并"><a href="#9、分支的合并" class="headerlink" title="9、分支的合并"></a>9、分支的合并</h2><blockquote>
+<p>参考 <a href="https://git-scm.com/book/zh/v2/Git-%E5%88%86%E6%94%AF-%E5%88%86%E6%94%AF%E7%9A%84%E6%96%B0%E5%BB%BA%E4%B8%8E%E5%90%88%E5%B9%B6">Git 分支 - 分支的新建与合并</a></p>
+</blockquote>
+<p><strong>Figure 21. 基于 <code>master</code> 分支的紧急问题分支 <code>hotfix branch</code></strong></p>
+<p>你可以运行你的测试，确保你的修改是正确的，然后将 <code>hotfix</code> 分支合并回你的 <code>master</code> 分支来部署到线上。 你可以使用 <code>git merge</code> 命令来达到上述目的：</p>
+<figure class="highlight console"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git checkout master</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git merge hotfix</span></span><br><span class="line">Updating f42c576..3a0874c</span><br><span class="line">Fast-forward</span><br><span class="line"> index.html | 2 ++</span><br><span class="line"> 1 file changed, 2 insertions(+)</span><br></pre></td></tr></table></figure>
+
+<p>在合并的时候，你应该注意到了“快进（fast-forward）”这个词。 由于你想要合并的分支 <code>hotfix</code> 所指向的提交 <code>C4</code> 是你所在的提交 <code>C2</code> 的直接后继， 因此 Git 会直接将指针向前移动。换句话说，当你试图合并两个分支时， 如果顺着一个分支走下去能够到达另一个分支，那么 Git 在合并两者的时候， 只会简单的将指针向前推进（指针右移），因为这种情况下的合并操作没有需要解决的分歧——这就叫做 “快进（fast-forward）”。</p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
         <category>Tool &amp; Platform</category>
@@ -6274,7 +6282,7 @@ D-->>A: Dashed open arrow</textarea><textarea id="sequence-2-options" style="dis
 <h3 id="13、Array-from"><a href="#13、Array-from" class="headerlink" title="13、Array.from()"></a>13、<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/from">Array.from()</a></h3><p><code>Array.from()</code> 方法从一个类似数组或可迭代对象创建一个新的，浅拷贝的数组实例。</p>
 <figure class="highlight sas"><table><tr><td class="code"><pre><span class="line">console<span class="meta">.log(</span><span class="meta">Array</span>.<span class="meta">from</span>(<span class="string">&#x27;foo&#x27;</span>));</span><br><span class="line">// expected <span class="meta">output</span>: <span class="meta">Array</span> [<span class="string">&quot;f&quot;</span>, <span class="string">&quot;o&quot;</span>, <span class="string">&quot;o&quot;</span>]</span><br><span class="line"></span><br><span class="line">console<span class="meta">.log(</span><span class="meta">Array</span>.<span class="meta">from</span>([1, 2, 3], <span class="meta">x</span> =&gt; <span class="meta">x</span> + <span class="meta">x</span>));</span><br><span class="line">// expected <span class="meta">output</span>: <span class="meta">Array</span> [2, 4, 6]</span><br></pre></td></tr></table></figure>
 
-
+<br>
 
 <h2 id="Object-Function"><a href="#Object-Function" class="headerlink" title="Object Function"></a>Object Function</h2><h3 id="1-Object-assign"><a href="#1-Object-assign" class="headerlink" title="1. Object.assign()"></a>1. Object.assign()</h3><p>将所有可枚举的自身属性的值从一个或多个源对象复制到目标对象。</p>
 <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">const</span> <span class="string">target</span> <span class="string">=</span> &#123; <span class="attr">a:</span> <span class="number">1</span>, <span class="attr">b:</span> <span class="number">2</span> &#125;<span class="string">;</span></span><br><span class="line"><span class="string">const</span> <span class="string">source</span> <span class="string">=</span> &#123; <span class="attr">b:</span> <span class="number">4</span>, <span class="attr">c:</span> <span class="number">5</span> &#125;<span class="string">;</span></span><br><span class="line"></span><br><span class="line"><span class="string">const</span> <span class="string">returnedTarget</span> <span class="string">=</span> <span class="string">Object.assign(target,</span> <span class="string">source);</span></span><br><span class="line"></span><br><span class="line"><span class="string">console.log(target);</span></span><br><span class="line"><span class="string">//</span> <span class="attr">expected output:</span> <span class="string">Object</span> &#123; <span class="attr">a:</span> <span class="number">1</span>, <span class="attr">b:</span> <span class="number">4</span>, <span class="attr">c:</span> <span class="number">5</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="string">console.log(returnedTarget);</span></span><br><span class="line"><span class="string">//</span> <span class="attr">expected output:</span> <span class="string">Object</span> &#123; <span class="attr">a:</span> <span class="number">1</span>, <span class="attr">b:</span> <span class="number">4</span>, <span class="attr">c:</span> <span class="number">5</span> &#125;</span><br></pre></td></tr></table></figure>
@@ -6350,6 +6358,10 @@ D-->>A: Dashed open arrow</textarea><textarea id="sequence-2-options" style="dis
 <p>设置对象的原型（其内部<code>[[Prototype]]</code>属性）。</p>
 <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/constructor"><code>Object.prototype.constructor</code></a></p>
 <p>指定创建对象原型的函数。</p>
+<br>
+
+<h2 id="String-Functions"><a href="#String-Functions" class="headerlink" title="String Functions"></a>String Functions</h2><br>
+
 <h2 id="Problems"><a href="#Problems" class="headerlink" title="Problems"></a>Problems</h2><h3 id="一、-JS中判断某个字符串是否包含另一个字符串的五种方法"><a href="#一、-JS中判断某个字符串是否包含另一个字符串的五种方法" class="headerlink" title="一、 JS中判断某个字符串是否包含另一个字符串的五种方法"></a>一、 JS中判断某个字符串是否包含另一个字符串的五种方法</h3><h4 id="String对象的方法"><a href="#String对象的方法" class="headerlink" title="String对象的方法"></a>String对象的方法</h4><p><strong>方法一: indexOf() (推荐)</strong></p>
 <figure class="highlight openscad"><table><tr><td class="code"><pre><span class="line">var <span class="built_in">str</span> = <span class="string">&quot;123&quot;</span></span><br><span class="line">console.<span class="built_in">log</span>(<span class="built_in">str</span>.indexOf(<span class="string">&quot;2&quot;</span>) != -<span class="number">1</span>);      <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
 
@@ -9982,10 +9994,17 @@ D-->>A: Dashed open arrow</textarea><textarea id="sequence-2-options" style="dis
 <p><a href="https://www.bilibili.com/video/BV1sA411Y7x4?p=2">bilibili教程</a>    <a href="http://afanihao.cn/">教程文件下载</a></p>
 <p><a href="https://docs.cocos.com/creator/api/zh/">Cocos API</a></p>
 <p><a href="https://www.jianshu.com/p/cfb524ecce31?utm_campaign=maleskine...&utm_content=note&utm_medium=seo_notes&utm_source=recommendation">事件系统</a></p>
-<blockquote>
-</blockquote>
-<h2 id="现场感悟"><a href="#现场感悟" class="headerlink" title="现场感悟"></a>现场感悟</h2><p>2020/12/25：</p>
-<p>这是一个相对成熟的游戏引擎（？），也是，可能比其他的好很多，但是毕竟是人烟稀少的土地，遇到的问题轻则头疼绕道，重则直接嗝屁，都是巴戈，真想口吐芬芳</p>
+<p><a href="https://forum.cocos.org/">Cocos 中文社区</a></p>
+<h2 id="现场感悟"><a href="#现场感悟" class="headerlink" title="现场感悟"></a>现场感悟</h2><h3 id="2020-12-25"><a href="#2020-12-25" class="headerlink" title="2020/12/25"></a>2020/12/25</h3><p>​        这是一个相对成熟的游戏引擎（？），也是，可能比其他的好很多，但是毕竟是人烟稀少的土地，遇到的问题轻则头疼绕道，重则直接嗝屁，都是巴戈，真想口吐芬芳</p>
+<h3 id="2021-1-19"><a href="#2021-1-19" class="headerlink" title="2021/1/19"></a>2021/1/19</h3><p>​        真的是吐了，这个游戏引擎莫名其妙出现巴戈，然后莫名其妙地重启之后消失，有咩有考虑过，中间的这个过程让宝宝好痛苦，绝对是一种被玩弄的感觉。</p>
+<p>​        而且，出现巴戈的 <code>sourceMap</code> 提示根本没有办法溯源，去搜索相应的报错信息也是一无所获，这个社区真的可以说没有！再做两三个游戏就塞<code>Goodbye</code>了.</p>
+<p>​        记住，出现异常报错之后：先重启，先重启，先重启引擎！！！</p>
+<p><img data-src="bug1.png"></p>
+<h3 id="2021-1-22"><a href="#2021-1-22" class="headerlink" title="2021/1/22"></a>2021/1/22</h3><p>针对异常的报错，可以排查是否出现如下的问题：</p>
+<ul>
+<li>重启引擎能否解决</li>
+<li>在某个节点上，是否绑定了正确的脚本</li>
+</ul>
 <h2 id="翻车现场"><a href="#翻车现场" class="headerlink" title="翻车现场"></a>翻车现场</h2><blockquote>
 <p><code>copy</code> 一波官方文档，说实话，官方文档写的很接地气，但是总有一些坑，让我掉进去了 <code>-_-</code></p>
 <p>总之，下面是官方文档的补充坑点</p>
@@ -10072,7 +10091,9 @@ D-->>A: Dashed open arrow</textarea><textarea id="sequence-2-options" style="dis
 </blockquote>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 远程 url 带图片后缀名</span></span><br><span class="line"><span class="keyword">var</span> remoteUrl = <span class="string">&quot;http://unknown.org/someres.png&quot;</span>;</span><br><span class="line">cc.assetManager.loadRemote(remoteUrl, <span class="function"><span class="keyword">function</span> (<span class="params">err, texture</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Use texture to create sprite frame</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 远程 url 不带图片后缀名，此时必须指定远程图片文件的类型</span></span><br><span class="line">remoteUrl = <span class="string">&quot;http://unknown.org/emoji?id=124982374&quot;</span>;</span><br><span class="line">cc.assetManager.loadRemote(remoteUrl, &#123;<span class="attr">ext</span>: <span class="string">&#x27;.png&#x27;</span>&#125;, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Use texture to create sprite frame</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 用绝对路径加载设备存储内的资源，比如相册</span></span><br><span class="line"><span class="keyword">var</span> absolutePath = <span class="string">&quot;/dara/data/some/path/to/image.png&quot;</span></span><br><span class="line">cc.assetManager.loadRemote(absolutePath, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Use texture to create sprite frame</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 远程音频</span></span><br><span class="line">remoteUrl = <span class="string">&quot;http://unknown.org/sound.mp3&quot;</span>;</span><br><span class="line">cc.assetManager.loadRemote(remoteUrl, <span class="function"><span class="keyword">function</span> (<span class="params">err, audioClip</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// play audio clip</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 远程文本</span></span><br><span class="line">remoteUrl = <span class="string">&quot;http://unknown.org/skill.txt&quot;</span>;</span><br><span class="line">cc.assetManager.loadRemote(remoteUrl, <span class="function"><span class="keyword">function</span> (<span class="params">err, textAsset</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// use string to do something</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-<p><strong>个人的需求</strong>：加载远程 <code>url</code> 不带图片后缀名，获取图片之后动态替换原图片</p>
+<p><strong>个人的需求</strong>：</p>
+<p>加载远程 <code>url</code> 不带图片后缀名，获取图片之后动态替换原图片</p>
+<p><u>但是，如果远程 <code>url</code> 带图片后缀，绝对不可再次声明图片后缀</u></p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">cc.assetManager.loadRemote(res[<span class="string">&#x27;couponQRCode&#x27;</span>], &#123;<span class="attr">ext</span>: <span class="string">&#x27;.png&#x27;</span>&#125;, <span class="function">(<span class="params">err, texture</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// Use texture to create sprite frame</span></span><br><span class="line">    <span class="keyword">const</span> sp = <span class="keyword">new</span> cc.SpriteFrame(texture); <span class="comment">// 这个地方一直报错 类型错误</span></span><br><span class="line">    <span class="built_in">this</span>.gameEnd.getChildByName(<span class="string">&#x27;rewards&#x27;</span>).getChildByName(<span class="string">&#x27;qrcode&#x27;</span>).getComponent(cc.Sprite).spriteFrame = sp;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
@@ -10375,7 +10396,57 @@ D-->>A: Dashed open arrow</textarea><textarea id="sequence-2-options" style="dis
   <entry>
     <title>React-起步</title>
     <url>/2021/01/13/React-start/</url>
-    <content><![CDATA[<h2 id="CONTENT-OUTLINE"><a href="#CONTENT-OUTLINE" class="headerlink" title="CONTENT OUTLINE"></a>CONTENT OUTLINE</h2><a id="more"></a><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+    <content><![CDATA[<h2 id="CONTENT-OUTLINE"><a href="#CONTENT-OUTLINE" class="headerlink" title="CONTENT OUTLINE"></a>CONTENT OUTLINE</h2><p><a href="https://www.bootcdn.cn/">BootCDN  —  常见库Cdn</a></p>
+<p><a href="https://zh-hans.reactjs.org/">React 中文官网</a></p>
+<p><a href="https://create-react-app.dev/docs/setting-up-your-editor/">React 脚手架CRA</a></p>
+<a id="more"></a>
+
+<h2 id="一、React起步"><a href="#一、React起步" class="headerlink" title="一、React起步"></a>一、React起步</h2><blockquote>
+<p>入手初步内容来源于这个 <a href="https://www.bilibili.com/video/BV1LV411m7cq?p=4">React 教程</a></p>
+</blockquote>
+<h3 id="1、使用-React-的原因-技术选型理由"><a href="#1、使用-React-的原因-技术选型理由" class="headerlink" title="1、使用 React 的原因/技术选型理由"></a>1、使用 <code>React</code> 的原因/技术选型理由</h3><p>React，基于构建用户界面的 <code>JavaScript</code> 库</p>
+<p>基于<code>React</code>的特点：声明式、组件化、一次学习随处编写</p>
+<blockquote>
+<p><strong>对于最后一个特性的理解：</strong></p>
+<p>Web端应用：React + React DOM</p>
+<p>移动端应用：React + React Native</p>
+<p>PC端应用：React + React Electron</p>
+<p>小程序：React + Taro</p>
+<p>VR界面：React + React 360</p>
+</blockquote>
+<p><strong>1、易学，学习曲线稍难于 <code>Vue</code></strong> </p>
+<p><strong>2、开发迅速</strong></p>
+<p>采用流行的 <code>MVC</code> 架构，组件化，以及<code>React</code>周边生态的完善性，如各种UI库、路由库、脚手架、<code>Chrome-React-devTool</code>等等</p>
+<p><strong>3、由 <code>Facebook</code> 大型公司提供维护</strong></p>
+<p><strong>4、受欢迎，拥有火热的<code>React</code>社区</strong></p>
+<h3 id="2、Quick-Start"><a href="#2、Quick-Start" class="headerlink" title="2、Quick Start"></a>2、Quick Start</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npx create-react-app my-app</span><br><span class="line"><span class="built_in">cd</span> my-app</span><br><span class="line">npm start</span><br></pre></td></tr></table></figure>
+
+<p>项目中 <code>package.json</code> 中定义的启动脚本</p>
+<p><img data-src="2-1.png"></p>
+<p>其中，<code>npm eject</code> 用于暴露 <code>webpack</code> 配置以手动配置 <code>webpack</code> 配置，但该操作不可逆；</p>
+<p>除此之外，也有使用相应依赖来修改配置的选择，如 <code>customize-cra</code></p>
+<p><img data-src="2-4.png"></p>
+<blockquote>
+<p>当说到为什么 <code>CRA</code> 不把 <code>webpack</code> 配置暴露出来，<code>Dan Abramov</code> 是这样说的：</p>
+</blockquote>
+<p><img data-src="2-2.png"></p>
+<blockquote>
+<p>这儿有关于这位大佬的自传，好喜欢这些传奇故事~~ <a href="https://overreacted.io/zh-hans/my-decade-in-review/">传送门</a>在此</p>
+</blockquote>
+<p>另外，需要学会利用 <code>vscode</code> 进行代码调试，在目录新建 <code>.vscode</code> 文件夹，继续新建 <code>launch.js</code>，然后在编辑器 <code>debug</code> 中配置</p>
+<p><img data-src="2-3.png"></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;version&quot;</span>: <span class="string">&quot;0.2.0&quot;</span>,</span><br><span class="line">  <span class="string">&quot;configurations&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">&quot;name&quot;</span>: <span class="string">&quot;Chrome&quot;</span>,</span><br><span class="line">      <span class="string">&quot;type&quot;</span>: <span class="string">&quot;chrome&quot;</span>,</span><br><span class="line">      <span class="string">&quot;request&quot;</span>: <span class="string">&quot;launch&quot;</span>,</span><br><span class="line">      <span class="string">&quot;url&quot;</span>: <span class="string">&quot;http://localhost:3000&quot;</span>,</span><br><span class="line">      <span class="string">&quot;webRoot&quot;</span>: <span class="string">&quot;$&#123;workspaceFolder&#125;/src&quot;</span>,</span><br><span class="line">      <span class="string">&quot;sourceMapPathOverrides&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;webpack:///src/*&quot;</span>: <span class="string">&quot;$&#123;webRoot&#125;/*&quot;</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3、JSX指引"><a href="#3、JSX指引" class="headerlink" title="3、JSX指引"></a>3、JSX指引</h3><p>① <code>JSX</code> 是<code>Javascript</code>的扩展语法</p>
+<p>② <code>React Element</code> 是不可不变的对象（immutable）</p>
+<blockquote>
+<p>类似于<code>Object.freeze()</code> 方法，使得对象只可读</p>
+</blockquote>
+<p><img data-src="3-1.png"></p>
+<p>③ 经过 <code>Babel</code> 转译之后：</p>
+<p><img data-src="3-2.png"></p>
+<p><img data-src="3-3.png"></p>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
       <categories>
         <category>Front End</category>
       </categories>
